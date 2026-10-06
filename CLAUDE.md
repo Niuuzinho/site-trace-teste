@@ -27,7 +27,7 @@ importantes, **atualize este arquivo no mesmo trabalho**.
 - `_config.yml` está com `baseurl: "/site-trace-teste"`. **Se o repositório mudar de nome ou ganhar domínio próprio, trocar
   o `baseurl`** (vazio `""` para `usuario.github.io` ou domínio próprio).
 - Publicação: Settings → Pages → "Deploy from a branch" → `main` → `/ (root)`. O GitHub roda o Jekyll sozinho.
-  Erros de build aparecem na aba Actions.
+  Erros de build aparecem na aba Actions. **Para publicar, envie a `main` num `git push` separado** (`git push origin HEAD:main`); mandar a branch e a `main` juntas no mesmo comando fez o GitHub não rodar o build do Pages (visto na aba Actions).
 
 ---
 
