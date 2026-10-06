@@ -12,7 +12,7 @@ lang: pt-BR
 #   baseurl: "/nome-do-repositorio"
 # - GitHub Pages de usuário/organização ou domínio próprio: deixe vazio.
 url: ""
-baseurl: ""
+baseurl: "site-trace-teste"
 
 # Formulário de contato.
 # Enquanto estiver vazio, o formulário é apenas demonstrativo (não envia nada).
