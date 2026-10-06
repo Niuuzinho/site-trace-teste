@@ -1,0 +1,304 @@
+/* ==========================================================================
+   TrAce · comportamentos do site
+   Todo o conteúdo já vem pronto no HTML. Este arquivo só ADICIONA recursos
+   (filtros, galeria ampliada, painel de leitura...). Sem JavaScript, o site
+   continua inteiro e navegável.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var doc = document;
+  var root = doc.documentElement;
+  var CHAVE = 'trace-a11y';
+
+  function normalizar(texto) {
+    return String(texto || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+  function todos(seletor, base) {
+    return Array.prototype.slice.call((base || doc).querySelectorAll(seletor));
+  }
+
+  /* 1. Painel de ajustes de leitura ----------------------------------------- */
+  function iniciarPainelAcessibilidade() {
+    var botao = doc.querySelector('[data-acess-botao]');
+    var painel = doc.getElementById('painel-acess');
+    if (!botao || !painel) return;
+
+    var PASSOS = [0.9, 1, 1.1, 1.25, 1.4, 1.5];
+    var padrao = { escala: 1, contraste: false, fonte: false, espaco: false, movimento: false };
+    var estado = padrao;
+    try { estado = Object.assign({}, padrao, JSON.parse(localStorage.getItem(CHAVE) || '{}')); } catch (e) { estado = Object.assign({}, padrao); }
+
+    var menos = painel.querySelector('[data-acess-menos]');
+    var mais = painel.querySelector('[data-acess-mais]');
+    var valor = painel.querySelector('[data-acess-valor]');
+    var restaurar = painel.querySelector('[data-acess-restaurar]');
+    var opcoes = todos('[data-opcao]', painel);
+
+    function passoAtual() {
+      var melhor = 0;
+      PASSOS.forEach(function (p, i) { if (Math.abs(p - estado.escala) < Math.abs(PASSOS[melhor] - estado.escala)) melhor = i; });
+      return melhor;
+    }
+
+    function aplicar() {
+      root.style.setProperty('--escala', estado.escala);
+      toggleAttr('contraste', estado.contraste, 'alto');
+      toggleAttr('fonte', estado.fonte, 'leitura');
+      toggleAttr('espaco', estado.espaco, 'amplo');
+      toggleAttr('movimento', estado.movimento, 'reduzido');
+      opcoes.forEach(function (o) { o.checked = !!estado[o.getAttribute('data-opcao')]; });
+      var i = passoAtual();
+      valor.textContent = Math.round(PASSOS[i] * 100) + '%';
+      menos.disabled = i === 0;
+      mais.disabled = i === PASSOS.length - 1;
+      var mudou = estado.escala !== 1 || estado.contraste || estado.fonte || estado.espaco || estado.movimento;
+      restaurar.disabled = !mudou;
+    }
+    function toggleAttr(nome, ligado, valorAttr) {
+      if (ligado) root.setAttribute('data-' + nome, valorAttr); else root.removeAttribute('data-' + nome);
+    }
+    function salvar() {
+      try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) { /* navegação privada */ }
+      aplicar();
+    }
+
+    menos.addEventListener('click', function () { estado.escala = PASSOS[Math.max(0, passoAtual() - 1)]; salvar(); });
+    mais.addEventListener('click', function () { estado.escala = PASSOS[Math.min(PASSOS.length - 1, passoAtual() + 1)]; salvar(); });
+    opcoes.forEach(function (o) {
+      o.addEventListener('change', function () { estado[o.getAttribute('data-opcao')] = o.checked; salvar(); });
+    });
+    restaurar.addEventListener('click', function () { estado = Object.assign({}, padrao); salvar(); });
+
+    function abrir() {
+      painel.hidden = false;
+      botao.setAttribute('aria-expanded', 'true');
+      var primeiro = painel.querySelector('button:not([disabled]), input');
+      if (primeiro) primeiro.focus();
+    }
+    function fechar(devolverFoco) {
+      painel.hidden = true;
+      botao.setAttribute('aria-expanded', 'false');
+      if (devolverFoco) botao.focus();
+    }
+    botao.addEventListener('click', function () { if (painel.hidden) abrir(); else fechar(true); });
+    painel.querySelector('[data-acess-fechar]').addEventListener('click', function () { fechar(true); });
+    painel.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.stopPropagation(); fechar(true); } });
+    doc.addEventListener('click', function (e) {
+      if (!painel.hidden && !painel.contains(e.target) && !botao.contains(e.target)) fechar(false);
+    });
+
+    aplicar();
+  }
+
+  /* 2. Menu em telas pequenas ----------------------------------------------- */
+  function iniciarMenu() {
+    var botao = doc.querySelector('[data-nav-botao]');
+    var nav = doc.querySelector('[data-nav]');
+    if (!botao || !nav) return;
+    nav.hidden = true;                       // em telas grandes o CSS mantém o menu visível
+    botao.setAttribute('aria-expanded', 'false');
+    botao.addEventListener('click', function () {
+      var abrir = nav.hidden;
+      nav.hidden = !abrir;
+      botao.setAttribute('aria-expanded', String(abrir));
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !nav.hidden && getComputedStyle(botao).display !== 'none') {
+        nav.hidden = true;
+        botao.setAttribute('aria-expanded', 'false');
+        botao.focus();
+      }
+    });
+  }
+
+  /* 3. Busca e filtros nas listas ------------------------------------------- */
+  function iniciarFiltros(bloco) {
+    var itens = todos('[data-item]', bloco);
+    var campo = bloco.querySelector('[data-busca]');
+    var contagem = bloco.querySelector('[data-contagem]');
+    var vazio = bloco.querySelector('[data-vazio]');
+    var limpar = bloco.querySelector('[data-limpar]');
+    var caixas = todos('input[type="checkbox"][data-grupo]', bloco);
+    var unidade = bloco.getAttribute('data-unidade') || 'item(ns) exibido(s).';
+
+    var inicial = new URLSearchParams(window.location.search).get('q');
+    if (campo && inicial) campo.value = inicial;
+
+    function valoresDoItem(item, grupo) {
+      return (item.getAttribute('data-' + grupo) || '').split('|');
+    }
+
+    function aplicar() {
+      var termo = normalizar(campo ? campo.value : '').trim();
+      var grupos = {};
+      caixas.forEach(function (c) {
+        if (!c.checked) return;
+        var g = c.getAttribute('data-grupo');
+        (grupos[g] = grupos[g] || []).push(c.value);
+      });
+
+      var visiveis = 0;
+      itens.forEach(function (item) {
+        var ok = !termo || normalizar(item.getAttribute('data-texto')).indexOf(termo) !== -1;
+        Object.keys(grupos).forEach(function (g) {
+          if (!ok) return;
+          var doItem = valoresDoItem(item, g);
+          var modoTodos = bloco.querySelector('[data-modo="todos"] [data-grupo="' + g + '"]');
+          ok = modoTodos
+            ? grupos[g].every(function (v) { return doItem.indexOf(v) !== -1; })
+            : grupos[g].some(function (v) { return doItem.indexOf(v) !== -1; });
+        });
+        item.hidden = !ok;
+        if (ok) visiveis += 1;
+      });
+
+      if (contagem) contagem.textContent = visiveis + ' ' + unidade;
+      if (vazio) vazio.hidden = visiveis !== 0;
+    }
+
+    if (campo) campo.addEventListener('input', aplicar);
+    caixas.forEach(function (c) { c.addEventListener('change', aplicar); });
+    if (limpar) limpar.addEventListener('click', function () {
+      caixas.forEach(function (c) { c.checked = false; });
+      if (campo) { campo.value = ''; campo.focus(); }
+      aplicar();
+    });
+    aplicar();
+  }
+
+  /* 4. Galeria com imagem ampliada ------------------------------------------ */
+  function iniciarGaleria(lista) {
+    var dlg = doc.querySelector('[data-lightbox]');
+    if (!dlg || typeof dlg.showModal !== 'function') return;   // sem suporte: os links abrem a imagem direto
+    var links = todos('a', lista);
+    var img = dlg.querySelector('img');
+    var legenda = dlg.querySelector('[data-lb-legenda]');
+    var posicao = dlg.querySelector('[data-lb-posicao]');
+    var anterior = dlg.querySelector('[data-lb-anterior]');
+    var proxima = dlg.querySelector('[data-lb-proxima]');
+    var fechar = dlg.querySelector('[data-lb-fechar]');
+    var atual = 0;
+    var origem = null;
+
+    if (links.length < 2) { anterior.hidden = true; proxima.hidden = true; }
+
+    function mostrar(n) {
+      atual = (n + links.length) % links.length;
+      var a = links[atual];
+      img.src = a.getAttribute('href');
+      img.alt = a.getAttribute('data-alt') || '';
+      legenda.textContent = a.getAttribute('data-legenda') || '';
+      posicao.textContent = (atual + 1) + ' de ' + links.length;
+    }
+
+    links.forEach(function (a, n) {
+      a.setAttribute('aria-haspopup', 'dialog');
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        origem = a;
+        mostrar(n);
+        dlg.showModal();
+      });
+    });
+    anterior.addEventListener('click', function () { mostrar(atual - 1); });
+    proxima.addEventListener('click', function () { mostrar(atual + 1); });
+    fechar.addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); mostrar(atual - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); mostrar(atual + 1); }
+    });
+    dlg.addEventListener('close', function () { if (origem) origem.focus(); });
+  }
+
+  /* 5. Vídeo: o player só é carregado depois do clique ---------------------- */
+  function iniciarVideo(caixa) {
+    var botao = caixa.querySelector('button');
+    if (!botao) return;
+    botao.addEventListener('click', function () {
+      var quadro = doc.createElement('iframe');
+      quadro.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(caixa.getAttribute('data-video')) + '?autoplay=1&rel=0';
+      quadro.title = caixa.getAttribute('data-titulo') || 'Vídeo';
+      quadro.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+      quadro.setAttribute('allowfullscreen', '');
+      caixa.textContent = '';
+      caixa.classList.add('carregado');
+      caixa.appendChild(quadro);
+      quadro.focus();
+    });
+  }
+
+  /* 6. Página de busca ------------------------------------------------------- */
+  function iniciarBuscaGeral() {
+    var form = doc.querySelector('[data-busca-pagina]');
+    if (!form) return;
+    var campo = form.querySelector('input[type="search"]');
+    var saida = doc.querySelector('[data-resultados]');
+    var status = doc.querySelector('[data-status-busca]');
+    var indice = null;
+
+    function carregar(depois) {
+      if (indice) { depois(); return; }
+      fetch(form.getAttribute('data-indice'))
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (dados) { indice = dados; depois(); })
+        .catch(function () { status.textContent = 'Não foi possível carregar o índice de busca.'; });
+    }
+
+    function buscar() {
+      var termos = normalizar(campo.value).trim().split(/\s+/).filter(Boolean);
+      saida.textContent = '';
+      if (!termos.length) { status.textContent = ''; return; }
+      var achados = indice.filter(function (d) {
+        var palheiro = normalizar([d.titulo, d.resumo, d.tipo, d.ano, d.projeto || '', (d.temas || []).join(' ')].join(' '));
+        return termos.every(function (t) { return palheiro.indexOf(t) !== -1; });
+      });
+      achados.forEach(function (d) {
+        var li = doc.createElement('li');
+        var h = doc.createElement('h2');
+        var a = doc.createElement('a');
+        a.href = d.url; a.textContent = d.titulo; h.appendChild(a);
+        var meta = doc.createElement('p');
+        meta.className = 'ref-tipo';
+        meta.textContent = d.tipo + (d.ano ? ' · ' + d.ano : '');
+        var p = doc.createElement('p');
+        p.textContent = d.resumo || '';
+        li.appendChild(h); li.appendChild(meta); li.appendChild(p);
+        saida.appendChild(li);
+      });
+      status.textContent = achados.length
+        ? achados.length + ' resultado(s) encontrado(s).'
+        : 'Nenhum resultado para essa busca.';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      try { history.replaceState(null, '', '?q=' + encodeURIComponent(campo.value)); } catch (err) { /* ignora */ }
+      carregar(buscar);
+    });
+    var inicial = new URLSearchParams(window.location.search).get('q');
+    if (inicial) { campo.value = inicial; carregar(buscar); }
+  }
+
+  /* 7. Formulário de contato demonstrativo ---------------------------------- */
+  function iniciarFormularioDemo(form) {
+    var aviso = form.querySelector('[data-aviso]');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (aviso) aviso.textContent = 'Formulário demonstrativo. Os dados não são enviados nesta versão do site.';
+    });
+  }
+
+  /* Início ------------------------------------------------------------------ */
+  function iniciar() {
+    iniciarPainelAcessibilidade();
+    iniciarMenu();
+    todos('[data-filtravel]').forEach(iniciarFiltros);
+    todos('[data-galeria]').forEach(iniciarGaleria);
+    todos('[data-video]').forEach(iniciarVideo);
+    todos('form[data-demo]').forEach(iniciarFormularioDemo);
+    iniciarBuscaGeral();
+  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', iniciar); else iniciar();
+}());

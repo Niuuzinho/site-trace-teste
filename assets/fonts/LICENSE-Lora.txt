@@ -1,0 +1,4 @@
+Fonte Lora (assets/fonts/lora-var.woff e lora-italic-var.woff)
+Copyright 2011 The Lora Project Authors (https://github.com/cyrealtype/Lora-Cyrillic)
+Licenciada sob a SIL Open Font License, Version 1.1 — https://openfontlicense.org
+Os arquivos incluídos são versões reduzidas (apenas caracteres latinos) das fontes originais.
