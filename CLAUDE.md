@@ -156,6 +156,7 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 - **Menu com submenus** (a pessoa pediu de volta): "TrAce" ▾ (Sobre nós, Membros) e "Projetos" ▾ (Todos os projetos + cada projeto).
   O link principal funciona sozinho; um botão ▾ abre o submenu (teclado, toque; Esc fecha); no computador também abre ao passar o mouse.
   Sem JavaScript, o submenu abre por `:hover`/`:focus-within` no computador e fica visível no celular.
+- **Card da orientadora** (`.destaque-pessoa` em `membros.html`): painel de cor da página com foto grande em círculo com anel, ao lado nome, função em etiqueta, áreas, bio e contatos; no celular a foto fica em cima.
 - **Cartões** para projetos, produções e membros (a pessoa pediu cartões lado a lado, não listas). Cartão inteiro clicável (link esticado).
 - **Membros**: foto em **círculo**, com ícones de contato (e-mail, Lattes, LinkedIn) que só aparecem se o dado existir.
   O ícone de e-mail abre uma **janela** (`<dialog>`) com o endereço, "Copiar e-mail" e "Escrever e-mail"; sem JavaScript vira `mailto:`.
@@ -236,7 +237,7 @@ Usa `color-mix()` (faixa em degradê; navegadores antigos usam a cor sólida), `
 
 ## 9. Pendências de conteúdo (decisão da pessoa; não resolver sozinho)
 
-- **Fotos reais prontas, mas não usadas**: Manoela (coordenadora), Matheus, Letícia — o `membros.yml` aponta para imagem genérica
+- **Fotos reais prontas, mas não usadas**: Matheus, Letícia (a da Manoela já está em uso desde o item 3) — o `membros.yml` aponta para imagem genérica
   (`placeholders/a`); as fotos estão em `assets/img/membros/` (`manoela-cristina`, `matheus-goncalves`, `leticia-pimentel`). Há comentários no arquivo.
 - **Imagem de cabeçalho do projeto AD de Libras** (`capa`) é um placeholder "LIVRO 2"; a imagem correta é `projetos/ad-libras-capa`.
 - **Os dois projetos usam o mesmo vídeo de teste** (`tgbNymZ7vqY`).

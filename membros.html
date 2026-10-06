@@ -18,12 +18,14 @@ permalink: /membros/
     <h2 id="h-orientacao">Orientadora</h2>
     {%- for pessoa in orientacao %}
     <div class="destaque-pessoa">
-      {% include img.html nome=pessoa.foto alt=pessoa.nome sizes="(min-width: 40em) 13rem, 100vw" %}
-      <div>
+      <div class="destaque-foto">
+        {% include img.html nome=pessoa.foto alt=pessoa.nome sizes="12rem" %}
+      </div>
+      <div class="destaque-texto">
         <h3>{{ pessoa.nome }}</h3>
-        <p class="funcao">{{ pessoa.funcao }}</p>
+        <p class="funcao"><span class="etiqueta-funcao">{{ pessoa.funcao }}</span></p>
         <p class="areas">{{ pessoa.areas }}</p>
-        {%- if pessoa.bio %}<p>{{ pessoa.bio }}</p>{% endif %}
+        {%- if pessoa.bio %}<p class="bio">{{ pessoa.bio }}</p>{% endif %}
         {% include contatos-pessoa.html pessoa=pessoa %}
       </div>
     </div>
