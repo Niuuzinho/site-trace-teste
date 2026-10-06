@@ -1,0 +1,4 @@
+Fonte Poppins (assets/fonts/poppins-regular.woff, poppins-medium.woff e poppins-bold.woff)
+Copyright 2020 The Poppins Project Authors (https://github.com/itfoundry/Poppins)
+Licenciada sob a SIL Open Font License, Version 1.1 — https://openfontlicense.org
+Os arquivos incluídos são versões reduzidas (apenas caracteres latinos) das fontes originais.

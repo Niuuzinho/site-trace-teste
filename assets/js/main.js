@@ -25,7 +25,7 @@
     if (!botao || !painel) return;
 
     var PASSOS = [0.9, 1, 1.1, 1.25, 1.4, 1.5];
-    var padrao = { escala: 1, contraste: false, fonte: false, espaco: false, movimento: false };
+    var padrao = { escala: 1, escuro: false, contraste: false, fonte: false, espaco: false, movimento: false };
     var estado = padrao;
     try { estado = Object.assign({}, padrao, JSON.parse(localStorage.getItem(CHAVE) || '{}')); } catch (e) { estado = Object.assign({}, padrao); }
 
@@ -43,6 +43,7 @@
 
     function aplicar() {
       root.style.setProperty('--escala', estado.escala);
+      toggleAttr('escuro', estado.escuro, 'sim');
       toggleAttr('contraste', estado.contraste, 'alto');
       toggleAttr('fonte', estado.fonte, 'leitura');
       toggleAttr('espaco', estado.espaco, 'amplo');
@@ -52,7 +53,7 @@
       valor.textContent = Math.round(PASSOS[i] * 100) + '%';
       menos.disabled = i === 0;
       mais.disabled = i === PASSOS.length - 1;
-      var mudou = estado.escala !== 1 || estado.contraste || estado.fonte || estado.espaco || estado.movimento;
+      var mudou = estado.escala !== 1 || estado.escuro || estado.contraste || estado.fonte || estado.espaco || estado.movimento;
       restaurar.disabled = !mudou;
     }
     function toggleAttr(nome, ligado, valorAttr) {
@@ -109,6 +110,44 @@
         botao.setAttribute('aria-expanded', 'false');
         botao.focus();
       }
+    });
+  }
+
+  /* 2b. Submenus do menu principal ------------------------------------------ */
+  function iniciarSubmenus() {
+    var itens = todos('.tem-submenu');
+    if (!itens.length) return;
+    function fechar(item) {
+      item.classList.remove('aberto');
+      var b = item.querySelector('[data-sub-botao]');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    }
+    function abrir(item) {
+      itens.forEach(function (o) { if (o !== item) fechar(o); });
+      item.classList.add('aberto');
+      item.querySelector('[data-sub-botao]').setAttribute('aria-expanded', 'true');
+    }
+    itens.forEach(function (item) {
+      var botao = item.querySelector('[data-sub-botao]');
+      botao.addEventListener('click', function () {
+        if (item.classList.contains('aberto')) fechar(item); else abrir(item);
+      });
+      item.addEventListener('focusout', function (e) {
+        if (e.relatedTarget && !item.contains(e.relatedTarget)) fechar(item);
+      });
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      itens.forEach(function (item) {
+        if (item.classList.contains('aberto')) {
+          var tinhaFoco = item.contains(doc.activeElement);
+          fechar(item);
+          if (tinhaFoco) item.querySelector('[data-sub-botao]').focus();
+        }
+      });
+    });
+    doc.addEventListener('click', function (e) {
+      itens.forEach(function (item) { if (!item.contains(e.target)) fechar(item); });
     });
   }
 
@@ -281,6 +320,50 @@
     if (inicial) { campo.value = inicial; carregar(buscar); }
   }
 
+  /* 6b. Janela com o e-mail da pessoa (sem JavaScript, o ícone abre o programa de e-mail) */
+  function iniciarJanelaEmail() {
+    var dlg = doc.querySelector('[data-dialogo-email]');
+    if (!dlg || typeof dlg.showModal !== 'function') return;
+    var nome = dlg.querySelector('[data-dlg-nome]');
+    var email = dlg.querySelector('[data-dlg-email]');
+    var aviso = dlg.querySelector('[data-dlg-aviso]');
+    var abrirApp = dlg.querySelector('[data-dlg-abrir]');
+    var origem = null;
+
+    todos('[data-email]').forEach(function (a) {
+      a.setAttribute('role', 'button');
+      a.setAttribute('aria-haspopup', 'dialog');
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        origem = a;
+        nome.textContent = a.getAttribute('data-nome');
+        email.textContent = a.getAttribute('data-email');
+        abrirApp.setAttribute('href', 'mailto:' + a.getAttribute('data-email'));
+        aviso.textContent = '';
+        dlg.showModal();
+      });
+      a.addEventListener('keydown', function (e) { if (e.key === ' ') { e.preventDefault(); a.click(); } });
+    });
+
+    dlg.querySelector('[data-dlg-copiar]').addEventListener('click', function () {
+      var texto = email.textContent;
+      function deu() { aviso.textContent = 'E-mail copiado.'; }
+      function falhou() { aviso.textContent = 'Não foi possível copiar sozinho. Selecione o e-mail acima e copie.'; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(deu, falhou);
+      } else {
+        try {
+          var faixa = doc.createRange(); faixa.selectNodeContents(email);
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(faixa);
+          if (doc.execCommand('copy')) deu(); else falhou();
+        } catch (err) { falhou(); }
+      }
+    });
+    dlg.querySelector('[data-dlg-fechar]').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', function () { if (origem) origem.focus(); });
+  }
+
   /* 7. Formulário de contato demonstrativo ---------------------------------- */
   function iniciarFormularioDemo(form) {
     var aviso = form.querySelector('[data-aviso]');
@@ -294,11 +377,14 @@
   function iniciar() {
     iniciarPainelAcessibilidade();
     iniciarMenu();
+    iniciarSubmenus();
     todos('[data-filtravel]').forEach(iniciarFiltros);
+    todos('details.filtros-det').forEach(function (d) { if (window.matchMedia('(max-width: 55.99em)').matches) d.removeAttribute('open'); });
     todos('[data-galeria]').forEach(iniciarGaleria);
     todos('[data-video]').forEach(iniciarVideo);
     todos('form[data-demo]').forEach(iniciarFormularioDemo);
     iniciarBuscaGeral();
+    iniciarJanelaEmail();
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 }());
