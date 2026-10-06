@@ -157,12 +157,12 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
   Com JavaScript, o item com submenu é **um botão só** (texto + seta juntos, `.sub-botao`): Tab chega nele e Enter/Espaço abre o submenu; Esc fecha;
   no computador também abre ao passar o mouse. Para ir à página do item, usa-se o 1º link do submenu ("Todos os projetos", "Sobre nós").
   Sem JavaScript, aparece o link normal (`.link-sem-js`) e o submenu abre por `:hover`/`:focus-within`; no celular fica visível.
-  No celular, o botão "Menu" vem **antes** de "Acessibilidade".
-- **Voltar ao topo**: botão redondo fixo no canto (`.topo-botao`, aparece depois de rolar 600 px, via JS) + link "Voltar ao topo" no rodapé. Usam `href="#"` e JS
+  No celular, o botão "Menu" vem **antes** de "Acessibilidade". **Ordem do Tab = ordem visual**: no HTML o botão "Acessibilidade" vem *depois* do bloco do menu/busca (a posição visual é dada por `order` no CSS).
+- **Voltar ao topo**: só o botão redondo fixo no canto (`.topo-botao`, aparece depois de rolar 600 px, via JS); ao passar o mouse ou focar, mostra a dica "Voltar ao topo" (`.topo-dica`). **Não há mais link de texto no rodapé** (decisão da pessoa). Usa `href="#"` e JS
   (o `#topo` não rola nada porque o cabeçalho é fixo). O foco vai para a logo.
-- **Rodapé**: botão do Instagram (e YouTube, se houver) fica no alto da primeira coluna, abre em nova guia (`target="_blank" rel="noopener noreferrer"` + texto "abre em outra guia" para leitor de tela).
+- **Rodapé**: botão do Instagram (e YouTube, se houver) fica **embaixo dos textos** da primeira coluna (a pessoa pediu para voltar para essa posição), abre em nova guia (`target="_blank" rel="noopener noreferrer"` + texto "abre em outra guia" para leitor de tela).
   Mesma regra para links externos de Lattes/LinkedIn e o botão de Instagram de "Sobre nós".
-- **Card da orientadora** (`.destaque-pessoa` em `membros.html`): painel de cor da página com formas geométricas e foto grande em círculo com anel; ao lado nome grande, função em etiqueta, "Áreas de atuação", bio e contatos como botões com texto (E-mail, Lattes, LinkedIn: `contatos-pessoa.html` com `rotulos=true`); no celular a foto fica em cima. A **função em etiqueta** (`.etiqueta-funcao`) também aparece nos cartões dos outros membros.
+- **Card da orientadora** (`.destaque-pessoa` em `membros.html`): painel de cor da página com formas geométricas e foto grande em círculo com anel; ao lado nome grande, função em etiqueta, "Áreas de atuação", bio e contatos como botões com texto (E-mail, Lattes, LinkedIn: `contatos-pessoa.html` com `rotulos=true`); no celular a foto fica em cima. A **função em etiqueta** (`.etiqueta-funcao`) também aparece nos cartões dos outros membros. O card **não tem faixa colorida à esquerda** (só o divisor entre foto e texto). **Formas geométricas** (as mesmas da faixa do topo) também estão nos cartões de membros, no topo dos cartões de produção, no título da ficha e na introdução de Membros (`.membros-intro`: texto em destaque + caixa lateral).
 - **Caixas** (`.caixa`, `.ficha-card`, `.filtros`, `.destaque-pessoa`): estilo único — borda fina, **faixa de 5 px na cor da página à esquerda** e cantos arredondados só à direita (`--raio-caixa`). Espaços entre caixas e faixa do topo foram reduzidos (`--e4`/`--e5`).
 - **Imagem colada na caixa** (`.bloco-colado`): em "Quem somos" (imagem ao lado do texto no computador, em cima no celular) e no topo dos projetos. Um bloco só, cantos arredondados por fora, linha na cor da página entre imagem e texto. O botão do Instagram fica **fora** da caixa (`.acoes-fora`). A galeria de "Quem somos" agora é uma caixa.
 - **Botões** (`.botao`, `.botao-sec`, `.botao-peq`): mesmo tamanho, forma e comportamento. No hover/clique mudam de cor e sobem 2 px (sem subir em "Menos movimento"). Principal: hover vira `--t-tinta` com texto `--papel` (nunca branco fixo: no tema escuro `--t-tinta` é claro). Secundário: hover enche com `--t-banda` (branco dentro da faixa colorida). No alto contraste o hover inverte preto/branco. Varredura de contraste de todos os estados feita nos 4 temas: mínimo 5,0:1.
@@ -176,10 +176,10 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
   depois do texto principal. A ordem no HTML é: bloco A (imagem + texto), ficha, bloco B (galeria, vídeo, equipe, relacionadas),
   para a ordem de leitura/tabulação ser a mesma no celular. (Já tentamos ficha na margem esquerda e ficha em faixa horizontal no
   topo; a pessoa achou "estranho", então ficou o cartão à direita.)
-- **Início**: o **banner (imagem) fica no topo**, antes do texto, e termina em **borda ondulada** (SVG embutido em `.banner-topo::after`, mesma cor do banner `#ffe486`).
+- **Início**: o **banner (imagem) fica no topo**, antes do texto, e termina em **corte diagonal** (SVG embutido em `.banner-topo::after`, mesma cor do banner `#ffe486`; a pessoa não gostou da versão em onda).
   Depois vem a faixa de abertura (`.abertura`), que tem **sempre o visual escuro, mesmo no tema claro** (decisão da pessoa; no alto contraste segue as regras de alto contraste).
-  "Explorar projetos" e "Ver produções" usam o **mesmo** estilo `.botao`. As seções "Projetos em destaque" e "Produções recentes" são **faixas de fundo** (`.faixa-secao`: a 1ª com `--t-suave`, a 2ª no creme),
-  com título grande com barra colorida e botão "ver tudo" (`.botao-peq`).
+  "Explorar projetos" e "Ver produções" usam o **mesmo** estilo `.botao`. As seções "Projetos em destaque" e "Produções recentes" ficam **no mesmo fundo** (a pessoa não gostou da divisão em duas cores), dentro de `.miolo`, que tem uma única forma geométrica discreta atrás;
+  título grande com barra colorida e botão "ver tudo" (`.botao-peq`).
 - **Instagram** (`redes.instagram` em `_config.yml`): `https://www.instagram.com/tracegrupo/`, no rodapé e em um botão em "Sobre nós"
   (`redes: true` no front matter da página). YouTube só aparece se `redes.youtube` for preenchido.
 - **Vídeo**: o player do YouTube (`youtube-nocookie.com`) só é carregado depois do clique (leve e sem rastreadores).
