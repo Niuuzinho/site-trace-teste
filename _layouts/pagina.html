@@ -4,23 +4,22 @@ layout: default
 {% include topo.html titulo=page.title %}
 <div class="container pagina-corpo">
   {%- if page.imagem %}
-  <div class="pagina-duas">
+  <div class="bloco-colado bloco-colado-lado">
     <figure class="figura-principal">
       {% include img.html nome=page.imagem alt=page.imagem_alt sizes="(min-width: 56em) 28rem, 100vw" eager=true %}
     </figure>
     <div class="texto caixa">
       {{ content }}
-      {%- include redes-botao.html %}
     </div>
   </div>
   {%- else %}
   <div class="texto pagina-simples caixa">
     {{ content }}
-    {%- include redes-botao.html %}
   </div>
   {%- endif %}
+  {%- include redes-botao.html %}
   {%- if page.galeria == 'grupo' %}
-  <section class="secao" aria-labelledby="h-galeria">
+  <section class="secao caixa" aria-labelledby="h-galeria">
     <h2 id="h-galeria">Galeria</h2>
     {% include galeria.html itens=site.data.galeria_grupo rotulo="Galeria de fotos do grupo" %}
   </section>
