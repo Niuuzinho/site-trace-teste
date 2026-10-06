@@ -1,0 +1,168 @@
+banners/conheca-projetos:
+  h: 500
+  w: 1560
+  ws: [780, 1560]
+banners/quem-somos:
+  h: 618
+  w: 809
+  ws: [480, 809]
+banners/trace-site:
+  h: 591
+  w: 1440
+  ws: [720, 1440]
+logo/trace-logo:
+  h: 183
+  w: 460
+  ws: [240, 460]
+membros/amandahora:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/andrealexandrino:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/annapaula:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/camilarocha:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/camilasantos:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/carlotapires:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/ednilsonsacramento:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/elainesoares:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/fernandacosta:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/fernandafarias:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/gabrielsizinio:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/giovannaneri:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/giuliagordiano:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/grasielelima:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/jaminedourado:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/joaobispo:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/julianamadureira:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/katherinezuanny:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/kleysarodrigues:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/laizmunire:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/leticia-pimentel:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/lucianacupertino:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/lunapirahy:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/manoela-cristina:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/marcelebarreto:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/matheus-goncalves:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/thalitaaraujo:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/vanessamoura:
+  h: 400
+  w: 400
+  ws: [240, 400]
+membros/viniciusferreira:
+  h: 400
+  w: 400
+  ws: [240, 400]
+placeholders/a:
+  h: 480
+  w: 480
+  ws: [240, 480]
+placeholders/b:
+  h: 480
+  w: 480
+  ws: [240, 480]
+placeholders/c:
+  h: 480
+  w: 480
+  ws: [240, 480]
+placeholders/livro:
+  h: 285
+  w: 228
+  ws: [228]
+placeholders/livro2:
+  h: 285
+  w: 228
+  ws: [228]
+projetos/ad-libras-banner:
+  h: 433
+  w: 613
+  ws: [480, 613]
+projetos/ad-libras-capa:
+  h: 900
+  w: 1600
+  ws: [480, 960, 1600]
+projetos/lindworm-banner:
+  h: 433
+  w: 613
+  ws: [480, 613]
+projetos/lindworm-capa:
+  h: 900
+  w: 1600
+  ws: [480, 960, 1600]

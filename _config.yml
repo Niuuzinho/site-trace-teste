@@ -24,7 +24,7 @@ formulario_url: ""
 # Redes sociais do rodapé. Só aparecem as que tiverem endereço preenchido.
 redes:
   youtube: ""
-  instagram: ""
+  instagram: "https://www.instagram.com/tracegrupo/"
 
 # Texto de apresentação do rodapé
 rodape:

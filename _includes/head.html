@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- capture titulo_pagina -%}{{ site.title }} · {{ page.title | default: site.descricao }}{%- endcapture -%}
+<title>{{ titulo_pagina | strip | escape }}</title>
+<meta name="description" content="{{ page.resumo | default: page.descricao | default: site.descricao | strip_html | strip | escape }}">
+<meta name="theme-color" content="#0a6b69">
+<link rel="icon" type="image/png" href="{{ '/assets/img/favicon.png' | relative_url }}">
+<link rel="preload" href="{{ '/assets/fonts/poppins-regular.woff' | relative_url }}" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+<script>
+/* Aplica os ajustes de leitura salvos antes de a página aparecer (evita "piscar"). */
+(function (d) {
+  var e = d.documentElement;
+  e.classList.add('js');
+  try {
+    var s = JSON.parse(localStorage.getItem('trace-a11y') || '{}');
+    if (s.escala) e.style.setProperty('--escala', s.escala);
+    if (s.escuro) e.setAttribute('data-escuro', 'sim');
+    if (s.contraste) e.setAttribute('data-contraste', 'alto');
+    if (s.fonte) e.setAttribute('data-fonte', 'leitura');
+    if (s.espaco) e.setAttribute('data-espaco', 'amplo');
+    if (s.movimento) e.setAttribute('data-movimento', 'reduzido');
+  } catch (x) {}
+})(document);
+</script>

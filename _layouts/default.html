@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'pt-BR' }}">
+<head>
+{% include head.html %}
+</head>
+{%- assign tema = page.tema | default: 'inicio' -%}
+{%- if page.collection == 'projetos' -%}{%- assign tema = 'projetos' -%}{%- elsif page.collection == 'producoes' -%}{%- assign tema = 'producoes' -%}{%- endif -%}
+<body data-tema="{{ tema }}">
+{% include icones.html %}
+<a class="pular" href="#conteudo">Pular para o conteúdo principal</a>
+{% include header.html %}
+<main id="conteudo" tabindex="-1">
+{{ content }}
+</main>
+{% include footer.html %}
+<script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}" defer></script>
+</body>
+</html>

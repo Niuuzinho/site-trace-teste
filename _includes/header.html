@@ -1,0 +1,76 @@
+<header class="cabecalho" id="topo">
+  <div class="cabecalho-int">
+    <a class="marca" href="{{ '/' | relative_url }}">
+      {% include img.html nome="logo/trace-logo" alt="TrAce, Tradução e Acessibilidade. Ir para a página inicial" sizes="160px" eager=true %}
+    </a>
+    <button class="nav-botao" type="button" data-nav-botao aria-controls="menu-principal" aria-expanded="false">Menu</button>
+    <button class="acess-botao so-js" type="button" data-acess-botao aria-expanded="false" aria-controls="painel-acess">Acessibilidade</button>
+    <div class="menu-bloco" id="menu-principal" data-nav>
+    <nav aria-label="Navegação principal">
+      <ul class="nav-lista">
+        {%- for item in site.data.navegacao -%}
+        {%- assign aqui = '' -%}
+        {%- if item.url == '/' -%}
+          {%- if page.url == '/' -%}{%- assign aqui = 'page' -%}{%- endif -%}
+        {%- elsif page.url == item.url -%}
+          {%- assign aqui = 'page' -%}
+        {%- else -%}
+          {%- for prefixo in item.secao -%}
+            {%- if page.url contains prefixo -%}{%- assign aqui = 'true' -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+        {%- assign tem_sub = false -%}
+        {%- if item.filhos or item.auto -%}{%- assign tem_sub = true -%}{%- endif %}
+        <li class="nav-item tema-{{ item.tema }}{% if tem_sub %} tem-submenu{% endif %}{% if aqui != '' %} atual{% endif %}">
+          <div class="nav-grupo">
+            <a href="{{ item.url | relative_url }}"{% if aqui != '' %} aria-current="{{ aqui }}"{% endif %}>{{ item.titulo }}</a>
+            {%- if tem_sub %}
+            <button class="sub-botao" type="button" data-sub-botao aria-expanded="false" aria-controls="sub-{{ forloop.index }}" aria-label="Abrir submenu de {{ item.titulo | escape }}"></button>
+            {%- endif %}
+          </div>
+          {%- if item.filhos %}
+          <ul class="submenu" id="sub-{{ forloop.index }}">
+            {%- for f in item.filhos %}
+            <li class="tema-{{ f.tema }}"><a href="{{ f.url | relative_url }}"{% if page.url == f.url %} aria-current="page"{% endif %}>{{ f.titulo }}</a></li>
+            {%- endfor %}
+          </ul>
+          {%- elsif item.auto == 'projetos' %}
+          {%- assign sub_projetos = site.projetos | sort: "ordem" %}
+          <ul class="submenu" id="sub-{{ forloop.index }}">
+            <li class="tema-projetos"><a href="{{ '/projetos/' | relative_url }}"{% if page.url == '/projetos/' %} aria-current="page"{% endif %}>Todos os projetos</a></li>
+            {%- for p in sub_projetos %}
+            <li class="tema-projetos"><a href="{{ p.url | relative_url }}"{% if page.url == p.url %} aria-current="page"{% endif %}>{{ p.title }}</a></li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <form class="busca-topo" role="search" action="{{ '/busca/' | relative_url }}" method="get">
+      <label class="so-leitor" for="busca-topo">Buscar no acervo</label>
+      <input id="busca-topo" name="q" type="search" placeholder="Buscar" enterkeyhint="search" autocomplete="off">
+      <button type="submit"><span class="so-leitor">Buscar</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 4.5a6 6 0 1 0 3.78 10.66l4.28 4.28 1.44-1.44-4.28-4.28A6 6 0 0 0 10.5 4.5Zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/></svg></button>
+    </form>
+    </div>
+  </div>
+  <div class="painel" id="painel-acess" role="region" aria-labelledby="painel-acess-titulo" hidden>
+    <h2 id="painel-acess-titulo">Leitura e acessibilidade</h2>
+    <p>Você pode ajustar o texto, o contraste e o movimento da interface conforme sua preferência.</p>
+    <div class="painel-linha" role="group" aria-label="Tamanho do texto">
+      <strong>Tamanho do texto</strong>
+      <button class="botao-peq" type="button" data-acess-menos aria-label="Diminuir o texto">A−</button>
+      <span class="painel-valor" data-acess-valor aria-live="polite">100%</span>
+      <button class="botao-peq" type="button" data-acess-mais aria-label="Aumentar o texto">A+</button>
+    </div>
+    <label class="opcao"><input type="checkbox" data-opcao="escuro"><span><span class="opcao-nome">Tema escuro</span><span class="ajuda">Troca o fundo claro por um fundo escuro, mais confortável em ambientes com pouca luz.</span></span></label>
+    <label class="opcao"><input type="checkbox" data-opcao="fonte"><span><span class="opcao-nome">Fonte de leitura</span><span class="ajuda">Troca para uma fonte mais aberta e mais fácil de diferenciar letra por letra.</span></span></label>
+    <label class="opcao"><input type="checkbox" data-opcao="contraste"><span><span class="opcao-nome">Mais contraste</span><span class="ajuda">Aumenta o contraste entre fundo, texto e botões.</span></span></label>
+    <label class="opcao"><input type="checkbox" data-opcao="espaco"><span><span class="opcao-nome">Leitura confortável</span><span class="ajuda">Aumenta o espaçamento do texto e deixa a leitura mais respirada.</span></span></label>
+    <label class="opcao"><input type="checkbox" data-opcao="movimento"><span><span class="opcao-nome">Menos movimento</span><span class="ajuda">Reduz transições e pequenos movimentos visuais da interface.</span></span></label>
+    <div class="painel-acoes">
+      <button class="botao-peq" type="button" data-acess-restaurar>Restaurar</button>
+      <button class="botao-peq" type="button" data-acess-fechar>Fechar</button>
+    </div>
+  </div>
+</header>

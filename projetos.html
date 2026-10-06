@@ -1,27 +1,19 @@
 ---
 layout: default
 title: Projetos
+tema: projetos
 permalink: /projetos/
 ---
 {%- assign projetos = site.projetos | sort: "ordem" -%}
 {%- assign situacoes = projetos | map: "situacao" | uniq | sort -%}
 {%- assign temas_txt = projetos | map: "temas" | join: "|" -%}
 {%- assign temas = temas_txt | split: "|" | uniq | sort_natural -%}
-<div class="container">
-  <nav class="migalhas" aria-label="Você está em">
-    <ol>
-      <li><a href="{{ '/' | relative_url }}">Início</a></li>
-      <li><span aria-current="page">Projetos</span></li>
-    </ol>
-  </nav>
-  <header class="topo-pagina">
-    <h1>Projetos do TrAce</h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a erat nec sem feugiat tincidunt. Donec quis lorem eu risus lacinia tristique vitae quis libero.</p>
-  </header>
-  <div class="com-margem" data-filtravel data-unidade="projeto(s) exibido(s).">
-    <aside class="margem filtros so-js" aria-label="Filtros de projetos">
+{% include topo.html titulo="Projetos do TrAce" lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a erat nec sem feugiat tincidunt. Donec quis lorem eu risus lacinia tristique vitae quis libero." %}
+<div class="container pagina-corpo">
+  <div class="com-filtros" data-filtravel data-unidade="projeto(s) exibido(s).">
+    <aside class="filtros so-js" aria-label="Filtros de projetos">
       <details class="filtros-det" open>
-        <summary class="margem-titulo">Filtrar projetos</summary>
+        <summary>Filtrar projetos</summary>
         <p>Use a busca e os filtros abaixo para explorar o acervo.</p>
         <label class="campo" for="busca-lista">Buscar</label>
         <input id="busca-lista" type="search" data-busca placeholder="Título, tema ou palavra-chave" autocomplete="off">
@@ -44,11 +36,11 @@ permalink: /projetos/
     </aside>
     <div class="principal">
       <p class="contagem" role="status" aria-live="polite" data-contagem></p>
-      <div class="lista">
+      <ul class="cartoes">
         {%- for p in projetos %}
         {% include projeto-item.html projeto=p filtravel=true %}
         {%- endfor %}
-      </div>
+      </ul>
       <p class="vazio" data-vazio hidden>Nenhum projeto corresponde aos filtros atuais.</p>
     </div>
   </div>

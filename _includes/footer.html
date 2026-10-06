@@ -1,0 +1,41 @@
+{%- assign projetos_rodape = site.projetos | sort: "ordem" -%}
+<footer class="rodape">
+  <div class="rodape-int">
+    <section aria-labelledby="rodape-trace">
+      <h2 id="rodape-trace">{{ site.title }}</h2>
+      <p>{{ site.rodape.sobre }}</p>
+      <p>{{ site.rodape.complemento }}</p>
+      {%- assign yt = site.redes.youtube | default: '' -%}
+      {%- assign ig = site.redes.instagram | default: '' -%}
+      {%- if yt != '' or ig != '' %}
+      <div class="rodape-redes" aria-label="Redes sociais do grupo">
+        {%- if yt != '' %}<a href="{{ yt }}" rel="noopener"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-youtube"></use></svg>YouTube</a>{% endif %}
+        {%- if ig != '' %}<a href="{{ ig }}" rel="noopener"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"></use></svg>Instagram</a>{% endif %}
+      </div>
+      {%- endif %}
+    </section>
+    <section aria-labelledby="rodape-projetos">
+      <h2 id="rodape-projetos">Projetos</h2>
+      <ul>
+        <li><a href="{{ '/projetos/' | relative_url }}">Arquivo geral de projetos</a></li>
+        {%- for p in projetos_rodape %}
+        <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    <section aria-labelledby="rodape-acesso">
+      <h2 id="rodape-acesso">Acesso rápido</h2>
+      <ul>
+        <li><a href="{{ '/producoes/' | relative_url }}">Produções</a></li>
+        <li><a href="{{ '/membros/' | relative_url }}">Equipe</a></li>
+        <li><a href="{{ '/contato/' | relative_url }}">Contato</a></li>
+      </ul>
+    </section>
+  </div>
+  <div class="rodape-base">
+    <div>
+      <p>{{ site.rodape.assinatura }}</p>
+      <p><a href="#topo">Voltar ao topo</a></p>
+    </div>
+  </div>
+</footer>

@@ -1,26 +1,18 @@
 ---
 layout: default
 title: Produções
+tema: producoes
 permalink: /producoes/
 ---
 {%- assign producoes = site.producoes | sort: "ano" | reverse -%}
 {%- assign tipos = producoes | map: "tipo" | uniq | sort -%}
 {%- assign anos = producoes | map: "ano" | uniq | sort | reverse -%}
-<div class="container">
-  <nav class="migalhas" aria-label="Você está em">
-    <ol>
-      <li><a href="{{ '/' | relative_url }}">Início</a></li>
-      <li><span aria-current="page">Produções</span></li>
-    </ol>
-  </nav>
-  <header class="topo-pagina">
-    <h1>Produções</h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac mauris dignissim, gravida dui sed, vulputate sem. Duis feugiat tincidunt massa, nec tincidunt justo volutpat sit amet.</p>
-  </header>
-  <div class="com-margem" data-filtravel data-unidade="produção(ões) exibida(s).">
-    <aside class="margem filtros so-js" aria-label="Filtros de produções">
+{% include topo.html titulo="Produções" lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac mauris dignissim, gravida dui sed, vulputate sem. Duis feugiat tincidunt massa, nec tincidunt justo volutpat sit amet." %}
+<div class="container pagina-corpo">
+  <div class="com-filtros" data-filtravel data-unidade="produção(ões) exibida(s).">
+    <aside class="filtros so-js" aria-label="Filtros de produções">
       <details class="filtros-det" open>
-        <summary class="margem-titulo">Filtrar produções</summary>
+        <summary>Filtrar produções</summary>
         <p>Use a busca e as opções abaixo para navegar pelo acervo.</p>
         <label class="campo" for="busca-lista">Buscar</label>
         <input id="busca-lista" type="search" data-busca placeholder="Título, projeto ou palavra-chave" autocomplete="off">
@@ -41,11 +33,11 @@ permalink: /producoes/
     </aside>
     <div class="principal">
       <p class="contagem" role="status" aria-live="polite" data-contagem></p>
-      <div class="lista">
+      <ul class="cartoes">
         {%- for r in producoes %}
         {% include producao-item.html producao=r filtravel=true %}
         {%- endfor %}
-      </div>
+      </ul>
       <p class="vazio" data-vazio hidden>Nenhuma produção corresponde aos filtros atuais.</p>
     </div>
   </div>

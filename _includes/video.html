@@ -1,0 +1,11 @@
+{%- comment -%}
+  Vídeo do YouTube que só é carregado quando a pessoa clica (página mais leve, sem rastreadores antes do clique).
+  Parâmetros: id (código do vídeo, ex.: tgbNymZ7vqY), titulo (nome do projeto, para leitores de tela).
+{%- endcomment -%}
+<div class="video" data-video="{{ include.id }}" data-titulo="Vídeo do projeto {{ include.titulo | escape }}">
+  <div class="video-int">
+    <button class="botao so-js" type="button">Carregar vídeo</button>
+    <p><a href="https://www.youtube.com/watch?v={{ include.id }}" rel="noopener">Assistir no YouTube</a></p>
+    <p class="so-js">O vídeo só é carregado do YouTube depois que você clicar no botão.</p>
+  </div>
+</div>

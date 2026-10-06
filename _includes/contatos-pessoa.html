@@ -1,0 +1,17 @@
+{%- assign p = include.pessoa -%}
+{%- assign mail = p.email | default: '' -%}
+{%- assign lat = p.lattes | default: '' -%}
+{%- assign lin = p.linkedin | default: '' -%}
+{%- if mail != '' or lat != '' or lin != '' -%}
+<ul class="pessoa-links">
+  {%- if mail != '' %}
+  <li><a class="icone-link" href="mailto:{{ mail }}" data-email="{{ mail }}" data-nome="{{ p.nome | escape }}" aria-label="E-mail de {{ p.nome | escape }}" title="E-mail"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg></a></li>
+  {%- endif %}
+  {%- if lat != '' %}
+  <li><a class="icone-link" href="{{ lat }}" rel="noopener" aria-label="Currículo Lattes de {{ p.nome | escape }}" title="Lattes"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-lattes"></use></svg></a></li>
+  {%- endif %}
+  {%- if lin != '' %}
+  <li><a class="icone-link" href="{{ lin }}" rel="noopener" aria-label="LinkedIn de {{ p.nome | escape }}" title="LinkedIn"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-linkedin"></use></svg></a></li>
+  {%- endif %}
+</ul>
+{%- endif -%}

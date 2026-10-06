@@ -1,0 +1,34 @@
+# Itens do menu principal, na ordem em que aparecem.
+# tema: cor da página (inicio, sobre, membros, projetos, producoes ou contato).
+# filhos: itens do submenu. auto: projetos = o submenu lista todos os projetos automaticamente.
+# secao: endereços que fazem este item aparecer como "página atual".
+- titulo: Início
+  url: /
+  tema: inicio
+- titulo: TrAce
+  url: /quem-somos/
+  tema: sobre
+  secao:
+    - /quem-somos/
+    - /membros/
+  filhos:
+    - titulo: Sobre nós
+      url: /quem-somos/
+      tema: sobre
+    - titulo: Membros
+      url: /membros/
+      tema: membros
+- titulo: Projetos
+  url: /projetos/
+  tema: projetos
+  secao:
+    - /projetos/
+  auto: projetos
+- titulo: Produções
+  url: /producoes/
+  tema: producoes
+  secao:
+    - /producoes/
+- titulo: Contato
+  url: /contato/
+  tema: contato

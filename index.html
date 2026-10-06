@@ -3,7 +3,10 @@ layout: default
 title: Início
 permalink: /
 ---
-<section class="abertura">
+<figure class="banner-topo">
+  {% include img.html nome="banners/conheca-projetos" alt="Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral." sizes="(min-width: 98rem) 1560px, 100vw" eager=true %}
+</figure>
+<section class="faixa-titulo abertura">
   <div class="container">
     <div class="abertura-titulo">
     <p class="selo">Portal do grupo TrAce</p>
@@ -18,9 +21,6 @@ permalink: /
     </div>
   </div>
 </section>
-<figure class="faixa">
-  {% include img.html nome="banners/conheca-projetos" alt="Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral." sizes="(min-width: 72rem) 67rem, 100vw" eager=true %}
-</figure>
 
 {%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}
 <section class="secao container" aria-labelledby="h-destaques">
@@ -28,11 +28,11 @@ permalink: /
     <h2 id="h-destaques">Projetos em destaque</h2>
     <a href="{{ '/projetos/' | relative_url }}">Abrir todos os projetos</a>
   </div>
-  <div class="lista">
+  <ul class="cartoes">
     {%- for p in destaques %}
     {% include projeto-item.html projeto=p %}
     {%- endfor %}
-  </div>
+  </ul>
 </section>
 
 {%- assign recentes = site.producoes | sort: "ano" | reverse %}
@@ -41,9 +41,9 @@ permalink: /
     <h2 id="h-recentes">Produções recentes</h2>
     <a href="{{ '/producoes/' | relative_url }}">Ver todas as produções</a>
   </div>
-  <div class="lista">
+  <ul class="cartoes">
     {%- for r in recentes limit: 3 %}
     {% include producao-item.html producao=r %}
     {%- endfor %}
-  </div>
+  </ul>
 </section>

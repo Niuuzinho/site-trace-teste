@@ -1,0 +1,33 @@
+---
+layout: default
+---
+{%- assign proj = site.projetos | where: "title", page.projeto | first -%}
+{% include topo.html titulo=page.title pai="Produções" pai_url="/producoes/" %}
+<div class="container pagina-corpo">
+  <div class="com-ficha">
+    <div class="bloco-a">
+      <section class="caixa" aria-labelledby="h-resumo">
+        <h2 id="h-resumo">Resumo</h2>
+        {{ content }}
+      </section>
+    </div>
+    <aside class="ficha-card" aria-labelledby="h-ficha">
+      <h2 id="h-ficha">Ficha bibliográfica</h2>
+      <dl class="ficha">
+        <div><dt>Tipo</dt><dd>{{ page.tipo }}</dd></div>
+        <div><dt>Ano</dt><dd>{{ page.ano }}</dd></div>
+        <div><dt>Projeto relacionado</dt><dd>{% if proj %}<a href="{{ proj.url | relative_url }}">{{ proj.title }}</a>{% else %}{{ page.projeto }}{% endif %}</dd></div>
+        <div><dt>Autoria</dt><dd>{{ page.autoria }}</dd></div>
+      </dl>
+      <p class="citacao"><strong>Como citar</strong>{{ page.citacao }}</p>
+    </aside>
+    <div class="bloco-b">
+      {%- if page.palavras_chave and page.palavras_chave.size > 0 %}
+      <section class="caixa" aria-labelledby="h-palavras">
+        <h2 id="h-palavras">Palavras-chave</h2>
+        <ul class="temas">{% for t in page.palavras_chave %}<li>{{ t }}</li>{% endfor %}</ul>
+      </section>
+      {%- endif %}
+    </div>
+  </div>
+</div>

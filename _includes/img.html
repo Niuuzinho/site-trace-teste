@@ -1,0 +1,11 @@
+{%- comment -%}
+  Mostra uma imagem otimizada (várias larguras, tamanho reservado para a página não "pular").
+  Parâmetros: nome (ex.: projetos/lindworm-capa), alt, sizes (opcional), classe (opcional), eager=true (opcional).
+  As imagens ficam em assets/img/ e são cadastradas em _data/imagens.yml.
+{%- endcomment -%}
+{%- assign meta = site.data.imagens[include.nome] -%}
+{%- if meta -%}
+{%- capture srcset -%}{%- for w in meta.ws -%}{{ '/assets/img/' | append: include.nome | append: '-' | append: w | append: '.webp' | relative_url }} {{ w }}w{% unless forloop.last %}, {% endunless %}{%- endfor -%}{%- endcapture -%}
+{%- assign maior = meta.ws | last -%}
+<img src="{{ '/assets/img/' | append: include.nome | append: '-' | append: maior | append: '.webp' | relative_url }}" srcset="{{ srcset }}" sizes="{{ include.sizes | default: '100vw' }}" width="{{ meta.w }}" height="{{ meta.h }}" alt="{{ include.alt | escape }}"{% if include.classe %} class="{{ include.classe }}"{% endif %} loading="{% if include.eager %}eager{% else %}lazy{% endif %}" decoding="async">
+{%- endif -%}

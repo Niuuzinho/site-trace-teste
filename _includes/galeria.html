@@ -1,0 +1,28 @@
+{%- comment -%}
+  Galeria de miniaturas com imagem ampliada.
+  Parâmetros: itens (lista com imagem, alt e legenda), rotulo (nome da galeria para leitores de tela).
+{%- endcomment -%}
+{%- if include.itens and include.itens.size > 0 -%}
+<ul class="galeria" data-galeria aria-label="{{ include.rotulo | default: 'Galeria de imagens' | escape }}">
+  {%- for g in include.itens -%}
+  {%- assign meta = site.data.imagens[g.imagem] -%}
+  {%- assign maior = meta.ws | last %}
+  <li><a href="{{ '/assets/img/' | append: g.imagem | append: '-' | append: maior | append: '.webp' | relative_url }}" data-alt="{{ g.alt | escape }}" data-legenda="{{ g.legenda | escape }}">
+    {% include img.html nome=g.imagem alt=g.alt sizes="(min-width: 40em) 10rem, 45vw" %}
+    <span class="so-leitor">Ampliar imagem {{ forloop.index }}: {{ g.legenda }}</span>
+  </a></li>
+  {%- endfor %}
+</ul>
+<dialog class="lightbox" data-lightbox aria-labelledby="lb-titulo">
+  <div class="lightbox-int">
+    <h2 class="so-leitor" id="lb-titulo">Imagem ampliada</h2>
+    <figure class="lightbox-fig"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></figure>
+    <div class="lightbox-barra">
+      <p><strong data-lb-posicao></strong> <span data-lb-legenda></span></p>
+      <button type="button" data-lb-anterior>Anterior</button>
+      <button type="button" data-lb-proxima>Próxima</button>
+      <button type="button" class="lightbox-fechar" data-lb-fechar autofocus>Fechar</button>
+    </div>
+  </div>
+</dialog>
+{%- endif -%}

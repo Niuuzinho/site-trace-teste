@@ -1,22 +1,15 @@
 ---
 layout: default
 title: Membros
+tema: membros
 permalink: /membros/
 ---
 {%- assign orientacao = site.data.membros | where: "categoria", "orientacao" -%}
 {%- assign equipe = site.data.membros | where: "categoria", "membros" -%}
 {%- assign consultoria = site.data.membros | where: "categoria", "consultoria" -%}
-<div class="container">
-  <nav class="migalhas" aria-label="Você está em">
-    <ol>
-      <li><a href="{{ '/' | relative_url }}">Início</a></li>
-      <li><span aria-current="page">Membros</span></li>
-    </ol>
-  </nav>
-  <header class="topo-pagina">
-    <h1>Membros, consultores e orientação</h1>
-  </header>
-  <div class="membros-intro">
+{% include topo.html titulo="Membros, consultores e orientação" %}
+<div class="container pagina-corpo">
+  <div class="membros-intro caixa">
     <p>Nessa página você encontrará os integrantes atuais do grupo TrAce. Abaixo, estão fotos em preto e branco, até a altura do peito, dos membros e consultores e informações sobre suas áreas de interesse, currículo Lattes, LinkedIn e contato.</p>
     <p>Em seguida, você também pode encontrar uma lista com os nomes dos egressos, pessoas que já passaram pelo grupo, mas não estão mais conosco.</p>
   </div>
@@ -39,28 +32,41 @@ permalink: /membros/
 
   <section class="bloco" aria-labelledby="h-membros">
     <h2 id="h-membros">Membros</h2>
-    <ul class="pessoas">
+    <ul class="cartoes pessoas">
       {%- for pessoa in equipe %}
-      <li class="pessoa">{% include pessoa.html pessoa=pessoa %}</li>
+      {% include pessoa.html pessoa=pessoa %}
       {%- endfor %}
     </ul>
   </section>
 
   <section class="bloco" aria-labelledby="h-consultores">
     <h2 id="h-consultores">Consultores</h2>
-    <ul class="pessoas">
+    <ul class="cartoes pessoas">
       {%- for pessoa in consultoria %}
-      <li class="pessoa">{% include pessoa.html pessoa=pessoa %}</li>
+      {% include pessoa.html pessoa=pessoa %}
       {%- endfor %}
     </ul>
   </section>
 
   <section class="bloco" aria-labelledby="h-egressos">
     <h2 id="h-egressos">Egressos</h2>
-    <ul class="egressos">
+    <div class="caixa"><ul class="egressos">
       {%- for nome in site.data.egressos %}
       <li>{{ nome }}</li>
       {%- endfor %}
-    </ul>
+    </ul></div>
   </section>
 </div>
+<dialog class="dialogo" data-dialogo-email aria-labelledby="dlg-email-titulo">
+  <div class="dialogo-int">
+    <h2 id="dlg-email-titulo">E-mail</h2>
+    <p class="dialogo-nome" data-dlg-nome></p>
+    <p class="dialogo-email" data-dlg-email></p>
+    <p class="aviso-form" role="status" aria-live="polite" data-dlg-aviso></p>
+    <div class="acoes">
+      <button class="botao" type="button" data-dlg-copiar>Copiar e-mail</button>
+      <a class="botao-sec" href="#" data-dlg-abrir>Escrever e-mail</a>
+      <button class="botao-peq" type="button" data-dlg-fechar autofocus>Fechar</button>
+    </div>
+  </div>
+</dialog>

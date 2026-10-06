@@ -1,0 +1,24 @@
+{%- comment -%}
+  Faixa colorida no topo de cada página (a cor vem da seção do site).
+  Parâmetros: titulo, subtitulo (opcional), lead (opcional), pai e pai_url (opcionais, para as migalhas de pão).
+{%- endcomment -%}
+<div class="faixa-titulo">
+  <div class="container">
+    <nav class="migalhas" aria-label="Você está em">
+      <ol>
+        <li><a href="{{ '/' | relative_url }}">Início</a></li>
+        {%- if include.pai %}
+        <li><a href="{{ include.pai_url | relative_url }}">{{ include.pai }}</a></li>
+        {%- endif %}
+        <li><span aria-current="page">{{ include.titulo }}</span></li>
+      </ol>
+    </nav>
+    <h1>{{ include.titulo }}</h1>
+    {%- if include.subtitulo %}
+    <p class="subtitulo">{{ include.subtitulo }}</p>
+    {%- endif %}
+    {%- if include.lead %}
+    <p class="lead">{{ include.lead }}</p>
+    {%- endif %}
+  </div>
+</div>

@@ -1,0 +1,246 @@
+# Pessoas do grupo. Para adicionar alguém, copie um bloco abaixo (de '- nome' até o último campo) e edite.
+# categoria: orientacao | membros | consultoria
+# foto: nome da imagem dentro de assets/img/ (sem tamanho e sem .webp)
+# Campos vazios ("") não aparecem no site.
+
+- nome: Manoela Cristina da Silva
+  categoria: orientacao
+  funcao: Coordenadora do Grupo
+  areas: TAV, TAVA e Educação
+  bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus, augue non efficitur tristique, neque nibh fermentum lacus, nec feugiat lectus est id libero.
+  foto: placeholders/a   # há uma foto real pronta: troque por membros/manoela-cristina
+  email: mcsilva@ufba.br
+  lattes: http://lattes.cnpq.br/1401867652891934
+  linkedin: ''
+- nome: Elaine Alves Soares
+  categoria: membros
+  funcao: Membro
+  areas: AD e LSE.
+  foto: membros/elainesoares
+  email: soares.elainealves@gmail.com
+  lattes: http://lattes.cnpq.br/2866199030578367
+  linkedin: https://www.linkedin.com/in/elaine-alves-soares-6246981b0/
+- nome: Katherine Zuanny
+  categoria: membros
+  funcao: Membro
+  areas: TAV e LSE
+  foto: membros/katherinezuanny
+  email: katherinezuanny@gmail.com
+  lattes: http://lattes.cnpq.br/7383823297781730
+  linkedin: ''
+- nome: Juliana Madureira
+  categoria: membros
+  funcao: Membro
+  areas: AD e Liguagem Fácil
+  foto: membros/julianamadureira
+  email: ''
+  lattes: ''
+  linkedin: ''
+- nome: Anna Paula Mello
+  categoria: membros
+  funcao: Membro
+  areas: AD e Liguagem Fácil
+  foto: membros/annapaula
+  email: ''
+  lattes: http://lattes.cnpq.br/5463062750994503
+  linkedin: https://www.linkedin.com/in/anna-paula-mello-9171b3193
+- nome: Giovanna Neri
+  categoria: membros
+  funcao: Membro
+  areas: AD e Leitura Fácil
+  foto: membros/giovannaneri
+  email: ''
+  lattes: http://lattes.cnpq.br/2074696709712598
+  linkedin: ''
+- nome: Grasiele Lima
+  categoria: membros
+  funcao: Membro
+  areas: TAVA, Linguagem Simples e Linguagem Fácil
+  foto: membros/grasielelima
+  email: limagrasiele71@gmail.com
+  lattes: http://lattes.cnpq.br/4281196963694248
+  linkedin: ''
+- nome: Jamine Dourado
+  categoria: membros
+  funcao: Membro
+  areas: TAVA
+  foto: membros/jaminedourado
+  email: jaminedourado@gmail.com
+  lattes: https://lattes.cnpq.br/2904737223671519
+  linkedin: http://linkedin.com/in/jamine-dourado-73b48586
+- nome: Camila Santos
+  categoria: membros
+  funcao: Membro
+  areas: TAVA e Localização
+  foto: membros/camilasantos
+  email: sants15camila@gmail.com
+  lattes: http://lattes.cnpq.br/5228475850537027
+  linkedin: ''
+- nome: Camila Rocha
+  categoria: membros
+  funcao: Membro
+  areas: AD e LSE.
+  foto: membros/camilarocha
+  email: rocha.camilabastos@gmail.com
+  lattes: http://lattes.cnpq.br/4366647634177077
+  linkedin: ''
+- nome: Laiz Costa
+  categoria: membros
+  funcao: Membro
+  areas: TAVA, Linguagem Simples, Linguagem Fácil e Educação
+  foto: membros/laizmunire
+  email: laizmunire@yahoo.com.br
+  lattes: http://lattes.cnpq.br/0756279950726526
+  linkedin: https://linkedin.com/in/laiz-munire-7837b351
+- nome: Matheus Gonçalves
+  categoria: membros
+  funcao: Membro
+  areas: TAVA e Localização
+  foto: placeholders/a   # há uma foto real pronta: troque por membros/matheus-goncalves
+  email: ''
+  lattes: http://lattes.cnpq.br/8779703570696831
+  linkedin: ''
+- nome: Fernanda Costa
+  categoria: membros
+  funcao: Membro
+  areas: TAV e LSE
+  foto: membros/fernandacosta
+  email: fernanda.gois@ufba.br
+  lattes: http://lattes.cnpq.br/4443628036930956
+  linkedin: https://www.linkedin.com/in/fernanda-costa-tradutora-e-revisora/
+- nome: Fernanda Farias
+  categoria: membros
+  funcao: Membro
+  areas: Tradução Literária, Linguagem Simples e Linguagem Fácil
+  foto: membros/fernandafarias
+  email: f.farias@ufba.br
+  lattes: https://lattes.cnpq.br/6471686282889470
+  linkedin: https://www.linkedin.com/in/fernanda-farias-a39a7a263/
+- nome: Amanda Hora da Silva
+  categoria: membros
+  funcao: Membro
+  areas: TAVA, Legendagem e Tradução Técnica
+  foto: membros/amandahora
+  email: ''
+  lattes: http://lattes.cnpq.br/9524847623967215
+  linkedin: https://www.linkedin.com/in/amanda-hora-5b4917205/
+- nome: Luna Pirahy
+  categoria: membros
+  funcao: Membro
+  areas: TAV, Legendagem e Localização
+  foto: membros/lunapirahy
+  email: luna.pirahy@ufba.br
+  lattes: http://lattes.cnpq.br/6600185271137764
+  linkedin: https://www.linkedin.com/in/lunapirahy
+- nome: Leticia Pimentel
+  categoria: membros
+  funcao: Membro
+  areas: TAV, TAVA, Legendagem e Linguagem Simples
+  foto: placeholders/a   # há uma foto real pronta: troque por membros/leticia-pimentel
+  email: ''
+  lattes: https://lattes.cnpq.br/4189743420534031
+  linkedin: https://www.linkedin.com/in/pimentelsilva/
+- nome: Kleysa Rodrigues
+  categoria: membros
+  funcao: Membro
+  areas: TAV, LSE e Tradução Intersemiótica
+  foto: membros/kleysarodrigues
+  email: ''
+  lattes: http://lattes.cnpq.br/3232683152857678
+  linkedin: https://www.linkedin.com/in/kleysa-rodrigues-da-silva-1249a7173?trk=contact-info
+- nome: Vinicius Ferreira
+  categoria: membros
+  funcao: Membro
+  areas: TAVA e Localização
+  foto: membros/viniciusferreira
+  email: ''
+  lattes: ''
+  linkedin: ''
+- nome: André Alexandrino Ribeiro
+  categoria: membros
+  funcao: Membro
+  areas: Localização
+  foto: membros/andrealexandrino
+  email: andrealexandrinoribeiro@gmail.com
+  lattes: http://lattes.cnpq.br/0372458143624272
+  linkedin: ''
+- nome: Giulia Gordiano
+  categoria: membros
+  funcao: Membro
+  areas: TAVA, Tradução Literária e Linguagem Fácil
+  foto: membros/giuliagordiano
+  email: profgiuliagordiano@gmail.com
+  lattes: https://lattes.cnpq.br/9040892091044954
+  linkedin: http://www.linkedin.com/in/giuliagordiano
+- nome: Luciana Cupertino
+  categoria: membros
+  funcao: Ouvinte
+  areas: Tradução intersemiótica
+  foto: membros/lucianacupertino
+  email: luciana.vitoria@ufba.br
+  lattes: https://lattes.cnpq.br/8224422287187566
+  linkedin: ''
+- nome: Marcele Vitória
+  categoria: membros
+  funcao: Membro
+  areas: TAV, AD, Linguagem Simples e Linguagem Fácil
+  foto: membros/marcelebarreto
+  email: marcele.vsb@hotmail.com
+  lattes: ''
+  linkedin: https://www.linkedin.com/in/marcele-barreto-97370b2ab/
+- nome: Carlota Pires
+  categoria: consultoria
+  funcao: Consultora em AD
+  areas: AD
+  foto: membros/carlotapires
+  email: carlenpires@hotmail.com
+  lattes: http://lattes.cnpq.br/9458483617212817
+  linkedin: ''
+- nome: Gabriel Sizinio
+  categoria: consultoria
+  funcao: Consultor
+  areas: Desenvolvimento Web
+  foto: membros/gabrielsizinio
+  email: ''
+  lattes: http://lattes.cnpq.br/4631939124490539
+  linkedin: ''
+- nome: João Bispo
+  categoria: consultoria
+  funcao: Consultor AD
+  areas: Tradução e Interpretação de Libras
+  foto: membros/joaobispo
+  email: johnbispo.ssa@gmail.com
+  lattes: https://lattes.cnpq.br/0643596293151295
+  linkedin: ''
+- nome: Thalita Araújo
+  categoria: consultoria
+  funcao: Consultora
+  areas: Tradução e interpretação da Libras
+  foto: membros/thalitaaraujo
+  email: thalitaraujo@gmail.com
+  lattes: http://lattes.cnpq.br/2006579414085234
+  linkedin: ''
+- nome: Vanessa Moura
+  categoria: consultoria
+  funcao: Consultora
+  areas: Tradução e Interpretação de Libras
+  foto: membros/vanessamoura
+  email: moura.vanessa@ufba.br
+  lattes: http://lattes.cnpq.br/6709804830410673
+  linkedin: ''
+- nome: Ednilson Sacramento
+  categoria: consultoria
+  funcao: Consultor AD
+  areas: AD
+  foto: membros/ednilsonsacramento
+  email: ''
+  lattes: ''
+  linkedin: https://www.linkedin.com/in/ednilson-sacramento-53b83bb8/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+- nome: Manoel Negraes
+  categoria: consultoria
+  funcao: Consultor
+  areas: '-'
+  foto: placeholders/a   # imagem genérica (sem foto disponível)
+  email: ''
+  lattes: ''
+  linkedin: ''

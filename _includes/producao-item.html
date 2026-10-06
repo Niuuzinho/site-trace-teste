@@ -1,0 +1,18 @@
+{%- comment -%}
+  Cartão de produção usado na página inicial, na lista e nas páginas de projeto.
+  Parâmetros: producao (obrigatório), filtravel=true (só na lista com filtros).
+{%- endcomment -%}
+{%- assign r = include.producao -%}
+{%- capture busca -%}{{ r.title }} {{ r.resumo }} {{ r.projeto }} {{ r.autoria }} {{ r.palavras_chave | join: ' ' }}{%- endcapture -%}
+<li class="cartao cartao-ref"{% if include.filtravel %} data-item data-texto="{{ busca | strip | escape }}" data-tipo="{{ r.tipo | slugify }}" data-ano="{{ r.ano }}"{% endif %}>
+  <div class="cartao-topo">
+    <p class="ref-tipo">{{ r.tipo }}</p>
+    <p class="ref-ano"><span class="so-leitor">Ano </span>{{ r.ano }}</p>
+  </div>
+  <div class="cartao-corpo">
+    <h3><a href="{{ r.url | relative_url }}">{{ r.title }}</a></h3>
+    <p class="ref-autoria">{{ r.autoria }}</p>
+    <p>{{ r.resumo }}</p>
+    <p class="ref-projeto">Projeto: {{ r.projeto }}</p>
+  </div>
+</li>

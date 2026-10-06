@@ -1,0 +1,10 @@
+{%- assign p = include.pessoa -%}
+<li class="cartao pessoa">
+  <div class="cartao-img">{% include img.html nome=p.foto alt=p.nome sizes="(min-width: 64em) 17rem, (min-width: 40em) 30vw, 45vw" %}</div>
+  <div class="cartao-corpo">
+    <h3>{{ p.nome }}</h3>
+    <p class="funcao">{{ p.funcao }}</p>
+    <p class="areas">{{ p.areas }}</p>
+    {% include contatos-pessoa.html pessoa=p %}
+  </div>
+</li>
