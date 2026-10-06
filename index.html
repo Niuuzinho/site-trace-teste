@@ -16,34 +16,38 @@ permalink: /
     <p class="lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
     <p class="acoes">
       <a class="botao" href="{{ '/projetos/' | relative_url }}">Explorar projetos</a>
-      <a class="botao-sec" href="{{ '/producoes/' | relative_url }}">Ver produções</a>
+      <a class="botao" href="{{ '/producoes/' | relative_url }}">Ver produções</a>
     </p>
     </div>
   </div>
 </section>
 
 {%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}
-<section class="secao container" aria-labelledby="h-destaques">
-  <div class="secao-topo">
-    <h2 id="h-destaques">Projetos em destaque</h2>
-    <a href="{{ '/projetos/' | relative_url }}">Abrir todos os projetos</a>
+<section class="faixa-secao faixa-secao-1" aria-labelledby="h-destaques">
+  <div class="container">
+    <div class="secao-topo">
+      <h2 id="h-destaques">Projetos em destaque</h2>
+      <a class="botao-peq" href="{{ '/projetos/' | relative_url }}">Abrir todos os projetos</a>
+    </div>
+    <ul class="cartoes">
+      {%- for p in destaques %}
+      {% include projeto-item.html projeto=p %}
+      {%- endfor %}
+    </ul>
   </div>
-  <ul class="cartoes">
-    {%- for p in destaques %}
-    {% include projeto-item.html projeto=p %}
-    {%- endfor %}
-  </ul>
 </section>
 
 {%- assign recentes = site.producoes | sort: "ano" | reverse %}
-<section class="secao container" aria-labelledby="h-recentes">
-  <div class="secao-topo">
-    <h2 id="h-recentes">Produções recentes</h2>
-    <a href="{{ '/producoes/' | relative_url }}">Ver todas as produções</a>
+<section class="faixa-secao faixa-secao-2" aria-labelledby="h-recentes">
+  <div class="container">
+    <div class="secao-topo">
+      <h2 id="h-recentes">Produções recentes</h2>
+      <a class="botao-peq" href="{{ '/producoes/' | relative_url }}">Ver todas as produções</a>
+    </div>
+    <ul class="cartoes">
+      {%- for r in recentes limit: 3 %}
+      {% include producao-item.html producao=r %}
+      {%- endfor %}
+    </ul>
   </div>
-  <ul class="cartoes">
-    {%- for r in recentes limit: 3 %}
-    {% include producao-item.html producao=r %}
-    {%- endfor %}
-  </ul>
 </section>
