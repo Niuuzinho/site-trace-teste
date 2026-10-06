@@ -504,12 +504,13 @@ button[disabled] { opacity: 0.5; cursor: not-allowed; }
 .temas { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .temas li {
   font-size: 0.85rem;
+  font-weight: 600;
   line-height: 1.3;
-  padding: 0.2rem 0.7rem;
-  border: 1px solid var(--t-tinta);
-  border-radius: 999px;
-  color: var(--tinta);
-  background: var(--t-suave);
+  padding: 0.25rem 0.7rem;
+  border: 0;
+  border-radius: 0.6rem 0.2rem 0.6rem 0.2rem;
+  color: var(--t-tinta);        /* texto escuro sobre a cor da página: contraste de 4,9:1 ou mais em todos os temas */
+  background: var(--t-banda);
 }
 
 .meta { list-style: none; margin: 0 0 var(--e2); padding: 0; display: flex; flex-wrap: wrap; gap: 0 var(--e4); font-size: 0.9rem; line-height: 1.5; color: var(--tinta-2); font-weight: 500; }
@@ -541,7 +542,10 @@ button[disabled] { opacity: 0.5; cursor: not-allowed; }
 .ref-tipo { font-weight: 700; color: var(--tinta); margin: 0; }
 .ref-ano { font-weight: 700; color: var(--t-tinta); font-size: 1.25rem; margin: 0; font-variant-numeric: lining-nums; }
 .ref-autoria { color: var(--tinta-2); font-weight: 500; }
-.ref-projeto { font-size: 0.9rem; color: var(--tinta-2); margin: auto 0 0 !important; padding-top: var(--e2); }
+.cartao-ref .temas { margin: 0 0 var(--e3); padding: 0; }
+.ref-projeto { font-size: 0.9rem; color: var(--tinta-2); margin: auto 0 0 !important; padding-top: var(--e3); border-top: 1px solid var(--linha); line-height: 1.35; }
+.ref-projeto-rotulo { display: block; font-size: 0.8rem; font-weight: 700; color: var(--t-tinta); }
+.ref-projeto strong { color: var(--tinta); font-weight: 700; }
 
 /* Ficha (cartão ao lado do texto de projetos e produções) */
 .com-ficha { display: grid; gap: var(--e4); }

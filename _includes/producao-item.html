@@ -13,6 +13,9 @@
     <h3><a href="{{ r.url | relative_url }}">{{ r.title }}</a></h3>
     <p class="ref-autoria">{{ r.autoria }}</p>
     <p>{{ r.resumo }}</p>
-    <p class="ref-projeto">Projeto: {{ r.projeto }}</p>
+    {%- if r.palavras_chave and r.palavras_chave.size > 0 %}
+    <ul class="temas">{% for t in r.palavras_chave limit: 3 %}<li>{{ t }}</li>{% endfor %}</ul>
+    {%- endif %}
+    <p class="ref-projeto"><span class="ref-projeto-rotulo">Projeto</span> <strong>{{ r.projeto }}</strong></p>
   </div>
 </li>
