@@ -1,0 +1,49 @@
+---
+layout: default
+title: Início
+permalink: /
+---
+<section class="abertura">
+  <div class="container">
+    <div class="abertura-titulo">
+    <p class="selo">Portal do grupo TrAce</p>
+    <h1>Tradução, acessibilidade e pesquisa</h1>
+    </div>
+    <div class="abertura-texto">
+    <p class="lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
+    <p class="acoes">
+      <a class="botao" href="{{ '/projetos/' | relative_url }}">Explorar projetos</a>
+      <a class="botao-sec" href="{{ '/producoes/' | relative_url }}">Ver produções</a>
+    </p>
+    </div>
+  </div>
+</section>
+<figure class="faixa">
+  {% include img.html nome="banners/conheca-projetos" alt="Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral." sizes="(min-width: 72rem) 67rem, 100vw" eager=true %}
+</figure>
+
+{%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}
+<section class="secao container" aria-labelledby="h-destaques">
+  <div class="secao-topo">
+    <h2 id="h-destaques">Projetos em destaque</h2>
+    <a href="{{ '/projetos/' | relative_url }}">Abrir todos os projetos</a>
+  </div>
+  <div class="lista">
+    {%- for p in destaques %}
+    {% include projeto-item.html projeto=p %}
+    {%- endfor %}
+  </div>
+</section>
+
+{%- assign recentes = site.producoes | sort: "ano" | reverse %}
+<section class="secao container" aria-labelledby="h-recentes">
+  <div class="secao-topo">
+    <h2 id="h-recentes">Produções recentes</h2>
+    <a href="{{ '/producoes/' | relative_url }}">Ver todas as produções</a>
+  </div>
+  <div class="lista">
+    {%- for r in recentes limit: 3 %}
+    {% include producao-item.html producao=r %}
+    {%- endfor %}
+  </div>
+</section>

@@ -1,0 +1,54 @@
+# ============================================================================
+# Configurações do site TrAce
+# Depois de mudar este arquivo, reinicie o Jekyll (ele só lê este arquivo ao iniciar).
+# ============================================================================
+title: TrAce
+descricao: Grupo de pesquisa em tradução e acessibilidade do Instituto de Letras da UFBA.
+lang: pt-BR
+
+# Endereço do site.
+# - Testando no computador: deixe baseurl vazio ("").
+# - GitHub Pages de projeto (https://usuario.github.io/nome-do-repositorio):
+#   baseurl: "/nome-do-repositorio"
+# - GitHub Pages de usuário/organização ou domínio próprio: deixe vazio.
+url: ""
+baseurl: ""
+
+# Formulário de contato.
+# Enquanto estiver vazio, o formulário é apenas demonstrativo (não envia nada).
+# Para receber mensagens de verdade, crie um formulário gratuito em um serviço como
+# Formspree ou Getform e cole aqui o endereço que ele fornecer. Exemplo:
+# formulario_url: "https://formspree.io/f/xxxxxxxx"
+formulario_url: ""
+
+# Redes sociais do rodapé. Só aparecem as que tiverem endereço preenchido.
+redes:
+  youtube: ""
+  instagram: ""
+
+# Texto de apresentação do rodapé
+rodape:
+  sobre: Grupo de pesquisa em tradução e acessibilidade do Instituto de Letras da UFBA.
+  complemento: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra, erat non viverra posuere, nibh nibh interdum sapien, vitae facilisis risus justo a nunc."
+  assinatura: TrAce · Tradução e Acessibilidade · Salvador, BA
+
+# Projetos e produções são "coleções": cada item é um arquivo de texto em
+# _projetos/ ou _producoes/ e ganha sua própria página automaticamente.
+collections:
+  projetos:
+    output: true
+    permalink: /projetos/:name/
+  producoes:
+    output: true
+    permalink: /producoes/:name/
+
+markdown: kramdown
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - ferramentas
+  - node_modules
+  - vendor
+  - LICENSE-fontes.txt

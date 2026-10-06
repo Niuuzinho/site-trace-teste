@@ -1,0 +1,19 @@
+---
+layout: pagina
+title: Busca
+permalink: /busca/
+---
+<form class="formulario" role="search" data-busca-pagina data-indice="{{ '/search.json' | relative_url }}">
+  <div>
+    <label for="busca-geral">Buscar projetos e produções</label>
+    <input class="campo-texto" id="busca-geral" name="q" type="search" autocomplete="off">
+  </div>
+  <div>
+    <button class="botao" type="submit">Buscar</button>
+  </div>
+</form>
+<p class="contagem" role="status" aria-live="polite" data-status-busca></p>
+<ol class="resultados" data-resultados></ol>
+<noscript>
+  <p>A busca precisa de JavaScript. Você pode navegar pelas listas de <a href="{{ '/projetos/' | relative_url }}">projetos</a> e de <a href="{{ '/producoes/' | relative_url }}">produções</a>.</p>
+</noscript>

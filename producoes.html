@@ -1,0 +1,52 @@
+---
+layout: default
+title: Produções
+permalink: /producoes/
+---
+{%- assign producoes = site.producoes | sort: "ano" | reverse -%}
+{%- assign tipos = producoes | map: "tipo" | uniq | sort -%}
+{%- assign anos = producoes | map: "ano" | uniq | sort | reverse -%}
+<div class="container">
+  <nav class="migalhas" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Início</a></li>
+      <li><span aria-current="page">Produções</span></li>
+    </ol>
+  </nav>
+  <header class="topo-pagina">
+    <h1>Produções</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac mauris dignissim, gravida dui sed, vulputate sem. Duis feugiat tincidunt massa, nec tincidunt justo volutpat sit amet.</p>
+  </header>
+  <div class="com-margem" data-filtravel data-unidade="produção(ões) exibida(s).">
+    <aside class="margem filtros so-js" aria-label="Filtros de produções">
+      <details class="filtros-det" open>
+        <summary class="margem-titulo">Filtrar produções</summary>
+        <p>Use a busca e as opções abaixo para navegar pelo acervo.</p>
+        <label class="campo" for="busca-lista">Buscar</label>
+        <input id="busca-lista" type="search" data-busca placeholder="Título, projeto ou palavra-chave" autocomplete="off">
+        <fieldset>
+          <legend>Tipo</legend>
+          {%- for t in tipos %}
+          <label class="opcao"><input type="checkbox" data-grupo="tipo" value="{{ t | slugify }}"><span>{{ t }}</span></label>
+          {%- endfor %}
+        </fieldset>
+        <fieldset>
+          <legend>Ano</legend>
+          {%- for a in anos %}
+          <label class="opcao"><input type="checkbox" data-grupo="ano" value="{{ a }}"><span>{{ a }}</span></label>
+          {%- endfor %}
+        </fieldset>
+        <button class="botao-peq" type="button" data-limpar>Limpar filtros</button>
+      </details>
+    </aside>
+    <div class="principal">
+      <p class="contagem" role="status" aria-live="polite" data-contagem></p>
+      <div class="lista">
+        {%- for r in producoes %}
+        {% include producao-item.html producao=r filtravel=true %}
+        {%- endfor %}
+      </div>
+      <p class="vazio" data-vazio hidden>Nenhuma produção corresponde aos filtros atuais.</p>
+    </div>
+  </div>
+</div>

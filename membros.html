@@ -1,0 +1,66 @@
+---
+layout: default
+title: Membros
+permalink: /membros/
+---
+{%- assign orientacao = site.data.membros | where: "categoria", "orientacao" -%}
+{%- assign equipe = site.data.membros | where: "categoria", "membros" -%}
+{%- assign consultoria = site.data.membros | where: "categoria", "consultoria" -%}
+<div class="container">
+  <nav class="migalhas" aria-label="Você está em">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Início</a></li>
+      <li><span aria-current="page">Membros</span></li>
+    </ol>
+  </nav>
+  <header class="topo-pagina">
+    <h1>Membros, consultores e orientação</h1>
+  </header>
+  <div class="membros-intro">
+    <p>Nessa página você encontrará os integrantes atuais do grupo TrAce. Abaixo, estão fotos em preto e branco, até a altura do peito, dos membros e consultores e informações sobre suas áreas de interesse, currículo Lattes, LinkedIn e contato.</p>
+    <p>Em seguida, você também pode encontrar uma lista com os nomes dos egressos, pessoas que já passaram pelo grupo, mas não estão mais conosco.</p>
+  </div>
+
+  <section class="bloco" aria-labelledby="h-orientacao">
+    <h2 id="h-orientacao">Orientadora</h2>
+    {%- for pessoa in orientacao %}
+    <div class="destaque-pessoa">
+      {% include img.html nome=pessoa.foto alt=pessoa.nome sizes="(min-width: 40em) 13rem, 100vw" %}
+      <div>
+        <h3>{{ pessoa.nome }}</h3>
+        <p class="funcao">{{ pessoa.funcao }}</p>
+        <p class="areas">{{ pessoa.areas }}</p>
+        {%- if pessoa.bio %}<p>{{ pessoa.bio }}</p>{% endif %}
+        {% include contatos-pessoa.html pessoa=pessoa %}
+      </div>
+    </div>
+    {%- endfor %}
+  </section>
+
+  <section class="bloco" aria-labelledby="h-membros">
+    <h2 id="h-membros">Membros</h2>
+    <ul class="pessoas">
+      {%- for pessoa in equipe %}
+      <li class="pessoa">{% include pessoa.html pessoa=pessoa %}</li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="bloco" aria-labelledby="h-consultores">
+    <h2 id="h-consultores">Consultores</h2>
+    <ul class="pessoas">
+      {%- for pessoa in consultoria %}
+      <li class="pessoa">{% include pessoa.html pessoa=pessoa %}</li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="bloco" aria-labelledby="h-egressos">
+    <h2 id="h-egressos">Egressos</h2>
+    <ul class="egressos">
+      {%- for nome in site.data.egressos %}
+      <li>{{ nome }}</li>
+      {%- endfor %}
+    </ul>
+  </section>
+</div>
