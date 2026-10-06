@@ -1,0 +1,261 @@
+# CLAUDE.md — contexto do projeto "Site do TrAce"
+
+Este arquivo existe para que quem for mexer no site (principalmente o Claude Code) tenha todo o contexto do que foi
+decidido, por quê, e o que ainda está pendente. Leia inteiro antes de alterar qualquer coisa. Se mudar decisões
+importantes, **atualize este arquivo no mesmo trabalho**.
+
+---
+
+## 1. O que é o projeto
+
+- Site do **TrAce (Tradução e Acessibilidade)**, grupo de pesquisa do Instituto de Letras da UFBA (Salvador, BA).
+- Funciona como **banco de projetos, produções (artigos, capítulos, TCCs, dissertações, videolivros) e membros** do grupo.
+- Feito com **Jekyll** (site estático), pensado para ser publicado no **GitHub Pages**.
+- O site antigo era HTML + CSS + JavaScript puros, com dados em JSON, cabeçalho e rodapé copiados em todas as páginas,
+  listas montadas por JavaScript e um CSS de 140 KB. Foi refeito do zero neste pacote (o site antigo não está no repositório).
+
+### Quem pede as mudanças
+- Pessoa do grupo, **sem experiência em desenvolvimento web**. Escreve em **português do Brasil**.
+- **Explique tudo de forma simples**, passo a passo, sem jargão. Diga o que mudou e como conferir.
+- Gosta de ver o resultado e aprovar o visual. Para mudanças visuais grandes, mostre antes (captura de tela ou
+  pré-visualização) e peça confirmação quando houver mais de um caminho razoável.
+- Se algo der erro, prefira explicar em linguagem simples e dizer exatamente o que ela precisa copiar/colar.
+
+### Onde o site está
+- Repositório de teste no GitHub: **`site-trace-teste`** (público). Endereço esperado:
+  `https://<usuario>.github.io/site-trace-teste/`.
+- `_config.yml` está com `baseurl: "/site-trace-teste"`. **Se o repositório mudar de nome ou ganhar domínio próprio, trocar
+  o `baseurl`** (vazio `""` para `usuario.github.io` ou domínio próprio).
+- Publicação: Settings → Pages → "Deploy from a branch" → `main` → `/ (root)`. O GitHub roda o Jekyll sozinho.
+  Erros de build aparecem na aba Actions.
+
+---
+
+## 2. Regras de ouro (o que a pessoa pediu e não pode ser desrespeitado)
+
+1. **Não gerar texto de conteúdo nem imagens.** Os textos e as imagens são do grupo. O **"Lorem ipsum" é placeholder
+   intencional**: não remover, não reescrever. Textos de interface mínimos (rótulos de botões, títulos de seção) são ok.
+2. **Não corrigir os textos do grupo por conta própria** (mesmo com erros de digitação). Avise a pessoa e deixe ela decidir.
+   Erros conhecidos: "Prince Lindworm" e "século XIX é originalmente" (projeto Lindworm), "Liguagem Fácil" (membros).
+3. **Leve e rápido.** Sem frameworks (React, Bootstrap, jQuery...), sem fontes ou scripts de CDN, sem bibliotecas de animação.
+   Fontes e imagens hospedadas no próprio site. Páginas leves (na última medição: início cerca de 200 KB e membros cerca de 500 KB, com 30 fotos).
+4. **Acessível de verdade** (é o foco do grupo): ver seção 6. Nada de piorar contraste, foco, ordem de leitura ou navegação por teclado.
+5. **Elegante, agradável, acadêmico e que não pareça "feito por IA".** Evitar clichês de template: gradientes roxos, sombras
+   suaves em tudo, emojis decorativos, etc.
+6. **Sem animações quando a página abre** (foi pedido explicitamente para tirar). Só pequenas transições ao passar o mouse e
+   o aparecer suave dos submenus. Tudo isso é desligado pela opção "Menos movimento" e por `prefers-reduced-motion`.
+7. **O site é sempre claro por padrão**, mesmo se o aparelho estiver em modo escuro. O tema escuro é **opcional**, pelo painel
+   "Acessibilidade". (Antes ele seguia o aparelho e a pessoa estranhou o fundo escuro.)
+
+---
+
+## 3. Estrutura de arquivos
+
+```
+_config.yml            título, baseurl, coleções, formulário, redes sociais, textos do rodapé, exclude
+Gemfile                gem "github-pages" (mesmo Jekyll do GitHub Pages) + webrick
+index.html             página inicial          quem-somos.md   Sobre nós
+membros.html           membros                 projetos.html   lista de projetos (com filtros)
+producoes.html         lista de produções      contato.html    formulário (demonstrativo)
+busca.html             busca (usa search.json) 404.html        página de erro
+search.json            índice de busca (gerado pelo Jekyll)
+_projetos/*.md         1 arquivo por projeto (coleção "projetos")
+_producoes/*.md        1 arquivo por produção (coleção "producoes")
+_data/membros.yml      pessoas (categoria: orientacao | membros | consultoria)
+_data/egressos.yml     nomes de egressos
+_data/galeria_grupo.yml fotos da galeria de "Quem somos"
+_data/navegacao.yml    menu principal (com submenus)
+_data/imagens.yml      índice das imagens otimizadas (largura/altura/tamanhos) — gerado por ferramentas/otimizar-imagens.py
+_layouts/              default, pagina, projeto, producao
+_includes/             head, header, footer, topo, img, galeria, video, projeto-item, producao-item,
+                       pessoa, contatos-pessoa, icones, redes-botao
+assets/css/main.css    TODO o CSS (cerca de 40 KB, organizado em 10 seções)
+assets/js/main.js      TODO o JavaScript (vanilla, sem dependências)
+assets/img/            imagens em WebP, várias larguras (ex.: projetos/lindworm-capa-480.webp, -960, -1600)
+assets/fonts/          Poppins (400, 500, 700) em .woff + LICENSE-fontes.txt
+assets/docs/           placeholder-projeto.pdf
+ferramentas/otimizar-imagens.py   gera as versões WebP e cadastra em _data/imagens.yml
+README.md              guia de uso para a pessoa do grupo
+TUTORIAL-GITHUB.md     passo a passo para publicar
+CLAUDE.md              este arquivo
+```
+
+`README.md`, `TUTORIAL-GITHUB.md`, `CLAUDE.md`, `ferramentas/` etc. estão em `exclude:` no `_config.yml` para não irem ao site.
+
+---
+
+## 4. Como o conteúdo funciona
+
+### Projetos (`_projetos/*.md`)
+Campos do front matter: `title`, `subtitulo`, `resumo` (usado em listas), `ano` (número ou texto, ex.: "Em breve"),
+`situacao`, `temas` (lista), `ordem` (número; **obrigatório**, define a ordem), `destaque` (true = aparece na página inicial),
+`imagem` (capa das listas), `capa` + `capa_alt` (imagem do cabeçalho da página), `ficha` (lista de `rotulo`/`valor`),
+`galeria` (lista de `imagem`/`alt`/`legenda`), `video` (só o código do YouTube; vazio = esconde a seção),
+`pdf` (caminho do PDF), `equipe` (lista de `nome`/`texto`/`foto`/`alt`). O corpo do arquivo é o texto de "Sobre o projeto".
+Os nomes de imagem são **sem tamanho e sem `.webp`** (ex.: `projetos/lindworm-capa`).
+
+### Produções (`_producoes/*.md`)
+`title`, `tipo` (Artigo, Capítulo, TCC, Dissertação, Videolivro...), `ano` (número), `projeto` (**tem que ser igual ao `title`
+de um projeto** para a produção aparecer na página dele e ganhar link; se não existir projeto com esse título, só mostra o texto),
+`autoria`, `resumo`, `citacao`, `palavras_chave`. O corpo é o resumo.
+
+### Membros (`_data/membros.yml`)
+`nome`, `categoria`, `funcao`, `areas`, `foto`, `email`, `lattes`, `linkedin`, opcional `bio`. Campos vazios (`""`) não aparecem.
+Há comentários marcando quem usa foto genérica.
+
+### Menu (`_data/navegacao.yml`)
+Itens com `titulo`, `url`, `tema`, `secao` (prefixos que deixam o item marcado como "página atual"), `filhos` (submenu fixo)
+ou `auto: projetos` (submenu que lista os projetos sozinho, na ordem de `ordem`).
+
+### Imagens
+Sempre via `{% include img.html nome="grupo/nome" alt="..." sizes="..." %}`: gera `<img>` com `srcset`, `width`/`height`
+(evita "pulos" de layout), `loading="lazy"` (ou `eager=true` para a imagem principal da página) e `decoding="async"`.
+Para imagem nova: `python3 ferramentas/otimizar-imagens.py foto.jpg grupo/nome 480,960,1600` (precisa de pillow e pyyaml).
+Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao lado.
+
+---
+
+## 5. Design (decisões e motivos)
+
+### Tipografia
+- **Poppins** (400/500/700), hospedada em `assets/fonts/` (subconjunto latino, ~9 KB cada). Foi escolhida porque a pessoa pediu
+  uma fonte "mais arredondada". A Poppins é redonda, mas não tem pontas arredondadas de verdade.
+- **Nunito** (realmente arredondada, a que o site antigo pedia) **não foi incluída por falta de internet** na época. O `main.css`
+  já tem o `@font-face` comentado e a pilha `--texto` já lista "Nunito" primeiro. Para ativar: baixar a Nunito (OFL), converter
+  para `.woff2`, salvar como `assets/fonts/nunito.woff2` e descomentar. **Se tiver acesso à internet, vale oferecer isso.**
+- Botão "Fonte de leitura" do painel: usa Atkinson Hyperlegible Next se existir (também comentada em `main.css`), senão Verdana/Tahoma.
+- Histórico: já tentamos Lora+Carlito e Lora sozinha; a pessoa não gostou. Não voltar para serifa sem perguntar.
+
+### Cores — **cada página tem a sua cor**
+| Página | Cor | tokens (`--f`, `--i`, `--s`, `--b`, `--g`) |
+|---|---|---|
+| Início, Busca, 404 | verde-azulado | `inicio` |
+| Sobre nós | amarelo (dourado) | `sobre` |
+| Membros | verde pastel | `membros` |
+| Projetos (e cada projeto) | azul | `projetos` |
+| Produções (e cada produção) | roxo | `producoes` |
+| Contato | terracota | `contato` |
+
+- Definidas no começo de `main.css` (seção 2). Para cada tema: `--f-x` botões/bordas (texto branco ≥ 5:1), `--i-x` texto e links
+  (≥ 8:1 no branco), `--s-x` fundo suave de etiquetas, `--b-x` faixa do topo (tom pastel mais forte), `--g-x` fundo da página.
+- `body[data-tema="..."]` escolhe o tema; `_layouts/default.html` define `data-tema` a partir de `page.tema` (ou da coleção).
+  Páginas novas ganham cor com `tema: projetos` (etc.) no front matter.
+- **Membros era rosa e a pessoa pediu verde pastel**; por isso Sobre nós, que era verde, virou amarelo (para não haver dois verdes).
+- A pessoa achou o tema claro **"muito claro"**: por isso o fundo da página é pastel (`--g`) e os **textos ficam em caixas brancas
+  (classe `.caixa`)**; cartões e ficha também são brancos. Cabeçalho e rodapé são brancos.
+- Faixa do topo (`.faixa-titulo`): tom pastel, texto escuro, **sem bolinhas** (a pessoa pediu para tirar), com linha colorida embaixo.
+- Tema escuro (opcional, `html[data-escuro]`) e alto contraste (`html[data-contraste="alto"]`) têm seus próprios valores.
+
+### Layout e componentes
+- **Cabeçalho branco e fixo** (`position: sticky`), logo grande (~70 px no computador, ~43 px no celular; a pessoa achou a logo
+  pequena demais para ler o "Tradução e Acessibilidade"). Altura: ~94 px (computador) e 61–67 px (celular). Em janelas muito baixas
+  (`max-height: 30rem`) ele deixa de ser fixo. `scroll-padding-top` evita que links de âncora fiquem escondidos.
+- **Menu com submenus** (a pessoa pediu de volta): "TrAce" ▾ (Sobre nós, Membros) e "Projetos" ▾ (Todos os projetos + cada projeto).
+  O link principal funciona sozinho; um botão ▾ abre o submenu (teclado, toque; Esc fecha); no computador também abre ao passar o mouse.
+  Sem JavaScript, o submenu abre por `:hover`/`:focus-within` no computador e fica visível no celular.
+- **Cartões** para projetos, produções e membros (a pessoa pediu cartões lado a lado, não listas). Cartão inteiro clicável (link esticado).
+- **Membros**: foto em **círculo**, com ícones de contato (e-mail, Lattes, LinkedIn) que só aparecem se o dado existir.
+  O ícone de e-mail abre uma **janela** (`<dialog>`) com o endereço, "Copiar e-mail" e "Escrever e-mail"; sem JavaScript vira `mailto:`.
+  Motivo: `mailto:` puro não funciona para quem usa e-mail pelo navegador. Ícones vêm de um sprite SVG (`_includes/icones.html`).
+- **Ficha** de projeto/produção: **cartão ao lado do texto** (coluna de ~19,5 rem, sticky) no computador; no celular vem logo
+  depois do texto principal. A ordem no HTML é: bloco A (imagem + texto), ficha, bloco B (galeria, vídeo, equipe, relacionadas),
+  para a ordem de leitura/tabulação ser a mesma no celular. (Já tentamos ficha na margem esquerda e ficha em faixa horizontal no
+  topo; a pessoa achou "estranho", então ficou o cartão à direita.)
+- **Início**: o **banner (imagem) fica no topo**, antes do texto; depois vem a faixa colorida com título, texto e botões.
+- **Instagram** (`redes.instagram` em `_config.yml`): `https://www.instagram.com/tracegrupo/`, no rodapé e em um botão em "Sobre nós"
+  (`redes: true` no front matter da página). YouTube só aparece se `redes.youtube` for preenchido.
+- **Vídeo**: o player do YouTube (`youtube-nocookie.com`) só é carregado depois do clique (leve e sem rastreadores).
+- **Galeria**: miniaturas + `<dialog>` com imagem ampliada, setas e legenda; sem JavaScript os links abrem a imagem direto.
+- **Filtros** das listas (projetos: status e temas; produções: tipo e ano) + busca de texto; renderizados no HTML e filtrados por
+  JavaScript. Temas funcionam em "E" (todos os selecionados); os demais em "OU".
+- **Busca geral** (`/busca/`) lê `search.json`; funciona só no site publicado (não por duplo clique em arquivo).
+- **Formulário de contato**: demonstrativo (`formulario_url` vazio). Para ficar real: criar formulário (Formspree etc.) e colocar o endereço.
+
+---
+
+## 6. Acessibilidade — o que já existe e deve ser preservado
+
+- HTML semântico, um `h1` por página, migalhas de pão, `aria-current`, rótulos em todos os campos, `alt` em todas as imagens,
+  link "Pular para o conteúdo", `lang="pt-BR"`, `main tabindex="-1"`.
+- Contraste: texto ≥ 16:1 no branco; links ≥ 6:1; branco sobre botões ≥ 5:1; texto sobre faixas ≥ 10:1; links sobre faixas ≥ 4,9:1.
+  Se mexer em cores, **recalcule** (WCAG AA no mínimo; a pessoa quer contraste forte).
+- Foco visível em dois anéis (escuro + amarelo), alvos de toque ≥ 44 px, cor nunca é a única pista (cada página tem nome e item de menu).
+- **Painel "Acessibilidade"** (botão no cabeçalho): tamanho do texto (90–150%, via `--escala` em `html`, respeita o zoom do
+  navegador), **tema escuro**, **fonte de leitura**, **mais contraste**, **leitura confortável** (mais espaço), **menos movimento**
+  e restaurar. Salvo em `localStorage` na chave `trace-a11y` (`escala`, `escuro`, `contraste`, `fonte`, `espaco`, `movimento`);
+  aplicado antes da página aparecer por um script em `_includes/head.html`. Atributos em `<html>`: `data-escuro`, `data-contraste`,
+  `data-fonte`, `data-espaco`, `data-movimento`.
+- Respeita `prefers-reduced-motion`, `forced-colors`, reflow (zoom 200–400%), impressão (`@media print`).
+- Tudo funciona **sem JavaScript** (conteúdo, listas, links, menus em modo básico); o JS só acrescenta recursos.
+- Padrões usados: botões de abrir/fechar com `aria-expanded`/`aria-controls`; `<dialog>` com foco devolvido ao elemento de origem;
+  regiões `role="status"` para contagem de resultados e avisos.
+
+---
+
+## 7. CSS e JavaScript — mapa rápido
+
+### `assets/css/main.css`
+Seções: 1 fontes · 2 variáveis (cores, tipografia, medidas) · 3 base · 4 estrutura (`.container`, `.caixa`, `.faixa-titulo`, migalhas) ·
+5 cabeçalho e menus (breakpoint do menu completo: `64em`) · 6 componentes (botões, cartões, ficha, filtros) · 7 páginas (início,
+galeria, vídeo, membros, formulários, busca) · 8 rodapé · 9 movimento e acessibilidade · 10 impressão.
+Breakpoints principais: `64em` (menu completo, 4 colunas de membros), `56em` (ficha ao lado, filtros ao lado, 2 colunas), `40em`, `30em`/`24em`
+(ajustes do cabeçalho em celulares pequenos).
+Usa `color-mix()` (faixa em degradê; navegadores antigos usam a cor sólida), `:has()` (um ajuste do menu) e `dvh`; todos têm alternativa aceitável.
+
+### `assets/js/main.js` (sem dependências, tudo opcional/progressivo)
+1 painel de acessibilidade · 2 menu no celular · 2b submenus · 3 filtros e busca nas listas · 4 galeria com imagem ampliada ·
+5 vídeo sob demanda · 6 busca geral · 6b janela de e-mail · 7 formulário demonstrativo. Os filtros fecham o `<details>` em telas pequenas.
+
+---
+
+## 7b. Cuidados com Liquid/Jekyll (GitHub Pages)
+
+- O GitHub Pages usa **Jekyll 3.x + Liquid 4** (gem `github-pages`). Não usar plugins fora da lista permitida, nem `{% liquid %}` ou `{% render %}`.
+- **String vazia é verdadeira em Liquid.** Para testar "preenchido" use `{% if x != '' %}` (vários includes já fazem `| default: ''` antes).
+- `assign` dentro de `include` vaza para quem chamou. Parâmetros do include são lidos como `include.nome`.
+- Ordenação: `sort: "ordem"` exige `ordem` em todos os itens (nil complica a ordenação no Jekyll 3).
+- `where: "destaque", true` e `where: "projeto", page.title` são usados; `slugify` mantém letras acentuadas (valores dos filtros usam isso nos dois lados).
+
+---
+
+## 8. O que NÃO foi verificado (importante!)
+
+- **O site nunca foi construído pelo Jekyll de verdade.** Na época não havia Ruby/Jekyll nem internet. Foi testado com um simulador
+  de Liquid escrito à mão + Chromium (Playwright): links, imagens, `alt`, ids, filtros, painel, menus, galeria, janela de e-mail,
+  busca, `baseurl` e larguras de 320 a 1280 px. **O primeiro passo útil do Claude Code é rodar `bundle install` e
+  `bundle exec jekyll build --trace` / `jekyll serve` e corrigir qualquer erro de Liquid/Jekyll** (erros prováveis: sintaxe Liquid,
+  diferença entre kramdown e o Markdown simulado, ordenação).
+- **Nunca testado com leitor de tela** (NVDA, VoiceOver, TalkBack) nem em aparelhos reais; só em Chromium.
+- "Copiar e-mail" usa a API de área de transferência (exige página segura/HTTPS; há alternativa com `execCommand`). Confirmar no site publicado.
+- Nunito/Atkinson não incluídas (ver seção 5).
+
+---
+
+## 9. Pendências de conteúdo (decisão da pessoa; não resolver sozinho)
+
+- **Fotos reais prontas, mas não usadas**: Manoela (coordenadora), Matheus, Letícia — o `membros.yml` aponta para imagem genérica
+  (`placeholders/a`); as fotos estão em `assets/img/membros/` (`manoela-cristina`, `matheus-goncalves`, `leticia-pimentel`). Há comentários no arquivo.
+- **Imagem de cabeçalho do projeto AD de Libras** (`capa`) é um placeholder "LIVRO 2"; a imagem correta é `projetos/ad-libras-capa`.
+- **Os dois projetos usam o mesmo vídeo de teste** (`tgbNymZ7vqY`).
+- **Todos os botões "Baixar PDF"** apontam para `assets/docs/placeholder-projeto.pdf`.
+- O texto de **"Quem somos" parece ser um trecho da descrição do projeto Lindworm** (veio assim do site antigo).
+- Nos projetos Lindworm e AD de Libras foi usada a **descrição completa** (o site antigo mostrava só um trecho). Se a pessoa quiser o trecho, é só editar.
+- O `alt` do banner da página inicial foi **reescrito** para descrever a imagem de verdade (o original não descrevia).
+- Formulário de contato demonstrativo; YouTube do rodapé sem endereço.
+- "Manoel Negraes" (consultor) usa imagem genérica porque não há foto disponível.
+- Dados que estavam duplicados no site antigo (JSON e `data-inline.js`) já divergiam; usamos o JSON e o HTML publicado como fonte.
+- Textos "Equipe e manutenção" e "Egressos" são placeholders do grupo.
+
+---
+
+## 10. Como trabalhar neste repositório
+
+1. **Antes de mudar**: leia este arquivo e o `README.md`. Rode o site (`bundle exec jekyll serve`, abrir `http://localhost:4000/site-trace-teste/`
+   — note o `baseurl`; para testar na raiz, rode com `--baseurl ""`).
+2. **Ao mudar CSS/HTML**: confira em larguras de 320, 390, 768, 1280 px; teste teclado (Tab, Esc nos menus/janelas); confira contraste
+   se mexer em cores; teste os modos "tema escuro", "mais contraste" e "menos movimento".
+3. **Ao mudar conteúdo**: não reescreva textos da pessoa; use os campos descritos na seção 4.
+4. **Ao adicionar imagem**: use `ferramentas/otimizar-imagens.py`; escreva `alt` real (ou `""` se for decorativa).
+5. **Mantenha leve**: nada de dependências; confira o peso das páginas depois de grandes mudanças.
+6. **Documente**: atualize `README.md`/`TUTORIAL-GITHUB.md` se mudar o processo, e este `CLAUDE.md` se mudar decisões.
+7. **Explique para a pessoa em português simples**, e diga o que ela precisa fazer (por exemplo, "faça commit" ou "atualize a página").
