@@ -487,10 +487,15 @@ a:hover { text-decoration-thickness: 3px; }
   text-align: center;
   transition: background-color 0.15s, color 0.15s, transform 0.15s;
 }
+/* Os três botões mudam do mesmo jeito ao passar o mouse, ao clicar e no foco (a cor muda e o botão sobe 2 px).
+   O botão principal é cheio; o secundário é só contorno. No hover o principal vira o tom escuro da página (claro no tema escuro,
+   por isso o texto usa --papel e não branco fixo: contraste sempre alto). */
 .botao { background: var(--t-forte); color: #fff; }
-.botao:hover { background: var(--t-tinta); border-color: var(--t-tinta); color: #fff; text-decoration: none; transform: translateY(-2px); }
 .botao-sec, .botao-peq { background: transparent; color: var(--t-tinta); border-color: var(--t-tinta); }
-.botao-sec:hover, .botao-peq:hover { background: var(--t-suave); text-decoration: none; }
+.botao:hover:not([disabled]), .botao:active:not([disabled]) { background: var(--t-tinta); border-color: var(--t-tinta); color: var(--papel); text-decoration: none; transform: translateY(-2px); }
+.botao-sec:hover:not([disabled]), .botao-peq:hover:not([disabled]), .botao-sec:active:not([disabled]), .botao-peq:active:not([disabled]) { background: var(--t-banda); border-color: var(--t-tinta); color: var(--t-tinta); box-shadow: inset 0 0 0 1px var(--t-tinta); text-decoration: none; transform: translateY(-2px); }
+.faixa-titulo .botao-sec:hover:not([disabled]), .faixa-titulo .botao-sec:active:not([disabled]) { background: var(--cartao); }   /* na faixa colorida o fundo já é a cor da página: o botão enche de branco */
+.botao:active:not([disabled]), .botao-sec:active:not([disabled]), .botao-peq:active:not([disabled]) { transform: translateY(0); }
 .botao-peq { min-height: 2.5rem; padding: 0.45rem 1rem; font-size: 0.95rem; }
 button[disabled] { opacity: 0.5; cursor: not-allowed; }
 
@@ -672,8 +677,9 @@ button[disabled] { opacity: 0.5; cursor: not-allowed; }
 .pessoa .areas { font-size: 0.9rem; line-height: 1.45; color: var(--tinta-2); margin-bottom: var(--e2); }
 .icone { width: 1.25rem; height: 1.25rem; fill: currentColor; flex: none; }
 .pessoa-links { list-style: none; margin: auto 0 0; padding: var(--e3) 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--e2); }
-.icone-link { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--t-suave); color: var(--t-tinta); border: 2px solid var(--t-tinta); text-decoration: none; transition: background-color 0.15s, color 0.15s; }
+.icone-link { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--t-suave); color: var(--t-tinta); border: 2px solid var(--t-tinta); text-decoration: none; transition: background-color 0.15s, color 0.15s, transform 0.15s; }
 .icone-link:hover { background: var(--t-forte); border-color: var(--t-forte); color: #fff; }
+.icone-link:active { transform: translateY(0); }
 .destaque-pessoa { display: grid; overflow: hidden; max-width: 54rem; text-align: center; }
 .destaque-foto { display: flex; justify-content: center; align-items: center; background: var(--t-banda); border-bottom: 6px solid var(--t-forte); padding: var(--e6) var(--e5); }
 .destaque-foto img { width: 12rem; height: 12rem; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 6px solid var(--cartao); box-shadow: 0 0 0 4px var(--t-forte); }
@@ -741,6 +747,10 @@ html[data-contraste="alto"] .etiqueta-funcao { border: 2px solid var(--tinta); }
 @keyframes aparecer { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
 html[data-contraste="alto"] a { text-decoration-thickness: 2px; }
+/* Alto contraste: no hover o botão principal vira contorno e o secundário vira cheio (preto/branco), bem visível */
+html[data-contraste="alto"] .botao { border-color: var(--tinta); }
+html[data-contraste="alto"] .botao:hover:not([disabled]), html[data-contraste="alto"] .botao:active:not([disabled]) { background: var(--papel); color: var(--tinta); border-color: var(--tinta); }
+html[data-contraste="alto"] .botao-sec:hover:not([disabled]), html[data-contraste="alto"] .botao-peq:hover:not([disabled]), html[data-contraste="alto"] .botao-sec:active:not([disabled]), html[data-contraste="alto"] .botao-peq:active:not([disabled]), html[data-contraste="alto"] .icone-link:hover { box-shadow: none; background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
 html[data-contraste="alto"] .cartao, html[data-contraste="alto"] .temas li, html[data-contraste="alto"] .video,
 html[data-contraste="alto"] .ficha-card, html[data-contraste="alto"] .filtros, html[data-contraste="alto"] .caixa { border: 2px solid var(--tinta); border-left-width: 6px; }
 html[data-contraste="alto"] .bloco-colado { border: 2px solid var(--tinta); }
@@ -752,13 +762,13 @@ html[data-contraste="alto"] .atual > .nav-grupo { outline: 2px solid var(--tinta
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
-  .cartao:hover, .botao:hover { transform: none; }
+  .cartao:hover, .botao:hover, .botao-sec:hover, .botao-peq:hover, .botao:active, .botao-sec:active, .botao-peq:active { transform: none !important; }
 }
 html[data-movimento="reduzido"] { scroll-behavior: auto; }
 html[data-movimento="reduzido"] *,
 html[data-movimento="reduzido"] *::before,
 html[data-movimento="reduzido"] *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
-html[data-movimento="reduzido"] .cartao:hover, html[data-movimento="reduzido"] .botao:hover { transform: none; }
+html[data-movimento="reduzido"] .cartao:hover, html[data-movimento="reduzido"] .botao:hover, html[data-movimento="reduzido"] .botao-sec:hover, html[data-movimento="reduzido"] .botao-peq:hover, html[data-movimento="reduzido"] .botao:active, html[data-movimento="reduzido"] .botao-sec:active, html[data-movimento="reduzido"] .botao-peq:active { transform: none !important; }
 
 /* Menu fixo só quando há espaço: evita ocupar a tela em janelas baixas ou com zoom muito alto */
 @media (max-height: 30rem) {
