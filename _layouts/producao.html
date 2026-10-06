@@ -21,7 +21,7 @@ layout: default
       </dl>
       <p class="citacao"><strong>Como citar</strong>{{ page.citacao }}</p>
       {%- if page.pdf %}
-      <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" download>Baixar PDF</a></div>
+      <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
       {%- endif %}
     </aside>
     <div class="bloco-b">

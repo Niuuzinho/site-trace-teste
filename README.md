@@ -41,7 +41,7 @@ O passo a passo completo, para o repositório `site-trace-teste`, está em **TUT
 
 **Adicionar um projeto:** copie um arquivo de `_projetos/`, renomeie (use letras minúsculas e hifens) e edite os campos entre os `---`. O texto da seção "Sobre o projeto" fica abaixo do segundo `---`. `ordem` define a posição na lista; `destaque: true` faz o projeto aparecer na página inicial.
 
-**Adicionar uma produção:** copie um arquivo de `_producoes/`. O campo `projeto` deve ter exatamente o título de um projeto para a produção aparecer na página dele e ganhar o link. Para a produção ter botão "Baixar PDF", coloque `pdf: /assets/docs/nome-do-arquivo.pdf` no começo do arquivo (sem esse campo, o botão não aparece).
+**Adicionar uma produção:** copie um arquivo de `_producoes/`. O campo `projeto` deve ter exatamente o título de um projeto para a produção aparecer na página dele e ganhar o link. No computador o botão "Baixar PDF" abre o PDF em outra guia; no celular ele baixa direto. Para a produção ter botão "Baixar PDF", coloque `pdf: /assets/docs/nome-do-arquivo.pdf` no começo do arquivo (sem esse campo, o botão não aparece).
 
 **Adicionar um membro:** copie um bloco de `_data/membros.yml`. Campos vazios (`""`) não aparecem.
 

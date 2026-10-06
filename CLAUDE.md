@@ -146,21 +146,28 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 - **Membros era rosa e a pessoa pediu verde pastel**; por isso Sobre nós, que era verde, virou amarelo (para não haver dois verdes).
 - A pessoa achou o tema claro **"muito claro"**: por isso o fundo da página é creme (`--fundo`) e os **textos ficam em caixas brancas
   (classe `.caixa`)**; cartões e ficha também são brancos. Cabeçalho e rodapé são brancos.
-- Faixa do topo (`.faixa-titulo`): tom pastel, texto escuro, **sem bolinhas** (a pessoa pediu para tirar), com linha colorida embaixo.
+- Faixa do topo (`.faixa-titulo`): tom pastel com degradê, texto escuro, **sem bolinhas** (a pessoa pediu para tirar), com linha colorida embaixo e **duas faixas geométricas inclinadas** na cor da página, só à direita (`::before`/`::after`, opacidade baixa para não atrapalhar o texto; somem no alto contraste, impressão e `forced-colors`).
 - Tema escuro (opcional, `html[data-escuro]`) e alto contraste (`html[data-contraste="alto"]`) têm seus próprios valores.
 
 ### Layout e componentes
 - **Cabeçalho branco e fixo** (`position: sticky`), **branco também no tema escuro e no alto contraste escuro** (por causa da logo): em `main.css`, `html[data-escuro] .cabecalho` redeclara os valores do tema claro (`--tinta`, `--papel`, `--linha`, `--borda`, `--f-*`, `--i-*`...) e o `--t-*` da página; menu, busca, submenus e painel de acessibilidade leem essas variáveis. Se criar uma cor de página nova, repita-a lá; logo grande (~70 px no computador, ~43 px no celular; a pessoa achou a logo
   pequena demais para ler o "Tradução e Acessibilidade"). Altura: ~94 px (computador) e 61–67 px (celular). Em janelas muito baixas
   (`max-height: 30rem`) ele deixa de ser fixo. `scroll-padding-top` evita que links de âncora fiquem escondidos.
-- **Menu com submenus** (a pessoa pediu de volta): "TrAce" ▾ (Sobre nós, Membros) e "Projetos" ▾ (Todos os projetos + cada projeto).
-  O link principal funciona sozinho; um botão ▾ abre o submenu (teclado, toque; Esc fecha); no computador também abre ao passar o mouse.
-  Sem JavaScript, o submenu abre por `:hover`/`:focus-within` no computador e fica visível no celular.
-- **Card da orientadora** (`.destaque-pessoa` em `membros.html`): painel de cor da página com foto grande em círculo com anel, ao lado nome, função em etiqueta, áreas, bio e contatos; no celular a foto fica em cima.
+- **Menu com submenus**: "TrAce" ▾ (Sobre nós, Membros) e "Projetos" ▾ (Todos os projetos + cada projeto).
+  Com JavaScript, o item com submenu é **um botão só** (texto + seta juntos, `.sub-botao`): Tab chega nele e Enter/Espaço abre o submenu; Esc fecha;
+  no computador também abre ao passar o mouse. Para ir à página do item, usa-se o 1º link do submenu ("Todos os projetos", "Sobre nós").
+  Sem JavaScript, aparece o link normal (`.link-sem-js`) e o submenu abre por `:hover`/`:focus-within`; no celular fica visível.
+  No celular, o botão "Menu" vem **antes** de "Acessibilidade".
+- **Voltar ao topo**: botão redondo fixo no canto (`.topo-botao`, aparece depois de rolar 600 px, via JS) + link "Voltar ao topo" no rodapé. Usam `href="#"` e JS
+  (o `#topo` não rola nada porque o cabeçalho é fixo). O foco vai para a logo.
+- **Rodapé**: botão do Instagram (e YouTube, se houver) fica no alto da primeira coluna, abre em nova guia (`target="_blank" rel="noopener noreferrer"` + texto "abre em outra guia" para leitor de tela).
+  Mesma regra para links externos de Lattes/LinkedIn e o botão de Instagram de "Sobre nós".
+- **Card da orientadora** (`.destaque-pessoa` em `membros.html`): painel de cor da página com formas geométricas e foto grande em círculo com anel; ao lado nome grande, função em etiqueta, "Áreas de atuação", bio e contatos como botões com texto (E-mail, Lattes, LinkedIn: `contatos-pessoa.html` com `rotulos=true`); no celular a foto fica em cima. A **função em etiqueta** (`.etiqueta-funcao`) também aparece nos cartões dos outros membros.
 - **Caixas** (`.caixa`, `.ficha-card`, `.filtros`, `.destaque-pessoa`): estilo único — borda fina, **faixa de 5 px na cor da página à esquerda** e cantos arredondados só à direita (`--raio-caixa`). Espaços entre caixas e faixa do topo foram reduzidos (`--e4`/`--e5`).
 - **Imagem colada na caixa** (`.bloco-colado`): em "Quem somos" (imagem ao lado do texto no computador, em cima no celular) e no topo dos projetos. Um bloco só, cantos arredondados por fora, linha na cor da página entre imagem e texto. O botão do Instagram fica **fora** da caixa (`.acoes-fora`). A galeria de "Quem somos" agora é uma caixa.
 - **Botões** (`.botao`, `.botao-sec`, `.botao-peq`): mesmo tamanho, forma e comportamento. No hover/clique mudam de cor e sobem 2 px (sem subir em "Menos movimento"). Principal: hover vira `--t-tinta` com texto `--papel` (nunca branco fixo: no tema escuro `--t-tinta` é claro). Secundário: hover enche com `--t-banda` (branco dentro da faixa colorida). No alto contraste o hover inverte preto/branco. Varredura de contraste de todos os estados feita nos 4 temas: mínimo 5,0:1.
 - **Etiquetas** (`.temas li`, palavras-chave): preenchidas com `--t-banda`, sem borda, texto `--t-tinta` em negrito suave, cantos assimétricos (contraste ≥ 4,9:1; no alto contraste voltam a ter borda). Os cards de **produção** mostram até 3 `palavras_chave` e, embaixo, "Projeto" + nome do projeto em destaque (linha separadora). Os filtros usam caixas de seleção, não etiquetas (não foi alterado).
+- **PDF**: o botão "Baixar PDF" (projetos e produções, `a[data-pdf]`) **abre o PDF em outra guia** no computador; em aparelhos de toque (`pointer: coarse`) o JS troca para download direto.
 - **Cartões** para projetos, produções e membros (a pessoa pediu cartões lado a lado, não listas). Cartão inteiro clicável (link esticado).
 - **Membros**: foto em **círculo**, com ícones de contato (e-mail, Lattes, LinkedIn) que só aparecem se o dado existir.
   O ícone de e-mail abre uma **janela** (`<dialog>`) com o endereço, "Copiar e-mail" e "Escrever e-mail"; sem JavaScript vira `mailto:`.
@@ -169,11 +176,14 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
   depois do texto principal. A ordem no HTML é: bloco A (imagem + texto), ficha, bloco B (galeria, vídeo, equipe, relacionadas),
   para a ordem de leitura/tabulação ser a mesma no celular. (Já tentamos ficha na margem esquerda e ficha em faixa horizontal no
   topo; a pessoa achou "estranho", então ficou o cartão à direita.)
-- **Início**: o **banner (imagem) fica no topo**, antes do texto; depois vem a faixa colorida com título, texto e botões.
+- **Início**: o **banner (imagem) fica no topo**, antes do texto, e termina em **borda ondulada** (SVG embutido em `.banner-topo::after`, mesma cor do banner `#ffe486`).
+  Depois vem a faixa de abertura (`.abertura`), que tem **sempre o visual escuro, mesmo no tema claro** (decisão da pessoa; no alto contraste segue as regras de alto contraste).
+  "Explorar projetos" e "Ver produções" usam o **mesmo** estilo `.botao`. As seções "Projetos em destaque" e "Produções recentes" são **faixas de fundo** (`.faixa-secao`: a 1ª com `--t-suave`, a 2ª no creme),
+  com título grande com barra colorida e botão "ver tudo" (`.botao-peq`).
 - **Instagram** (`redes.instagram` em `_config.yml`): `https://www.instagram.com/tracegrupo/`, no rodapé e em um botão em "Sobre nós"
   (`redes: true` no front matter da página). YouTube só aparece se `redes.youtube` for preenchido.
 - **Vídeo**: o player do YouTube (`youtube-nocookie.com`) só é carregado depois do clique (leve e sem rastreadores).
-- **Galeria**: miniaturas + `<dialog>` com imagem ampliada, setas e legenda; sem JavaScript os links abrem a imagem direto.
+- **Galeria**: miniaturas com lupa no canto + `<dialog>` com a imagem ampliada; **legenda e botões (Anterior · Fechar · Próxima) ficam centralizados embaixo da imagem**. Vale para toda galeria (um só include). Sem JavaScript os links abrem a imagem direto.
 - **Filtros** das listas (projetos: status e temas; produções: tipo e ano) + busca de texto; renderizados no HTML e filtrados por
   JavaScript. Temas funcionam em "E" (todos os selecionados); os demais em "OU".
 - **Busca geral** (`/busca/`) lê `search.json`; funciona só no site publicado (não por duplo clique em arquivo).
@@ -228,7 +238,8 @@ Usa `color-mix()` (faixa em degradê; navegadores antigos usam a cor sólida), `
 
 ## 8. O que NÃO foi verificado (importante!)
 
-- **O site nunca foi construído pelo Jekyll de verdade.** Na época não havia Ruby/Jekyll nem internet. Foi testado com um simulador
+- **O site já foi construído pelo Jekyll 3.10 (o do GitHub Pages) sem erros** (texto antigo abaixo ficou como histórico). Aqui o comando `jekyll serve` não existia; usou-se um pequeno script Ruby chamando `Jekyll::Commands::Build` e um servidor estático.
+- (Histórico) **O site nunca foi construído pelo Jekyll de verdade.** Na época não havia Ruby/Jekyll nem internet. Foi testado com um simulador
   de Liquid escrito à mão + Chromium (Playwright): links, imagens, `alt`, ids, filtros, painel, menus, galeria, janela de e-mail,
   busca, `baseurl` e larguras de 320 a 1280 px. **O primeiro passo útil do Claude Code é rodar `bundle install` e
   `bundle exec jekyll build --trace` / `jekyll serve` e corrigir qualquer erro de Liquid/Jekyll** (erros prováveis: sintaxe Liquid,

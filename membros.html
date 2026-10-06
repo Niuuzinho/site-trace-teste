@@ -19,14 +19,14 @@ permalink: /membros/
     {%- for pessoa in orientacao %}
     <div class="destaque-pessoa">
       <div class="destaque-foto">
-        {% include img.html nome=pessoa.foto alt=pessoa.nome sizes="12rem" %}
+        {% include img.html nome=pessoa.foto alt=pessoa.nome sizes="13rem" %}
       </div>
       <div class="destaque-texto">
         <h3>{{ pessoa.nome }}</h3>
         <p class="funcao"><span class="etiqueta-funcao">{{ pessoa.funcao }}</span></p>
-        <p class="areas">{{ pessoa.areas }}</p>
+        <p class="areas"><span class="areas-rotulo">Áreas de atuação</span>{{ pessoa.areas }}</p>
         {%- if pessoa.bio %}<p class="bio">{{ pessoa.bio }}</p>{% endif %}
-        {% include contatos-pessoa.html pessoa=pessoa %}
+        {% include contatos-pessoa.html pessoa=pessoa rotulos=true %}
       </div>
     </div>
     {%- endfor %}

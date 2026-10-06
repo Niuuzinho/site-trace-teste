@@ -398,6 +398,18 @@
     atualizar();
   }
 
+  /* 9. Botão "Baixar PDF": no computador abre o PDF em outra guia; no celular só baixa */
+  function iniciarPdf() {
+    var celular = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if (!celular) return;
+    todos('a[data-pdf]').forEach(function (a) {
+      a.setAttribute('download', '');
+      a.removeAttribute('target');
+      var dica = a.querySelector('[data-pdf-dica]');
+      if (dica) dica.textContent = '';
+    });
+  }
+
   /* Início ------------------------------------------------------------------ */
   function iniciar() {
     iniciarPainelAcessibilidade();
@@ -411,6 +423,7 @@
     iniciarBuscaGeral();
     iniciarJanelaEmail();
     iniciarVoltarAoTopo();
+    iniciarPdf();
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 }());
