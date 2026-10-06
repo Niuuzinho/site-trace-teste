@@ -95,6 +95,34 @@ html[data-escuro][data-contraste="alto"] {
   --s-inicio: #000000; --s-sobre: #000000; --s-membros: #000000; --s-projetos: #000000; --s-producoes: #000000; --s-contato: #000000;
   --b-inicio: #000000; --b-sobre: #000000; --b-membros: #000000; --b-projetos: #000000; --b-producoes: #000000; --b-contato: #000000;
 }
+/* Cabeçalho BRANCO também no tema escuro (por causa da logo): ele volta a usar os valores do tema claro.
+   Tudo o que está dentro dele (menu, submenus, busca, botões, painel de acessibilidade) lê as variáveis daqui. */
+html[data-escuro] .cabecalho {
+  color-scheme: light;
+  --papel: #ffffff; --papel-2: #f3f6f6; --cartao: #ffffff; --cabecalho: #ffffff;
+  --tinta: #0d1b1c; --tinta-2: #2a3d3e; --linha: #b4c6c3; --borda: #5b6f6d;
+  --f-inicio: #0b7b78; --i-inicio: #085a58; --s-inicio: #e7f2f2; --b-inicio: #acd3d2;
+  --f-sobre: #8c6a00; --i-sobre: #644b00; --s-sobre: #fbf6e6; --b-sobre: #f2e0a8;
+  --f-membros: #2d7d4c; --i-membros: #205a37; --s-membros: #ecf7f0; --b-membros: #bee3cc;
+  --f-projetos: #1f6fb2; --i-projetos: #175384; --s-projetos: #e9f1f7; --b-projetos: #b3cee5;
+  --f-producoes: #7f5bb6; --i-producoes: #5f408f; --s-producoes: #f2eff8; --b-producoes: #d3c7e6;
+  --f-contato: #a55c37; --i-contato: #774327; --s-contato: #f7f0eb; --b-contato: #e5cabc;
+  --t-forte: var(--f-inicio); --t-tinta: var(--i-inicio); --t-suave: var(--s-inicio); --t-banda: var(--b-inicio);
+}
+html[data-escuro] body[data-tema="sobre"] .cabecalho { --t-forte: var(--f-sobre); --t-tinta: var(--i-sobre); --t-suave: var(--s-sobre); --t-banda: var(--b-sobre); }
+html[data-escuro] body[data-tema="membros"] .cabecalho { --t-forte: var(--f-membros); --t-tinta: var(--i-membros); --t-suave: var(--s-membros); --t-banda: var(--b-membros); }
+html[data-escuro] body[data-tema="projetos"] .cabecalho { --t-forte: var(--f-projetos); --t-tinta: var(--i-projetos); --t-suave: var(--s-projetos); --t-banda: var(--b-projetos); }
+html[data-escuro] body[data-tema="producoes"] .cabecalho { --t-forte: var(--f-producoes); --t-tinta: var(--i-producoes); --t-suave: var(--s-producoes); --t-banda: var(--b-producoes); }
+html[data-escuro] body[data-tema="contato"] .cabecalho { --t-forte: var(--f-contato); --t-tinta: var(--i-contato); --t-suave: var(--s-contato); --t-banda: var(--b-contato); }
+/* ... e no alto contraste combinado com o escuro: branco com texto preto */
+html[data-escuro][data-contraste="alto"] .cabecalho {
+  --papel-2: #ffffff;
+  --tinta-2: #000000; --tinta: #000000; --linha: #000000; --borda: #000000;
+  --f-inicio: #003f3d; --f-sobre: #4d3a00; --f-membros: #0f4a26; --f-projetos: #0b3f6e; --f-producoes: #42227f; --f-contato: #5c2b10;
+  --i-inicio: #002b2a; --i-sobre: #3a2b00; --i-membros: #0a3a1c; --i-projetos: #00305a; --i-producoes: #35106f; --i-contato: #4d2000;
+  --s-inicio: #ffffff; --s-sobre: #ffffff; --s-membros: #ffffff; --s-projetos: #ffffff; --s-producoes: #ffffff; --s-contato: #ffffff;
+  --b-inicio: #ffffff; --b-sobre: #ffffff; --b-membros: #ffffff; --b-projetos: #ffffff; --b-producoes: #ffffff; --b-contato: #ffffff;
+}
 html[data-fonte="leitura"] { --fonte-corpo: var(--leitura); --fonte-titulo: var(--leitura); }
 html[data-espaco="amplo"] { --entrelinha: 1.95; }
 

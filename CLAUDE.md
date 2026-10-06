@@ -150,7 +150,7 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 - Tema escuro (opcional, `html[data-escuro]`) e alto contraste (`html[data-contraste="alto"]`) têm seus próprios valores.
 
 ### Layout e componentes
-- **Cabeçalho branco e fixo** (`position: sticky`), logo grande (~70 px no computador, ~43 px no celular; a pessoa achou a logo
+- **Cabeçalho branco e fixo** (`position: sticky`), **branco também no tema escuro e no alto contraste escuro** (por causa da logo): em `main.css`, `html[data-escuro] .cabecalho` redeclara os valores do tema claro (`--tinta`, `--papel`, `--linha`, `--borda`, `--f-*`, `--i-*`...) e o `--t-*` da página; menu, busca, submenus e painel de acessibilidade leem essas variáveis. Se criar uma cor de página nova, repita-a lá; logo grande (~70 px no computador, ~43 px no celular; a pessoa achou a logo
   pequena demais para ler o "Tradução e Acessibilidade"). Altura: ~94 px (computador) e 61–67 px (celular). Em janelas muito baixas
   (`max-height: 30rem`) ele deixa de ser fixo. `scroll-padding-top` evita que links de âncora fiquem escondidos.
 - **Menu com submenus** (a pessoa pediu de volta): "TrAce" ▾ (Sobre nós, Membros) e "Projetos" ▾ (Todos os projetos + cada projeto).
