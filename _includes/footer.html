@@ -3,16 +3,16 @@
   <div class="rodape-int">
     <section aria-labelledby="rodape-trace">
       <h2 id="rodape-trace">{{ site.title }}</h2>
-      <p>{{ site.rodape.sobre }}</p>
-      <p>{{ site.rodape.complemento }}</p>
       {%- assign yt = site.redes.youtube | default: '' -%}
       {%- assign ig = site.redes.instagram | default: '' -%}
       {%- if yt != '' or ig != '' %}
       <div class="rodape-redes" aria-label="Redes sociais do grupo">
-        {%- if yt != '' %}<a href="{{ yt }}" rel="noopener"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-youtube"></use></svg>YouTube</a>{% endif %}
-        {%- if ig != '' %}<a href="{{ ig }}" rel="noopener"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"></use></svg>Instagram</a>{% endif %}
+        {%- if ig != '' %}<a class="botao-peq" href="{{ ig }}" target="_blank" rel="noopener noreferrer"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"></use></svg>Instagram<span class="so-leitor"> (abre em outra guia)</span></a>{% endif %}
+        {%- if yt != '' %}<a class="botao-peq" href="{{ yt }}" target="_blank" rel="noopener noreferrer"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-youtube"></use></svg>YouTube<span class="so-leitor"> (abre em outra guia)</span></a>{% endif %}
       </div>
       {%- endif %}
+      <p>{{ site.rodape.sobre }}</p>
+      <p>{{ site.rodape.complemento }}</p>
     </section>
     <section aria-labelledby="rodape-projetos">
       <h2 id="rodape-projetos">Projetos</h2>
@@ -35,7 +35,8 @@
   <div class="rodape-base">
     <div>
       <p>{{ site.rodape.assinatura }}</p>
-      <p><a href="#topo">Voltar ao topo</a></p>
+      <p><a href="#" data-topo-link>Voltar ao topo</a></p>
     </div>
   </div>
 </footer>
+<a class="topo-botao" href="#" data-topo hidden><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-cima"></use></svg><span class="so-leitor">Voltar ao topo</span></a>

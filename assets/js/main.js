@@ -373,6 +373,31 @@
     });
   }
 
+  /* 8. Botão "Voltar ao topo" (aparece depois de rolar a página) ------------ */
+  function iniciarVoltarAoTopo() {
+    var b = doc.querySelector('[data-topo]');
+    if (!b) return;
+    // o cabeçalho é fixo, então "#topo" não rola nada: rolamos até o início e levamos o foco para a logo
+    todos('[data-topo], [data-topo-link]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+        var logo = doc.querySelector('.marca');
+        if (logo) logo.focus({ preventScroll: true });
+      });
+    });
+    var agendado = false;
+    function atualizar() {
+      agendado = false;
+      var mostrar = (window.pageYOffset || doc.documentElement.scrollTop) > 600;
+      if (b.hidden === mostrar) b.hidden = !mostrar;
+    }
+    window.addEventListener('scroll', function () {
+      if (!agendado) { agendado = true; window.requestAnimationFrame(atualizar); }
+    }, { passive: true });
+    atualizar();
+  }
+
   /* Início ------------------------------------------------------------------ */
   function iniciar() {
     iniciarPainelAcessibilidade();
@@ -385,6 +410,7 @@
     todos('form[data-demo]').forEach(iniciarFormularioDemo);
     iniciarBuscaGeral();
     iniciarJanelaEmail();
+    iniciarVoltarAoTopo();
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 }());

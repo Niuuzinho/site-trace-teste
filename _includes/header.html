@@ -23,9 +23,11 @@
         {%- if item.filhos or item.auto -%}{%- assign tem_sub = true -%}{%- endif %}
         <li class="nav-item tema-{{ item.tema }}{% if tem_sub %} tem-submenu{% endif %}{% if aqui != '' %} atual{% endif %}">
           <div class="nav-grupo">
-            <a href="{{ item.url | relative_url }}"{% if aqui != '' %} aria-current="{{ aqui }}"{% endif %}>{{ item.titulo }}</a>
             {%- if tem_sub %}
-            <button class="sub-botao" type="button" data-sub-botao aria-expanded="false" aria-controls="sub-{{ forloop.index }}" aria-label="Abrir submenu de {{ item.titulo | escape }}"></button>
+            <a class="link-sem-js" href="{{ item.url | relative_url }}"{% if aqui != '' %} aria-current="{{ aqui }}"{% endif %}>{{ item.titulo }}</a>
+            <button class="sub-botao" type="button" data-sub-botao aria-expanded="false" aria-controls="sub-{{ forloop.index }}"{% if aqui != '' %} aria-current="true"{% endif %}>{{ item.titulo }}<span class="seta" aria-hidden="true"></span></button>
+            {%- else %}
+            <a href="{{ item.url | relative_url }}"{% if aqui != '' %} aria-current="{{ aqui }}"{% endif %}>{{ item.titulo }}</a>
             {%- endif %}
           </div>
           {%- if item.filhos %}
