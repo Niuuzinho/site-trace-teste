@@ -7,6 +7,7 @@ projeto: O Príncipe Lindworm
 autoria: Equipe TrAce
 resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 citacao: Equipe TrAce. Capítulo placeholder de livro multiformato. 2024.
+pdf: /assets/docs/placeholder-projeto.pdf
 palavras_chave:
 - acessibilidade
 - tradução

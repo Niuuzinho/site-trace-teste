@@ -97,7 +97,7 @@ Os nomes de imagem são **sem tamanho e sem `.webp`** (ex.: `projetos/lindworm-c
 ### Produções (`_producoes/*.md`)
 `title`, `tipo` (Artigo, Capítulo, TCC, Dissertação, Videolivro...), `ano` (número), `projeto` (**tem que ser igual ao `title`
 de um projeto** para a produção aparecer na página dele e ganhar link; se não existir projeto com esse título, só mostra o texto),
-`autoria`, `resumo`, `citacao`, `palavras_chave`. O corpo é o resumo.
+`autoria`, `resumo`, `citacao`, `palavras_chave`, `pdf` (opcional; caminho do PDF; se existir, aparece o botão "Baixar PDF" no fim da ficha bibliográfica). O corpo é o resumo.
 
 ### Membros (`_data/membros.yml`)
 `nome`, `categoria`, `funcao`, `areas`, `foto`, `email`, `lattes`, `linkedin`, opcional `bio`. Campos vazios (`""`) não aparecem.
@@ -243,7 +243,7 @@ Usa `color-mix()` (faixa em degradê; navegadores antigos usam a cor sólida), `
   (`placeholders/a`); as fotos estão em `assets/img/membros/` (`manoela-cristina`, `matheus-goncalves`, `leticia-pimentel`). Há comentários no arquivo.
 - **Imagem de cabeçalho do projeto AD de Libras** (`capa`) é um placeholder "LIVRO 2"; a imagem correta é `projetos/ad-libras-capa`.
 - **Os dois projetos usam o mesmo vídeo de teste** (`tgbNymZ7vqY`).
-- **Todos os botões "Baixar PDF"** apontam para `assets/docs/placeholder-projeto.pdf`.
+- **Todos os botões "Baixar PDF"** (projetos e as 5 produções) apontam para `assets/docs/placeholder-projeto.pdf`.
 - O texto de **"Quem somos" parece ser um trecho da descrição do projeto Lindworm** (veio assim do site antigo).
 - Nos projetos Lindworm e AD de Libras foi usada a **descrição completa** (o site antigo mostrava só um trecho). Se a pessoa quiser o trecho, é só editar.
 - O `alt` do banner da página inicial foi **reescrito** para descrever a imagem de verdade (o original não descrevia).

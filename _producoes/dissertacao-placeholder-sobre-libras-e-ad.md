@@ -7,6 +7,7 @@ projeto: Produção de Janelas de Libras
 autoria: Equipe TrAce
 resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 citacao: Equipe TrAce. Dissertação placeholder sobre Libras e AD. 2023.
+pdf: /assets/docs/placeholder-projeto.pdf
 palavras_chave:
 - acessibilidade
 - tradução

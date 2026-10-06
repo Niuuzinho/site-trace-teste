@@ -7,6 +7,7 @@ projeto: Livro 2
 autoria: Equipe TrAce
 resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 citacao: Equipe TrAce. Videolivro placeholder do acervo TrAce. 2026.
+pdf: /assets/docs/placeholder-projeto.pdf
 palavras_chave:
 - acessibilidade
 - tradução

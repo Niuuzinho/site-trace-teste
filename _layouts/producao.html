@@ -20,6 +20,9 @@ layout: default
         <div><dt>Autoria</dt><dd>{{ page.autoria }}</dd></div>
       </dl>
       <p class="citacao"><strong>Como citar</strong>{{ page.citacao }}</p>
+      {%- if page.pdf %}
+      <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" download>Baixar PDF</a></div>
+      {%- endif %}
     </aside>
     <div class="bloco-b">
       {%- if page.palavras_chave and page.palavras_chave.size > 0 %}

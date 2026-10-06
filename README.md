@@ -41,7 +41,7 @@ O passo a passo completo, para o repositório `site-trace-teste`, está em **TUT
 
 **Adicionar um projeto:** copie um arquivo de `_projetos/`, renomeie (use letras minúsculas e hifens) e edite os campos entre os `---`. O texto da seção "Sobre o projeto" fica abaixo do segundo `---`. `ordem` define a posição na lista; `destaque: true` faz o projeto aparecer na página inicial.
 
-**Adicionar uma produção:** copie um arquivo de `_producoes/`. O campo `projeto` deve ter exatamente o título de um projeto para a produção aparecer na página dele e ganhar o link.
+**Adicionar uma produção:** copie um arquivo de `_producoes/`. O campo `projeto` deve ter exatamente o título de um projeto para a produção aparecer na página dele e ganhar o link. Para a produção ter botão "Baixar PDF", coloque `pdf: /assets/docs/nome-do-arquivo.pdf` no começo do arquivo (sem esse campo, o botão não aparece).
 
 **Adicionar um membro:** copie um bloco de `_data/membros.yml`. Campos vazios (`""`) não aparecem.
 
@@ -60,7 +60,7 @@ O passo a passo completo, para o repositório `site-trace-teste`, está em **TUT
 ## Cores de cada página
 
 Cada seção tem a sua cor, que aparece na faixa do topo, nos títulos, nos links e na barrinha colorida do menu:
-Início (verde-azulado), Sobre nós (amarelo), Membros (verde), Projetos (azul), Produções (roxo) e Contato (terracota). O fundo de cada página é um tom pastel da sua cor, e os textos ficam em caixas brancas (classe `caixa`) para dar contraste.
+Início (verde-azulado), Sobre nós (amarelo), Membros (verde), Projetos (azul), Produções (roxo) e Contato (terracota). O fundo é o mesmo creme em todas as páginas (variável `--fundo`), e os textos ficam em caixas brancas (classe `caixa`) para dar contraste.
 Projetos e produções usam sozinhos a cor de Projetos e de Produções. Para mudar uma cor, edite as linhas `--f-...`, `--i-...` e `--s-...`
 no começo do `main.css` (f = botões e bordas, i = texto e links, s = fundo suave, b = faixa do topo, g = fundo da página). Se trocar, mantenha o contraste: texto branco sobre a faixa e links sobre fundo branco precisam de pelo menos 4,5:1 (use um verificador como o contrastchecker.com).
 Para dar cor a uma página nova, coloque `tema: sobre` (ou `membros`, `projetos`, `producoes`, `contato`) no começo do arquivo dela.
@@ -85,11 +85,11 @@ Sugestão: depois de publicar, teste com o Lighthouse (no Chrome: F12 → Lighth
 
 ## Pendências do conteúdo (não resolvi para não alterar o seu texto)
 
-- Em `_data/membros.yml`, três pessoas (Manoela, Matheus e Letícia) usam imagem genérica, mas há foto real pronta em `assets/img/membros/`. Os comentários no arquivo dizem qual trocar.
+- Em `_data/membros.yml`, duas pessoas (Matheus e Letícia) usam imagem genérica, mas há foto real pronta em `assets/img/membros/`. Os comentários no arquivo dizem qual trocar.
 - O texto de "Quem somos" parece ser um trecho da descrição do projeto Lindworm.
 - A imagem de cabeçalho do projeto AD de Libras é um placeholder ("LIVRO 2"); a imagem correta do projeto é `projetos/ad-libras-capa`. Troque o campo `capa` no arquivo do projeto.
 - Os dois projetos usam o mesmo vídeo de teste (`tgbNymZ7vqY`).
-- Todos os botões "Baixar PDF" apontam para `assets/docs/placeholder-projeto.pdf`.
+- Todos os botões "Baixar PDF" (de projetos e de produções) apontam para `assets/docs/placeholder-projeto.pdf`.
 - Digitação a revisar: "Prince Lindworm", "século XIX é originalmente" (projeto Lindworm) e "Liguagem Fácil" (membros).
 - Redes sociais e formulário ainda não configurados.
 

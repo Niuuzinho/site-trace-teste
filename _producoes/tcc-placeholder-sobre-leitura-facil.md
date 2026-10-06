@@ -7,6 +7,7 @@ projeto: Site do TrAce
 autoria: Equipe TrAce
 resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 citacao: Equipe TrAce. TCC placeholder sobre leitura fácil. 2024.
+pdf: /assets/docs/placeholder-projeto.pdf
 palavras_chave:
 - acessibilidade
 - tradução

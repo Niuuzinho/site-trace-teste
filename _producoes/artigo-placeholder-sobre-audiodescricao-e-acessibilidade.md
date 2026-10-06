@@ -7,6 +7,7 @@ projeto: AD de Libras
 autoria: Equipe TrAce
 resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 citacao: Equipe TrAce. Artigo placeholder sobre audiodescrição e acessibilidade. 2025.
+pdf: /assets/docs/placeholder-projeto.pdf
 palavras_chave:
 - acessibilidade
 - tradução
