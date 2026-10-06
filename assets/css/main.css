@@ -28,8 +28,8 @@
   --papel-2: #f3f6f6;
   --cartao: #ffffff;
   --cabecalho: #ffffff;
-  --fundo: #fff8e5;          /* fundo único de todas as páginas (creme do site antigo) */
-  --fundo-2: #fff3d6;        /* fim do degradê vertical, bem leve */
+  --fundo: #eef3f7;          /* fundo único de todas as páginas (névoa azulada) */
+  --fundo-2: #e6edf3;        /* fim do degradê vertical, bem leve */
   --tinta: #0d1b1c;          /* texto: contraste acima de 16:1 */
   --tinta-2: #2a3d3e;        /* texto secundário: contraste acima de 11:1 */
   --linha: #b4c6c3;          /* linhas decorativas */
@@ -37,12 +37,12 @@
   --caju: #ffe08a;           /* amarelo dos banners do grupo: destaque e anel de foco */
 
   /* cores de cada página: f = botões e bordas · i = texto e links · s = fundo suave · b = faixa do topo */
-  --f-inicio: #0b7b78; --i-inicio: #085a58; --s-inicio: #e7f2f2; --b-inicio: #acd3d2;
-  --f-sobre: #8c6a00; --i-sobre: #644b00; --s-sobre: #fbf6e6; --b-sobre: #f2e0a8;
-  --f-membros: #2d7d4c; --i-membros: #205a37; --s-membros: #ecf7f0; --b-membros: #bee3cc;
-  --f-projetos: #1f6fb2; --i-projetos: #175384; --s-projetos: #e9f1f7; --b-projetos: #b3cee5;
-  --f-producoes: #7f5bb6; --i-producoes: #5f408f; --s-producoes: #f2eff8; --b-producoes: #d3c7e6;
-  --f-contato: #a55c37; --i-contato: #774327; --s-contato: #f7f0eb; --b-contato: #e5cabc;
+  --f-inicio: #0b7b78; --i-inicio: #05403f; --s-inicio: #e7f2f2; --b-inicio: #7fbab9;
+  --f-sobre: #b0356f; --i-sobre: #6b1b43; --s-sobre: #fbeef4; --b-sobre: #df9dbc;
+  --f-membros: #2d7d4c; --i-membros: #1a4b2e; --s-membros: #ecf7f0; --b-membros: #95c6a8;
+  --f-projetos: #1f6fb2; --i-projetos: #103b5f; --s-projetos: #e9f1f7; --b-projetos: #8ab3d7;
+  --f-producoes: #7f5bb6; --i-producoes: #462f69; --s-producoes: #f2eff8; --b-producoes: #bba9d9;
+  --f-contato: #b4500a; --i-contato: #6b2b03; --s-contato: #fdf1e6; --b-contato: #e4ab80;
 
   /* tipografia */
   --texto: "Nunito", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -71,27 +71,27 @@ html[data-escuro] {
   --fundo: #121f20; --fundo-2: #0f1a1b;
   --tinta: #eef4f3; --tinta-2: #c4d3d1; --linha: #33494b; --borda: #8fa7a5;
   --f-inicio: #1f7a78; --i-inicio: #a1f7f5; --s-inicio: #23393a; --b-inicio: #324f4f;
-  --f-sobre: #7a641f; --i-sobre: #f7e2a1; --s-sobre: #2f362e; --b-sobre: #474a3b;
+  --f-sobre: #8a2a58; --i-sobre: #f5c2db; --s-sobre: #3a2630; --b-sobre: #5a3446;
   --f-membros: #297044; --i-membros: #b4e4c7; --s-membros: #263633; --b-membros: #374a44;
   --f-projetos: #1f517a; --i-projetos: #a8cff0; --s-projetos: #243339; --b-projetos: #34454e;
   --f-producoes: #462f6a; --i-producoes: #c8b8e0; --s-producoes: #293037; --b-producoes: #3b404a;
-  --f-contato: #734126; --i-contato: #e6c4b2; --s-contato: #2d3230; --b-contato: #43433f;
+  --f-contato: #8a3d08; --i-contato: #f8cfae; --s-contato: #3a2d24; --b-contato: #5a4332;
 }
 
 /* Alto contraste (opção do painel de acessibilidade) */
 html[data-contraste="alto"] {
   --papel: #ffffff; --papel-2: #ffffff; --cartao: #ffffff; --cabecalho: #ffffff; --fundo: #ffffff; --fundo-2: #ffffff;
   --tinta: #000000; --tinta-2: #000000; --linha: #000000; --borda: #000000;
-  --f-inicio: #003f3d; --f-sobre: #4d3a00; --f-membros: #0f4a26; --f-projetos: #0b3f6e; --f-producoes: #42227f; --f-contato: #5c2b10;
-  --i-inicio: #002b2a; --i-sobre: #3a2b00; --i-membros: #0a3a1c; --i-projetos: #00305a; --i-producoes: #35106f; --i-contato: #4d2000;
+  --f-inicio: #003f3d; --f-sobre: #6e1a40; --f-membros: #0f4a26; --f-projetos: #0b3f6e; --f-producoes: #42227f; --f-contato: #6b2c05;
+  --i-inicio: #002b2a; --i-sobre: #55102f; --i-membros: #0a3a1c; --i-projetos: #00305a; --i-producoes: #35106f; --i-contato: #5a2403;
   --s-inicio: #ffffff; --s-sobre: #ffffff; --s-membros: #ffffff; --s-projetos: #ffffff; --s-producoes: #ffffff; --s-contato: #ffffff;
   --b-inicio: #ffffff; --b-sobre: #ffffff; --b-membros: #ffffff; --b-projetos: #ffffff; --b-producoes: #ffffff; --b-contato: #ffffff;
 }
 html[data-escuro][data-contraste="alto"] {
   --papel: #000000; --papel-2: #000000; --cartao: #000000; --cabecalho: #000000; --fundo: #000000; --fundo-2: #000000;
   --tinta: #ffffff; --tinta-2: #ffffff; --linha: #ffffff; --borda: #ffffff;
-  --f-inicio: #00403d; --f-sobre: #4d3a00; --f-membros: #0f4a26; --f-projetos: #0b3f6e; --f-producoes: #42227f; --f-contato: #5c2b10;
-  --i-inicio: #9ffcf8; --i-sobre: #ffe9a0; --i-membros: #b8f5cf; --i-projetos: #b5dcff; --i-producoes: #dccbff; --i-contato: #ffd2b5;
+  --f-inicio: #00403d; --f-sobre: #6e1a40; --f-membros: #0f4a26; --f-projetos: #0b3f6e; --f-producoes: #42227f; --f-contato: #6b2c05;
+  --i-inicio: #9ffcf8; --i-sobre: #ffd0e4; --i-membros: #b8f5cf; --i-projetos: #b5dcff; --i-producoes: #dccbff; --i-contato: #ffd9bd;
   --s-inicio: #000000; --s-sobre: #000000; --s-membros: #000000; --s-projetos: #000000; --s-producoes: #000000; --s-contato: #000000;
   --b-inicio: #000000; --b-sobre: #000000; --b-membros: #000000; --b-projetos: #000000; --b-producoes: #000000; --b-contato: #000000;
 }
@@ -101,12 +101,12 @@ html[data-escuro] .cabecalho {
   color-scheme: light;
   --papel: #ffffff; --papel-2: #f3f6f6; --cartao: #ffffff; --cabecalho: #ffffff;
   --tinta: #0d1b1c; --tinta-2: #2a3d3e; --linha: #b4c6c3; --borda: #5b6f6d;
-  --f-inicio: #0b7b78; --i-inicio: #085a58; --s-inicio: #e7f2f2; --b-inicio: #acd3d2;
-  --f-sobre: #8c6a00; --i-sobre: #644b00; --s-sobre: #fbf6e6; --b-sobre: #f2e0a8;
-  --f-membros: #2d7d4c; --i-membros: #205a37; --s-membros: #ecf7f0; --b-membros: #bee3cc;
-  --f-projetos: #1f6fb2; --i-projetos: #175384; --s-projetos: #e9f1f7; --b-projetos: #b3cee5;
-  --f-producoes: #7f5bb6; --i-producoes: #5f408f; --s-producoes: #f2eff8; --b-producoes: #d3c7e6;
-  --f-contato: #a55c37; --i-contato: #774327; --s-contato: #f7f0eb; --b-contato: #e5cabc;
+  --f-inicio: #0b7b78; --i-inicio: #05403f; --s-inicio: #e7f2f2; --b-inicio: #7fbab9;
+  --f-sobre: #b0356f; --i-sobre: #6b1b43; --s-sobre: #fbeef4; --b-sobre: #df9dbc;
+  --f-membros: #2d7d4c; --i-membros: #1a4b2e; --s-membros: #ecf7f0; --b-membros: #95c6a8;
+  --f-projetos: #1f6fb2; --i-projetos: #103b5f; --s-projetos: #e9f1f7; --b-projetos: #8ab3d7;
+  --f-producoes: #7f5bb6; --i-producoes: #462f69; --s-producoes: #f2eff8; --b-producoes: #bba9d9;
+  --f-contato: #b4500a; --i-contato: #6b2b03; --s-contato: #fdf1e6; --b-contato: #e4ab80;
   --t-forte: var(--f-inicio); --t-tinta: var(--i-inicio); --t-suave: var(--s-inicio); --t-banda: var(--b-inicio);
 }
 html[data-escuro] body[data-tema="sobre"] .cabecalho { --t-forte: var(--f-sobre); --t-tinta: var(--i-sobre); --t-suave: var(--s-sobre); --t-banda: var(--b-sobre); }
@@ -118,8 +118,8 @@ html[data-escuro] body[data-tema="contato"] .cabecalho { --t-forte: var(--f-cont
 html[data-escuro][data-contraste="alto"] .cabecalho {
   --papel-2: #ffffff;
   --tinta-2: #000000; --tinta: #000000; --linha: #000000; --borda: #000000;
-  --f-inicio: #003f3d; --f-sobre: #4d3a00; --f-membros: #0f4a26; --f-projetos: #0b3f6e; --f-producoes: #42227f; --f-contato: #5c2b10;
-  --i-inicio: #002b2a; --i-sobre: #3a2b00; --i-membros: #0a3a1c; --i-projetos: #00305a; --i-producoes: #35106f; --i-contato: #4d2000;
+  --f-inicio: #003f3d; --f-sobre: #6e1a40; --f-membros: #0f4a26; --f-projetos: #0b3f6e; --f-producoes: #42227f; --f-contato: #6b2c05;
+  --i-inicio: #002b2a; --i-sobre: #55102f; --i-membros: #0a3a1c; --i-projetos: #00305a; --i-producoes: #35106f; --i-contato: #5a2403;
   --s-inicio: #ffffff; --s-sobre: #ffffff; --s-membros: #ffffff; --s-projetos: #ffffff; --s-producoes: #ffffff; --s-contato: #ffffff;
   --b-inicio: #ffffff; --b-sobre: #ffffff; --b-membros: #ffffff; --b-projetos: #ffffff; --b-producoes: #ffffff; --b-contato: #ffffff;
 }

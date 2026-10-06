@@ -130,22 +130,22 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 | Página | Cor | tokens (`--f`, `--i`, `--s`, `--b`) |
 |---|---|---|
 | Início, Busca, 404 | verde-azulado | `inicio` |
-| Sobre nós | amarelo (dourado) | `sobre` |
+| Sobre nós | rosa framboesa (antes dourado; ficava parecido com o fundo creme) | `sobre` |
 | Membros | verde pastel | `membros` |
 | Projetos (e cada projeto) | azul | `projetos` |
 | Produções (e cada produção) | roxo | `producoes` |
-| Contato | terracota | `contato` |
+| Contato | laranja queimado (antes terracota, parecido com o fundo creme) | `contato` |
 
 - Definidas no começo de `main.css` (seção 2). Para cada tema: `--f-x` botões/bordas (texto branco ≥ 5:1), `--i-x` texto e links
   (≥ 8:1 no branco), `--s-x` fundo suave de etiquetas, `--b-x` faixa do topo (tom pastel mais forte).
-- **Fundo único** (decisão nova, substitui "fundo pastel por página"): todas as páginas usam `--fundo` (creme `#fff8e5` do site antigo, com degradê
-  vertical bem leve até `--fundo-2`). Tema escuro: `#121f20`; alto contraste: branco/preto puro. As variáveis `--g-*` e `--t-fundo` foram removidas.
-  A cor de cada página continua na faixa do topo, botões, bordas, links e menu.
+- **Fundo único** (decisão nova, substitui "fundo pastel por página"): todas as páginas usam `--fundo` (**névoa azulada `#eef3f7`**, com degradê
+  vertical bem leve até `--fundo-2` `#e6edf3`; antes era o creme `#fff8e5` do site antigo, trocado a pedido da pessoa). Tema escuro: `#121f20`; alto contraste: branco/preto puro. As variáveis `--g-*` e `--t-fundo` foram removidas.
+  A cor de cada página continua na faixa do topo, botões, bordas, links e menu. **Faixas do topo mais fortes** (tom `--b-*` mais saturado); por isso os `--i-*` (texto/links) ficaram mais escuros, mantendo ≥ 5,2:1 sobre a faixa. Ao mudar uma cor de página, atualize **também** os blocos de tema escuro, alto contraste e o bloco `html[data-escuro] .cabecalho`.
 - `body[data-tema="..."]` escolhe o tema; `_layouts/default.html` define `data-tema` a partir de `page.tema` (ou da coleção).
   Páginas novas ganham cor com `tema: projetos` (etc.) no front matter.
-- **Membros era rosa e a pessoa pediu verde pastel**; por isso Sobre nós, que era verde, virou amarelo (para não haver dois verdes).
+- **Membros era rosa e a pessoa pediu verde pastel**; por isso Sobre nós, que era verde, virou amarelo (para não haver dois verdes). Depois, com o fundo creme, amarelo e terracota se confundiam com ele: Sobre nós virou **rosa framboesa** e Contato **laranja queimado** (com o fundo azulado). Rosa não é mais usado em Membros (verde).
 - A pessoa achou o tema claro **"muito claro"**: por isso o fundo da página é creme (`--fundo`) e os **textos ficam em caixas brancas
-  (classe `.caixa`)**; cartões e ficha também são brancos. Cabeçalho e rodapé são brancos.
+  (classe `.caixa`)**; cartões e ficha também são brancos. Cabeçalho e rodapé são brancos. (O banner da página inicial continua amarelo `#ffe486`, é uma imagem do grupo.)
 - Faixa do topo (`.faixa-titulo`): tom pastel com degradê, texto escuro, **sem bolinhas** (a pessoa pediu para tirar), com linha colorida embaixo e **duas faixas geométricas inclinadas** na cor da página, só à direita (`::before`/`::after`, opacidade baixa para não atrapalhar o texto; somem no alto contraste, impressão e `forced-colors`).
 - Tema escuro (opcional, `html[data-escuro]`) e alto contraste (`html[data-contraste="alto"]`) têm seus próprios valores.
 

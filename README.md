@@ -60,7 +60,7 @@ O passo a passo completo, para o repositório `site-trace-teste`, está em **TUT
 ## Cores de cada página
 
 Cada seção tem a sua cor, que aparece na faixa do topo, nos títulos, nos links e na barrinha colorida do menu:
-Início (verde-azulado), Sobre nós (amarelo), Membros (verde), Projetos (azul), Produções (roxo) e Contato (terracota). O fundo é o mesmo creme em todas as páginas (variável `--fundo`), e os textos ficam em caixas brancas (classe `caixa`) para dar contraste.
+Início (verde-azulado), Sobre nós (rosa), Membros (verde), Projetos (azul), Produções (roxo) e Contato (laranja). O fundo é o mesmo azul bem clarinho em todas as páginas (variável `--fundo`), e os textos ficam em caixas brancas (classe `caixa`) para dar contraste.
 Projetos e produções usam sozinhos a cor de Projetos e de Produções. Para mudar uma cor, edite as linhas `--f-...`, `--i-...` e `--s-...`
 no começo do `main.css` (f = botões e bordas, i = texto e links, s = fundo suave, b = faixa do topo, g = fundo da página). Se trocar, mantenha o contraste: texto branco sobre a faixa e links sobre fundo branco precisam de pelo menos 4,5:1 (use um verificador como o contrastchecker.com).
 Para dar cor a uma página nova, coloque `tema: sobre` (ou `membros`, `projetos`, `producoes`, `contato`) no começo do arquivo dela.
