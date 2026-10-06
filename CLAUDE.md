@@ -126,8 +126,8 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 - Botão "Fonte de leitura" do painel: usa Atkinson Hyperlegible Next se existir (também comentada em `main.css`), senão Verdana/Tahoma.
 - Histórico: já tentamos Lora+Carlito e Lora sozinha; a pessoa não gostou. Não voltar para serifa sem perguntar.
 
-### Cores — **cada página tem a sua cor**
-| Página | Cor | tokens (`--f`, `--i`, `--s`, `--b`, `--g`) |
+### Cores — **cada página tem a sua cor, mas o fundo é um só**
+| Página | Cor | tokens (`--f`, `--i`, `--s`, `--b`) |
 |---|---|---|
 | Início, Busca, 404 | verde-azulado | `inicio` |
 | Sobre nós | amarelo (dourado) | `sobre` |
@@ -137,11 +137,14 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 | Contato | terracota | `contato` |
 
 - Definidas no começo de `main.css` (seção 2). Para cada tema: `--f-x` botões/bordas (texto branco ≥ 5:1), `--i-x` texto e links
-  (≥ 8:1 no branco), `--s-x` fundo suave de etiquetas, `--b-x` faixa do topo (tom pastel mais forte), `--g-x` fundo da página.
+  (≥ 8:1 no branco), `--s-x` fundo suave de etiquetas, `--b-x` faixa do topo (tom pastel mais forte).
+- **Fundo único** (decisão nova, substitui "fundo pastel por página"): todas as páginas usam `--fundo` (creme `#fff8e5` do site antigo, com degradê
+  vertical bem leve até `--fundo-2`). Tema escuro: `#121f20`; alto contraste: branco/preto puro. As variáveis `--g-*` e `--t-fundo` foram removidas.
+  A cor de cada página continua na faixa do topo, botões, bordas, links e menu.
 - `body[data-tema="..."]` escolhe o tema; `_layouts/default.html` define `data-tema` a partir de `page.tema` (ou da coleção).
   Páginas novas ganham cor com `tema: projetos` (etc.) no front matter.
 - **Membros era rosa e a pessoa pediu verde pastel**; por isso Sobre nós, que era verde, virou amarelo (para não haver dois verdes).
-- A pessoa achou o tema claro **"muito claro"**: por isso o fundo da página é pastel (`--g`) e os **textos ficam em caixas brancas
+- A pessoa achou o tema claro **"muito claro"**: por isso o fundo da página é creme (`--fundo`) e os **textos ficam em caixas brancas
   (classe `.caixa`)**; cartões e ficha também são brancos. Cabeçalho e rodapé são brancos.
 - Faixa do topo (`.faixa-titulo`): tom pastel, texto escuro, **sem bolinhas** (a pessoa pediu para tirar), com linha colorida embaixo.
 - Tema escuro (opcional, `html[data-escuro]`) e alto contraste (`html[data-contraste="alto"]`) têm seus próprios valores.
