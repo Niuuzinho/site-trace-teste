@@ -1,0 +1,40 @@
+---
+layout: default
+title: Projetos (protótipo criativo)
+tema: projetos
+permalink: /projetos-criativo/
+sitemap: false
+---
+{%- comment -%} PROTÓTIPO de direção mais ousada para a página de Projetos (fora do menu). A página oficial /projetos/ não foi alterada. {%- endcomment -%}
+{%- assign projetos = site.projetos | sort: "ordem" -%}
+<section class="cr-hero" aria-labelledby="h-cr">
+  <svg class="cr-blob cr-blob-1" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><path d="M44 -52C58 -38 71 -24 76 -6C82 12 78 33 64 48C50 64 25 74 3 71C-19 68 -39 52 -53 34C-67 15 -75 -7 -68 -26C-62 -45 -41 -61 -19 -68C3 -75 29 -66 44 -52Z" transform="translate(100 100)"/></svg>
+  <svg class="cr-blob cr-blob-2" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><path d="M39 -46C52 -35 66 -24 70 -9C74 6 68 24 56 38C44 52 27 61 8 65C-11 68 -33 66 -47 54C-61 42 -67 20 -64 1C-61 -19 -49 -38 -34 -49C-20 -60 -2 -63 10 -61C23 -58 27 -56 39 -46Z" transform="translate(100 100)"/></svg>
+  <div class="container cr-hero-int">
+    <nav class="migalhas" aria-label="Você está em"><ol><li><a href="{{ '/' | relative_url }}">Início</a></li><li><span aria-current="page">Projetos</span></li></ol></nav>
+    <h1 id="h-cr"><span class="cr-contorno" aria-hidden="true">Projetos</span><span class="cr-solido">Projetos</span></h1>
+    <p class="cr-hero-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a erat nec sem feugiat tincidunt. Donec quis lorem eu risus lacinia tristique vitae quis libero.</p>
+  </div>
+</section>
+
+<div class="container cr-lista-area">
+  <ol class="cr-lista">
+    {%- for p in projetos %}
+    {%- assign resto = forloop.index0 | modulo: 2 -%}
+    <li class="cr-item{% if resto == 1 %} cr-inverso{% endif %}" style="--n: '{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}'">
+      <div class="cr-img">
+        <span class="cr-forma" aria-hidden="true"></span>
+        {% include img.html nome=p.imagem alt="" sizes="(min-width: 56em) 34rem, 100vw" %}
+      </div>
+      <div class="cr-texto">
+        <span class="cr-num" aria-hidden="true"></span>
+        <ul class="cr-meta"><li>{{ p.ano }}</li><li>{{ p.situacao }}</li></ul>
+        <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+        <p>{{ p.resumo }}</p>
+        <ul class="temas">{% for t in p.temas %}<li>{{ t }}</li>{% endfor %}</ul>
+        <p class="cr-ir"><a class="botao" href="{{ p.url | relative_url }}">Conhecer o projeto</a></p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
+</div>
