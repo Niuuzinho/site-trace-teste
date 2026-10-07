@@ -268,6 +268,24 @@
     });
   }
 
+  /* 5b. Mapa do Google: só é carregado depois do clique -------------------- */
+  function iniciarMapa(caixa) {
+    var botao = caixa.querySelector('button');
+    if (!botao) return;
+    botao.addEventListener('click', function () {
+      var quadro = doc.createElement('iframe');
+      quadro.src = 'https://www.google.com/maps?q=' + caixa.getAttribute('data-mapa') + '&hl=pt-BR&z=16&output=embed';
+      quadro.title = caixa.getAttribute('data-titulo') || 'Mapa';
+      quadro.setAttribute('loading', 'lazy');
+      quadro.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+      quadro.setAttribute('allowfullscreen', '');
+      caixa.textContent = '';
+      caixa.classList.add('carregado');
+      caixa.appendChild(quadro);
+      quadro.focus();
+    });
+  }
+
   /* 6. Página de busca ------------------------------------------------------- */
   function iniciarBuscaGeral() {
     var form = doc.querySelector('[data-busca-pagina]');
@@ -498,6 +516,7 @@
     todos('details.filtros-det').forEach(function (d) { if (window.matchMedia('(max-width: 55.99em)').matches) d.removeAttribute('open'); });
     todos('[data-galeria]').forEach(iniciarGaleria);
     todos('[data-video]').forEach(iniciarVideo);
+    todos('[data-mapa]').forEach(iniciarMapa);
     todos('form[data-demo]').forEach(iniciarFormularioDemo);
     iniciarBuscaGeral();
     iniciarJanelaEmail();

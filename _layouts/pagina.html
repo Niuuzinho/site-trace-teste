@@ -18,6 +18,23 @@ layout: default
   </div>
   {%- endif %}
 
+  {%- if page.pessoas %}
+  {%- assign todos_membros = site.data.membros | where_exp: "m", "m.categoria != 'consultoria'" -%}
+  {%- assign com_foto = "" | split: "" -%}
+  {%- for m in todos_membros -%}{%- unless m.foto contains "placeholders" -%}{%- assign com_foto = com_foto | push: m -%}{%- endunless -%}{%- endfor -%}
+  <section class="pessoas-faixa" aria-labelledby="h-pessoas">
+    <div class="pessoas-faixa-texto">
+      <h2 id="h-pessoas">Quem faz o TrAce</h2>
+      <a class="mod-btn mod-btn-claro" href="{{ '/membros/' | relative_url }}">Conhecer o grupo</a>
+    </div>
+    <ul class="mod-avatares">
+      {%- for m in com_foto limit: 9 %}
+      <li>{% include img.html nome=m.foto alt="" sizes="5rem" %}</li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
   {%- if page.blocos and page.blocos.size > 0 %}
   <div class="blocos-sobre">
     {%- for b in page.blocos %}
@@ -36,22 +53,6 @@ layout: default
   </section>
   {%- endif %}
 
-  {%- if page.pessoas %}
-  {%- assign todos_membros = site.data.membros | where_exp: "m", "m.categoria != 'consultoria'" -%}
-  {%- assign com_foto = "" | split: "" -%}
-  {%- for m in todos_membros -%}{%- unless m.foto contains "placeholders" -%}{%- assign com_foto = com_foto | push: m -%}{%- endunless -%}{%- endfor -%}
-  <section class="pessoas-faixa" aria-labelledby="h-pessoas">
-    <div class="pessoas-faixa-texto">
-      <h2 id="h-pessoas">Quem faz o TrAce</h2>
-      <a class="mod-btn mod-btn-claro" href="{{ '/membros/' | relative_url }}">Conhecer o grupo</a>
-    </div>
-    <ul class="mod-avatares">
-      {%- for m in com_foto limit: 9 %}
-      <li>{% include img.html nome=m.foto alt="" sizes="5rem" %}</li>
-      {%- endfor %}
-    </ul>
-  </section>
-  {%- endif %}
 
   {%- if site.data.apoio and site.data.apoio.size > 0 %}
   <section class="apoio-faixa" aria-labelledby="h-apoio-pg">
@@ -63,6 +64,8 @@ layout: default
     </ul>
   </section>
   {%- endif %}
+
+  {%- if page.mapa %}{% include mapa.html %}{% endif %}
 
   {%- assign ig = site.redes.instagram | default: '' -%}
   {%- if page.redes and ig != '' %}
