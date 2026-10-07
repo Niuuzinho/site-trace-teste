@@ -30,6 +30,12 @@ redes:
 contato:
   email: ""
   endereco: ""
+  # Opções da lista "Assunto" do formulário (edite à vontade; para tirar a lista, deixe vazio: assuntos: [])
+  assuntos:
+    - Dúvida
+    - Sugestão
+    - Parceria
+    - Outro assunto
 
 # Texto de apresentação do rodapé
 rodape:

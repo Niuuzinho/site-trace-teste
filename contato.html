@@ -27,7 +27,8 @@ permalink: /contato/
       </ul>
       {%- endif %}
     </div>
-    <form class="formulario contato-form"{% if acao != '' %} action="{{ acao }}" method="post"{% else %} data-demo{% endif %}>
+    <form class="formulario contato-form" aria-labelledby="h-form"{% if acao != '' %} action="{{ acao }}" method="post"{% else %} data-demo{% endif %}>
+      <h2 class="form-titulo" id="h-form">Envie uma mensagem</h2>
       <div class="form-linha">
         <div>
           <label for="nome">Nome</label>
@@ -38,6 +39,18 @@ permalink: /contato/
           <input class="campo-texto" id="email" name="email" type="email" autocomplete="email" required>
         </div>
       </div>
+      {%- assign assuntos = site.contato.assuntos -%}
+      {%- if assuntos and assuntos.size > 0 %}
+      <div>
+        <label for="assunto">Assunto</label>
+        <select class="campo-texto campo-select" id="assunto" name="assunto" required>
+          <option value="" selected disabled>Escolha um assunto</option>
+          {%- for a in assuntos %}
+          <option value="{{ a | escape }}">{{ a }}</option>
+          {%- endfor %}
+        </select>
+      </div>
+      {%- endif %}
       <div>
         <label for="mensagem">Mensagem</label>
         <textarea class="campo-area" id="mensagem" name="mensagem" rows="6" required></textarea>

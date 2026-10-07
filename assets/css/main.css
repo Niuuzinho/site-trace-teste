@@ -1631,3 +1631,9 @@ html[data-contraste="alto"] .contato-form .aviso-form { background: var(--papel)
 html[data-movimento="reduzido"] a.canal:hover { transform: none; }
 .contato-grade { width: 100%; }
 .contato-form { width: 100%; max-width: none; }
+
+/* Formulário de contato: título e lista de assuntos */
+.form-titulo { margin: 0; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+.form-titulo::after { content: ""; display: block; width: 4rem; height: 6px; margin-top: var(--e2); border-radius: 3px; background: var(--t-forte); }
+.campo-select { appearance: none; width: 100%; padding-right: 2.8rem; cursor: pointer; background-color: var(--cartao); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.2rem; }
+html[data-escuro] .campo-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23eee' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); }
