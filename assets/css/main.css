@@ -914,8 +914,8 @@ html[data-contraste="alto"] .encontre { background: #000; background-image: none
 .galeria-sec h2 { margin: 0 0 var(--e5); font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
 .galeria-sec h2::after { content: ""; display: block; width: 4rem; height: 6px; margin-top: var(--e2); border-radius: 3px; background: var(--t-forte); }
 .galeria-sec .galeria { grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); gap: var(--e3); }
-@media (min-width: 40em) { .galeria-sec .galeria { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: var(--e4); } }
-.galeria-sec .galeria img { aspect-ratio: 1 / 1; }
+@media (min-width: 40em) { .galeria-sec .galeria { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--e4); } }
+.galeria-sec .galeria img { aspect-ratio: 4 / 3; }
 .galeria-sec .galeria a { border: 0; border-radius: 1.4rem; box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.4); }
 
 /* --- Membros: seções com título grande, egressos em chips --- */
@@ -952,13 +952,15 @@ html[data-contraste="alto"] .contato-form { border: 2px solid var(--tinta); box-
 html[data-movimento="reduzido"] .cr-grade .cartao:hover { transform: none; }
 
 /* faixa "Quem faz o TrAce" (fotos dos membros) na página Quem somos */
-.pagina-corpo > .pessoas-faixa { margin-top: var(--e7); position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--e5); align-items: center; padding: var(--e5); color: #fff; border-radius: 1.4rem;
-  background-color: color-mix(in srgb, var(--t-forte) 42%, #04181a);
-  background-image: radial-gradient(circle at 0 100%, rgb(255 224 138 / 0.22) 0, rgb(255 224 138 / 0) 45%), radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px);
-  background-size: auto, 22px 22px; }
-.pessoas-faixa h2 { margin: 0 0 var(--e4); color: #fff; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); font-weight: 700; line-height: 1.1; }
-@media (min-width: 56em) { .pagina-corpo > .pessoas-faixa { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); padding: var(--e6); } .pessoas-faixa .mod-avatares { justify-content: flex-end; } }
-html[data-contraste="alto"] .pessoas-faixa { background: #000; background-image: none; border: 2px solid #fff; }
+.pagina-corpo > .pessoas-faixa { margin-top: var(--e7); display: grid; gap: var(--e4); align-items: center; padding: var(--e5); background: var(--cartao); border-radius: 1.4rem; box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.35); }
+.pessoas-faixa h2 { margin: 0 0 var(--e3); color: var(--tinta); font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); font-weight: 700; line-height: 1.1; }
+.pessoas-faixa h2::after { content: ""; display: block; width: 4rem; height: 6px; margin-top: var(--e2); border-radius: 3px; background: var(--t-forte); }
+.pessoas-faixa .mod-avatares img { border-color: var(--cartao); box-shadow: 0 0 0 2px var(--t-forte); }
+.pessoas-faixa .mod-btn-claro { background: var(--t-forte); color: #fff; }
+.pessoas-faixa .mod-btn-claro:hover { background: var(--t-tinta); color: var(--papel); }
+@media (min-width: 56em) { .pagina-corpo > .pessoas-faixa { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); padding: var(--e5) var(--e6); } .pessoas-faixa .mod-avatares { justify-content: flex-end; } }
+html[data-contraste="alto"] .pessoas-faixa { border: 2px solid var(--tinta); box-shadow: none; }
+html[data-contraste="alto"] .pessoas-faixa .mod-btn-claro { background: var(--tinta); color: var(--papel); }
 /* logos de apoio (só aparece se _data/apoio.yml tiver itens) */
 .pagina-corpo > .apoio-faixa { margin-top: var(--e7); text-align: center; }
 .apoio-faixa h2 { margin: 0 0 var(--e4); font-size: 1.3rem; font-weight: 700; }
