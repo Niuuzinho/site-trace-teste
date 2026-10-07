@@ -9,28 +9,29 @@ permalink: /membros/
 {%- assign consultoria = site.data.membros | where: "categoria", "consultoria" -%}
 {% include topo.html titulo="Membros, consultores e orientação" %}
 <div class="container pagina-corpo">
-  <div class="membros-intro caixa">
-    <p>Nessa página você encontrará os integrantes atuais do grupo TrAce. Abaixo, estão fotos em preto e branco, até a altura do peito, dos membros e consultores e informações sobre suas áreas de interesse, currículo Lattes, LinkedIn e contato.</p>
-    <p>Em seguida, você também pode encontrar uma lista com os nomes dos egressos, pessoas que já passaram pelo grupo, mas não estão mais conosco.</p>
-  </div>
-
-  <section class="bloco" aria-labelledby="h-orientacao">
-    <h2 id="h-orientacao">Orientadora</h2>
-    {%- for pessoa in orientacao %}
-    <div class="destaque-pessoa">
-      <div class="destaque-foto">
-        {% include img.html nome=pessoa.foto alt=pessoa.nome sizes="13rem" %}
-      </div>
-      <div class="destaque-texto">
-        <h3>{{ pessoa.nome }}</h3>
-        <p class="funcao"><span class="etiqueta-funcao">{{ pessoa.funcao }}</span></p>
-        <p class="areas"><span class="areas-rotulo">Áreas de atuação</span>{{ pessoa.areas }}</p>
-        {%- if pessoa.bio %}<p class="bio">{{ pessoa.bio }}</p>{% endif %}
-        {% include contatos-pessoa.html pessoa=pessoa rotulos=true %}
-      </div>
+  <div class="membros-topo">
+    <div class="membros-intro caixa">
+      <p>Nessa página você encontrará os integrantes atuais do grupo TrAce. Abaixo, estão fotos em preto e branco, até a altura do peito, dos membros e consultores e informações sobre suas áreas de interesse, currículo Lattes, LinkedIn e contato.</p>
+      <p>Em seguida, você também pode encontrar uma lista com os nomes dos egressos, pessoas que já passaram pelo grupo, mas não estão mais conosco.</p>
     </div>
-    {%- endfor %}
-  </section>
+    <section class="bloco" aria-labelledby="h-orientacao">
+      <h2 id="h-orientacao">Orientadora</h2>
+      {%- for pessoa in orientacao %}
+      <div class="destaque-pessoa">
+        <div class="destaque-foto">
+          {% include img.html nome=pessoa.foto alt=pessoa.nome sizes="13rem" %}
+        </div>
+        <div class="destaque-texto">
+          <h3>{{ pessoa.nome }}</h3>
+          <p class="funcao"><span class="etiqueta-funcao">{{ pessoa.funcao }}</span></p>
+          <p class="areas"><span class="areas-rotulo">Áreas de atuação</span>{{ pessoa.areas }}</p>
+          {%- if pessoa.bio %}<p class="bio">{{ pessoa.bio }}</p>{% endif %}
+          {% include contatos-pessoa.html pessoa=pessoa rotulos=true %}
+        </div>
+      </div>
+      {%- endfor %}
+    </section>
+  </div>
 
   <section class="bloco" aria-labelledby="h-membros">
     <h2 id="h-membros">Membros</h2>

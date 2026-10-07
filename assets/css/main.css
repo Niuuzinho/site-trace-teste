@@ -1335,3 +1335,34 @@ html[data-movimento="reduzido"] .cartao:hover, html[data-movimento="reduzido"] .
 html[data-contraste="alto"] .destaque-pessoa { background: #000; background-image: none; border: 2px solid #fff; }
 .egressos li { background: var(--t-banda); border: 0; color: var(--t-tinta); }
 html[data-contraste="alto"] .egressos li { background: var(--papel); border: 2px solid var(--tinta); color: var(--tinta); }
+
+/* ===== Membros v2: cartões horizontais, anel por categoria, introdução ao lado da orientadora ===== */
+.pessoas { grid-template-columns: minmax(0, 1fr); gap: var(--e4); }
+@media (min-width: 44em) { .pessoas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 72em) { .pessoas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pessoa { --anel: var(--f-membros); display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: var(--e4); padding: var(--e4); text-align: left; }
+.pessoa[data-cat="consultoria"] { --anel: var(--f-projetos); }
+.pessoa .cartao-img { padding: 0; background: none; display: block; }
+.pessoa .cartao-img::before, .pessoa .cartao-img::after { display: none; }
+.pessoa .cartao-img img { width: 6.5rem; height: 6.5rem; border: 4px solid var(--cartao); box-shadow: 0 0 0 4px var(--anel); }
+.pessoa .cartao-corpo { align-items: flex-start; padding: 0; }
+.pessoa .etiqueta-funcao { background: var(--anel); }
+.pessoa-links { justify-content: flex-start; }
+.pessoa .icone-link { border-color: var(--anel); color: var(--anel); background: transparent; }
+.pessoa .icone-link:hover { background: var(--anel); border-color: var(--anel); color: #fff; }
+.destaque-pessoa { --anel: #ffe08a; }
+.membros-topo { display: grid; gap: var(--e5); margin-bottom: var(--e7); align-items: start; }
+.membros-topo .membros-intro { margin-bottom: 0; }
+.membros-topo > .bloco h2 { margin-bottom: var(--e4); }
+@media (min-width: 72em) {
+  .membros-topo { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr); }
+  .membros-topo .destaque-pessoa { grid-template-columns: 11rem minmax(0, 1fr); text-align: left; }
+  .membros-topo .destaque-foto { padding: var(--e5) var(--e3); }
+  .membros-topo .destaque-foto img { width: 9rem; height: 9rem; }
+  .membros-topo .destaque-texto { padding: var(--e5); }
+}
+html[data-contraste="alto"] .pessoa { --anel: var(--tinta); }
+.pessoa .cartao-corpo { align-self: center; justify-content: center; flex: none; }
+.pessoa .pessoa-links { margin-top: 0; }
+.pessoa .cartao-img { align-self: center; }
+.membros-topo { margin-bottom: var(--e6); }
