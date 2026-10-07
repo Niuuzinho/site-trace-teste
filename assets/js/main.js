@@ -403,7 +403,11 @@
       if (campoTitulo) {
         var a = campoAssunto && campoAssunto.value ? campoAssunto.value : 'Contato pelo site';
         var n = campoNome && campoNome.value ? campoNome.value.trim() : 'Nova mensagem';
-        campoTitulo.value = '[' + a + '] - ' + n;
+        var d = new Date();
+        var dois = function (x) { return (x < 10 ? '0' : '') + x; };
+        var quando = dois(d.getDate()) + '/' + dois(d.getMonth() + 1) + ' ' + dois(d.getHours()) + ':' + dois(d.getMinutes());
+        /* a data e a hora deixam cada título único: assim cada mensagem vira um e-mail novo, sem empilhar */
+        campoTitulo.value = '[' + a + '] - ' + n + ' (' + quando + ')';
       }
       var botao = form.querySelector('button[type="submit"]');
       if (botao) botao.disabled = true;
