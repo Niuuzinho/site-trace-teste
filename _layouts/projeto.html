@@ -33,8 +33,7 @@ layout: default
         </div>
       </section>
       {%- if page.downloads and page.downloads.size > 0 %}
-      <section class="proj-downloads" aria-labelledby="h-downloads">
-        <h2 id="h-downloads">Downloads</h2>
+      <section class="proj-downloads" aria-label="Downloads">
         <p class="down-aviso">{% for d in page.downloads %}{% if d.sigla %}<strong>{{ d.sigla }}</strong> = {{ d.rotulo }}{% else %}{{ d.rotulo }}{% endif %}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
         <ul class="downloads">
           {%- for d in page.downloads %}
