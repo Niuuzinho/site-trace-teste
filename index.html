@@ -3,11 +3,7 @@ layout: default
 title: Início
 permalink: /
 ---
-<figure class="banner-topo">
-  {% include img.html nome="banners/conheca-projetos" alt="Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral." sizes="(min-width: 98rem) 1560px, 100vw" eager=true %}
-</figure>
 <section class="faixa-titulo abertura">
-  <div class="abertura-borda" aria-hidden="true"></div>
   <div class="container">
     <div class="abertura-titulo">
     <p class="selo">Portal do grupo TrAce</p>
@@ -22,6 +18,9 @@ permalink: /
     </div>
   </div>
 </section>
+<figure class="banner-topo">
+  {% include img.html nome="banners/conheca-projetos" alt="Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral." sizes="(min-width: 98rem) 1560px, 100vw" eager=true %}
+</figure>
 
 <div class="miolo">
 {%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}
