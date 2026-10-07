@@ -19,17 +19,21 @@ layout: default
   {%- endif %}
 
   {%- if page.pessoas %}
-  {%- assign todos_membros = site.data.membros | where_exp: "m", "m.categoria != 'consultoria'" -%}
+  {%- comment -%} Orientadora primeiro (fixa), depois os membros com foto; o JavaScript sorteia quais membros aparecem a cada visita. Sem JavaScript, aparecem os primeiros. {%- endcomment -%}
+  {%- assign orient = site.data.membros | where: "categoria", "orientacao" -%}
+  {%- assign equipe_p = site.data.membros | where: "categoria", "membros" -%}
   {%- assign com_foto = "" | split: "" -%}
-  {%- for m in todos_membros -%}{%- unless m.foto contains "placeholders" -%}{%- assign com_foto = com_foto | push: m -%}{%- endunless -%}{%- endfor -%}
+  {%- for m in orient -%}{%- unless m.foto contains "placeholders" -%}{%- assign com_foto = com_foto | push: m -%}{%- endunless -%}{%- endfor -%}
+  {%- assign n_fixos = com_foto.size -%}
+  {%- for m in equipe_p -%}{%- unless m.foto contains "placeholders" -%}{%- assign com_foto = com_foto | push: m -%}{%- endunless -%}{%- endfor -%}
   <section class="pessoas-faixa" aria-labelledby="h-pessoas">
     <div class="pessoas-faixa-texto">
       <h2 id="h-pessoas">Quem faz o TrAce</h2>
       <a class="mod-btn mod-btn-claro" href="{{ '/membros/' | relative_url }}">Conhecer o grupo</a>
     </div>
-    <ul class="mod-avatares">
-      {%- for m in com_foto limit: 9 %}
-      <li>{% include img.html nome=m.foto alt="" sizes="5rem" %}</li>
+    <ul class="mod-avatares" data-sorteio data-fixos="{{ n_fixos }}" data-mostrar="9">
+      {%- for m in com_foto %}
+      <li{% if forloop.index > 9 %} hidden{% endif %}>{% include img.html nome=m.foto alt="" sizes="5rem" %}</li>
       {%- endfor %}
     </ul>
   </section>
@@ -64,8 +68,6 @@ layout: default
     </ul>
   </section>
   {%- endif %}
-
-  {%- if page.mapa %}{% include mapa.html %}{% endif %}
 
   {%- assign ig = site.redes.instagram | default: '' -%}
   {%- if page.redes and ig != '' %}

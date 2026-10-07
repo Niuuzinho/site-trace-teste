@@ -268,21 +268,20 @@
     });
   }
 
-  /* 5b. Mapa do Google: só é carregado depois do clique -------------------- */
-  function iniciarMapa(caixa) {
-    var botao = caixa.querySelector('button');
-    if (!botao) return;
-    botao.addEventListener('click', function () {
-      var quadro = doc.createElement('iframe');
-      quadro.src = 'https://www.google.com/maps?q=' + caixa.getAttribute('data-mapa') + '&hl=pt-BR&z=16&output=embed';
-      quadro.title = caixa.getAttribute('data-titulo') || 'Mapa';
-      quadro.setAttribute('loading', 'lazy');
-      quadro.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
-      quadro.setAttribute('allowfullscreen', '');
-      caixa.textContent = '';
-      caixa.classList.add('carregado');
-      caixa.appendChild(quadro);
-      quadro.focus();
+  /* 5c. Fotos sorteadas na faixa "Quem faz o TrAce": a orientadora fica sempre primeiro, o resto muda a cada visita */
+  function sortearPessoas(lista) {
+    var itens = todos('li', lista);
+    var fixos = parseInt(lista.getAttribute('data-fixos'), 10) || 0;
+    var mostrar = parseInt(lista.getAttribute('data-mostrar'), 10) || 9;
+    var resto = itens.slice(fixos);
+    for (var i = resto.length - 1; i > 0; i--) {          // embaralha (Fisher-Yates)
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = resto[i]; resto[i] = resto[j]; resto[j] = t;
+    }
+    var ordem = itens.slice(0, fixos).concat(resto);
+    ordem.forEach(function (li, n) {
+      lista.appendChild(li);
+      if (n < mostrar) li.removeAttribute('hidden'); else li.setAttribute('hidden', '');
     });
   }
 
@@ -516,7 +515,7 @@
     todos('details.filtros-det').forEach(function (d) { if (window.matchMedia('(max-width: 55.99em)').matches) d.removeAttribute('open'); });
     todos('[data-galeria]').forEach(iniciarGaleria);
     todos('[data-video]').forEach(iniciarVideo);
-    todos('[data-mapa]').forEach(iniciarMapa);
+    todos('[data-sorteio]').forEach(sortearPessoas);
     todos('form[data-demo]').forEach(iniciarFormularioDemo);
     iniciarBuscaGeral();
     iniciarJanelaEmail();
