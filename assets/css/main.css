@@ -741,7 +741,7 @@ html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outl
 .mod-acoes { display: flex; flex-wrap: wrap; gap: var(--e3); margin: var(--e5) 0 0; }
 .mod-hero-card { position: relative; }
 .mod-hero-card .secao-topo.car-titulo { justify-content: flex-start; text-align: left; margin: 0 0 var(--e3); max-width: none; }
-.mod-hero-card .secao-topo.car-titulo h2 { margin: 0; padding: 0; border: 0; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--t-tinta); text-align: left; }
+.mod-hero-card .secao-topo.car-titulo h2 { display: inline-block; margin: 0; padding: 0.3rem 0.9rem; border: 0; font-size: 0.9rem; font-weight: 700; line-height: 1.3; letter-spacing: 0; text-transform: none; color: #fff; background: var(--t-forte); border-radius: 0.25rem 1rem 0.25rem 1rem; text-align: left; }
 .mod-hero-card .secao-topo.car-titulo h2::after { display: none; }
 .mod-hero-card .carrossel { max-width: none; position: relative; }
 .mod-hero-card .car-trilho { border: 0; border-radius: 1.25rem; box-shadow: 0 1rem 2.4rem -1rem rgb(15 50 80 / 0.5); }
@@ -818,8 +818,11 @@ html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outl
 /* Faixa final com as pessoas */
 .mod-fim { padding-top: var(--e7); }
 .mod-cta { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--e5); align-items: center; padding: var(--e5); color: #fff; border-radius: var(--mod-raio);
-  background-color: #0f5c8e;
-  background-image: radial-gradient(circle at 8% 110%, rgb(255 224 138 / 0.35) 0, rgb(255 224 138 / 0) 40%), linear-gradient(120deg, #4b3380 0%, #0f5c8e 55%, #064e4c 100%); }
+  background-color: #073f3e;
+  background-image:
+    radial-gradient(circle at 0 100%, rgb(255 224 138 / 0.22) 0, rgb(255 224 138 / 0) 45%),
+    radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px);
+  background-size: auto, 22px 22px; }
 .mod-cta h2 { color: #fff; margin: 0 0 var(--e4); font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
 .mod-avatares { list-style: none; margin: 0; padding: 0 0 0 0.9rem; display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
 .mod-avatares li { margin: 0 0 0 -0.9rem; }
@@ -835,6 +838,7 @@ html[data-contraste="alto"] .mod-hero::before, html[data-contraste="alto"] .mod-
 html[data-contraste="alto"] .mod-tile { border: 2px solid var(--tinta); }
 html[data-contraste="alto"] .mod .cartao { border: 2px solid var(--tinta); box-shadow: none; }
 html[data-contraste="alto"] .mod-secao-topo h2::after { background: var(--tinta); }
+html[data-contraste="alto"] .mod-hero-card .secao-topo.car-titulo h2 { background: var(--tinta); color: var(--papel); border: 2px solid var(--tinta); }
 html[data-contraste="alto"] .mod-hero-card .car-trilho { border: 2px solid #fff; }
 @media (min-width: 40em) {
   html[data-contraste="alto"] .mod-hero-card .car-ponto::before { border-color: #fff; }
