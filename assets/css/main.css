@@ -652,12 +652,17 @@ html[data-contraste="alto"] .topo-botao:hover { background: var(--papel); color:
 .busca-home label { display: block; margin-bottom: var(--e2); font-weight: 700; font-size: 1.1rem; }
 .busca-home-linha { display: flex; gap: var(--e2); }
 .busca-home input { flex: 1; min-width: 0; font: 1.05rem/1.3 var(--fonte-corpo); min-height: 3.25rem; padding: 0 1.25rem; color: var(--tinta); background: var(--cartao); border: 2px solid var(--borda); border-radius: 999px; }
+.busca-home input::placeholder { color: var(--tinta-2); opacity: 0.85; }
 .busca-home .botao { flex: none; min-height: 3.25rem; padding-inline: 1.6rem; }
 @media (max-width: 29.99em) {
   .busca-home .botao { padding-inline: 1.1rem; }
   .busca-home .botao .icone { margin-right: 0; width: 1.5rem; height: 1.5rem; }
   .busca-home-texto { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
 }
+
+/* A busca da inicial fica dentro da faixa escura de abertura, embaixo do título */
+.abertura .busca-home { margin: var(--e5) 0 0; max-width: 32rem; }
+.abertura .busca-home label { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
 
 /* Faixa "Apoio" do rodapé (só aparece se _data/apoio.yml tiver itens) */
 .rodape-apoio { max-width: var(--pagina); margin-inline: auto; padding: 0 var(--e5) var(--e6); }
