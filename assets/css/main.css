@@ -1592,3 +1592,7 @@ html[data-contraste="alto"] .selo-pp .selo-i, html[data-contraste="alto"] .selo-
 html[data-contraste="alto"] .pop-versao { border: 3px solid var(--tinta); }
 html[data-contraste="alto"] .sigla-pp { background: #000; color: #fff; }
 html[data-contraste="alto"] .sigla-lla { background: #fff; color: #000; border: 2px solid #000; }
+
+/* Cartão de projeto: azul-índigo (azul antigo, acinzentado, não agradou) */
+.cartao-proj { --t-forte: #4a56c4; --t-banda: #dcdffb; --t-tinta: #262c78; --t-suave: #eff0fd; }
+html[data-escuro] .cartao-proj { --t-tinta: #cdd2ff; --t-banda: #2f3566; --t-suave: #262a4a; }
