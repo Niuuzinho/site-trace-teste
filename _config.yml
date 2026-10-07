@@ -28,7 +28,7 @@ redes:
 
 # Canais da página Contato. Só aparecem os que tiverem texto preenchido.
 contato:
-  email: ""
+  email: "andrealexandrinoribeiro@gmail.com"
   endereco: ""
   # Opções da lista "Assunto" do formulário (edite à vontade; para tirar a lista, deixe vazio: assuntos: [])
   assuntos:
