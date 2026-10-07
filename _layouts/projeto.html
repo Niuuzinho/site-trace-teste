@@ -6,9 +6,11 @@ layout: default
 {%- assign versao_lla = site.projetos | where: "par", page.title | first -%}
 {%- if page.par %}{% assign url_pp = versao_pp.url %}{% assign url_lla = page.url %}{% else %}{% assign url_pp = page.url %}{% assign url_lla = versao_lla.url %}{% endif -%}
 {%- capture chips -%}<li class="chip-forte">{{ page.ano }}</li><li>{{ page.situacao }}</li>{%- endcapture -%}
-{%- capture troca -%}{%- if versao_pp or versao_lla %}<nav class="versao-troca" aria-label="Versão do texto desta página"><a href="{{ url_pp | relative_url }}"{% unless page.par %} aria-current="page"{% endunless %}>Português padrão</a><a href="{{ url_lla | relative_url }}"{% if page.par %} aria-current="page"{% endif %}>Linguagem literária acessível</a></nav>{%- endif -%}{%- endcapture -%}
-{% include topo.html titulo=page.title subtitulo=page.subtitulo pai="Projetos" pai_url="/projetos/" chips=chips extra=troca %}
+{% include topo.html titulo=page.title subtitulo=page.subtitulo pai="Projetos" pai_url="/projetos/" chips=chips %}
 <div class="container pagina-corpo">
+  {%- if versao_pp or versao_lla %}
+  <nav class="versao-troca" aria-label="Versão do texto desta página"><a href="{{ url_pp | relative_url }}"{% unless page.par %} aria-current="page"{% endunless %}>Português padrão</a><a href="{{ url_lla | relative_url }}"{% if page.par %} aria-current="page"{% endif %}>Linguagem literária acessível</a></nav>
+  {%- endif %}
   <div class="com-ficha prod-pagina proj-pagina">
     <figure class="projeto-capa">
       {% include img.html nome=page.capa alt=page.capa_alt sizes="(min-width: 74rem) 70rem, 100vw" eager=true %}
@@ -26,8 +28,8 @@ layout: default
           {%- endfor %}
         </dl>
         {%- if page.pdf and page.pdf != '' %}
-        {%- if page.par %}{% assign rotulo_pdf = "Baixar versão LLA" %}{% assign nome_pdf = "Linguagem literária acessível" %}{% elsif versao_lla %}{% assign rotulo_pdf = "Baixar versão PP" %}{% assign nome_pdf = "Português padrão" %}{% else %}{% assign rotulo_pdf = "Baixar PDF" %}{% assign nome_pdf = "" %}{% endif %}
-        <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>{{ rotulo_pdf }}{% if nome_pdf != "" %}<span class="so-leitor"> ({{ nome_pdf }})</span>{% endif %}<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
+        {%- if page.par %}{% assign nome_pdf = "Linguagem literária acessível" %}{% elsif versao_lla %}{% assign nome_pdf = "Português padrão" %}{% else %}{% assign nome_pdf = "" %}{% endif %}
+        <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF{% if nome_pdf != "" %}<span class="so-leitor"> ({{ nome_pdf }})</span>{% endif %}<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
         {%- endif %}
       </aside>
     </div>

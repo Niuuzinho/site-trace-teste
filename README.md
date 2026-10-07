@@ -102,7 +102,7 @@ Para mostrar logos de instituições que apoiam o grupo, edite `_data/apoio.yml`
 
 
 ### Download dos livros (duas versões)
-Cada versão do livro tem a sua própria página. No arquivo de cada uma, use `pdf: /assets/docs/nome-do-arquivo.pdf` (o PDF em português padrão no arquivo normal, e o PDF em linguagem literária acessível no arquivo da versão LLA). O botão aparece sozinho na ficha: "Baixar versão PP", "Baixar versão LLA" ou "Baixar PDF" (para projetos sem versões).
+Cada versão do livro tem a sua própria página. No arquivo de cada uma, use `pdf: /assets/docs/nome-do-arquivo.pdf` (o PDF em português padrão no arquivo normal, e o PDF em linguagem literária acessível no arquivo da versão LLA). O botão "Baixar PDF" aparece sozinho na ficha de cada versão.
 
 ### Versão "Linguagem literária acessível" de um projeto
 Para um projeto ter as duas versões (Português padrão e Linguagem literária acessível), copie o arquivo do projeto em `_projetos/`, dê outro nome (por exemplo `nome-lla.md`) e, no começo do arquivo copiado: troque o `title` para "Nome do projeto (versão LLA)", acrescente `par: Nome do projeto` (exatamente o título da versão em português padrão) e `permalink: /projetos/nome-do-projeto/lla/`. Troque a `ordem` da cópia por um número logo depois do original (por exemplo 1.5, se o original é 1) e apague a linha `destaque` da cópia. Na lista de Projetos as duas versões aparecem como dois cartões, com um selinho PP ou LLA. Depois troque os textos pelos da versão LLA. Os dois botões "Português padrão | Linguagem literária acessível" aparecem sozinhos nas duas páginas.
