@@ -39,6 +39,8 @@ O passo a passo completo, para o repositório `site-trace-teste`, está em **TUT
 
 **Menu e submenus:** edite `_data/navegacao.yml`. O submenu "Projetos" lista os projetos sozinho; o submenu "TrAce" (Sobre nós e Membros) é uma lista que você pode alterar.
 
+**Atalho (recomendado):** a pasta `_modelos/` tem dois arquivos prontos, `projeto-modelo.md` e `producao-modelo.md`, com cada campo explicado em português. Copie o texto de um deles, crie um arquivo novo em `_projetos/` ou `_producoes/` (no GitHub: **Add file → Create new file**) e troque as informações. A pasta `_modelos/` não vai para o site.
+
 **Adicionar um projeto:** copie um arquivo de `_projetos/`, renomeie (use letras minúsculas e hifens) e edite os campos entre os `---`. O texto da seção "Sobre o projeto" fica abaixo do segundo `---`. `ordem` define a posição na lista; `destaque: true` faz o projeto aparecer na página inicial.
 
 **Adicionar uma produção:** copie um arquivo de `_producoes/`. O campo `projeto` deve ter exatamente o título de um projeto para a produção aparecer na página dele e ganhar o link. No computador o botão "Baixar PDF" abre o PDF em outra guia; no celular ele baixa direto. Para a produção ter botão "Baixar PDF", coloque `pdf: /assets/docs/nome-do-arquivo.pdf` no começo do arquivo (sem esse campo, o botão não aparece).
