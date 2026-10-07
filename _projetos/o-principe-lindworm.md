@@ -1,6 +1,6 @@
 ---
 layout: projeto
-title: O Príncipe Lindworm
+title: O Príncipe Lindwormmmmm
 subtitulo: Era uma vez numa terra muito distante
 resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 ano: 2024
@@ -31,7 +31,7 @@ galeria:
 - imagem: projetos/lindworm-capa
   alt: Capa ilustrada do projeto O Príncipe Lindworm usada na listagem de projetos.
   legenda: Legenda placeholder 3
-video: tgbNymZ7vqY
+video: 
 pdf: /assets/docs/placeholder-projeto.pdf
 equipe:
 - nome: Integrante placeholder 1
