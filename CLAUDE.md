@@ -178,8 +178,8 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
   depois do texto principal. A ordem no HTML é: bloco A (imagem + texto), ficha, bloco B (galeria, vídeo, equipe, relacionadas),
   para a ordem de leitura/tabulação ser a mesma no celular. (Já tentamos ficha na margem esquerda e ficha em faixa horizontal no
   topo; a pessoa achou "estranho", então ficou o cartão à direita.)
-- **Início**: o **banner (imagem) fica no topo**, antes do texto, e fica **por trás da faixa de abertura**: a faixa (`.abertura`) sobe sobre a parte de baixo do banner (`margin-top` negativo) com um degradê transparente → escuro, e as formas geométricas aparecem sobre a foto. (Testadas antes e descartadas: onda e corte diagonal.) Experimento pedido pela pessoa; se não gostar, voltar ao commit anterior ao "Rodapé escuro".
-  A faixa de abertura tem **sempre o visual escuro, mesmo no tema claro** (decisão da pessoa; no alto contraste vira faixa branca/preta normal, sem sobreposição).
+- **Início**: o **banner (imagem) fica no topo**, antes do texto, e tem a **faixa de abertura por cima da parte de baixo dele**: a faixa escura (`.abertura`, cor sólida, com as formas geométricas) sobe sobre o banner (`margin-top` negativo) e tem a **borda de cima inclinada** (`clip-path`, mais alta à direita). Pedido da pessoa ("o cabeçalho ir mais pra cima, por cima do banner"). Testados e descartados: onda, corte diagonal em SVG amarelo e degradê transparente (foto atrás do texto).
+  A faixa de abertura tem **sempre o visual escuro, mesmo no tema claro** (decisão da pessoa; no alto contraste vira faixa branca/preta normal, sem sobreposição nem corte).
   "Explorar projetos" e "Ver produções" usam o **mesmo** estilo `.botao`. As seções "Projetos em destaque" e "Produções recentes" ficam **no mesmo fundo** (a pessoa não gostou da divisão em duas cores), dentro de `.miolo` (sem forma geométrica no fundo: a pessoa não gostou);
   título grande com barra colorida e botão "ver tudo" (`.botao-peq`).
 - **Instagram** (`redes.instagram` em `_config.yml`): `https://www.instagram.com/tracegrupo/`, no rodapé e em um botão em "Sobre nós"

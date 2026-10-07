@@ -649,18 +649,17 @@ html[data-contraste="alto"] .topo-botao:hover { background: var(--papel); color:
 .banner-topo { position: relative; background: #ffe486; line-height: 0; }
 .banner-topo img { width: 100%; max-width: 1560px; margin: 0 auto; }
 @media (max-width: 39.99em) { .banner-topo img { aspect-ratio: 5 / 3; object-fit: cover; object-position: 60% 50%; } }
-/* A faixa de abertura sobe sobre a parte de baixo do banner: a foto continua aparecendo por trás, num degradê que escurece até chegar no texto */
+/* A faixa de abertura (cor sólida, como antes) sobe por cima da parte de baixo do banner; a borda de cima é inclinada (mais alta à direita) */
 .abertura {
   position: relative; z-index: 2;
-  margin-top: -6rem;
+  margin-top: -7rem;
   padding: calc(6rem + var(--e5)) 0 var(--e7);
-  background-color: transparent;
-  background-image: linear-gradient(180deg, rgb(16 32 33 / 0) 0, rgb(16 32 33 / 0.88) 4.5rem, #102021 7.5rem);
+  clip-path: polygon(0 6rem, 100% 0, 100% 100%, 0 100%);
 }
 @media (max-width: 39.99em) {
-  .abertura { margin-top: -3.5rem; padding-top: calc(3.5rem + var(--e5)); background-image: linear-gradient(180deg, rgb(16 32 33 / 0) 0, rgb(16 32 33 / 0.9) 2.5rem, #102021 4.5rem); }
+  .abertura { margin-top: -3.5rem; padding-top: calc(3rem + var(--e5)); clip-path: polygon(0 3rem, 100% 0, 100% 100%, 0 100%); }
 }
-html[data-contraste="alto"] .abertura { margin-top: 0; padding-top: var(--e6); background-image: none; }
+html[data-contraste="alto"] .abertura { margin-top: 0; padding-top: var(--e6); clip-path: none; }
 .abertura h1 { max-width: 14ch; font-size: clamp(2.2rem, 1.2rem + 4.2vw, 4.2rem); font-weight: 700; margin-bottom: 0; }
 .abertura .selo { font-weight: 700; font-size: 1.05rem; color: var(--t-tinta); margin: 0 0 var(--e3); }
 .abertura .lead { margin-bottom: 0; }
@@ -677,6 +676,8 @@ html:not([data-escuro]):not([data-contraste="alto"]) .abertura {
   --tinta: #eef4f3; --tinta-2: #c4d3d1; --linha: #33494b; --borda: #8fa7a5;
   --f-inicio: #1f7a78; --i-inicio: #a1f7f5; --s-inicio: #23393a; --b-inicio: #324f4f;
   --t-forte: #1f7a78; --t-tinta: #a1f7f5; --t-suave: #23393a; --t-banda: #324f4f;
+  background-color: #16292a;
+  background-image: linear-gradient(115deg, #142425 0%, #1d3a3b 100%);
 }
 
 /* Seções da página inicial: as duas no mesmo fundo, separadas só por espaço; uma única forma geométrica discreta atrás delas */
