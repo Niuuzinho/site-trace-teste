@@ -1,27 +1,38 @@
 ---
-layout: pagina
+layout: default
 tema: contato
 title: Contato
 permalink: /contato/
 ---
 {%- assign acao = site.formulario_url | default: '' -%}
-<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. A página já foi organizada para leitura confortável, navegação clara e uso simples em telas pequenas.</p>
-<form class="formulario"{% if acao != '' %} action="{{ acao }}" method="post"{% else %} data-demo{% endif %}>
-  <div>
-    <label for="nome">Nome</label>
-    <input class="campo-texto" id="nome" name="nome" type="text" autocomplete="name" required>
+{% include topo.html titulo=page.title %}
+<div class="container pagina-corpo">
+  <div class="contato-grade">
+    <div class="contato-info">
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. A página já foi organizada para leitura confortável, navegação clara e uso simples em telas pequenas.</p>
+      {%- assign ig = site.redes.instagram | default: '' -%}
+      {%- if ig != '' %}
+      <p class="contato-redes"><a class="mod-btn mod-btn-claro" href="{{ ig }}" target="_blank" rel="noopener noreferrer"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"></use></svg>Instagram<span class="so-leitor"> (abre em outra guia)</span></a></p>
+      {%- endif %}
+    </div>
+    <form class="formulario contato-form"{% if acao != '' %} action="{{ acao }}" method="post"{% else %} data-demo{% endif %}>
+      <div>
+        <label for="nome">Nome</label>
+        <input class="campo-texto" id="nome" name="nome" type="text" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="email">E-mail</label>
+        <input class="campo-texto" id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div>
+        <label for="mensagem">Mensagem</label>
+        <textarea class="campo-area" id="mensagem" name="mensagem" rows="6" required></textarea>
+        <p class="ajuda">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Integer vel mauris nec odio posuere fermentum.</p>
+      </div>
+      <div>
+        <button class="botao" type="submit">Enviar</button>
+      </div>
+      <p class="aviso-form" role="status" aria-live="polite" data-aviso></p>
+    </form>
   </div>
-  <div>
-    <label for="email">E-mail</label>
-    <input class="campo-texto" id="email" name="email" type="email" autocomplete="email" required>
-  </div>
-  <div>
-    <label for="mensagem">Mensagem</label>
-    <textarea class="campo-area" id="mensagem" name="mensagem" rows="6" required></textarea>
-    <p class="ajuda">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Integer vel mauris nec odio posuere fermentum.</p>
-  </div>
-  <div>
-    <button class="botao" type="submit">Enviar</button>
-  </div>
-  <p class="aviso-form" role="status" aria-live="polite" data-aviso></p>
-</form>
+</div>

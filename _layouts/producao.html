@@ -2,7 +2,8 @@
 layout: default
 ---
 {%- assign proj = site.projetos | where: "title", page.projeto | first -%}
-{% include topo.html titulo=page.title pai="Produções" pai_url="/producoes/" %}
+{%- capture chips -%}<li class="chip-forte">{% include icone-tipo.html tipo=page.tipo %}{{ page.tipo }}</li><li>{{ page.ano }}</li>{% for t in page.palavras_chave limit: 3 %}<li>{{ t }}</li>{% endfor %}{%- endcapture -%}
+{% include topo.html titulo=page.title pai="Produções" pai_url="/producoes/" chips=chips %}
 <div class="container pagina-corpo">
   <div class="com-ficha">
     <div class="bloco-a">

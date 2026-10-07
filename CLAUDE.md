@@ -145,6 +145,14 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 - A pessoa achou o tema claro **"muito claro"**: por isso o fundo da página é creme (`--fundo`) e os **textos ficam em caixas brancas
   (classe `.caixa`)**; cartões e ficha também são brancos. Cabeçalho e rodapé são brancos. (O banner da página inicial continua amarelo `#ffe486`, é uma imagem do grupo.)
 - **Visual "moderno" nas páginas internas (07/10, testado a pedido da pessoa que gostou do `/inicio-moderno/`):** a faixa do topo (`.faixa-titulo:not(.abertura)`) agora é uma **versão escura da cor da própria página** (`color-mix` da `--t-forte` com quase preto), com pontinhos e brilho amarelo no canto, título grande em branco, subtítulo em amarelo, migalhas claras e **cantos de baixo arredondados**; os **cartões** (`.cartao`) ficaram mais arredondados, sem borda e com sombra. Alto contraste: faixa preta com borda branca. O texto abaixo da descrição desta faixa (descrição antiga "tom pastel") vale só para o histórico.
+- **Layouts refeitos das páginas internas (07/10, a pedido: "pensei que você fosse refazer os layouts também"):**
+  - **Projetos / Produções (listas):** filtros numa **barra em cima** (não mais coluna lateral); as opções viram **chips clicáveis** (a caixa de seleção real fica invisível por cima do chip, então teclado e leitor de tela continuam funcionando; marcado = chip cheio com ✓).
+  - **Página de projeto:** faixa com **chips de resumo** (ano em amarelo, situação, temas — `topo.html` aceita `chips=`), **capa larga centralizada com bloco colorido deslocado atrás** (`.projeto-capa`, sem cortar a imagem), depois texto + ficha.
+  - **Página de produção:** chips na faixa (tipo com ícone, ano, até 3 palavras-chave).
+  - **Quem somos:** imagem grande com bloco colorido atrás + texto em cartão (`.historia`), botão do Instagram centralizado, galeria com título grande e cartões arredondados (`.galeria-sec`).
+  - **Membros:** títulos de seção grandes com barrinha (`section.bloco > h2`), introdução em cartão de largura total, egressos em **chips** (sem caixa).
+  - **Contato:** cartão colorido com o texto e o Instagram + formulário em cartão branco ao lado (`.contato-grade`; o cartão colorido fica fixo ao rolar no computador).
+  - Tudo com versão para celular, tema escuro e alto contraste; sem rolagem lateral em 8 páginas × 4 larguras.
 - Faixa do topo (`.faixa-titulo`) — descrição anterior: tom pastel com degradê, texto escuro, **sem bolinhas** (a pessoa pediu para tirar), com linha colorida embaixo e **duas faixas geométricas inclinadas** na cor da página, só à direita (`::before`/`::after`, opacidade baixa para não atrapalhar o texto; somem no alto contraste, impressão e `forced-colors`).
 - Tema escuro (opcional, `html[data-escuro]`) e alto contraste (`html[data-contraste="alto"]`) têm seus próprios valores.
 
