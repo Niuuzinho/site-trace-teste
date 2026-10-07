@@ -719,6 +719,43 @@ html:not([data-escuro]):not([data-contraste="alto"]) .abertura {
 .apresentacao { padding-top: var(--e6); }
 .apresentacao .lead { max-width: 44rem; margin: 0 auto; text-align: center; color: var(--tinta); }
 
+/* Faixa "Quem faz o TrAce": fotos reais dos membros */
+.quem-faz { margin-top: var(--e6); margin-bottom: var(--e2); }
+.quem-faz-int { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--e4); align-items: center; padding: var(--e5); background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--raio-colado); }
+.quem-faz-int::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; right: 0; width: 35%; background: var(--t-forte); opacity: 0.1; clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%); pointer-events: none; }
+.quem-faz-texto h2 { margin: 0 0 var(--e3); padding-left: var(--e4); border-left: 8px solid var(--t-forte); font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); line-height: 1.15; }
+.quem-faz-fotos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.quem-faz-fotos li { margin: 0; }
+.quem-faz-fotos img { width: 3.75rem; height: 3.75rem; border-radius: 50%; object-fit: cover; border: 3px solid var(--cartao); box-shadow: 0 0 0 2px var(--t-forte); background: var(--t-suave); display: block; }
+.quem-faz-mais { display: grid; place-items: center; width: 3.75rem; height: 3.75rem; border-radius: 50%; background: var(--t-forte); color: #fff; font-weight: 700; font-size: 0.95rem; }
+@media (min-width: 56em) {
+  .quem-faz-int { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: var(--e6); padding: var(--e5) var(--e6); }
+  .quem-faz-fotos { justify-content: flex-end; }
+}
+html[data-contraste="alto"] .quem-faz-int { border: 2px solid var(--tinta); }
+html[data-contraste="alto"] .quem-faz-int::before { display: none; }
+html[data-contraste="alto"] .quem-faz-mais { background: var(--tinta); color: var(--papel); }
+
+/* Projeto principal em destaque (grande), com os outros em cartões menores logo abaixo */
+.projeto-destaque { position: relative; display: grid; overflow: hidden; background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--raio-colado); margin-bottom: var(--e5); }
+.projeto-destaque-img { line-height: 0; background: var(--t-suave); }
+.projeto-destaque-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 9; display: block; }
+.projeto-destaque-corpo { padding: var(--e5); border-top: 5px solid var(--t-forte); }
+.projeto-destaque-rotulo { display: inline-block; margin: 0 0 var(--e2); padding: 0.2rem 0.8rem; background: var(--t-forte); color: #fff; font-weight: 700; font-size: 0.85rem; border-radius: 0.25rem 0.9rem 0.25rem 0.9rem; }
+.projeto-destaque h3 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); line-height: 1.15; margin-bottom: var(--e2); }
+.projeto-destaque h3 a { color: var(--tinta); text-decoration: none; }
+.projeto-destaque h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; color: var(--t-tinta); }
+.projeto-destaque .temas { margin-bottom: var(--e4); }
+.projeto-destaque .acoes { margin-top: 0; }
+@media (min-width: 56em) {
+  .projeto-destaque { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+  .projeto-destaque-img img { aspect-ratio: auto; min-height: 100%; }
+  .projeto-destaque-corpo { border-top: 0; border-left: 5px solid var(--t-forte); padding: var(--e6); align-self: center; }
+}
+html[data-contraste="alto"] .projeto-destaque { border: 2px solid var(--tinta); }
+html[data-contraste="alto"] .projeto-destaque-rotulo { background: var(--tinta); color: var(--papel); }
+@media (min-width: 40em) { .cartoes-menores { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 /* Seções da página inicial: as duas no mesmo fundo, separadas só por espaço; uma única forma geométrica discreta atrás delas */
 .miolo { position: relative; }
 .faixa-secao { padding: var(--e6) 0 var(--e5); }
@@ -933,7 +970,7 @@ html[data-movimento="reduzido"] .cartao:hover, html[data-movimento="reduzido"] .
 
 /* 10. Impressão ----------------------------------------------------------- */
 @media print {
-  .cabecalho, .rodape, .topo-botao, .car-controles, .busca-home, .pular, .filtros, .acoes, .galeria, .video, .botao, .botao-sec { display: none !important; }
+  .cabecalho, .rodape, .topo-botao, .car-controles, .busca-home, .quem-faz, .pular, .filtros, .acoes, .galeria, .video, .botao, .botao-sec { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; display: block; }
   .faixa-titulo { background: none; padding: 0; border: 0; }
   .faixa-titulo::before, .faixa-titulo::after { display: none; }
