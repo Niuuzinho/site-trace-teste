@@ -36,7 +36,7 @@
             {%- endfor %}
           </ul>
           {%- elsif item.auto == 'projetos' %}
-          {%- assign sub_projetos = site.projetos | sort: "ordem" %}
+          {%- assign sub_projetos = site.projetos | where_exp: "p", "p.par == nil" | sort: "ordem" %}
           <ul class="submenu" id="sub-{{ forloop.index }}">
             <li class="tema-projetos"><a href="{{ '/projetos/' | relative_url }}"{% if page.url == '/projetos/' %} aria-current="page"{% endif %}>Todos os projetos</a></li>
             {%- for p in sub_projetos %}

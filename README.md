@@ -114,3 +114,7 @@ downloads:
     arquivo: /assets/docs/outro-arquivo.pdf
 ```
 Cada versão vira um botão "Baixar versão PP" / "Baixar versão LLA", e um aviso em cima explica o que cada sigla quer dizer. Projetos que não são livros continuam usando só `pdf:`.
+
+
+### Versão "Linguagem literária acessível" de um projeto
+Para um projeto ter as duas versões (Português padrão e Linguagem literária acessível), copie o arquivo do projeto em `_projetos/`, dê outro nome (por exemplo `nome-lla.md`) e, no começo do arquivo copiado: troque o `title` para "Nome do projeto (versão LLA)", acrescente `par: Nome do projeto` (exatamente o título da versão em português padrão) e `permalink: /projetos/nome-do-projeto/lla/`. Apague as linhas `ordem` e `destaque` da cópia. Depois troque os textos pelos da versão LLA. Os dois botões "Português padrão | Linguagem literária acessível" aparecem sozinhos nas duas páginas.

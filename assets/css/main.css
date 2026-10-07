@@ -1538,3 +1538,11 @@ html[data-contraste="alto"] .proj-pagina .downloads li { background: none; borde
 html[data-contraste="alto"] .proj-pagina .down-aviso { background: var(--papel); color: var(--tinta); border: 2px solid var(--tinta); box-shadow: none; }
 html[data-contraste="alto"] .proj-pagina .down-aviso strong { color: var(--tinta); }
 .proj-downloads { margin-top: calc((var(--e6) - var(--e4)) * -1); }
+/* Página de projeto: troca entre versões do texto (PP / LLA) */
+.versao-troca { display: flex; flex-wrap: wrap; gap: 0; width: fit-content; max-width: 100%; margin: var(--e5) 0 0; padding: 0.25rem; border-radius: 999px; background: var(--cartao); box-shadow: 0 0.5rem 1.2rem -0.7rem rgb(40 40 30 / 0.5), inset 0 0 0 2px var(--t-forte); }
+.versao-troca a { min-height: 2.75rem; display: inline-flex; align-items: center; padding: 0.4rem 1.2rem; border-radius: 999px; font-weight: 700; text-decoration: none; color: var(--t-tinta); }
+.versao-troca a:hover { background: var(--t-suave); }
+.versao-troca a[aria-current="page"] { background: var(--t-forte); color: #fff; }
+.versao-troca + .com-ficha, .versao-troca + .proj-pagina { padding-top: var(--e5); }
+html[data-contraste="alto"] .versao-troca { box-shadow: none; border: 2px solid var(--tinta); }
+html[data-contraste="alto"] .versao-troca a[aria-current="page"] { background: var(--tinta); color: var(--papel); }

@@ -26,7 +26,7 @@ sitemap: false
   </div>
 </section>
 
-{%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}
+{%- assign destaques = site.projetos | where_exp: "p", "p.par == nil" | where: "destaque", true | sort: "ordem" %}
 <section class="container novo-secao" aria-labelledby="h-destaques">
   <div class="secao-topo">
     <h2 id="h-destaques">Projetos</h2>

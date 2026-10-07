@@ -8,7 +8,7 @@ sitemap: false
 {%- comment -%}
   PÁGINA DE TESTE "moderno e colorido" (não está no menu; acesse por /inicio-moderno/). A inicial atual não foi alterada.
 {%- endcomment -%}
-{%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}
+{%- assign destaques = site.projetos | where_exp: "p", "p.par == nil" | where: "destaque", true | sort: "ordem" %}
 {%- assign recentes = site.producoes | sort: "ano" | reverse %}
 {%- assign todos_membros = site.data.membros | where_exp: "m", "m.categoria != 'consultoria'" -%}
 {%- assign com_foto = "" | split: "" -%}

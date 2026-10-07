@@ -4,7 +4,7 @@ title: Projetos
 tema: projetos
 permalink: /projetos/
 ---
-{%- assign projetos = site.projetos | sort: "ordem" -%}
+{%- assign projetos = site.projetos | where_exp: "p", "p.par == nil" | sort: "ordem" -%}
 {%- assign situacoes = projetos | map: "situacao" | uniq | sort -%}
 {%- assign temas_txt = projetos | map: "temas" | join: "|" -%}
 {%- assign temas = temas_txt | split: "|" | uniq | sort_natural -%}

@@ -1,9 +1,19 @@
 ---
 layout: default
 ---
+{%- assign titulo_base = page.par | default: page.title -%}
+{%- assign versao_pp = site.projetos | where: "title", page.par | first -%}
+{%- assign versao_lla = site.projetos | where: "par", page.title | first -%}
+{%- if page.par %}{% assign url_pp = versao_pp.url %}{% assign url_lla = page.url %}{% else %}{% assign url_pp = page.url %}{% assign url_lla = versao_lla.url %}{% endif -%}
 {%- capture chips -%}<li class="chip-forte">{{ page.ano }}</li><li>{{ page.situacao }}</li>{%- endcapture -%}
 {% include topo.html titulo=page.title subtitulo=page.subtitulo pai="Projetos" pai_url="/projetos/" chips=chips %}
 <div class="container pagina-corpo">
+  {%- if versao_pp or versao_lla %}
+  <nav class="versao-troca" aria-label="Versão do texto desta página">
+    <a href="{{ url_pp | relative_url }}"{% unless page.par %} aria-current="page"{% endunless %}>Português padrão</a>
+    <a href="{{ url_lla | relative_url }}"{% if page.par %} aria-current="page"{% endif %}>Linguagem literária acessível</a>
+  </nav>
+  {%- endif %}
   <div class="com-ficha prod-pagina proj-pagina">
     <figure class="projeto-capa">
       {% include img.html nome=page.capa alt=page.capa_alt sizes="(min-width: 74rem) 70rem, 100vw" eager=true %}
@@ -70,7 +80,7 @@ layout: default
         </ul>
       </section>
       {%- endif %}
-      {%- assign relacionadas = site.producoes | where: "projeto", page.title | sort: "ano" | reverse %}
+      {%- assign relacionadas = site.producoes | where: "projeto", titulo_base | sort: "ano" | reverse %}
       {%- if relacionadas.size > 0 %}
       <section class="sec-larga" aria-labelledby="h-relacionadas">
         <h2 id="h-relacionadas">Produções relacionadas</h2>
