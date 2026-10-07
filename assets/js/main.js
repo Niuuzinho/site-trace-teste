@@ -426,16 +426,17 @@
       return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
         doc.documentElement.getAttribute('data-movimento') === 'reduzido';
     }
-    function mostrar(n) {
+    function mostrar(n, avisar) {
       atual = n;
       slides.forEach(function (s, i) { s.setAttribute('aria-hidden', i === n ? 'false' : 'true'); });
       pontos.forEach(function (p, i) { if (i === n) p.setAttribute('aria-current', 'true'); else p.removeAttribute('aria-current'); });
-      info.textContent = 'Slide ' + (n + 1) + ' de ' + slides.length;
+      // o aviso "Slide X de Y" só é falado depois que a pessoa troca de slide (não ao abrir a página)
+      if (avisar) info.textContent = 'Slide ' + (n + 1) + ' de ' + slides.length;
     }
     function ir(n) {
       n = (n + slides.length) % slides.length;
       trilho.scrollTo({ left: n * trilho.clientWidth, behavior: reduzido() ? 'auto' : 'smooth' });
-      mostrar(n);
+      mostrar(n, true);
     }
     var agendado = false;
     trilho.addEventListener('scroll', function () {
@@ -444,7 +445,7 @@
       window.requestAnimationFrame(function () {
         agendado = false;
         var n = Math.round(trilho.scrollLeft / trilho.clientWidth);
-        if (n !== atual && n >= 0 && n < slides.length) mostrar(n);
+        if (n !== atual && n >= 0 && n < slides.length) mostrar(n, true);
       });
     }, { passive: true });
     anterior.addEventListener('click', function () { ir(atual - 1); });
@@ -455,7 +456,7 @@
       if (e.key === 'ArrowRight') { e.preventDefault(); ir(atual + 1); }
     });
     window.addEventListener('resize', function () { trilho.scrollLeft = atual * trilho.clientWidth; });
-    mostrar(0);
+    mostrar(0, false);
   }
 
   /* Início ------------------------------------------------------------------ */

@@ -664,8 +664,6 @@ html[data-contraste="alto"] .topo-botao:hover { background: var(--papel); color:
 .car-ponto::before { content: ""; position: absolute; inset: 50% auto auto 50%; width: 0.9rem; height: 0.9rem; transform: translate(-50%, -50%); border: 2px solid var(--t-tinta); border-radius: 50%; background: transparent; transition: background-color 0.15s; }
 .car-ponto:hover::before { background: var(--t-banda); }
 .car-ponto[aria-current="true"]::before { background: var(--t-forte); border-color: var(--t-forte); }
-.car-info { display: none; margin: var(--e1) 0 0; text-align: center; font-size: 0.9rem; color: var(--tinta-2); }
-.car-js .car-info { display: block; }
 @media (max-width: 39.99em) { .car-trilho { border-radius: var(--raio-g); } .car-slide img { aspect-ratio: 5 / 3; object-fit: cover; object-position: 60% 50%; } .car-controles .botao-peq { padding-inline: 0.8rem; } .car-pontos { order: 3; flex-basis: 100%; justify-content: center; margin-top: calc(var(--e2) * -1); } }
 html[data-contraste="alto"] .car-trilho { border: 2px solid var(--tinta); }
 html[data-contraste="alto"] .car-ponto[aria-current="true"]::before { background: var(--tinta); border-color: var(--tinta); }
