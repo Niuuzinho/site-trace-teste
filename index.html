@@ -9,16 +9,15 @@ permalink: /
     <p class="subtitulo-abertura">Tradução, acessibilidade e pesquisa</p>
   </div>
 </section>
+<div class="container apresentacao">
+  <p class="lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
+</div>
 <div class="container banner-area">
   <div class="secao-topo car-titulo">
     <h2 id="h-novidades">Avisos e novidades</h2>
   </div>
   {% include carrossel.html itens=site.data.carrossel rotulo="Avisos e novidades" %}
 </div>
-<div class="container apresentacao">
-  <p class="lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
-</div>
-
 
 <div class="miolo">
 {%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}

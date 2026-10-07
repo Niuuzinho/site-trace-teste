@@ -715,8 +715,8 @@ html:not([data-escuro]):not([data-contraste="alto"]) .abertura {
   background-image: linear-gradient(115deg, #142425 0%, #1d3a3b 100%);
 }
 
-/* Frase de apresentação, centralizada embaixo do carrossel */
-.apresentacao { padding-top: var(--e5); }
+/* Frase de apresentação, centralizada logo abaixo da faixa do topo (antes do carrossel) */
+.apresentacao { padding-top: var(--e6); }
 .apresentacao .lead { max-width: 44rem; margin: 0 auto; text-align: center; color: var(--tinta); }
 
 /* Seções da página inicial: as duas no mesmo fundo, separadas só por espaço; uma única forma geométrica discreta atrás delas */
