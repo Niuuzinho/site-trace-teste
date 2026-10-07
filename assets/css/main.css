@@ -659,6 +659,10 @@ html[data-contraste="alto"] .topo-botao:hover { background: var(--papel); color:
 @media (max-width: 39.99em) {
   .abertura { margin-top: -3.5rem; padding-top: calc(3rem + var(--e5)); clip-path: polygon(0 3rem, 100% 0, 100% 100%, 0 100%); }
 }
+/* borda branca ao longo da beirada inclinada de cima */
+.abertura-borda { position: absolute; z-index: 1; top: 0; left: 0; right: 0; height: 7rem; background: #fff; pointer-events: none; clip-path: polygon(0 6rem, 100% 0, 100% 0.45rem, 0 6.45rem); }
+@media (max-width: 39.99em) { .abertura-borda { height: 4rem; clip-path: polygon(0 3rem, 100% 0, 100% 0.35rem, 0 3.35rem); } }
+html[data-contraste="alto"] .abertura-borda { display: none; }
 html[data-contraste="alto"] .abertura { margin-top: 0; padding-top: var(--e6); clip-path: none; }
 .abertura h1 { max-width: 14ch; font-size: clamp(2.2rem, 1.2rem + 4.2vw, 4.2rem); font-weight: 700; margin-bottom: 0; }
 .abertura .selo { font-weight: 700; font-size: 1.05rem; color: var(--t-tinta); margin: 0 0 var(--e3); }
