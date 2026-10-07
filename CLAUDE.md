@@ -37,11 +37,9 @@ importantes, **atualize este arquivo no mesmo trabalho**.
    intencional**: não remover, não reescrever. Textos de interface mínimos (rótulos de botões, títulos de seção) são ok.
 2. **Não corrigir os textos do grupo por conta própria** (mesmo com erros de digitação). Avise a pessoa e deixe ela decidir.
    Erros conhecidos: "Prince Lindworm" e "século XIX é originalmente" (projeto Lindworm), "Liguagem Fácil" (membros).
-3. **Leve e rápido.** Sem frameworks (React, Bootstrap, jQuery...), sem fontes ou scripts de CDN, sem bibliotecas de animação.
-   Fontes e imagens hospedadas no próprio site. Páginas leves (na última medição: início cerca de 200 KB e membros cerca de 500 KB, com 30 fotos).
-4. **Acessível de verdade** (é o foco do grupo): ver seção 6. Nada de piorar contraste, foco, ordem de leitura ou navegação por teclado.
-5. **Elegante, agradável, acadêmico e que não pareça "feito por IA".** Evitar clichês de template: gradientes roxos, sombras
-   suaves em tudo, emojis decorativos, etc.
+3. **Razoavelmente leve, mas a beleza vem primeiro.** (Esclarecido pela pessoa em 07/10: "acessível e leve" é a proposta, **não para seguir ao extremo**.) Sem frameworks pesados, sem scripts de terceiros/CDN, fontes e imagens no próprio site, páginas que carregam bem. Mas **pode** usar mais imagens, fontes extras, ilustrações em SVG, formas, camadas e mais cor quando isso deixar o site mais bonito: não cortar um visual melhor só para economizar uns KB. (Última medição antiga: início ~200 KB; hoje mais.)
+4. **Acessível: nível WCAG AA no mínimo** (contraste 4,5:1 no texto e 3:1 em bordas/ícones, foco visível, teclado, leitor de tela, `alt`, reflow). **Não é preciso chegar ao AAA nem esvaziar o design** por causa disso; AA é o piso, não o teto do cuidado. Ver seção 6.
+5. **O objetivo de design: site BONITO, MODERNO e ESTILOSO, com personalidade** (prioridade máxima, dita pela pessoa em 07/10). Não precisa ter visual acadêmico nem ser contido: a pessoa acha o site atual "enxuto, sem vida, pouco atraente" e quer mais impacto visual. Ainda valem: evitar clichês de template genérico (gradiente roxo padrão, emojis decorativos). Ela rejeitou, até agora: a divisão da inicial em faixas de cores diferentes, formas geométricas no fundo da inicial, busca solta no meio da página, informação demais na mesma tela, e a página de teste `/inicio-novo/` ("ficou pior": layout minimalista de 3 blocos).
 6. **Sem animações quando a página abre** (foi pedido explicitamente para tirar). Só pequenas transições ao passar o mouse e
    o aparecer suave dos submenus. Tudo isso é desligado pela opção "Menos movimento" e por `prefers-reduced-motion`.
 7. **O site é sempre claro por padrão**, mesmo se o aparelho estiver em modo escuro. O tema escuro é **opcional**, pelo painel
@@ -204,8 +202,7 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 
 - HTML semântico, um `h1` por página, migalhas de pão, `aria-current`, rótulos em todos os campos, `alt` em todas as imagens,
   link "Pular para o conteúdo", `lang="pt-BR"`, `main tabindex="-1"`.
-- Contraste: texto ≥ 16:1 no branco; links ≥ 6:1; branco sobre botões ≥ 5:1; texto sobre faixas ≥ 10:1; links sobre faixas ≥ 4,9:1.
-  Se mexer em cores, **recalcule** (WCAG AA no mínimo; a pessoa quer contraste forte).
+- Contraste: o piso é **WCAG AA** (texto 4,5:1; texto grande, bordas e ícones 3:1). As cores atuais passam com folga (texto ≥ 16:1, links ≥ 6:1, branco sobre botões ≥ 5:1); **não é obrigatório manter essas folgas**, pode-se usar cores mais vivas e ousadas desde que continue AA. Ao mexer em cores, **recalcule**.
 - Foco visível em dois anéis (escuro + amarelo), alvos de toque ≥ 44 px, cor nunca é a única pista (cada página tem nome e item de menu).
 - **Painel "Acessibilidade"** (botão no cabeçalho): tamanho do texto (90–150%, via `--escala` em `html`, respeita o zoom do
   navegador), **tema escuro**, **fonte de leitura**, **mais contraste**, **leitura confortável** (mais espaço), **menos movimento**
