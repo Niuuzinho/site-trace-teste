@@ -18,9 +18,11 @@ permalink: /
     </div>
   </div>
 </section>
-<figure class="banner-topo">
-  {% include img.html nome="banners/conheca-projetos" alt="Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral." sizes="(min-width: 98rem) 1560px, 100vw" eager=true %}
-</figure>
+<div class="container banner-area">
+  <figure class="banner-topo">
+    {% include img.html nome="banners/conheca-projetos" alt="Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral." sizes="(min-width: 70rem) 1024px, 100vw" eager=true %}
+  </figure>
+</div>
 
 <div class="miolo">
 {%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}

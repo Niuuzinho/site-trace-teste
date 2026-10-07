@@ -646,9 +646,14 @@ html[data-contraste="alto"] .topo-botao:hover { background: var(--papel); color:
 /* 7. Páginas -------------------------------------------------------------- */
 
 /* Início */
-.banner-topo { position: relative; background: #ffe486; line-height: 0; margin: 0; }
-.banner-topo img { width: 100%; max-width: 1560px; margin: 0 auto; }
-@media (max-width: 39.99em) { .banner-topo img { aspect-ratio: 5 / 3; object-fit: cover; object-position: 60% 50%; } }
+/* Banner: menor, dentro da largura do conteúdo, com cantos arredondados e espaço em volta.
+   O fundo é neutro (não amarelo) porque a imagem vai ser trocada no futuro. */
+.banner-area { padding-top: var(--e6); }
+.banner-topo { max-width: 64rem; margin: 0 auto; line-height: 0; overflow: hidden; background: var(--t-suave); border: 1px solid var(--linha); border-radius: var(--raio-colado); }
+.banner-topo img { width: 100%; height: auto; display: block; }
+@media (max-width: 39.99em) { .banner-topo { border-radius: var(--raio-g); } .banner-topo img { aspect-ratio: 5 / 3; object-fit: cover; object-position: 60% 50%; } }
+html[data-contraste="alto"] .banner-topo { border: 2px solid var(--tinta); }
+
 /* A faixa de abertura vem primeiro (logo abaixo do menu); o banner vem depois dela */
 .abertura { padding: var(--e6) 0 var(--e7); }
 .abertura h1 { max-width: 14ch; font-size: clamp(2.2rem, 1.2rem + 4.2vw, 4.2rem); font-weight: 700; margin-bottom: 0; }
@@ -673,7 +678,7 @@ html:not([data-escuro]):not([data-contraste="alto"]) .abertura {
 
 /* Seções da página inicial: as duas no mesmo fundo, separadas só por espaço; uma única forma geométrica discreta atrás delas */
 .miolo { position: relative; }
-.faixa-secao { padding: var(--e7) 0 var(--e5); }
+.faixa-secao { padding: var(--e6) 0 var(--e5); }
 .faixa-secao-2 { padding-top: var(--e5); padding-bottom: var(--e7); }
 .secao-topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--e3) var(--e5); margin-bottom: var(--e5); }
 .secao-topo h2 { margin: 0; padding-left: var(--e4); border-left: 8px solid var(--t-forte); font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); line-height: 1.15; }
