@@ -665,52 +665,6 @@ html[data-contraste="alto"] .topo-botao:hover { background: var(--papel); color:
 .abertura .busca-home { margin: var(--e5) 0 0; max-width: 32rem; }
 .abertura .busca-home label { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
 
-/* ---- Layout de teste da inicial (/inicio-novo/) ---- */
-.novo-hero { position: relative; isolation: isolate; overflow: hidden; padding: var(--e6) 0 var(--e5); }
-.novo-hero::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 0; width: min(26%, 24rem); background: var(--t-banda); opacity: 0.35; clip-path: polygon(0 0, 100% 0, 55% 100%, 0 100%); pointer-events: none; }
-.novo-hero-int { display: grid; gap: var(--e5); align-items: center; }
-.novo-hero-texto h1 { font-size: clamp(2.4rem, 1.4rem + 4vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: var(--e2); }
-.novo-subtitulo { margin: 0 0 var(--e4); font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem); font-weight: 600; color: var(--t-tinta); line-height: 1.3; }
-.novo-hero-texto .lead { margin-bottom: 0; }
-.novo-hero-texto .acoes { margin-top: var(--e5); }
-.novo-hero-texto .lead { font-size: 1.1rem; }
-.novo-hero-carrossel .secao-topo.car-titulo { margin-bottom: var(--e3); }
-.novo-hero-carrossel .secao-topo.car-titulo h2 { font-size: 1.3rem; }
-.novo-hero-carrossel { position: relative; isolation: isolate; }
-.novo-hero-carrossel .carrossel { max-width: none; }
-/* bloco colorido deslocado atrás da imagem: dá profundidade sem enfeite */
-.novo-hero-carrossel .car-trilho { position: relative; box-shadow: none; }
-.novo-hero-carrossel .carrossel { position: relative; }
-.novo-hero-carrossel .carrossel::before { content: ""; position: absolute; z-index: -1; top: 0.9rem; left: 0.9rem; right: -0.9rem; height: calc(100% - var(--car-ctrl, 4.6rem)); background: var(--t-forte); opacity: 0.22; border-radius: var(--raio-colado); }
-@media (min-width: 56em) {
-  .novo-hero { padding: var(--e7) 0; }
-  .novo-hero-int { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: var(--e6); }
-}
-@media (max-width: 55.99em) { .novo-hero-carrossel .carrossel::before { display: none; } }
-html[data-contraste="alto"] .novo-hero::before, html[data-contraste="alto"] .novo-hero-carrossel .carrossel::before { display: none; }
-.novo-secao { padding-top: var(--e7); }
-.novo-secao:last-of-type { padding-bottom: var(--e6); }
-
-/* Lista leve de produções */
-.lista-prod { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linha); }
-.lista-prod li { position: relative; display: grid; grid-template-columns: 1fr auto; gap: var(--e1) var(--e4); align-items: center; padding: var(--e4) var(--e3); border-bottom: 1px solid var(--linha); transition: background-color 0.15s; }
-.lista-prod li:hover { background: var(--t-suave); }
-.lista-prod li { border-left: 4px solid transparent; }
-.lista-prod li:hover { border-left-color: var(--t-forte); }
-.lp-tipo { grid-column: 1 / -1; display: flex; align-items: center; font-weight: 700; font-size: 0.9rem; color: var(--t-tinta); }
-.lp-corpo { display: grid; gap: 0.1rem; min-width: 0; }
-.lp-titulo { font-weight: 700; font-size: 1.1rem; color: var(--tinta); text-decoration: none; }
-.lp-titulo::after { content: ""; position: absolute; inset: 0; }   /* a linha toda é clicável */
-.lp-titulo:hover { text-decoration: underline; text-decoration-thickness: 2px; color: var(--t-tinta); }
-.lp-proj { font-size: 0.92rem; color: var(--tinta-2); }
-.lp-ano { display: flex; align-items: center; gap: var(--e3); font-weight: 700; font-size: 1.25rem; color: var(--t-tinta); font-variant-numeric: lining-nums; }
-.lp-ano::after { content: ""; width: 0.6rem; height: 0.6rem; border-top: 3px solid currentColor; border-right: 3px solid currentColor; transform: rotate(45deg); transition: transform 0.15s; }
-.lista-prod li:hover .lp-ano::after { transform: translateX(4px) rotate(45deg); }
-@media (min-width: 40em) {
-  .lista-prod li { grid-template-columns: 9.5rem 1fr auto; }
-  .lp-tipo { grid-column: auto; }
-}
-html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outline: 2px solid var(--tinta); outline-offset: -2px; }
 
 /* ======================================================================
    Direção "moderno e colorido" (página de teste /inicio-moderno/). Tudo dentro de .mod.
@@ -938,18 +892,6 @@ html[data-contraste="alto"] .egressos li { border-color: var(--tinta); }
 html[data-contraste="alto"] .contato-info { background: #000; border: 2px solid #fff; }
 html[data-contraste="alto"] .contato-form { border: 2px solid var(--tinta); box-shadow: none; }
 
-/* =====================================================================
-   Protótipo criativo (e prático) da página de Projetos (/projetos-criativo/)
-   Grade compacta de cartões com personalidade, mantendo os filtros na coluna da esquerda; a faixa do topo é a padrão do site.
-   ===================================================================== */
-.cr-corpo { padding-top: var(--e5); padding-bottom: var(--e7); }
-/* grade compacta: 1 coluna no celular, 2 no tablet, 3 no computador (4 em telas largas) */
-.cr-grade { grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr)); gap: var(--e5); }
-.cr-grade .cartao { border-radius: 1.4rem; }
-.cr-grade .cartao-img { border-radius: 0; }
-.cr-grade .cartao:hover { transform: translateY(-4px); }
-@media (prefers-reduced-motion: reduce) { .cr-grade .cartao:hover { transform: none; } }
-html[data-movimento="reduzido"] .cr-grade .cartao:hover { transform: none; }
 
 /* faixa "Quem faz o TrAce" (fotos dos membros) na página Quem somos */
 .pagina-corpo > .pessoas-faixa { margin-top: var(--e7); position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--e4); align-items: center; padding: var(--e5); color: #fff; border-radius: 1.4rem;

@@ -32,7 +32,7 @@ Feito localmente, no site construído pelo Jekyll, com Chromium (Playwright), **
 - **Conclusão:** o site é **leve** para um site com tanta imagem. Os pontos de melhoria são pequenos (abaixo).
 
 ## O que ainda recomendo (nenhum bloqueia o AA)
-1. **Apagar as páginas de teste** (`inicio-novo`, `inicio-moderno`, `projetos-criativo`) e o CSS delas quando a página inicial nova for escolhida: elas estão publicadas (só não aparecem no menu), repetem conteúdo e aparecem para quem tem o endereço.
+1. ~~Apagar as páginas de teste~~ — **feito em 07/10** (`inicio-novo`, `inicio-moderno` e `projetos-criativo` removidas, com o CSS delas).
 2. **Compactar o CSS/JS** antes de publicar (economiza ~40% do CSS e do JS antes do gzip). Hoje não há etapa de build; só vale se o peso virar problema.
 3. **Fotos de membros e capas** são de tamanho moderado; trocar os placeholders por fotos reais já otimizadas (script em `ferramentas/`).
 4. **Testar com leitor de tela de verdade** (NVDA/Windows, VoiceOver/iPhone, TalkBack/Android) e em **Firefox e Safari**: tudo aqui foi testado só em Chromium. Isso é o que mais falta.
