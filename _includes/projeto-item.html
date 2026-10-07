@@ -12,7 +12,7 @@
 {%- capture temas_slug -%}{% for t in p.temas %}{{ t | slugify }}{% unless forloop.last %}|{% endunless %}{% endfor %}{%- endcapture -%}
 <li class="cartao cartao-proj"{% if include.filtravel %} data-item data-texto="{{ busca | strip | escape }}" data-situacao="{{ p.situacao | slugify }}" data-temas="{{ temas_slug }}"{% endif %}>
   <div class="cartao-img">{% include img.html nome=p.imagem alt="" sizes="(min-width: 40em) 18rem, 100vw" %}
-    {%- if selo != "" %}<span class="selo-versao selo-{{ selo | downcase }}" title="{{ selo_nome }}"><span aria-hidden="true">{{ selo }}</span><span class="so-leitor">Versão em {{ selo_nome }}</span></span>{% endif %}</div>
+    {%- if selo != "" %}<button class="selo-versao selo-{{ selo | downcase }}" type="button" popovertarget="info-versao" aria-label="Versão em {{ selo_nome }}. Abrir explicação das versões"><span aria-hidden="true">{{ selo }}</span><span class="selo-i" aria-hidden="true">i</span></button>{% endif %}</div>
   <div class="cartao-corpo">
     <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
     <ul class="meta"><li class="meta-ano"><span class="so-leitor">Ano </span>{{ p.ano }}</li><li class="meta-sit">{{ p.situacao }}</li></ul>

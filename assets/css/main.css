@@ -1570,3 +1570,25 @@ html[data-contraste="alto"] .cartao-proj { background: var(--papel); }
 html[data-contraste="alto"] .cartao-proj .meta-ano { background: var(--tinta); color: var(--papel); }
 html[data-contraste="alto"] .cartao-proj .meta-sit { box-shadow: none; border: 2px solid var(--tinta); color: var(--tinta); }
 html[data-contraste="alto"] .cartao-mais { border-top-color: var(--tinta); color: var(--tinta); }
+
+/* Selinho maior e clicável (abre explicação); PP em verde */
+.selo-versao { top: 0.8rem; left: 0.8rem; z-index: 5; display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0.3rem 1rem 0.3rem 1.1rem; font-family: inherit; font-size: 1.05rem; line-height: 1; border: 0; cursor: pointer; }
+.selo-i { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; font-size: 0.8rem; font-style: italic; font-weight: 700; background: currentColor; }
+.selo-i { color: inherit; }
+.selo-pp { background: #1f7a4a; color: #fff; }
+.selo-pp .selo-i { background: #fff; color: #1f7a4a; }
+.selo-lla .selo-i { background: #3a2b00; color: #ffe08a; }
+.selo-versao:hover { filter: brightness(1.08); }
+html[data-contraste="alto"] .selo-pp { background: #000; color: #fff; }
+html[data-contraste="alto"] .selo-pp .selo-i, html[data-contraste="alto"] .selo-lla .selo-i { background: #000; color: #fff; }
+.selo-versao:focus-visible { outline: 3px solid #000; outline-offset: 2px; box-shadow: 0 0 0 6px #fff; }
+.pop-versao { max-width: min(26rem, calc(100vw - 2rem)); padding: var(--e5); border: 0; border-radius: 1.4rem; background: var(--cartao); color: var(--tinta); box-shadow: 0 2rem 4rem -1rem rgb(0 0 0 / 0.5); }
+.pop-versao::backdrop { background: rgb(10 20 30 / 0.55); }
+.pop-versao h2 { margin: 0 0 var(--e3); font-size: 1.4rem; }
+.pop-versao p { margin: 0 0 var(--e3); font-size: 1.05rem; line-height: 1.5; }
+.pop-versao .sigla { display: inline-block; padding: 0.1rem 0.7rem; border-radius: 0.25rem 0.8rem 0.25rem 0.8rem; }
+.sigla-pp { background: #1f7a4a; color: #fff; }
+.sigla-lla { background: #ffe08a; color: #3a2b00; }
+html[data-contraste="alto"] .pop-versao { border: 3px solid var(--tinta); }
+html[data-contraste="alto"] .sigla-pp { background: #000; color: #fff; }
+html[data-contraste="alto"] .sigla-lla { background: #fff; color: #000; border: 2px solid #000; }
