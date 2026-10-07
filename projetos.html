@@ -36,6 +36,7 @@ permalink: /projetos/
     </aside>
     <div class="principal">
       <p class="contagem" role="status" aria-live="polite" data-contagem></p>
+      <h2 class="so-leitor">Lista de projetos</h2>
       <ul class="cartoes">
         {%- for p in projetos %}
         {% include projeto-item.html projeto=p filtravel=true %}
@@ -45,7 +46,7 @@ permalink: /projetos/
     </div>
   </div>
 </div>
-<div id="info-versao" class="pop-versao" popover aria-labelledby="info-versao-t">
+<div id="info-versao" class="pop-versao" popover role="dialog" aria-labelledby="info-versao-t">
   <h2 id="info-versao-t">Versões do projeto</h2>
   <p><strong class="sigla sigla-pp">PP</strong> é a versão em <strong>Português padrão</strong>.</p>
   <p><strong class="sigla sigla-lla">LLA</strong> é a versão em <strong>Linguagem literária acessível</strong>.</p>

@@ -33,6 +33,7 @@ permalink: /producoes/
     </aside>
     <div class="principal">
       <p class="contagem" role="status" aria-live="polite" data-contagem></p>
+      <h2 class="so-leitor">Lista de produções</h2>
       <ul class="cartoes">
         {%- for r in producoes %}
         {% include producao-item.html producao=r filtravel=true %}

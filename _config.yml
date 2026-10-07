@@ -59,6 +59,7 @@ exclude:
   - README.md
   - CLAUDE.md
   - TUTORIAL-GITHUB.md
+  - DIAGNOSTICO.md
   - Gemfile
   - Gemfile.lock
   - ferramentas

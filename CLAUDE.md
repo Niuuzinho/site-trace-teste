@@ -278,6 +278,9 @@ Usa `color-mix()` (faixa em degradê; navegadores antigos usam a cor sólida), `
 
 **Nota para capturas de tela:** as fotos de membros usam `loading="lazy"`; em captura de página inteira saem brancas se não forem carregadas antes (forçar `img.loading="eager"` e `decode()` no script). No site real carregam ao rolar.
 
+## 7c. Diagnóstico de acessibilidade e peso (07/10)
+Ver `DIAGNOSTICO.md` (axe-core + html-validate + medições): 0 violações axe em 14 páginas × 3 temas × 2 larguras; contraste sobre degradê medido pixel a pixel; filtros fixos agora rolam por dentro; alvos de toque ≥ 24 px (maioria 44). **Regra aprendida:** texto branco sobre as formas claras dos topos coloridos precisa de forma bem suave (opacidade ≤ 0,06). Ferramentas ficam fora do projeto (pasta temporária); para repetir: `npm install axe-core html-validate` numa pasta à parte.
+
 ## 8. O que NÃO foi verificado (importante!)
 
 - **O site já foi construído pelo Jekyll 3.10 (o do GitHub Pages) sem erros** (texto antigo abaixo ficou como histórico). Aqui o comando `jekyll serve` não existia; usou-se um pequeno script Ruby chamando `Jekyll::Commands::Build` e um servidor estático.

@@ -8,7 +8,7 @@
       {%- assign yt = site.redes.youtube | default: '' -%}
       {%- assign ig = site.redes.instagram | default: '' -%}
       {%- if yt != '' or ig != '' %}
-      <div class="rodape-redes" aria-label="Redes sociais do grupo">
+      <div class="rodape-redes" role="group" aria-label="Redes sociais do grupo">
         {%- if ig != '' %}<a class="botao-peq" href="{{ ig }}" target="_blank" rel="noopener noreferrer"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"></use></svg>Instagram<span class="so-leitor"> (abre em outra guia)</span></a>{% endif %}
         {%- if yt != '' %}<a class="botao-peq" href="{{ yt }}" target="_blank" rel="noopener noreferrer"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-youtube"></use></svg>YouTube<span class="so-leitor"> (abre em outra guia)</span></a>{% endif %}
       </div>

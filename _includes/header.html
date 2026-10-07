@@ -48,7 +48,7 @@
         {%- endfor %}
       </ul>
     </nav>
-    <form class="busca-topo" role="search" action="{{ '/busca/' | relative_url }}" method="get">
+    <form class="busca-topo" role="search" aria-label="Busca rápida" action="{{ '/busca/' | relative_url }}" method="get">
       <label class="so-leitor" for="busca-topo">Buscar no acervo</label>
       <input id="busca-topo" name="q" type="search" placeholder="Buscar" enterkeyhint="search" autocomplete="off">
       <button type="submit"><span class="so-leitor">Buscar</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 4.5a6 6 0 1 0 3.78 10.66l4.28 4.28 1.44-1.44-4.28-4.28A6 6 0 0 0 10.5 4.5Zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/></svg></button>
