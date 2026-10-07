@@ -55,7 +55,10 @@ permalink: /membros/
     <h2 id="h-egressos">Egressos</h2>
     <div><ul class="egressos">
       {%- for nome in site.data.egressos %}
-      <li>{{ nome }}</li>
+      {%- assign partes = nome | split: " " -%}
+      {%- assign iniciais = partes.first | slice: 0 -%}
+      {%- if partes.size > 1 %}{% assign ultima = partes.last | slice: 0 %}{% assign iniciais = iniciais | append: ultima %}{% endif %}
+      <li><span class="ini" aria-hidden="true">{{ iniciais | upcase }}</span>{{ nome }}</li>
       {%- endfor %}
     </ul></div>
   </section>
