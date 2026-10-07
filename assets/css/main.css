@@ -649,10 +649,25 @@ html[data-contraste="alto"] .topo-botao:hover { background: var(--papel); color:
 /* Banner: menor, dentro da largura do conteúdo, com cantos arredondados e espaço em volta.
    O fundo é neutro (não amarelo) porque a imagem vai ser trocada no futuro. */
 .banner-area { padding-top: var(--e6); }
-.banner-topo { max-width: 64rem; margin: 0 auto; line-height: 0; overflow: hidden; background: var(--t-suave); border: 1px solid var(--linha); border-radius: var(--raio-colado); }
-.banner-topo img { width: 100%; height: auto; display: block; }
-@media (max-width: 39.99em) { .banner-topo { border-radius: var(--raio-g); } .banner-topo img { aspect-ratio: 5 / 3; object-fit: cover; object-position: 60% 50%; } }
-html[data-contraste="alto"] .banner-topo { border: 2px solid var(--tinta); }
+/* Carrossel acessível: faixa que rola de lado com "encaixe" (funciona até sem JavaScript); com JavaScript ganha botões, indicadores e contador */
+.carrossel { max-width: 64rem; margin: 0 auto; }
+.car-trilho { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; background: var(--t-suave); border: 1px solid var(--linha); border-radius: var(--raio-colado); }
+.car-js .car-trilho { scrollbar-width: none; }
+.car-js .car-trilho::-webkit-scrollbar { display: none; }
+.car-slide { flex: 0 0 100%; margin: 0; line-height: 0; scroll-snap-align: center; }
+.car-slide img { width: 100%; height: auto; display: block; }
+.car-controles { display: none; align-items: center; justify-content: center; flex-wrap: wrap; gap: var(--e2) var(--e4); margin-top: var(--e3); }
+.car-js .car-controles { display: flex; }
+.car-pontos { display: flex; gap: 0; }
+.car-ponto { position: relative; width: 2.75rem; height: 2.75rem; padding: 0; background: transparent; border: 0; cursor: pointer; }
+.car-ponto::before { content: ""; position: absolute; inset: 50% auto auto 50%; width: 0.9rem; height: 0.9rem; transform: translate(-50%, -50%); border: 2px solid var(--t-tinta); border-radius: 50%; background: transparent; transition: background-color 0.15s; }
+.car-ponto:hover::before { background: var(--t-banda); }
+.car-ponto[aria-current="true"]::before { background: var(--t-forte); border-color: var(--t-forte); }
+.car-info { display: none; margin: var(--e1) 0 0; text-align: center; font-size: 0.9rem; color: var(--tinta-2); }
+.car-js .car-info { display: block; }
+@media (max-width: 39.99em) { .car-trilho { border-radius: var(--raio-g); } .car-slide img { aspect-ratio: 5 / 3; object-fit: cover; object-position: 60% 50%; } .car-controles .botao-peq { padding-inline: 0.8rem; } .car-pontos { order: 3; flex-basis: 100%; justify-content: center; margin-top: calc(var(--e2) * -1); } }
+html[data-contraste="alto"] .car-trilho { border: 2px solid var(--tinta); }
+html[data-contraste="alto"] .car-ponto[aria-current="true"]::before { background: var(--tinta); border-color: var(--tinta); }
 
 /* A faixa de abertura vem primeiro (logo abaixo do menu); o banner vem depois dela */
 .abertura { padding: var(--e6) 0 var(--e7); }
@@ -890,7 +905,7 @@ html[data-movimento="reduzido"] .cartao:hover, html[data-movimento="reduzido"] .
 
 /* 10. Impressão ----------------------------------------------------------- */
 @media print {
-  .cabecalho, .rodape, .topo-botao, .pular, .filtros, .acoes, .galeria, .video, .botao, .botao-sec { display: none !important; }
+  .cabecalho, .rodape, .topo-botao, .car-controles, .pular, .filtros, .acoes, .galeria, .video, .botao, .botao-sec { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; display: block; }
   .faixa-titulo { background: none; padding: 0; border: 0; }
   .faixa-titulo::before, .faixa-titulo::after { display: none; }

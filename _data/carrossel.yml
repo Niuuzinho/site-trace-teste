@@ -1,0 +1,11 @@
+# Slides do carrossel da página inicial (TESTE: a mesma imagem repetida 3 vezes).
+# Para trocar: use outra imagem (ver ferramentas/otimizar-imagens.py) e escreva um alt de verdade em cada uma.
+# imagem: nome da imagem dentro de assets/img/ (sem tamanho e sem .webp)
+# alt: descrição da imagem para quem não enxerga (não deixe vazio, a não ser que a imagem seja só enfeite)
+# Todas as imagens devem ter a MESMA proporção (largura x altura), para a página não "pular" ao trocar de slide.
+- imagem: banners/conheca-projetos
+  alt: "Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral."
+- imagem: banners/conheca-projetos
+  alt: "Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral."
+- imagem: banners/conheca-projetos
+  alt: "Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral."

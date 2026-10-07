@@ -1,0 +1,30 @@
+{%- comment -%}
+  Carrossel de imagens acessível, sem biblioteca.
+  Parâmetros: itens (lista com imagem e alt), rotulo (nome do carrossel para leitores de tela).
+  Sem JavaScript: vira uma faixa que rola de lado (teclado e toque funcionam). Com JavaScript: botões Anterior/Próximo,
+  indicadores, contador e setas do teclado. NÃO troca sozinho (de propósito).
+{%- endcomment -%}
+{%- if include.itens and include.itens.size > 0 -%}
+{%- assign total = include.itens.size -%}
+<section class="carrossel" aria-roledescription="carrossel" aria-label="{{ include.rotulo | default: 'Destaques' | escape }}" data-carrossel>
+  <div class="car-trilho" data-car-trilho tabindex="0" role="group" aria-label="Slides (use as setas do teclado para trocar)">
+    {%- for g in include.itens %}
+    <figure class="car-slide" data-car-slide role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} de {{ total }}">
+      {% include img.html nome=g.imagem alt=g.alt sizes="(min-width: 70rem) 1024px, 100vw" eager=forloop.first %}
+    </figure>
+    {%- endfor %}
+  </div>
+  {%- if total > 1 %}
+  <div class="car-controles">
+    <button type="button" class="botao-peq" data-car-anterior><span aria-hidden="true">‹</span> Anterior</button>
+    <div class="car-pontos">
+      {%- for g in include.itens %}
+      <button type="button" class="car-ponto" data-car-ponto aria-label="Ir para o slide {{ forloop.index }}"></button>
+      {%- endfor %}
+    </div>
+    <button type="button" class="botao-peq" data-car-proximo>Próximo <span aria-hidden="true">›</span></button>
+  </div>
+  <p class="car-info" data-car-info aria-live="polite"></p>
+  {%- endif %}
+</section>
+{%- endif -%}

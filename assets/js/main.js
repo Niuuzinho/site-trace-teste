@@ -410,6 +410,54 @@
     });
   }
 
+  /* 10. Carrossel acessível (não troca sozinho) ------------------------------ */
+  function iniciarCarrossel(raiz) {
+    var trilho = raiz.querySelector('[data-car-trilho]');
+    var slides = todos('[data-car-slide]', raiz);
+    var pontos = todos('[data-car-ponto]', raiz);
+    var anterior = raiz.querySelector('[data-car-anterior]');
+    var proximo = raiz.querySelector('[data-car-proximo]');
+    var info = raiz.querySelector('[data-car-info]');
+    if (!trilho || slides.length < 2 || !anterior || !proximo) return;
+    raiz.classList.add('car-js');
+    var atual = 0;
+
+    function reduzido() {
+      return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+        doc.documentElement.getAttribute('data-movimento') === 'reduzido';
+    }
+    function mostrar(n) {
+      atual = n;
+      slides.forEach(function (s, i) { s.setAttribute('aria-hidden', i === n ? 'false' : 'true'); });
+      pontos.forEach(function (p, i) { if (i === n) p.setAttribute('aria-current', 'true'); else p.removeAttribute('aria-current'); });
+      info.textContent = 'Slide ' + (n + 1) + ' de ' + slides.length;
+    }
+    function ir(n) {
+      n = (n + slides.length) % slides.length;
+      trilho.scrollTo({ left: n * trilho.clientWidth, behavior: reduzido() ? 'auto' : 'smooth' });
+      mostrar(n);
+    }
+    var agendado = false;
+    trilho.addEventListener('scroll', function () {
+      if (agendado) return;
+      agendado = true;
+      window.requestAnimationFrame(function () {
+        agendado = false;
+        var n = Math.round(trilho.scrollLeft / trilho.clientWidth);
+        if (n !== atual && n >= 0 && n < slides.length) mostrar(n);
+      });
+    }, { passive: true });
+    anterior.addEventListener('click', function () { ir(atual - 1); });
+    proximo.addEventListener('click', function () { ir(atual + 1); });
+    pontos.forEach(function (p, i) { p.addEventListener('click', function () { ir(i); }); });
+    trilho.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); ir(atual - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); ir(atual + 1); }
+    });
+    window.addEventListener('resize', function () { trilho.scrollLeft = atual * trilho.clientWidth; });
+    mostrar(0);
+  }
+
   /* Início ------------------------------------------------------------------ */
   function iniciar() {
     iniciarPainelAcessibilidade();
@@ -424,6 +472,7 @@
     iniciarJanelaEmail();
     iniciarVoltarAoTopo();
     iniciarPdf();
+    todos('[data-carrossel]').forEach(iniciarCarrossel);
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 }());

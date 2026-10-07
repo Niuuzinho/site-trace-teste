@@ -19,9 +19,7 @@ permalink: /
   </div>
 </section>
 <div class="container banner-area">
-  <figure class="banner-topo">
-    {% include img.html nome="banners/conheca-projetos" alt="Banner amarelo com os logotipos da UFBA e do CNPq, a frase “Conheça nossos projetos!” e a ilustração de mãos escrevendo em um caderno espiral." sizes="(min-width: 70rem) 1024px, 100vw" eager=true %}
-  </figure>
+  {% include carrossel.html itens=site.data.carrossel rotulo="Destaques do grupo" %}
 </div>
 
 <div class="miolo">
