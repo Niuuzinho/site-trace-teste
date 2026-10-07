@@ -1606,3 +1606,8 @@ html[data-escuro] .cartao-proj { --t-tinta: #cdd2ff; --t-banda: #2f3566; --t-sua
 html[data-contraste="alto"] .faixa-card .versao-troca { background: transparent; border: 2px solid #fff; box-shadow: none; }
 html[data-contraste="alto"] .faixa-card .versao-troca a { color: #fff; }
 html[data-contraste="alto"] .faixa-card .versao-troca a[aria-current="page"] { background: #fff; color: #000; }
+/* Seletor de versões no celular: duas metades iguais, sem cápsula esticada */
+@media (max-width: 39.99em) {
+  .versao-troca { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; border-radius: 1.2rem; gap: 0.25rem; }
+  .versao-troca a { justify-content: center; text-align: center; min-height: 3.25rem; padding: 0.4rem 0.6rem; border-radius: 1rem; font-size: 0.95rem; line-height: 1.25; }
+}

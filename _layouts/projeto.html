@@ -2,7 +2,8 @@
 layout: default
 ---
 {%- assign titulo_base = page.par | default: page.title -%}
-{%- assign versao_pp = site.projetos | where: "title", page.par | first -%}
+{%- assign versao_pp = nil -%}
+{%- if page.par %}{% assign versao_pp = site.projetos | where: "title", page.par | first %}{% endif -%}
 {%- assign versao_lla = site.projetos | where: "par", page.title | first -%}
 {%- if page.par %}{% assign url_pp = versao_pp.url %}{% assign url_lla = page.url %}{% else %}{% assign url_pp = page.url %}{% assign url_lla = versao_lla.url %}{% endif -%}
 {%- capture chips -%}<li class="chip-forte">{{ page.ano }}</li><li>{{ page.situacao }}</li>{%- endcapture -%}
@@ -46,6 +47,12 @@ layout: default
       <section class="sec-larga sec-galeria" aria-labelledby="h-galeria">
         <h2 id="h-galeria">Galeria</h2>
         {% include galeria.html itens=page.galeria rotulo="Galeria de imagens do projeto" %}
+      </section>
+      {%- endif %}
+      {%- if page.video and page.video != '' %}
+      <section class="sec-larga sec-video" aria-labelledby="h-video">
+        <h2 id="h-video">Vídeo</h2>
+        {% include video.html id=page.video titulo=page.title %}
       </section>
       {%- endif %}
       {%- if page.equipe and page.equipe.size > 0 %}
