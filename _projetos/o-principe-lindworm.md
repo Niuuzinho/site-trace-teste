@@ -32,13 +32,7 @@ galeria:
   alt: Capa ilustrada do projeto O Príncipe Lindworm usada na listagem de projetos.
   legenda: Legenda placeholder 3
 video: tgbNymZ7vqY
-downloads:
-  - sigla: PP
-    rotulo: Português padrão
-    arquivo: /assets/docs/placeholder-projeto.pdf
-  - sigla: LLA
-    rotulo: Linguagem literária acessível
-    arquivo: /assets/docs/placeholder-projeto.pdf
+pdf: /assets/docs/placeholder-projeto.pdf
 equipe:
 - nome: Integrante placeholder 1
   texto: Texto placeholder sobre a participação desta pessoa no projeto.

@@ -26,7 +26,8 @@ layout: default
           {%- endfor %}
         </dl>
         {%- if page.pdf and page.pdf != '' %}
-        <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
+        {%- if page.par %}{% assign rotulo_pdf = "Baixar versão LLA" %}{% assign nome_pdf = "Linguagem literária acessível" %}{% elsif versao_lla %}{% assign rotulo_pdf = "Baixar versão PP" %}{% assign nome_pdf = "Português padrão" %}{% else %}{% assign rotulo_pdf = "Baixar PDF" %}{% assign nome_pdf = "" %}{% endif %}
+        <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>{{ rotulo_pdf }}{% if nome_pdf != "" %}<span class="so-leitor"> ({{ nome_pdf }})</span>{% endif %}<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
         {%- endif %}
       </aside>
     </div>
@@ -37,29 +38,12 @@ layout: default
         {{ content }}
         </div>
       </section>
-      {%- if page.downloads and page.downloads.size > 0 %}
-      <section class="proj-downloads" aria-label="Downloads">
-        <p class="down-aviso">{% for d in page.downloads %}{% if d.sigla %}<strong>{{ d.sigla }}</strong> = {{ d.rotulo }}{% else %}{{ d.rotulo }}{% endif %}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
-        <ul class="downloads">
-          {%- for d in page.downloads %}
-          {%- assign nome_curto = d.sigla | default: d.rotulo %}
-          <li><a class="botao botao-down" href="{{ d.arquivo | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar versão {{ nome_curto }}{% if d.sigla %}<span class="so-leitor"> ({{ d.rotulo }})</span>{% endif %}<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></li>
-          {%- endfor %}
-        </ul>
-      </section>
-      {%- endif %}
     </div>
     <div class="bloco-b">
       {%- if page.galeria and page.galeria.size > 0 %}
       <section class="sec-larga sec-galeria" aria-labelledby="h-galeria">
         <h2 id="h-galeria">Galeria</h2>
         {% include galeria.html itens=page.galeria rotulo="Galeria de imagens do projeto" %}
-      </section>
-      {%- endif %}
-      {%- if page.video %}
-      <section class="sec-larga sec-video" aria-labelledby="h-video">
-        <h2 id="h-video">Vídeo</h2>
-        {% include video.html id=page.video titulo=page.title %}
       </section>
       {%- endif %}
       {%- if page.equipe and page.equipe.size > 0 %}
