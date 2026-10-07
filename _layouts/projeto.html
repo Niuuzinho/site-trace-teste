@@ -5,10 +5,10 @@ layout: default
 {% include topo.html titulo=page.title subtitulo=page.subtitulo pai="Projetos" pai_url="/projetos/" chips=chips %}
 <div class="container pagina-corpo">
   <div class="com-ficha prod-pagina proj-pagina">
+    <figure class="projeto-capa">
+      {% include img.html nome=page.capa alt=page.capa_alt sizes="(min-width: 74rem) 70rem, 100vw" eager=true %}
+    </figure>
     <div class="proj-lateral">
-      <figure class="projeto-capa">
-        {% include img.html nome=page.capa alt=page.capa_alt sizes="(min-width: 56em) 40rem, 100vw" eager=true %}
-      </figure>
       <aside class="ficha-card ficha-prod" aria-labelledby="h-ficha">
         <div class="ficha-topo">
           <div class="ficha-titulos"><h2 id="h-ficha">Ficha do projeto</h2><p class="ficha-tipo"><span class="so-leitor">Situação: </span>{{ page.situacao }}</p></div>

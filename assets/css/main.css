@@ -1504,3 +1504,20 @@ html[data-contraste="alto"] .down-icone .icone-tipo { background: var(--tinta); 
   .proj-pagina .downloads li { flex-wrap: wrap; justify-content: center; text-align: center; }
   .proj-pagina .downloads .down-rotulo { flex-basis: 100%; }
 }
+
+/* Página de projeto v4: capa recortada como banner no topo; texto + downloads à esquerda; ficha à direita */
+.proj-pagina .projeto-capa { grid-column: 1 / -1; }
+.proj-pagina .projeto-capa img { aspect-ratio: 3 / 2; object-fit: cover; object-position: center 40%; width: 100%; height: auto; }
+@media (min-width: 40em) { .proj-pagina .projeto-capa img { aspect-ratio: 21 / 8; } }
+@media (min-width: 56em) {
+  .proj-pagina { grid-template-columns: minmax(0, 1fr) 22rem; }
+  .proj-pagina .projeto-capa { grid-row: 1; }
+  .proj-principal { grid-column: 1; grid-row: 2; }
+  .proj-lateral { grid-column: 2; grid-row: 2; }
+  .proj-pagina .bloco-b { grid-row: 3; }
+  .proj-pagina .downloads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proj-pagina .downloads li { flex-direction: column; text-align: center; padding: var(--e5) var(--e4); }
+  .proj-pagina .downloads .botao { margin-top: auto; }
+}
+@media (min-width: 56em) and (max-width: 72em) { .proj-pagina .downloads li { flex-wrap: nowrap; } .proj-pagina .downloads .down-rotulo { flex-basis: auto; } }
+@media (min-width: 56em) { .proj-pagina .projeto-capa img { aspect-ratio: 3 / 1; object-position: center 45%; } }
