@@ -700,15 +700,15 @@ html[data-contraste="alto"] .car-trilho { border: 2px solid var(--tinta); }
 html[data-contraste="alto"] .car-ponto[aria-current="true"]::before { background: var(--tinta); border-color: var(--tinta); }
 
 /* A faixa de abertura vem primeiro (logo abaixo do menu); o banner vem depois dela */
-.abertura { padding: var(--e6) 0 var(--e7); }
-.abertura h1 { max-width: 14ch; font-size: clamp(2.2rem, 1.2rem + 4.2vw, 4.2rem); font-weight: 700; margin-bottom: 0; }
-.abertura .selo { font-weight: 700; font-size: 1.05rem; color: var(--t-tinta); margin: 0 0 var(--e3); }
+.abertura { padding: var(--e4) 0 var(--e5); }   /* faixa baixa: o carrossel aparece mais cedo na tela */
+.abertura h1 { max-width: 22ch; font-size: clamp(2rem, 1.2rem + 3vw, 3.1rem); font-weight: 700; margin-bottom: 0; }
+.abertura .selo { font-weight: 700; font-size: 1.05rem; color: var(--t-tinta); margin: 0 0 var(--e2); }
 .abertura .lead { margin-bottom: 0; }
 @media (min-width: 56em) {
-  .abertura .container { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--e7); align-items: end; }
+  .abertura .container { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: var(--e6); align-items: end; }
 }
-.abertura-texto { padding-bottom: 0.4rem; }
-@media (max-width: 55.99em) { .abertura-texto { margin-top: var(--e5); } }
+.abertura-texto { padding-bottom: 0; }
+@media (max-width: 55.99em) { .abertura-texto { margin-top: var(--e4); } }
 /* A faixa de abertura tem sempre o visual escuro, mesmo no tema claro (decisão da pessoa: acha mais bonito).
    Repete os valores do tema escuro só aqui dentro; no alto contraste ela segue as regras de alto contraste. */
 html:not([data-escuro]):not([data-contraste="alto"]) .abertura {
