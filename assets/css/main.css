@@ -1371,3 +1371,9 @@ html[data-contraste="alto"] .pessoa .cartao-img::before, html[data-contraste="al
 .egressos .ini { display: grid; place-items: center; flex: none; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--t-forte); color: #fff; font-size: 0.8rem; font-weight: 700; }
 html[data-contraste="alto"] .egressos li { background: var(--papel); border: 2px solid var(--tinta); box-shadow: none; }
 html[data-contraste="alto"] .egressos .ini { background: var(--tinta); color: var(--papel); }
+
+/* Membros: texto inicial solto, com barra vertical na cor da página e 1º parágrafo em destaque */
+.membros-topo .membros-intro { position: relative; background: none; box-shadow: none; border: 0; border-radius: 0; padding: 0 0 0 var(--e5); margin: var(--e5) 0 var(--e7); max-width: 60rem; }
+.membros-topo .membros-intro::before { content: ""; position: absolute; left: 0; top: 0.3rem; bottom: 0.3rem; width: 6px; border-radius: 3px; background: var(--t-forte); }
+.membros-topo .membros-intro p:first-child { font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem); line-height: 1.5; font-weight: 600; letter-spacing: -0.01em; }
+.membros-topo .membros-intro p + p { margin-top: var(--e4); padding: 0; border: 0; font-size: 1.05rem; color: var(--tinta-2); }
