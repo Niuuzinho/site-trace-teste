@@ -1459,3 +1459,33 @@ html[data-contraste="alto"] .historia-texto { background: var(--papel); }
 html[data-contraste="alto"] .sec-equipe .equipe li { background: var(--papel); border: 2px solid var(--tinta); box-shadow: none; }
 html[data-contraste="alto"] .sec-video .video { border: 2px solid var(--tinta); box-shadow: none; }
 .bloco-b > .sec-larga + .sec-larga { margin-top: var(--e7); }
+
+/* Página de projeto v2: texto + downloads à esquerda; capa e ficha na coluna lateral; seções largas embaixo */
+.proj-pagina { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--e6); }
+.proj-principal, .proj-lateral { display: contents; }
+.proj-pagina .projeto-capa { order: 0; max-width: none; margin: 0; grid-column: auto; grid-row: auto; }
+.proj-pagina .proj-sobre { order: 1; }
+.proj-pagina .proj-downloads { order: 2; }
+.proj-pagina .ficha-card { order: 3; grid-column: auto; grid-row: auto; position: static; }
+.proj-pagina .bloco-b { order: 4; margin-top: 0; }
+.proj-pagina .projeto-capa::before { display: none; }
+.proj-pagina .projeto-capa img { border-radius: 1.4rem; box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.45); }
+.proj-pagina .proj-sobre .resumo-texto { max-width: none; }
+.proj-downloads > h2 { margin: 0 0 var(--e4); font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+.proj-downloads > h2::after { content: ""; display: block; width: 4rem; height: 6px; margin-top: var(--e2); border-radius: 3px; background: var(--t-forte); }
+.downloads { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--e4); }
+@media (min-width: 40em) { .downloads { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.downloads li { display: flex; flex-direction: column; align-items: center; gap: var(--e3); text-align: center; padding: var(--e5) var(--e4); border-radius: 1.4rem; background: color-mix(in srgb, var(--t-banda) 38%, var(--cartao)); box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.35); }
+.down-icone .icone-tipo { box-sizing: content-box; display: block; width: 1.8rem; height: 1.8rem; padding: 0.8rem; border-radius: 50%; background: var(--t-forte); color: #fff; }
+.down-rotulo { margin: 0; font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
+.downloads .botao { margin-top: auto; }
+@media (min-width: 56em) {
+  .proj-pagina { grid-template-columns: minmax(0, 1fr) 22rem; column-gap: var(--e6); align-items: start; }
+  .proj-principal { display: flex; flex-direction: column; gap: var(--e6); grid-column: 1; grid-row: 1; }
+  .proj-lateral { display: flex; flex-direction: column; gap: var(--e5); grid-column: 2; grid-row: 1; }
+  .proj-pagina .projeto-capa, .proj-pagina .proj-sobre, .proj-pagina .proj-downloads, .proj-pagina .ficha-card { order: 0; }
+  .proj-pagina .bloco-b { grid-column: 1 / -1; grid-row: 2; margin-top: var(--e5); }
+}
+html[data-contraste="alto"] .downloads li { background: var(--papel); border: 2px solid var(--tinta); box-shadow: none; }
+html[data-contraste="alto"] .down-icone .icone-tipo { background: var(--tinta); color: var(--papel); }
+.proj-pagina { padding-top: var(--e5); }

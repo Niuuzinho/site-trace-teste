@@ -99,3 +99,16 @@ A fonte Lora é licenciada sob a SIL OFL 1.1 (veja `LICENSE-fontes.txt`).
 
 ## Apoio no rodapé
 Para mostrar logos de instituições que apoiam o grupo, edite `_data/apoio.yml` (há um exemplo comentado no próprio arquivo). Enquanto a lista estiver vazia, a faixa "Apoio" não aparece.
+
+
+### Projetos que são livros: duas versões para baixar
+No começo do arquivo do projeto, no lugar de `pdf:`, use `downloads:` com uma linha para cada versão:
+
+```
+downloads:
+  - rotulo: Português padrão
+    arquivo: /assets/docs/nome-do-arquivo.pdf
+  - rotulo: Linguagem literária acessível
+    arquivo: /assets/docs/outro-arquivo.pdf
+```
+Cada versão vira um cartão com o botão "Baixar PDF". Projetos que não são livros continuam usando só `pdf:`.

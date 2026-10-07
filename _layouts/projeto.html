@@ -4,33 +4,49 @@ layout: default
 {%- capture chips -%}<li class="chip-forte">{{ page.ano }}</li><li>{{ page.situacao }}</li>{%- endcapture -%}
 {% include topo.html titulo=page.title subtitulo=page.subtitulo pai="Projetos" pai_url="/projetos/" chips=chips %}
 <div class="container pagina-corpo">
-  <div class="com-ficha com-ficha-capa prod-pagina proj-pagina">
-    <figure class="projeto-capa">
-      {% include img.html nome=page.capa alt=page.capa_alt sizes="(min-width: 74rem) 70rem, 100vw" eager=true %}
-    </figure>
-    <div class="bloco-a">
-      <section class="resumo" aria-labelledby="h-sobre">
+  <div class="com-ficha prod-pagina proj-pagina">
+    <div class="proj-principal">
+      <section class="resumo proj-sobre" aria-labelledby="h-sobre">
         <h2 id="h-sobre">Sobre o projeto</h2>
         <div class="resumo-texto">
         {{ content }}
         </div>
       </section>
-    </div>
-    <aside class="ficha-card ficha-prod" aria-labelledby="h-ficha">
-      <div class="ficha-topo">
-        <div class="ficha-titulos"><h2 id="h-ficha">Ficha do projeto</h2><p class="ficha-tipo"><span class="so-leitor">Situação: </span>{{ page.situacao }}</p></div>
-        <p class="ficha-ano"><span class="so-leitor">Ano </span>{{ page.ano }}</p>
-      </div>
-      <dl class="ficha">
-        <div><dt>Temas</dt><dd><ul class="temas">{% for t in page.temas %}<li>{{ t }}</li>{% endfor %}</ul></dd></div>
-        {%- for f in page.ficha %}
-        <div><dt>{{ f.rotulo }}</dt><dd>{{ f.valor }}</dd></div>
-        {%- endfor %}
-      </dl>
-      {%- if page.pdf %}
-      <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
+      {%- if page.downloads and page.downloads.size > 0 %}
+      <section class="proj-downloads" aria-labelledby="h-downloads">
+        <h2 id="h-downloads">Downloads</h2>
+        <ul class="downloads">
+          {%- for d in page.downloads %}
+          <li>
+            <span class="down-icone">{% include icone-tipo.html tipo="Artigo" %}</span>
+            <p class="down-rotulo">{{ d.rotulo }}</p>
+            <a class="botao" href="{{ d.arquivo | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF<span class="so-leitor"> — {{ d.rotulo }}</span><span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a>
+          </li>
+          {%- endfor %}
+        </ul>
+      </section>
       {%- endif %}
-    </aside>
+    </div>
+    <div class="proj-lateral">
+      <figure class="projeto-capa">
+        {% include img.html nome=page.capa alt=page.capa_alt sizes="(min-width: 56em) 24rem, 100vw" eager=true %}
+      </figure>
+      <aside class="ficha-card ficha-prod" aria-labelledby="h-ficha">
+        <div class="ficha-topo">
+          <div class="ficha-titulos"><h2 id="h-ficha">Ficha do projeto</h2><p class="ficha-tipo"><span class="so-leitor">Situação: </span>{{ page.situacao }}</p></div>
+          <p class="ficha-ano"><span class="so-leitor">Ano </span>{{ page.ano }}</p>
+        </div>
+        <dl class="ficha">
+          <div><dt>Temas</dt><dd><ul class="temas">{% for t in page.temas %}<li>{{ t }}</li>{% endfor %}</ul></dd></div>
+          {%- for f in page.ficha %}
+          <div><dt>{{ f.rotulo }}</dt><dd>{{ f.valor }}</dd></div>
+          {%- endfor %}
+        </dl>
+        {%- if page.pdf and page.pdf != '' %}
+        <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
+        {%- endif %}
+      </aside>
+    </div>
     <div class="bloco-b">
       {%- if page.galeria and page.galeria.size > 0 %}
       <section class="sec-larga sec-galeria" aria-labelledby="h-galeria">

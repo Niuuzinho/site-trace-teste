@@ -27,7 +27,11 @@ galeria:
 - imagem: placeholders/livro
   alt: Imagem placeholder adicional para materiais do projeto.
   legenda: Legenda placeholder 2
-pdf: /assets/docs/placeholder-projeto.pdf
+downloads:
+  - rotulo: Português padrão
+    arquivo: /assets/docs/placeholder-projeto.pdf
+  - rotulo: Linguagem literária acessível
+    arquivo: /assets/docs/placeholder-projeto.pdf
 equipe:
 - nome: Integrante placeholder 1
   texto: Texto placeholder sobre a participação desta pessoa no projeto.
