@@ -27,7 +27,7 @@ importantes, **atualize este arquivo no mesmo trabalho**.
 - `_config.yml` está com `baseurl: "/site-trace-teste"`. **Se o repositório mudar de nome ou ganhar domínio próprio, trocar
   o `baseurl`** (vazio `""` para `usuario.github.io` ou domínio próprio).
 - Publicação: Settings → Pages → "Deploy from a branch" → `main` → `/ (root)`. O GitHub roda o Jekyll sozinho.
-  Erros de build aparecem na aba Actions. **Para publicar, envie a `main` num `git push` separado** (`git push origin HEAD:main`); mandar a branch e a `main` juntas no mesmo comando fez o GitHub não rodar o build do Pages (visto na aba Actions).
+  Erros de build aparecem na aba Actions. **ATENÇÃO (pedido da pessoa em 07/10): NÃO enviar nada para a `main` sem ela pedir de novo** (ela não estava no computador e quer revisar antes; a autorização anterior de "todas as futuras mudanças" foi cancelada). Trabalhar só na branch `claude/loving-cannon-31788f`. **Quando for publicar, envie a `main` num `git push` separado** (`git push origin HEAD:main`); mandar a branch e a `main` juntas no mesmo comando fez o GitHub não rodar o build do Pages (visto na aba Actions).
 
 ---
 
@@ -123,7 +123,7 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 - **Nunito** (realmente arredondada, a que o site antigo pedia) **não foi incluída por falta de internet** na época. O `main.css`
   já tem o `@font-face` comentado e a pilha `--texto` já lista "Nunito" primeiro. Para ativar: baixar a Nunito (OFL), converter
   para `.woff2`, salvar como `assets/fonts/nunito.woff2` e descomentar. **Se tiver acesso à internet, vale oferecer isso.**
-- Botão "Fonte de leitura" do painel: usa Atkinson Hyperlegible Next se existir (também comentada em `main.css`), senão Verdana/Tahoma.
+- Botão "Fonte de leitura" do painel: usa **Atkinson Hyperlegible** (feita para baixa visão; `assets/fonts/atkinson-hyperlegible-400.woff2` e `-700.woff2`, ~17 KB cada, SIL OFL, licença em `assets/fonts/LICENSE-Atkinson.txt`), hospedada no site e **baixada só quando a opção está ligada**; senão Verdana/Tahoma. (A "Atkinson Hyperlegible Next" não foi usada.)
 - Histórico: já tentamos Lora+Carlito e Lora sozinha; a pessoa não gostou. Não voltar para serifa sem perguntar.
 
 ### Cores — **cada página tem a sua cor, mas o fundo é um só**
@@ -170,6 +170,10 @@ Nas listas/cartões, a imagem é decorativa (`alt=""`) porque o título está ao
 - **Botões** (`.botao`, `.botao-sec`, `.botao-peq`): mesmo tamanho, forma e comportamento. No hover/clique mudam de cor e sobem 2 px (sem subir em "Menos movimento"). Principal: hover vira `--t-tinta` com texto `--papel` (nunca branco fixo: no tema escuro `--t-tinta` é claro). Secundário: hover enche com `--t-banda` (branco dentro da faixa colorida). No alto contraste o hover inverte preto/branco. Varredura de contraste de todos os estados feita nos 4 temas: mínimo 5,0:1.
 - **Etiquetas** (`.temas li`, palavras-chave): preenchidas com `--t-banda`, sem borda, texto `--t-tinta` em negrito suave, cantos assimétricos (contraste ≥ 4,9:1; no alto contraste voltam a ter borda). Os cards de **produção** mostram até 3 `palavras_chave` e, embaixo, "Projeto" + nome do projeto em destaque (linha separadora). Os filtros usam caixas de seleção, não etiquetas (não foi alterado).
 - **PDF**: o botão "Baixar PDF" (projetos e produções, `a[data-pdf]`) **abre o PDF em outra guia** no computador; em aparelhos de toque (`pointer: coarse`) o JS troca para download direto.
+- **Copiar citação** (`producao.html`): botão "Copiar citação" na ficha bibliográfica (só com JavaScript, `iniciarCopiarCitacao`); copia o texto de `citacao`, muda o rótulo para "Citação copiada" e avisa leitor de tela (`role="status"`). Usa a área de transferência do navegador, com alternativa `execCommand`.
+- **Ícones por tipo de produção** (`_includes/icone-tipo.html` + sprite `i-tipo-*` em `icones.html`): artigo, capítulo, TCC, dissertação e videolivro (traço simples, decorativos, o nome do tipo vem escrito ao lado); aparecem no topo dos cartões e na ficha. Tipo novo cai no ícone de artigo; para ter ícone próprio, criar o `symbol` e uma linha no `case`.
+- **Busca grande na inicial** (`.busca-home`, entre o carrossel e "Projetos em destaque"): mesmo formulário do menu (`/busca/?q=`), campo grande com botão "Buscar" (só a lupa no celular pequeno, o nome fica para leitor de tela).
+- **Faixa "Apoio" no rodapé**: lista em `_data/apoio.yml` (nome, imagem, url). **Enquanto a lista estiver vazia a faixa não aparece.** Os logos ficam sobre caixinha branca (para qualquer logo ler bem no rodapé escuro). A pessoa precisa fornecer os logos (não gerar).
 - **Cartões** para projetos, produções e membros (a pessoa pediu cartões lado a lado, não listas). Cartão inteiro clicável (link esticado).
 - **Membros**: foto em **círculo**, com ícones de contato (e-mail, Lattes, LinkedIn) que só aparecem se o dado existir.
   O ícone de e-mail abre uma **janela** (`<dialog>`) com o endereço, "Copiar e-mail" e "Escrever e-mail"; sem JavaScript vira `mailto:`.

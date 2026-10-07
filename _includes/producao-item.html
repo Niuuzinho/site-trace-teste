@@ -6,7 +6,7 @@
 {%- capture busca -%}{{ r.title }} {{ r.resumo }} {{ r.projeto }} {{ r.autoria }} {{ r.palavras_chave | join: ' ' }}{%- endcapture -%}
 <li class="cartao cartao-ref"{% if include.filtravel %} data-item data-texto="{{ busca | strip | escape }}" data-tipo="{{ r.tipo | slugify }}" data-ano="{{ r.ano }}"{% endif %}>
   <div class="cartao-topo">
-    <p class="ref-tipo">{{ r.tipo }}</p>
+    <p class="ref-tipo">{% include icone-tipo.html tipo=r.tipo %}{{ r.tipo }}</p>
     <p class="ref-ano"><span class="so-leitor">Ano </span>{{ r.ano }}</p>
   </div>
   <div class="cartao-corpo">

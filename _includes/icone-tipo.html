@@ -1,0 +1,11 @@
+{%- comment -%}
+  Ícone do tipo de produção (decorativo: o nome do tipo vem escrito ao lado). Parâmetro: tipo (ex.: Artigo, Capítulo, TCC, Dissertação, Videolivro).
+{%- endcomment -%}
+{%- case include.tipo -%}
+  {%- when 'Capítulo' -%}{%- assign icone_tipo = 'capitulo' -%}
+  {%- when 'TCC' -%}{%- assign icone_tipo = 'tcc' -%}
+  {%- when 'Dissertação' -%}{%- assign icone_tipo = 'dissertacao' -%}
+  {%- when 'Videolivro' -%}{%- assign icone_tipo = 'videolivro' -%}
+  {%- else -%}{%- assign icone_tipo = 'artigo' -%}
+{%- endcase -%}
+<svg class="icone icone-tipo" aria-hidden="true" focusable="false"><use href="#i-tipo-{{ icone_tipo }}"></use></svg>

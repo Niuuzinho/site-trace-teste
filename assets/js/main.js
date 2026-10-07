@@ -459,6 +459,36 @@
     mostrar(0, false);
   }
 
+  /* 11. Botão "Copiar citação" nas produções ----------------------------------- */
+  function iniciarCopiarCitacao() {
+    var botao = doc.querySelector('[data-copiar-citacao]');
+    var texto = doc.querySelector('[data-citacao]');
+    var aviso = doc.querySelector('[data-citacao-aviso]');
+    if (!botao || !texto) return;
+    var rotulo = botao.textContent;
+    var volta = null;
+    function avisar(msg, ok) {
+      aviso.textContent = msg;
+      botao.textContent = ok ? 'Citação copiada' : rotulo;
+      window.clearTimeout(volta);
+      volta = window.setTimeout(function () { botao.textContent = rotulo; aviso.textContent = ''; }, 2500);
+    }
+    botao.addEventListener('click', function () {
+      var t = texto.textContent.trim();
+      function deu() { avisar('Citação copiada.', true); }
+      function falhou() { avisar('Não foi possível copiar sozinho. Selecione a citação e copie.', false); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(deu, falhou);
+      } else {
+        try {
+          var faixa = doc.createRange(); faixa.selectNodeContents(texto);
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(faixa);
+          if (doc.execCommand('copy')) deu(); else falhou();
+        } catch (err) { falhou(); }
+      }
+    });
+  }
+
   /* Início ------------------------------------------------------------------ */
   function iniciar() {
     iniciarPainelAcessibilidade();
@@ -473,6 +503,7 @@
     iniciarJanelaEmail();
     iniciarVoltarAoTopo();
     iniciarPdf();
+    iniciarCopiarCitacao();
     todos('[data-carrossel]').forEach(iniciarCarrossel);
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', iniciar); else iniciar();

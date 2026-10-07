@@ -96,3 +96,6 @@ Sugestão: depois de publicar, teste com o Lighthouse (no Chrome: F12 → Lighth
 ## Licenças
 
 A fonte Lora é licenciada sob a SIL OFL 1.1 (veja `LICENSE-fontes.txt`).
+
+## Apoio no rodapé
+Para mostrar logos de instituições que apoiam o grupo, edite `_data/apoio.yml` (há um exemplo comentado no próprio arquivo). Enquanto a lista estiver vazia, a faixa "Apoio" não aparece.

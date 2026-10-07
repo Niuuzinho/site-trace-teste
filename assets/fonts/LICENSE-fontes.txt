@@ -2,3 +2,8 @@ Fonte Poppins (assets/fonts/poppins-regular.woff, poppins-medium.woff e poppins-
 Copyright 2020 The Poppins Project Authors (https://github.com/itfoundry/Poppins)
 Licenciada sob a SIL Open Font License, Version 1.1 — https://openfontlicense.org
 Os arquivos incluídos são versões reduzidas (apenas caracteres latinos) das fontes originais.
+
+Fonte Atkinson Hyperlegible (assets/fonts/atkinson-hyperlegible-400.woff2 e -700.woff2), usada só no botão "Fonte de leitura" do painel de Acessibilidade
+Copyright 2020 Braille Institute of America, Inc. (https://www.brailleinstitute.org/freefont)
+Licenciada sob a SIL Open Font License, Version 1.1 — texto completo em assets/fonts/LICENSE-Atkinson.txt
+Arquivos obtidos do pacote @fontsource/atkinson-hyperlegible (apenas caracteres latinos).

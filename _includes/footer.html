@@ -32,6 +32,16 @@
       </ul>
     </section>
   </div>
+  {%- if site.data.apoio and site.data.apoio.size > 0 %}
+  <div class="rodape-apoio">
+    <h2 id="rodape-apoio">Apoio</h2>
+    <ul aria-labelledby="rodape-apoio">
+      {%- for a in site.data.apoio %}
+      <li>{% if a.url and a.url != '' %}<a href="{{ a.url }}" target="_blank" rel="noopener noreferrer">{% include img.html nome=a.imagem alt=a.nome sizes="10rem" %}<span class="so-leitor"> (abre em outra guia)</span></a>{% else %}{% include img.html nome=a.imagem alt=a.nome sizes="10rem" %}{% endif %}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
   <div class="rodape-base">
     <div>
       <p>{{ site.rodape.assinatura }}</p>

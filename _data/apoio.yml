@@ -1,0 +1,11 @@
+# Instituições que apoiam o grupo (aparece no rodapé, na faixa "Apoio"). Enquanto esta lista estiver vazia, a faixa não aparece.
+# Para cada uma:
+#   nome: nome da instituição (também serve de texto alternativo do logo)
+#   imagem: nome do logo dentro de assets/img/ (sem tamanho e sem .webp). Gere com:
+#           python3 ferramentas/otimizar-imagens.py logo.png apoio/ufba 240,480
+#   url: endereço do site da instituição (opcional)
+# Exemplo (tire o # das linhas para usar):
+# - nome: Nome da instituição
+#   imagem: apoio/nome-da-instituicao
+#   url: https://exemplo.br
+[]

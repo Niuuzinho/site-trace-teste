@@ -14,12 +14,17 @@ layout: default
     <aside class="ficha-card" aria-labelledby="h-ficha">
       <h2 id="h-ficha">Ficha bibliográfica</h2>
       <dl class="ficha">
-        <div><dt>Tipo</dt><dd>{{ page.tipo }}</dd></div>
+        <div><dt>Tipo</dt><dd class="tipo-ficha">{% include icone-tipo.html tipo=page.tipo %}{{ page.tipo }}</dd></div>
         <div><dt>Ano</dt><dd>{{ page.ano }}</dd></div>
         <div><dt>Projeto relacionado</dt><dd>{% if proj %}<a href="{{ proj.url | relative_url }}">{{ proj.title }}</a>{% else %}{{ page.projeto }}{% endif %}</dd></div>
         <div><dt>Autoria</dt><dd>{{ page.autoria }}</dd></div>
       </dl>
-      <p class="citacao"><strong>Como citar</strong>{{ page.citacao }}</p>
+      <div class="citacao">
+        <strong>Como citar</strong>
+        <p class="citacao-texto" data-citacao>{{ page.citacao }}</p>
+        <button class="botao-peq so-js" type="button" data-copiar-citacao>Copiar citação</button>
+        <p class="so-leitor" role="status" data-citacao-aviso></p>
+      </div>
       {%- if page.pdf %}
       <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
       {%- endif %}

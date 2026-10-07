@@ -25,6 +25,16 @@ permalink: /
   {% include carrossel.html itens=site.data.carrossel rotulo="Avisos e novidades" %}
 </div>
 
+<div class="container">
+  <form class="busca-home" role="search" action="{{ '/busca/' | relative_url }}" method="get">
+    <label for="busca-home">Buscar no acervo</label>
+    <div class="busca-home-linha">
+      <input id="busca-home" name="q" type="search" placeholder="Título ou palavra-chave" enterkeyhint="search" autocomplete="off">
+      <button type="submit" class="botao"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-lupa"></use></svg><span class="busca-home-texto">Buscar</span></button>
+    </div>
+  </form>
+</div>
+
 <div class="miolo">
 {%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}
 <section class="faixa-secao faixa-secao-1" aria-labelledby="h-destaques">
