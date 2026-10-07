@@ -9,7 +9,9 @@ layout: default
     <div class="bloco-a">
       <section class="resumo" aria-labelledby="h-resumo">
         <h2 id="h-resumo">Resumo</h2>
+        <div class="resumo-texto">
         {{ content }}
+        </div>
       </section>
       {%- if page.palavras_chave and page.palavras_chave.size > 0 %}
       <section class="prod-chaves" aria-labelledby="h-palavras">
@@ -38,19 +40,5 @@ layout: default
       <div class="ficha-rodape"><a class="botao" href="{{ page.pdf | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></div>
       {%- endif %}
     </aside>
-    <div class="bloco-b">
-      {%- assign outras = site.producoes | where: "projeto", page.projeto | where_exp: "r", "r.url != page.url" | sort: "ano" | reverse %}
-      {%- if outras.size > 0 %}
-      <section class="prod-outras" aria-labelledby="h-outras">
-        <h2 id="h-outras">Outras produções deste projeto</h2>
-        <ul class="cartoes">
-          {%- for r in outras limit: 2 %}
-          {% include producao-item.html producao=r %}
-          {%- endfor %}
-        </ul>
-      </section>
-      {%- endif %}
-      <p class="prod-voltar"><a class="botao-sec" href="{{ '/producoes/' | relative_url }}">Voltar para Produções</a></p>
-    </div>
   </div>
 </div>

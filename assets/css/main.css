@@ -1425,3 +1425,10 @@ html[data-contraste="alto"] .ficha-icone .icone-tipo { background: var(--tinta);
 html[data-contraste="alto"] .ficha-prod .citacao { background: var(--papel); border: 2px solid var(--tinta); }
 .prod-pagina .bloco-a { padding-top: var(--e5); }
 .prod-pagina .ficha-card { margin-top: 0; }
+
+/* Produção: resumo dentro de um recado suave (como o 2º parágrafo de Membros); sem bloco "outras produções" */
+.prod-pagina .resumo-texto { max-width: 52rem; padding: var(--e5) var(--e6); border-radius: 0.5rem 2rem 0.5rem 2rem; background: color-mix(in srgb, var(--t-banda) 55%, var(--cartao)); }
+.prod-pagina .resumo-texto p { max-width: none; }
+.prod-pagina .resumo-texto > :last-child { margin-bottom: 0; }
+html[data-contraste="alto"] .prod-pagina .resumo-texto { background: var(--papel); border: 2px solid var(--tinta); }
+@media (max-width: 40em) { .prod-pagina .resumo-texto { padding: var(--e4) var(--e5); } }
