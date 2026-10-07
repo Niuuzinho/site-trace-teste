@@ -1316,3 +1316,22 @@ html[data-movimento="reduzido"] .cartao:hover, html[data-movimento="reduzido"] .
   .cartao { break-inside: avoid; }
   .com-ficha { display: block; }
 }
+
+/* ===== Página Membros: orientadora em cartão verde-escuro, egressos em chips suaves ===== */
+.destaque-pessoa { color: #fff; border: 0; border-radius: 1.4rem; position: relative; isolation: isolate; max-width: none;
+  background-color: color-mix(in srgb, var(--f-membros) 42%, #04181a);
+  background-image: radial-gradient(circle at 0 100%, rgb(255 224 138 / 0.22) 0, rgb(255 224 138 / 0) 45%), radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px);
+  background-size: auto, 22px 22px; box-shadow: 0 1rem 2.2rem -1rem rgb(4 24 26 / 0.6); }
+.destaque-pessoa .destaque-foto { background: transparent; border: 0; }
+.destaque-pessoa .destaque-foto::before, .destaque-pessoa .destaque-foto::after { display: none; }
+.destaque-pessoa .destaque-foto img { border-color: #fff; box-shadow: 0 0 0 5px rgb(255 255 255 / 0.35); }
+.destaque-pessoa h3, .destaque-pessoa .areas, .destaque-pessoa .bio { color: #fff; }
+.destaque-pessoa .areas-rotulo { color: #ffe08a; }
+.destaque-pessoa .bio { border-top-color: rgb(255 255 255 / 0.3); }
+.destaque-pessoa .etiqueta-funcao { background: #ffe08a; color: #2b2200; }
+.destaque-pessoa .icone-link { background: #fff; color: #0d3a22; border-color: #fff; }
+.destaque-pessoa .icone-link:hover { background: #ffe08a; border-color: #ffe08a; color: #2b2200; }
+@media (min-width: 56em) { .destaque-pessoa .destaque-foto { border-right: 0; } .destaque-pessoa .destaque-texto { border-left: 1px solid rgb(255 255 255 / 0.25); } }
+html[data-contraste="alto"] .destaque-pessoa { background: #000; background-image: none; border: 2px solid #fff; }
+.egressos li { background: var(--t-banda); border: 0; color: var(--t-tinta); }
+html[data-contraste="alto"] .egressos li { background: var(--papel); border: 2px solid var(--tinta); color: var(--tinta); }
