@@ -396,6 +396,15 @@
     form.addEventListener('submit', function (e) {
       if (!window.fetch || !window.FormData) return;
       e.preventDefault();
+      /* título do e-mail que chega: [Assunto] - Nome */
+      var campoTitulo = form.querySelector('[data-assunto-email]');
+      var campoAssunto = form.querySelector('[name="assunto"]');
+      var campoNome = form.querySelector('[name="nome"]');
+      if (campoTitulo) {
+        var a = campoAssunto && campoAssunto.value ? campoAssunto.value : 'Contato pelo site';
+        var n = campoNome && campoNome.value ? campoNome.value.trim() : 'Nova mensagem';
+        campoTitulo.value = '[' + a + '] - ' + n;
+      }
       var botao = form.querySelector('button[type="submit"]');
       if (botao) botao.disabled = true;
       if (aviso) aviso.textContent = 'Enviando...';

@@ -29,6 +29,7 @@ permalink: /contato/
     </div>
     <form class="formulario contato-form" aria-labelledby="h-form"{% if acao != '' %} action="{{ acao }}" method="post"{% else %} data-demo{% endif %}>
       <h2 class="form-titulo" id="h-form">Envie uma mensagem</h2>
+      <input type="hidden" name="_subject" value="[Contato pelo site] - Nova mensagem" data-assunto-email>
       <div class="form-linha">
         <div>
           <label for="nome">Nome</label>
