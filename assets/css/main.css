@@ -891,7 +891,9 @@ html[data-contraste="alto"] .projeto-capa::before { display: none; }
 .historia-texto { max-width: none; display: flex; flex-direction: column; justify-content: center; background: var(--cartao); border-radius: 1.4rem; padding: var(--e5); box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.35); }
 .historia-texto > :last-child { margin-bottom: 0; }
 .historia-texto p { font-size: 1.1rem; line-height: 1.75; max-width: none; }
-@media (min-width: 56em) { .historia { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--e5); } .historia-texto { padding: var(--e6); } }
+@media (min-width: 56em) { .historia { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--e5); } .historia-texto { padding: var(--e6); } }
+/* as primeiras linhas do texto ficam maiores e em negrito leve: abertura do bloco */
+.historia-texto > p:first-child::first-line { font-size: 1.35rem; font-weight: 600; line-height: 1.5; color: var(--t-tinta); }
 html[data-contraste="alto"] .historia-img, html[data-contraste="alto"] .historia-texto { border: 2px solid var(--tinta); box-shadow: none; }
 /* missão / linhas de pesquisa: dois cartões iguais */
 .blocos-sobre { display: grid; gap: var(--e5); margin-top: var(--e5); }
@@ -948,6 +950,27 @@ html[data-contraste="alto"] .contato-form { border: 2px solid var(--tinta); box-
 .cr-grade .cartao:hover { transform: translateY(-4px); }
 @media (prefers-reduced-motion: reduce) { .cr-grade .cartao:hover { transform: none; } }
 html[data-movimento="reduzido"] .cr-grade .cartao:hover { transform: none; }
+
+/* faixa "Quem faz o TrAce" (fotos dos membros) na página Quem somos */
+.pagina-corpo > .pessoas-faixa { margin-top: var(--e7); position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--e5); align-items: center; padding: var(--e5); color: #fff; border-radius: 1.4rem;
+  background-color: color-mix(in srgb, var(--t-forte) 42%, #04181a);
+  background-image: radial-gradient(circle at 0 100%, rgb(255 224 138 / 0.22) 0, rgb(255 224 138 / 0) 45%), radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px);
+  background-size: auto, 22px 22px; }
+.pessoas-faixa h2 { margin: 0 0 var(--e4); color: #fff; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); font-weight: 700; line-height: 1.1; }
+@media (min-width: 56em) { .pagina-corpo > .pessoas-faixa { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); padding: var(--e6); } .pessoas-faixa .mod-avatares { justify-content: flex-end; } }
+html[data-contraste="alto"] .pessoas-faixa { background: #000; background-image: none; border: 2px solid #fff; }
+/* logos de apoio (só aparece se _data/apoio.yml tiver itens) */
+.pagina-corpo > .apoio-faixa { margin-top: var(--e7); text-align: center; }
+.apoio-faixa h2 { margin: 0 0 var(--e4); font-size: 1.3rem; font-weight: 700; }
+.apoio-faixa ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--e5); }
+.apoio-faixa img { display: block; width: auto; height: 3.5rem; max-width: 11rem; object-fit: contain; }
+/* legenda da miniatura ao passar o mouse ou focar (só onde há mouse/espaço) */
+.gal-legenda { display: none; }
+@media (min-width: 40em) {
+  .galeria a .gal-legenda { display: block; position: absolute; left: 0; right: 0; bottom: 0; padding: 0.6rem 3rem 0.6rem 0.8rem; font-size: 0.9rem; font-weight: 600; line-height: 1.3; color: #fff; background: linear-gradient(transparent, rgb(8 18 22 / 0.85)); opacity: 0; transition: opacity 0.15s; pointer-events: none; }
+  .galeria a:hover .gal-legenda, .galeria a:focus-visible .gal-legenda { opacity: 1; }
+}
+html[data-movimento="reduzido"] .gal-legenda { transition: none; }
 
 /* Faixa "Apoio" do rodapé (só aparece se _data/apoio.yml tiver itens) */
 .rodape-apoio { max-width: var(--pagina); margin-inline: auto; padding: 0 var(--e5) var(--e6); }
@@ -1278,7 +1301,7 @@ html[data-movimento="reduzido"] .cartao:hover, html[data-movimento="reduzido"] .
 
 /* 10. Impressão ----------------------------------------------------------- */
 @media print {
-  .cabecalho, .rodape, .topo-botao, .car-controles, .busca-home, .quem-faz, .faixa-chips, .pular, .filtros, .acoes, .galeria, .video, .botao, .botao-sec { display: none !important; }
+  .cabecalho, .rodape, .topo-botao, .car-controles, .busca-home, .quem-faz, .faixa-chips, .pessoas-faixa, .pular, .filtros, .acoes, .galeria, .video, .botao, .botao-sec { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; display: block; }
   .faixa-titulo { background: none; padding: 0; border: 0; }
   .faixa-titulo::before, .faixa-titulo::after { display: none; }

@@ -10,6 +10,7 @@
   <li><a href="{{ '/assets/img/' | append: g.imagem | append: '-' | append: maior | append: '.webp' | relative_url }}" data-alt="{{ g.alt | escape }}" data-legenda="{{ g.legenda | escape }}">
     {% include img.html nome=g.imagem alt=g.alt sizes="(min-width: 40em) 10rem, 45vw" %}
     <span class="so-leitor">Ampliar imagem {{ forloop.index }}: {{ g.legenda }}</span>
+    {%- if g.legenda and g.legenda != '' %}<span class="gal-legenda" aria-hidden="true">{{ g.legenda }}</span>{% endif %}
   </a></li>
   {%- endfor %}
 </ul>
