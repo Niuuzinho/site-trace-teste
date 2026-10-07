@@ -3,7 +3,7 @@ layout: null
 permalink: /search.json
 ---
 [
-{%- assign todos = site.projetos | where_exp: "p", "p.par == nil" | concat: site.producoes -%}
+{%- assign todos = site.projetos | concat: site.producoes -%}
 {%- for d in todos %}
   {
     "titulo": {{ d.title | jsonify }},

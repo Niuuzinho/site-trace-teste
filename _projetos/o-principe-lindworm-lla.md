@@ -50,6 +50,7 @@ equipe:
   texto: Texto placeholder sobre a participação desta pessoa no projeto.
   foto: placeholders/c
   alt: Foto placeholder de integrante da equipe do projeto.
+ordem: 1.5
 par: O Príncipe Lindworm
 permalink: /projetos/o-principe-lindworm/lla/
 ---

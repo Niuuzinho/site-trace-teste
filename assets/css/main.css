@@ -1546,3 +1546,9 @@ html[data-contraste="alto"] .proj-pagina .down-aviso strong { color: var(--tinta
 .versao-troca + .com-ficha, .versao-troca + .proj-pagina { padding-top: var(--e5); }
 html[data-contraste="alto"] .versao-troca { box-shadow: none; border: 2px solid var(--tinta); }
 html[data-contraste="alto"] .versao-troca a[aria-current="page"] { background: var(--tinta); color: var(--papel); }
+/* Selinho PP / LLA no canto da imagem do cartão de projeto */
+.cartao-img { position: relative; }
+.selo-versao { position: absolute; top: 0.7rem; left: 0.7rem; z-index: 2; padding: 0.2rem 0.75rem; border-radius: 0.25rem 0.9rem 0.25rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1.4; letter-spacing: 0.02em; box-shadow: 0 0.3rem 0.8rem -0.3rem rgb(0 0 0 / 0.55); }
+.selo-pp { background: #fff; color: #0b2a47; }
+.selo-lla { background: #ffe08a; color: #3a2b00; }
+html[data-contraste="alto"] .selo-versao { background: #fff; color: #000; border: 2px solid #000; box-shadow: none; }
