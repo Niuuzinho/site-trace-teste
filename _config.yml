@@ -60,6 +60,7 @@ exclude:
   - CLAUDE.md
   - TUTORIAL-GITHUB.md
   - DIAGNOSTICO.md
+  - DESIGN-SYSTEM.md
   - Gemfile
   - Gemfile.lock
   - ferramentas

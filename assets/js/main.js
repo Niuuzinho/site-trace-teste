@@ -263,6 +263,16 @@
       quadro.setAttribute('allowfullscreen', '');
       caixa.textContent = '';
       caixa.classList.add('carregado');
+      var aviso = doc.createElement('p');
+      aviso.className = 'video-carregando';
+      aviso.setAttribute('role', 'status');
+      aviso.innerHTML = '<span class="giro" aria-hidden="true"></span>Carregando vídeo…';
+      quadro.className = 'video-quadro';
+      quadro.addEventListener('load', function () {
+        quadro.classList.add('pronto');
+        if (aviso.parentNode) aviso.parentNode.removeChild(aviso);
+      });
+      caixa.appendChild(aviso);
       caixa.appendChild(quadro);
       quadro.focus();
     });
@@ -296,10 +306,24 @@
 
     function carregar(depois) {
       if (indice) { depois(); return; }
+      /* se a resposta demorar, mostra um esqueleto (evita piscar quando é rápido) */
+      var espera = setTimeout(function () {
+        status.textContent = 'Carregando a busca…';
+        saida.setAttribute('aria-busy', 'true');
+        saida.textContent = '';
+        for (var i = 0; i < 3; i++) {
+          var esq = doc.createElement('li');
+          esq.className = 'esqueleto';
+          esq.setAttribute('aria-hidden', 'true');
+          esq.innerHTML = '<span></span><span></span><span></span>';
+          saida.appendChild(esq);
+        }
+      }, 150);
+      function limpar() { clearTimeout(espera); saida.removeAttribute('aria-busy'); saida.textContent = ''; }
       fetch(form.getAttribute('data-indice'))
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function (dados) { indice = dados; depois(); })
-        .catch(function () { status.textContent = 'Não foi possível carregar o índice de busca.'; });
+        .then(function (dados) { indice = dados; limpar(); depois(); })
+        .catch(function () { limpar(); status.textContent = 'Não foi possível carregar o índice de busca.'; });
     }
 
     function buscar() {
@@ -410,8 +434,20 @@
         campoTitulo.value = '[' + a + '] - ' + n + ' (' + quando + ')';
       }
       var botao = form.querySelector('button[type="submit"]');
-      if (botao) botao.disabled = true;
-      if (aviso) aviso.textContent = 'Enviando...';
+      var rotulo = botao ? botao.textContent : '';
+      if (botao) {
+        botao.disabled = true;
+        botao.setAttribute('aria-busy', 'true');
+        botao.classList.add('botao-carregando');
+        botao.textContent = '';
+        var giro = doc.createElement('span');
+        giro.className = 'giro';
+        giro.setAttribute('aria-hidden', 'true');
+        botao.appendChild(giro);
+        botao.appendChild(doc.createTextNode('Enviando…'));
+      }
+      form.setAttribute('aria-busy', 'true');
+      if (aviso) aviso.textContent = 'Enviando…';
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
         .then(function (r) {
           if (!r.ok) throw new Error('falha');
@@ -421,7 +457,15 @@
         .catch(function () {
           if (aviso) aviso.textContent = 'Não foi possível enviar agora. Tente novamente em instantes.';
         })
-        .then(function () { if (botao) botao.disabled = false; });
+        .then(function () {
+          if (botao) {
+            botao.disabled = false;
+            botao.removeAttribute('aria-busy');
+            botao.classList.remove('botao-carregando');
+            botao.textContent = rotulo;
+          }
+          form.removeAttribute('aria-busy');
+        });
     });
   }
 
