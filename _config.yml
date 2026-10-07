@@ -19,7 +19,7 @@ baseurl: "/site-trace-teste"
 # Para receber mensagens de verdade, crie um formulário gratuito em um serviço como
 # Formspree ou Getform e cole aqui o endereço que ele fornecer. Exemplo:
 # formulario_url: "https://formspree.io/f/xxxxxxxx"
-formulario_url: ""
+formulario_url: "https://formspree.io/f/mvkzkkpo"
 
 # Redes sociais do rodapé. Só aparecem as que tiverem endereço preenchido.
 redes:
