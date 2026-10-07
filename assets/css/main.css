@@ -1121,6 +1121,34 @@ html[data-contraste="alto"] .ficha-card, html[data-contraste="alto"] .filtros, h
 html[data-contraste="alto"] .bloco-colado { border: 2px solid var(--tinta); }
 html[data-contraste="alto"] .bloco-colado > .caixa { border: 0; border-top: 6px solid var(--tinta); }
 @media (min-width: 56em) { html[data-contraste="alto"] .bloco-colado-lado > .caixa { border-top: 0; border-left: 6px solid var(--tinta); } }
+/* ---- Visual "moderno" nas faixas de título das páginas internas (mesma linguagem da abertura da inicial) ----
+   Faixa escura = versão funda da cor da própria página, com pontinhos e brilho amarelo; título grande em branco. */
+.faixa-titulo:not(.abertura) {
+  --fx: color-mix(in srgb, var(--t-forte) 48%, #07171a);
+  background-color: var(--fx);
+  background-image:
+    radial-gradient(circle at 100% 0, rgb(255 224 138 / 0.24) 0, rgb(255 224 138 / 0) 46%),
+    radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px);
+  background-size: auto, 22px 22px;
+  color: #fff;
+  border-bottom: 0;
+  border-radius: 0 0 var(--mod-raio-faixa, 1.75rem) var(--mod-raio-faixa, 1.75rem);
+  padding: var(--e2) 0 var(--e7);
+}
+.faixa-titulo:not(.abertura)::before { background: #fff; opacity: 0.07; width: min(34%, 26rem); }
+.faixa-titulo:not(.abertura)::after { background: #fff; opacity: 0.07; width: min(18%, 13rem); }
+.faixa-titulo:not(.abertura) h1 { color: #fff; font-size: clamp(2.3rem, 1.3rem + 4.2vw, 4.2rem); }
+.faixa-titulo:not(.abertura) .subtitulo { color: #ffe08a; font-weight: 600; }
+.faixa-titulo:not(.abertura) .lead { color: #fff; font-weight: 400; }
+.faixa-titulo:not(.abertura) .migalhas { color: #fff; }
+.faixa-titulo:not(.abertura) .migalhas a { color: #fff; text-decoration-color: rgb(255 255 255 / 0.6); }
+.faixa-titulo:not(.abertura) .migalhas [aria-current="page"] { color: #ffe08a; }
+.faixa-titulo:not(.abertura) :focus-visible { outline-color: #fff; box-shadow: 0 0 0 3px #0d1b1c; }
+html[data-contraste="alto"] .faixa-titulo:not(.abertura) { background-color: #000; background-image: none; border-bottom: 4px solid #fff; border-radius: 0; }
+/* cartões mais arredondados, sem borda, com sombra suave (como na inicial) */
+.cartao { border: 0; border-radius: 1.4rem; box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.4); }
+.cartao:hover { box-shadow: 0 1.3rem 2.4rem -1rem rgb(40 40 30 / 0.5); }
+html[data-contraste="alto"] .cartao { border: 2px solid var(--tinta); box-shadow: none; }
 html[data-contraste="alto"] .faixa-titulo { background-image: none; border-bottom-color: var(--tinta); }
 html[data-contraste="alto"] .faixa-titulo::before, html[data-contraste="alto"] .faixa-titulo::after,
 html[data-contraste="alto"] .pessoa .cartao-img::before, html[data-contraste="alto"] .pessoa .cartao-img::after,
