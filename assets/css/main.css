@@ -1552,3 +1552,21 @@ html[data-contraste="alto"] .versao-troca a[aria-current="page"] { background: v
 .selo-pp { background: #0b3f6e; color: #fff; }
 .selo-lla { background: #ffe08a; color: #3a2b00; }
 html[data-contraste="alto"] .selo-versao { background: #fff; color: #000; border: 2px solid #000; box-shadow: none; }
+
+/* Cartão de projeto: corpo suave, ano/situação em etiquetas, etiquetas e "Conhecer" no pé */
+.cartao-proj { background: color-mix(in srgb, var(--t-banda) 38%, var(--cartao)); }
+.cartao-proj .meta { gap: var(--e2); margin-bottom: var(--e3); }
+.cartao-proj .meta li { padding: 0.15rem 0.8rem; border-radius: 0.25rem 0.8rem 0.25rem 0.8rem; font-weight: 700; font-size: 0.85rem; line-height: 1.5; }
+.cartao-proj .meta-ano { background: var(--t-forte); color: #fff; }
+.cartao-proj .meta-sit { background: var(--cartao); color: var(--t-tinta); box-shadow: inset 0 0 0 1px var(--t-banda); }
+.cartao-proj .temas { margin-top: auto; padding-top: var(--e3); }
+.cartao-proj .temas li { background: var(--cartao); }
+.cartao-mais { display: flex; align-items: center; gap: 0.4rem; margin: var(--e3) 0 0; padding-top: var(--e3); border-top: 1px solid var(--t-banda); font-weight: 700; font-size: 0.95rem; color: var(--t-tinta); }
+.cartao-mais .icone { width: 1.1rem; height: 1.1rem; transition: transform 0.15s; }
+.cartao:hover .cartao-mais .icone { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) { .cartao:hover .cartao-mais .icone { transform: none; } }
+html[data-movimento="reduzido"] .cartao:hover .cartao-mais .icone { transform: none; }
+html[data-contraste="alto"] .cartao-proj { background: var(--papel); }
+html[data-contraste="alto"] .cartao-proj .meta-ano { background: var(--tinta); color: var(--papel); }
+html[data-contraste="alto"] .cartao-proj .meta-sit { box-shadow: none; border: 2px solid var(--tinta); color: var(--tinta); }
+html[data-contraste="alto"] .cartao-mais { border-top-color: var(--tinta); color: var(--tinta); }
