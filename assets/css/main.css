@@ -1489,3 +1489,18 @@ html[data-contraste="alto"] .sec-video .video { border: 2px solid var(--tinta); 
 html[data-contraste="alto"] .downloads li { background: var(--papel); border: 2px solid var(--tinta); box-shadow: none; }
 html[data-contraste="alto"] .down-icone .icone-tipo { background: var(--tinta); color: var(--papel); }
 .proj-pagina { padding-top: var(--e5); }
+
+/* Página de projeto v3: capa grande e ficha à esquerda; texto e downloads à direita */
+@media (min-width: 56em) {
+  .proj-pagina { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  .proj-lateral { grid-column: 1; grid-row: 1; }
+  .proj-principal { grid-column: 2; grid-row: 1; }
+  .proj-pagina .downloads { grid-template-columns: minmax(0, 1fr); }
+  .proj-pagina .downloads li { flex-direction: row; text-align: left; gap: var(--e4); padding: var(--e4); }
+  .proj-pagina .downloads .down-rotulo { flex: 1; }
+  .proj-pagina .downloads .botao { margin-top: 0; flex: none; }
+}
+@media (min-width: 56em) and (max-width: 72em) {
+  .proj-pagina .downloads li { flex-wrap: wrap; justify-content: center; text-align: center; }
+  .proj-pagina .downloads .down-rotulo { flex-basis: 100%; }
+}
