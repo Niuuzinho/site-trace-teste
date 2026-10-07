@@ -1435,3 +1435,27 @@ html[data-contraste="alto"] .prod-pagina .resumo-texto { background: var(--papel
 /* Quem somos: texto da apresentação com o mesmo fundo suave (recado) da página de produção */
 .historia-texto { background: color-mix(in srgb, var(--t-banda) 40%, var(--cartao)); border-radius: 0.5rem 2rem 0.5rem 2rem; box-shadow: none; }
 html[data-contraste="alto"] .historia-texto { background: var(--papel); }
+
+/* Página de projeto: seções na largura inteira, sem caixas; equipe em cartões */
+.sec-larga { margin-top: var(--e7); }
+.sec-larga:first-child { margin-top: 0; }
+.sec-larga > h2 { margin: 0 0 var(--e5); font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
+.sec-larga > h2::after { content: ""; display: block; width: 4rem; height: 6px; margin-top: var(--e2); border-radius: 3px; background: var(--t-forte); }
+.proj-pagina .bloco-b { margin-top: var(--e7); }
+.sec-galeria .galeria { grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); gap: var(--e3); }
+@media (min-width: 40em) { .sec-galeria .galeria { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--e4); } }
+.sec-galeria .galeria img { aspect-ratio: 4 / 3; }
+.sec-galeria .galeria a { border: 0; border-radius: 1.4rem; box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.4); }
+.sec-video .video { max-width: 60rem; border-radius: 1.4rem; border: 0; box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.4); }
+.sec-video .video iframe { border-radius: 1.4rem; }
+.sec-equipe .equipe { grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: var(--e4); }
+.sec-equipe .equipe li { display: block; text-align: center; padding: var(--e5) var(--e4); border-radius: 1.4rem; background: color-mix(in srgb, var(--t-banda) 38%, var(--cartao)); box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.35); }
+.sec-equipe .equipe img { width: 6rem; height: 6rem; margin: 0 auto var(--e3); border: 4px solid #fff; box-shadow: 0 0 0 4px var(--t-forte); }
+.sec-equipe .equipe h3 { font-size: 1.1rem; }
+@media (min-width: 56em) {
+  .com-ficha-capa .ficha-card { grid-row: 2; }
+  .com-ficha-capa .bloco-b { grid-column: 1 / -1; grid-row: 3; }
+}
+html[data-contraste="alto"] .sec-equipe .equipe li { background: var(--papel); border: 2px solid var(--tinta); box-shadow: none; }
+html[data-contraste="alto"] .sec-video .video { border: 2px solid var(--tinta); box-shadow: none; }
+.bloco-b > .sec-larga + .sec-larga { margin-top: var(--e7); }

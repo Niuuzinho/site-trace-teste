@@ -1,24 +1,27 @@
 ---
 layout: default
 ---
-{%- capture chips -%}<li class="chip-forte">{{ page.ano }}</li><li>{{ page.situacao }}</li>{% for t in page.temas %}<li>{{ t }}</li>{% endfor %}{%- endcapture -%}
+{%- capture chips -%}<li class="chip-forte">{{ page.ano }}</li><li>{{ page.situacao }}</li>{%- endcapture -%}
 {% include topo.html titulo=page.title subtitulo=page.subtitulo pai="Projetos" pai_url="/projetos/" chips=chips %}
 <div class="container pagina-corpo">
-  <div class="com-ficha com-ficha-capa">
+  <div class="com-ficha com-ficha-capa prod-pagina proj-pagina">
     <figure class="projeto-capa">
       {% include img.html nome=page.capa alt=page.capa_alt sizes="(min-width: 74rem) 70rem, 100vw" eager=true %}
     </figure>
     <div class="bloco-a">
-      <section class="caixa" aria-labelledby="h-sobre">
+      <section class="resumo" aria-labelledby="h-sobre">
         <h2 id="h-sobre">Sobre o projeto</h2>
+        <div class="resumo-texto">
         {{ content }}
+        </div>
       </section>
     </div>
-    <aside class="ficha-card" aria-labelledby="h-ficha">
-      <h2 id="h-ficha">Ficha do projeto</h2>
+    <aside class="ficha-card ficha-prod" aria-labelledby="h-ficha">
+      <div class="ficha-topo">
+        <div class="ficha-titulos"><h2 id="h-ficha">Ficha do projeto</h2><p class="ficha-tipo"><span class="so-leitor">Situação: </span>{{ page.situacao }}</p></div>
+        <p class="ficha-ano"><span class="so-leitor">Ano </span>{{ page.ano }}</p>
+      </div>
       <dl class="ficha">
-        <div><dt>Ano</dt><dd>{{ page.ano }}</dd></div>
-        <div><dt>Situação</dt><dd>{{ page.situacao }}</dd></div>
         <div><dt>Temas</dt><dd><ul class="temas">{% for t in page.temas %}<li>{{ t }}</li>{% endfor %}</ul></dd></div>
         {%- for f in page.ficha %}
         <div><dt>{{ f.rotulo }}</dt><dd>{{ f.valor }}</dd></div>
@@ -30,24 +33,24 @@ layout: default
     </aside>
     <div class="bloco-b">
       {%- if page.galeria and page.galeria.size > 0 %}
-      <section class="caixa" aria-labelledby="h-galeria">
+      <section class="sec-larga sec-galeria" aria-labelledby="h-galeria">
         <h2 id="h-galeria">Galeria</h2>
         {% include galeria.html itens=page.galeria rotulo="Galeria de imagens do projeto" %}
       </section>
       {%- endif %}
       {%- if page.video %}
-      <section class="caixa" aria-labelledby="h-video">
+      <section class="sec-larga sec-video" aria-labelledby="h-video">
         <h2 id="h-video">Vídeo</h2>
         {% include video.html id=page.video titulo=page.title %}
       </section>
       {%- endif %}
       {%- if page.equipe and page.equipe.size > 0 %}
-      <section class="caixa" aria-labelledby="h-equipe">
+      <section class="sec-larga sec-equipe" aria-labelledby="h-equipe">
         <h2 id="h-equipe">Equipe e manutenção</h2>
         <ul class="equipe">
           {%- for e in page.equipe %}
           <li>
-            {% include img.html nome=e.foto alt=e.alt sizes="5rem" %}
+            {% include img.html nome=e.foto alt=e.alt sizes="6rem" %}
             <div><h3>{{ e.nome }}</h3><p>{{ e.texto }}</p></div>
           </li>
           {%- endfor %}
@@ -56,7 +59,7 @@ layout: default
       {%- endif %}
       {%- assign relacionadas = site.producoes | where: "projeto", page.title | sort: "ano" | reverse %}
       {%- if relacionadas.size > 0 %}
-      <section class="caixa" aria-labelledby="h-relacionadas">
+      <section class="sec-larga" aria-labelledby="h-relacionadas">
         <h2 id="h-relacionadas">Produções relacionadas</h2>
         <ul class="cartoes">
           {%- for r in relacionadas %}
