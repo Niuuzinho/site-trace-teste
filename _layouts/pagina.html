@@ -6,7 +6,7 @@ layout: default
   {%- if page.imagem %}
   <div class="historia">
     <figure class="historia-img">
-      {% include img.html nome=page.imagem alt=page.imagem_alt sizes="(min-width: 56em) 32rem, 100vw" eager=true %}
+      {% include img.html nome=page.imagem alt=page.imagem_alt sizes="(min-width: 56em) 34rem, 100vw" eager=true %}
     </figure>
     <div class="texto historia-texto">
       {{ content }}
@@ -17,11 +17,33 @@ layout: default
     {{ content }}
   </div>
   {%- endif %}
-  {%- include redes-botao.html %}
+
+  {%- if page.blocos and page.blocos.size > 0 %}
+  <div class="blocos-sobre">
+    {%- for b in page.blocos %}
+    <section class="bloco-sobre" aria-labelledby="h-bs-{{ forloop.index }}">
+      <h2 id="h-bs-{{ forloop.index }}">{{ b.titulo }}</h2>
+      <p>{{ b.texto }}</p>
+    </section>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+
   {%- if page.galeria == 'grupo' %}
   <section class="galeria-sec" aria-labelledby="h-galeria">
     <h2 id="h-galeria">Galeria</h2>
     {% include galeria.html itens=site.data.galeria_grupo rotulo="Galeria de fotos do grupo" %}
+  </section>
+  {%- endif %}
+
+  {%- assign ig = site.redes.instagram | default: '' -%}
+  {%- if page.redes and ig != '' %}
+  <section class="encontre" aria-labelledby="h-encontre">
+    <h2 id="h-encontre">Onde nos encontrar</h2>
+    <p class="encontre-botoes">
+      <a class="mod-btn mod-btn-claro" href="{{ ig }}" target="_blank" rel="noopener noreferrer"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"></use></svg>Instagram<span class="so-leitor"> (abre em outra guia)</span></a>
+      <a class="mod-btn mod-btn-borda" href="{{ '/contato/' | relative_url }}"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg>Fale com a gente</a>
+    </p>
   </section>
   {%- endif %}
 </div>
