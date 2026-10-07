@@ -28,8 +28,8 @@
   --papel-2: #f3f6f6;
   --cartao: #ffffff;
   --cabecalho: #ffffff;
-  --fundo: #eef3f7;          /* fundo único de todas as páginas (névoa azulada) */
-  --fundo-2: #e6edf3;        /* fim do degradê vertical, bem leve */
+  --fundo: #f6f3ee;          /* fundo único de todas as páginas (areia, cinza quente) */
+  --fundo-2: #efebe4;        /* fim do degradê vertical, bem leve */
   --tinta: #0d1b1c;          /* texto: contraste acima de 16:1 */
   --tinta-2: #2a3d3e;        /* texto secundário: contraste acima de 11:1 */
   --linha: #b4c6c3;          /* linhas decorativas */
@@ -741,7 +741,7 @@ html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outl
 .mod-acoes { display: flex; flex-wrap: wrap; gap: var(--e3); margin: var(--e5) 0 0; }
 .mod-hero-card { position: relative; }
 .mod-hero-card .secao-topo.car-titulo { justify-content: flex-start; text-align: left; margin: 0 0 var(--e3); max-width: none; }
-.mod-hero-card .secao-topo.car-titulo h2 { display: inline-block; margin: 0; padding: 0.3rem 0.9rem; border: 0; font-size: 0.9rem; font-weight: 700; line-height: 1.3; letter-spacing: 0; text-transform: none; color: #fff; background: var(--t-forte); border-radius: 0.25rem 1rem 0.25rem 1rem; text-align: left; }
+.mod-hero-card .secao-topo.car-titulo h2 { display: inline-block; margin: 0; padding: 0.55rem 1.4rem; border: 0; font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); font-weight: 700; line-height: 1.3; letter-spacing: 0; text-transform: none; color: #fff; background: var(--t-forte); border-radius: 0.25rem 1rem 0.25rem 1rem; text-align: left; }
 .mod-hero-card .secao-topo.car-titulo h2::after { display: none; }
 .mod-hero-card .carrossel { max-width: none; position: relative; }
 .mod-hero-card .car-trilho { border: 0; border-radius: 1.25rem; box-shadow: 0 1rem 2.4rem -1rem rgb(15 50 80 / 0.5); }
@@ -823,7 +823,7 @@ html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outl
     radial-gradient(circle at 0 100%, rgb(255 224 138 / 0.22) 0, rgb(255 224 138 / 0) 45%),
     radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px);
   background-size: auto, 22px 22px; }
-.mod-cta h2 { color: #fff; margin: 0 0 var(--e4); font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
+.mod-cta h2 { color: #fff; font-weight: 700; margin: 0 0 var(--e4); font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
 .mod-avatares { list-style: none; margin: 0; padding: 0 0 0 0.9rem; display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
 .mod-avatares li { margin: 0 0 0 -0.9rem; }
 .mod-avatares img { width: 4.25rem; height: 4.25rem; border-radius: 50%; object-fit: cover; border: 3px solid #fff; background: #fff; display: block; }
