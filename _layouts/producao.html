@@ -2,21 +2,29 @@
 layout: default
 ---
 {%- assign proj = site.projetos | where: "title", page.projeto | first -%}
-{%- capture chips -%}<li class="chip-forte">{% include icone-tipo.html tipo=page.tipo %}{{ page.tipo }}</li><li>{{ page.ano }}</li>{% for t in page.palavras_chave limit: 3 %}<li>{{ t }}</li>{% endfor %}{%- endcapture -%}
+{%- capture chips -%}<li class="chip-forte">{% include icone-tipo.html tipo=page.tipo %}{{ page.tipo }}</li><li>{{ page.ano }}</li>{%- endcapture -%}
 {% include topo.html titulo=page.title pai="Produções" pai_url="/producoes/" chips=chips %}
 <div class="container pagina-corpo">
-  <div class="com-ficha">
+  <div class="com-ficha prod-pagina">
     <div class="bloco-a">
-      <section class="caixa" aria-labelledby="h-resumo">
+      <section class="resumo" aria-labelledby="h-resumo">
         <h2 id="h-resumo">Resumo</h2>
         {{ content }}
       </section>
+      {%- if page.palavras_chave and page.palavras_chave.size > 0 %}
+      <section class="prod-chaves" aria-labelledby="h-palavras">
+        <h2 id="h-palavras">Palavras-chave</h2>
+        <ul class="temas">{% for t in page.palavras_chave %}<li>{{ t }}</li>{% endfor %}</ul>
+      </section>
+      {%- endif %}
     </div>
-    <aside class="ficha-card" aria-labelledby="h-ficha">
-      <h2 id="h-ficha">Ficha bibliográfica</h2>
+    <aside class="ficha-card ficha-prod" aria-labelledby="h-ficha">
+      <div class="ficha-topo">
+        <span class="ficha-icone">{% include icone-tipo.html tipo=page.tipo %}</span>
+        <div class="ficha-titulos"><h2 id="h-ficha">Ficha bibliográfica</h2><p class="ficha-tipo">{{ page.tipo }}</p></div>
+        <p class="ficha-ano"><span class="so-leitor">Ano </span>{{ page.ano }}</p>
+      </div>
       <dl class="ficha">
-        <div><dt>Tipo</dt><dd class="tipo-ficha">{% include icone-tipo.html tipo=page.tipo %}{{ page.tipo }}</dd></div>
-        <div><dt>Ano</dt><dd>{{ page.ano }}</dd></div>
         <div><dt>Projeto relacionado</dt><dd>{% if proj %}<a href="{{ proj.url | relative_url }}">{{ proj.title }}</a>{% else %}{{ page.projeto }}{% endif %}</dd></div>
         <div><dt>Autoria</dt><dd>{{ page.autoria }}</dd></div>
       </dl>
@@ -31,12 +39,18 @@ layout: default
       {%- endif %}
     </aside>
     <div class="bloco-b">
-      {%- if page.palavras_chave and page.palavras_chave.size > 0 %}
-      <section class="caixa" aria-labelledby="h-palavras">
-        <h2 id="h-palavras">Palavras-chave</h2>
-        <ul class="temas">{% for t in page.palavras_chave %}<li>{{ t }}</li>{% endfor %}</ul>
+      {%- assign outras = site.producoes | where: "projeto", page.projeto | where_exp: "r", "r.url != page.url" | sort: "ano" | reverse %}
+      {%- if outras.size > 0 %}
+      <section class="prod-outras" aria-labelledby="h-outras">
+        <h2 id="h-outras">Outras produções deste projeto</h2>
+        <ul class="cartoes">
+          {%- for r in outras limit: 2 %}
+          {% include producao-item.html producao=r %}
+          {%- endfor %}
+        </ul>
       </section>
       {%- endif %}
+      <p class="prod-voltar"><a class="botao-sec" href="{{ '/producoes/' | relative_url }}">Voltar para Produções</a></p>
     </div>
   </div>
 </div>

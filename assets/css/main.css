@@ -1394,3 +1394,34 @@ html[data-contraste="alto"] .cartao-ref { background: var(--papel); }
 html[data-contraste="alto"] .cartao-ref .cartao-topo { background: var(--papel); color: var(--tinta); border-bottom: 2px solid var(--tinta); }
 html[data-contraste="alto"] .cartao-ref .ref-tipo, html[data-contraste="alto"] .cartao-ref .ref-ano { color: var(--tinta); }
 html[data-contraste="alto"] .cartao-ref .ref-tipo .icone-tipo { background: var(--tinta); color: var(--papel); }
+
+/* Página de produção: resumo solto, palavras-chave em chips, ficha com topo colorido, outras produções */
+.prod-pagina .resumo > h2, .prod-pagina .prod-outras > h2 { margin: 0 0 var(--e4); font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
+.prod-pagina .resumo > h2::after, .prod-pagina .prod-outras > h2::after { content: ""; display: block; width: 4rem; height: 6px; margin-top: var(--e2); border-radius: 3px; background: var(--t-forte); }
+.prod-pagina .prod-outras > h2 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem); }
+.prod-pagina .resumo p { font-size: 1.15rem; line-height: 1.75; max-width: 46rem; margin: 0 0 var(--e4); }
+.prod-chaves { margin-top: var(--e5); }
+.prod-chaves > h2 { margin: 0 0 var(--e2); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--t-tinta); }
+.prod-chaves .temas { margin: 0; padding: 0; }
+.ficha-prod { border: 0; border-radius: 1.4rem; background: color-mix(in srgb, var(--t-banda) 38%, var(--cartao)); box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.4); }
+.ficha-topo { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; gap: var(--e3); padding: var(--e4) var(--e5); background: var(--t-forte); color: #fff; }
+.ficha-topo::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; right: 0; width: 45%; background: #fff; opacity: 0.14; clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%); pointer-events: none; }
+.ficha-icone .icone-tipo { box-sizing: content-box; display: block; width: 1.6rem; height: 1.6rem; padding: 0.6rem; border-radius: 50%; background: #fff; color: var(--t-forte); box-shadow: 0 0.4rem 0.8rem -0.4rem rgb(0 0 0 / 0.5); }
+.ficha-titulos { flex: 1; min-width: 0; }
+.ficha-topo h2 { margin: 0; padding: 0; background: none; font-size: 0.85rem; font-weight: 600; color: #fff; opacity: 0.9; }
+.ficha-topo h2::before { display: none; }
+.ficha-tipo { margin: 0; font-size: 1.15rem; font-weight: 700; color: #fff; }
+.ficha-ano { margin: 0; font-size: 1.9rem; font-weight: 700; line-height: 1; color: #fff; }
+.ficha-prod .ficha dd a { color: var(--t-tinta); }
+.ficha-prod .citacao { margin: 0 var(--e4) var(--e4); padding: var(--e4); border: 0; border-radius: 0.4rem 1.4rem 0.4rem 1.4rem; background: color-mix(in srgb, var(--t-banda) 60%, var(--cartao)); }
+.ficha-prod .ficha-rodape { padding-top: 0; }
+.prod-pagina .bloco-b { margin-top: var(--e6); }
+.prod-voltar { margin: var(--e5) 0 0; }
+html[data-contraste="alto"] .ficha-prod { background: var(--papel); border: 2px solid var(--tinta); box-shadow: none; }
+html[data-contraste="alto"] .ficha-topo { background: var(--papel); color: var(--tinta); border-bottom: 2px solid var(--tinta); }
+html[data-contraste="alto"] .ficha-topo::before { display: none; }
+html[data-contraste="alto"] .ficha-topo h2, html[data-contraste="alto"] .ficha-tipo, html[data-contraste="alto"] .ficha-ano { color: var(--tinta); opacity: 1; }
+html[data-contraste="alto"] .ficha-icone .icone-tipo { background: var(--tinta); color: var(--papel); }
+html[data-contraste="alto"] .ficha-prod .citacao { background: var(--papel); border: 2px solid var(--tinta); }
+.prod-pagina .bloco-a { padding-top: var(--e5); }
+.prod-pagina .ficha-card { margin-top: 0; }
