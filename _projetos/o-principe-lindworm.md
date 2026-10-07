@@ -1,6 +1,6 @@
 ---
 layout: projeto
-title: O Príncipe Lindwormmmmm
+title: O Príncipe Lindworm (versão PP)
 subtitulo: Era uma vez numa terra muito distante
 resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 ano: 2024
