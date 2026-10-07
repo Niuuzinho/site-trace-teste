@@ -19,13 +19,13 @@ permalink: /producoes/
         <fieldset>
           <legend>Tipo</legend>
           {%- for t in tipos %}
-          <label class="opcao"><input type="checkbox" data-grupo="tipo" value="{{ t | slugify }}"><span>{{ t }}</span></label>
+          <label class="opcao"><input type="checkbox" data-grupo="tipo" value="{{ t | slugify }}"><span>{{ t }} <span class="opcao-n">({{ producoes | where: "tipo", t | size }})</span></span></label>
           {%- endfor %}
         </fieldset>
         <fieldset>
           <legend>Ano</legend>
           {%- for a in anos %}
-          <label class="opcao"><input type="checkbox" data-grupo="ano" value="{{ a }}"><span>{{ a }}</span></label>
+          <label class="opcao"><input type="checkbox" data-grupo="ano" value="{{ a }}"><span>{{ a }} <span class="opcao-n">({{ producoes | where: "ano", a | size }})</span></span></label>
           {%- endfor %}
         </fieldset>
         <button class="botao-peq" type="button" data-limpar>Limpar filtros</button>

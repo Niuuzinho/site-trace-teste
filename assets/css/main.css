@@ -1380,3 +1380,17 @@ html[data-contraste="alto"] .egressos .ini { background: var(--tinta); color: va
 /* Membros: 2º parágrafo do texto inicial como recado (sem seta) */
 .membros-topo .membros-intro p + p { width: fit-content; max-width: 100%; margin-top: var(--e5); padding: var(--e3) var(--e5); border-radius: 0.4rem 1.6rem 0.4rem 1.6rem; background: color-mix(in srgb, var(--t-banda) 55%, var(--cartao)); color: var(--tinta); font-size: 1.05rem; font-weight: 500; line-height: 1.5; }
 html[data-contraste="alto"] .membros-topo .membros-intro p + p { background: var(--papel); border: 2px solid var(--tinta); }
+
+/* Produções: cartões coloridos (topo forte com ícone grande e ano; corpo em tom suave) + contagem nos filtros */
+.opcao-n { color: var(--tinta-2); font-size: 0.9em; }
+.cartao-ref { background: color-mix(in srgb, var(--t-banda) 38%, var(--cartao)); }
+.cartao-ref .cartao-topo { align-items: center; padding: var(--e4) var(--e5); background: var(--t-forte); border-bottom: 0; color: #fff; }
+.cartao-ref .cartao-topo::before { background: #fff; opacity: 0.14; }
+.cartao-ref .ref-tipo { display: flex; align-items: center; gap: var(--e3); color: #fff; font-size: 1.05rem; }
+.cartao-ref .ref-tipo .icone-tipo { box-sizing: content-box; width: 1.6rem; height: 1.6rem; padding: 0.6rem; border-radius: 50%; background: #fff; color: var(--t-forte); box-shadow: 0 0.4rem 0.8rem -0.4rem rgb(0 0 0 / 0.5); }
+.cartao-ref .ref-ano { color: #fff; font-size: 1.7rem; line-height: 1; font-weight: 700; }
+.cartao-ref .temas li { background: var(--cartao); }
+html[data-contraste="alto"] .cartao-ref { background: var(--papel); }
+html[data-contraste="alto"] .cartao-ref .cartao-topo { background: var(--papel); color: var(--tinta); border-bottom: 2px solid var(--tinta); }
+html[data-contraste="alto"] .cartao-ref .ref-tipo, html[data-contraste="alto"] .cartao-ref .ref-ano { color: var(--tinta); }
+html[data-contraste="alto"] .cartao-ref .ref-tipo .icone-tipo { background: var(--tinta); color: var(--papel); }
