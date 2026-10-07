@@ -1611,3 +1611,23 @@ html[data-contraste="alto"] .faixa-card .versao-troca a[aria-current="page"] { b
   .versao-troca { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; border-radius: 1.2rem; gap: 0.25rem; }
   .versao-troca a { justify-content: center; text-align: center; min-height: 3.25rem; padding: 0.4rem 0.6rem; border-radius: 1rem; font-size: 0.95rem; line-height: 1.25; }
 }
+
+/* Contato: cartões do mesmo tamanho, canais em lista, formulário com Nome e E-mail lado a lado */
+.contato-grade { align-items: stretch; max-width: none; }
+@media (min-width: 56em) { .contato-info { position: relative; top: auto; } }
+.contato-info { display: flex; flex-direction: column; justify-content: center; gap: var(--e5); }
+.contato-canais { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e3); }
+.canal { display: flex; align-items: center; gap: var(--e3); width: 100%; margin: 0; padding: 0.7rem 1.2rem; min-height: 3.25rem; border-radius: 0.4rem 1.4rem 0.4rem 1.4rem; background: #fff; color: #4a1d03; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; transition: background-color 0.15s, transform 0.15s; }
+a.canal:hover { background: #ffe08a; color: #3a2b00; transform: translateY(-2px); }
+.canal .icone { width: 1.4rem; height: 1.4rem; flex: none; }
+.canal-texto { cursor: default; }
+.form-linha { display: grid; gap: var(--e5); }
+@media (min-width: 40em) { .form-linha { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.contato-form .botao { min-height: 3.25rem; padding-inline: 2.2rem; font-size: 1.05rem; }
+.contato-form .aviso-form { border-radius: 0.4rem 1.2rem 0.4rem 1.2rem; border-left: 0; background: #ffe9a8; color: #3a2b00; box-shadow: inset 0 0 0 1px #e8c85a; }
+html[data-contraste="alto"] .canal { border: 2px solid #fff; }
+html[data-contraste="alto"] .contato-form .aviso-form { background: var(--papel); color: var(--tinta); border: 2px solid var(--tinta); box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { a.canal:hover { transform: none; } }
+html[data-movimento="reduzido"] a.canal:hover { transform: none; }
+.contato-grade { width: 100%; }
+.contato-form { width: 100%; max-width: none; }

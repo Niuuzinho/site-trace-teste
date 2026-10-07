@@ -106,3 +106,8 @@ Cada versão do livro tem a sua própria página. No arquivo de cada uma, use `p
 
 ### Versão "Linguagem literária acessível" de um projeto
 Para um projeto ter as duas versões (Português padrão e Linguagem literária acessível), copie o arquivo do projeto em `_projetos/`, dê outro nome (por exemplo `nome-lla.md`) e, no começo do arquivo copiado: troque o `title` para "Nome do projeto (versão LLA)", acrescente `par: Nome do projeto` (exatamente o título da versão em português padrão) e `permalink: /projetos/nome-do-projeto/lla/`. Troque a `ordem` da cópia por um número logo depois do original (por exemplo 1.5, se o original é 1) e apague a linha `destaque` da cópia. Na lista de Projetos as duas versões aparecem como dois cartões, com um selinho PP ou LLA. Depois troque os textos pelos da versão LLA. Os dois botões "Português padrão | Linguagem literária acessível" aparecem sozinhos nas duas páginas.
+
+
+### Contato: e-mail, endereço e formulário de verdade
+- **E-mail e endereço:** no `_config.yml`, preencha `contato: email:` e `endereco:` (entre aspas). Cada um só aparece na página se tiver texto.
+- **Fazer o formulário funcionar:** crie uma conta gratuita em https://formspree.io, crie um formulário e copie o endereço que ele dá (algo como `https://formspree.io/f/xxxxxxxx`). Cole em `formulario_url:` no `_config.yml`. Enquanto estiver vazio, o formulário é só demonstrativo e não envia nada.

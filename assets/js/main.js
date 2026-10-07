@@ -390,6 +390,28 @@
     });
   }
 
+  /* 7b. Formulário real: envia sem sair da página; sem JavaScript o envio normal continua funcionando */
+  function iniciarFormularioReal(form) {
+    var aviso = form.querySelector('[data-aviso]');
+    form.addEventListener('submit', function (e) {
+      if (!window.fetch || !window.FormData) return;
+      e.preventDefault();
+      var botao = form.querySelector('button[type="submit"]');
+      if (botao) botao.disabled = true;
+      if (aviso) aviso.textContent = 'Enviando...';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error('falha');
+          form.reset();
+          if (aviso) aviso.textContent = 'Mensagem enviada. Obrigado pelo contato!';
+        })
+        .catch(function () {
+          if (aviso) aviso.textContent = 'Não foi possível enviar agora. Tente novamente em instantes.';
+        })
+        .then(function () { if (botao) botao.disabled = false; });
+    });
+  }
+
   /* 8. Botão "Voltar ao topo" (aparece depois de rolar a página) ------------ */
   function iniciarVoltarAoTopo() {
     var b = doc.querySelector('[data-topo]');
@@ -517,6 +539,7 @@
     todos('[data-video]').forEach(iniciarVideo);
     todos('[data-sorteio]').forEach(sortearPessoas);
     todos('form[data-demo]').forEach(iniciarFormularioDemo);
+    todos('form.contato-form:not([data-demo])').forEach(iniciarFormularioReal);
     iniciarBuscaGeral();
     iniciarJanelaEmail();
     iniciarVoltarAoTopo();

@@ -11,18 +11,32 @@ permalink: /contato/
     <div class="contato-info">
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. A página já foi organizada para leitura confortável, navegação clara e uso simples em telas pequenas.</p>
       {%- assign ig = site.redes.instagram | default: '' -%}
-      {%- if ig != '' %}
-      <p class="contato-redes"><a class="mod-btn mod-btn-claro" href="{{ ig }}" target="_blank" rel="noopener noreferrer"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"></use></svg>Instagram<span class="so-leitor"> (abre em outra guia)</span></a></p>
+      {%- assign mail = site.contato.email | default: '' -%}
+      {%- assign local = site.contato.endereco | default: '' -%}
+      {%- if ig != '' or mail != '' or local != '' %}
+      <ul class="contato-canais">
+        {%- if ig != '' %}
+        <li><a class="canal" href="{{ ig }}" target="_blank" rel="noopener noreferrer"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"></use></svg><span>Instagram</span><span class="so-leitor"> (abre em outra guia)</span></a></li>
+        {%- endif %}
+        {%- if mail != '' %}
+        <li><a class="canal" href="mailto:{{ mail }}"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg><span>{{ mail }}</span></a></li>
+        {%- endif %}
+        {%- if local != '' %}
+        <li><p class="canal canal-texto"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-local"></use></svg><span>{{ local }}</span></p></li>
+        {%- endif %}
+      </ul>
       {%- endif %}
     </div>
     <form class="formulario contato-form"{% if acao != '' %} action="{{ acao }}" method="post"{% else %} data-demo{% endif %}>
-      <div>
-        <label for="nome">Nome</label>
-        <input class="campo-texto" id="nome" name="nome" type="text" autocomplete="name" required>
-      </div>
-      <div>
-        <label for="email">E-mail</label>
-        <input class="campo-texto" id="email" name="email" type="email" autocomplete="email" required>
+      <div class="form-linha">
+        <div>
+          <label for="nome">Nome</label>
+          <input class="campo-texto" id="nome" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="email">E-mail</label>
+          <input class="campo-texto" id="email" name="email" type="email" autocomplete="email" required>
+        </div>
       </div>
       <div>
         <label for="mensagem">Mensagem</label>
