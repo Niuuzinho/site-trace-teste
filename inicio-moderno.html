@@ -21,15 +21,14 @@ sitemap: false
       <h1 id="h-mod-titulo">Portal TrAce</h1>
       <p class="mod-sub">Tradução, acessibilidade e pesquisa</p>
       <p class="mod-lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
-      <p class="mod-acoes">
-        <a class="mod-btn mod-btn-claro" href="{{ '/projetos/' | relative_url }}">Conhecer os projetos</a>
-        <a class="mod-btn mod-btn-borda" href="{{ '/producoes/' | relative_url }}">Ver produções</a>
-      </p>
     </div>
-    <div class="mod-hero-card">
-      <div class="secao-topo car-titulo"><h2 id="h-novidades">Avisos e novidades</h2></div>
-      {% include carrossel.html itens=site.data.carrossel rotulo="Avisos e novidades" %}
-    </div>
+  </div>
+</section>
+
+<section class="container mod-carrossel-area" aria-label="Avisos e novidades">
+  <div class="mod-hero-card">
+    <div class="secao-topo car-titulo"><h2 id="h-novidades">Avisos e novidades</h2></div>
+    {% include carrossel.html itens=site.data.carrossel rotulo="Avisos e novidades" %}
   </div>
 </section>
 

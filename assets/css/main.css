@@ -760,8 +760,13 @@ html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outl
 .mod-hero-card .car-ponto::before { width: 0.7rem; height: 0.7rem; border-color: #fff; }
 .mod-hero-card .car-ponto:hover::before { background: rgb(255 255 255 / 0.6); }
 .mod-hero-card .car-ponto[aria-current="true"]::before { background: #ffe08a; border-color: #ffe08a; }
+.mod-hero { padding-bottom: calc(var(--e5) + 7.5rem); }
+.mod-carrossel-area { position: relative; z-index: 2; margin-top: -5.5rem; padding-inline: calc(var(--e5) + var(--e3)); }
+.mod-carrossel-area .mod-hero-card { max-width: 66rem; margin-inline: auto; }
 @media (min-width: 56em) {
-  .mod-hero { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr); gap: var(--e6); padding: var(--e7) var(--e6); }
+  .mod-hero { padding: var(--e7) var(--e6) calc(var(--e7) + 6.5rem); }
+  .mod-hero-texto { max-width: 46rem; }
+  .mod-carrossel-area { margin-top: -6rem; padding-inline: var(--e6); }
 }
 
 /* No celular a imagem é pequena: os controles ficam embaixo dela, não por cima */
@@ -770,6 +775,11 @@ html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outl
   .mod-hero-card .car-controles .botao-peq { position: relative; top: auto; left: auto; right: auto; transform: none; flex: none; }
   .mod-hero-card .car-controles .botao-peq:hover:not([disabled]) { transform: scale(1.06); }
   .mod-hero-card .car-pontos { position: static; background: none; padding: 0; }
+  .mod-hero-card .car-controles .botao-peq { background: var(--tinta); color: var(--papel); box-shadow: none; }
+  .mod-hero-card .car-controles .botao-peq:hover:not([disabled]) { background: var(--t-forte); color: #fff; }
+  .mod-hero-card .car-ponto::before { border-color: var(--tinta); }
+  .mod-hero-card .car-ponto:hover::before { background: var(--t-banda); }
+  .mod-hero-card .car-ponto[aria-current="true"]::before { background: var(--t-forte); border-color: var(--t-forte); }
   .mod-hero-card [data-car-anterior] { order: 1; }
   .mod-hero-card .car-pontos { order: 2; }
   .mod-hero-card [data-car-proximo] { order: 3; }
@@ -823,13 +833,15 @@ html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outl
 html[data-movimento="reduzido"] .mod-tile:hover, html[data-movimento="reduzido"] .mod-btn:hover { transform: none; }
 html[data-contraste="alto"] .mod-hero, html[data-contraste="alto"] .mod-cta { background-image: none; background-color: #000; border: 2px solid #fff; }
 html[data-contraste="alto"] .mod-hero::before, html[data-contraste="alto"] .mod-hero::after { display: none; }
-html[data-contraste="alto"] .mod-hero-card { border: 2px solid var(--tinta); }
 html[data-contraste="alto"] .mod-tile { border: 2px solid var(--tinta); }
 html[data-contraste="alto"] .mod .cartao { border: 2px solid var(--tinta); box-shadow: none; }
 html[data-contraste="alto"] .mod-secao-topo h2::after { background: var(--tinta); }
 html[data-contraste="alto"] .mod-hero-card .car-trilho { border: 2px solid #fff; }
-html[data-contraste="alto"] .mod-hero-card .car-ponto::before { border-color: #fff; }
-html[data-contraste="alto"] .mod-hero-card .car-ponto[aria-current="true"]::before { background: #fff; border-color: #fff; }
+@media (min-width: 40em) {
+  html[data-contraste="alto"] .mod-hero-card .car-ponto::before { border-color: #fff; }
+  html[data-contraste="alto"] .mod-hero-card .car-ponto[aria-current="true"]::before { background: #fff; border-color: #fff; }
+}
+@media (max-width: 39.99em) { html[data-contraste="alto"] .mod-hero-card .car-ponto[aria-current="true"]::before { background: var(--tinta); border-color: var(--tinta); } }
 
 /* Faixa "Apoio" do rodapé (só aparece se _data/apoio.yml tiver itens) */
 .rodape-apoio { max-width: var(--pagina); margin-inline: auto; padding: 0 var(--e5) var(--e6); }
