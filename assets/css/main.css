@@ -651,6 +651,7 @@ html[data-contraste="alto"] .topo-botao:hover { background: var(--papel); color:
 .banner-area { padding-top: var(--e6); }
 /* Carrossel acessível: faixa que rola de lado com "encaixe" (funciona até sem JavaScript); com JavaScript ganha botões, indicadores e contador */
 .carrossel { max-width: 64rem; margin: 0 auto; }
+.car-titulo { max-width: 64rem; margin: 0 auto var(--e4); }
 .car-trilho { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; background: var(--t-suave); border: 1px solid var(--linha); border-radius: var(--raio-colado); }
 .car-js .car-trilho { scrollbar-width: none; }
 .car-js .car-trilho::-webkit-scrollbar { display: none; }
