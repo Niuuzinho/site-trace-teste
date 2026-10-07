@@ -863,20 +863,9 @@ html[data-contraste="alto"] .faixa-chips li.chip-forte { background: #fff; color
 .filtros { border-left: 0; border-radius: 1.5rem; padding: var(--e4); background: var(--cartao); box-shadow: 0 0.9rem 2rem -1rem rgb(40 40 30 / 0.35); border: 0; }
 .filtros-det > label.campo { margin: var(--e3) 0 var(--e1); }
 .filtros fieldset { margin: var(--e4) 0 0; }
+.filtros legend { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
 .filtros legend { border-bottom: 0; padding: 0; margin-bottom: var(--e2); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
 .filtros .botao-peq { margin-top: var(--e5); }
-/* opções viram "chips" clicáveis (a caixa de seleção continua existindo para teclado e leitor de tela) */
-.filtros fieldset { display: flex; flex-wrap: wrap; gap: 0.5rem; align-content: flex-start; }
-.filtros legend { flex: 1 1 100%; }
-.filtros .opcao { position: relative; display: inline-flex; padding: 0; margin: 0; cursor: pointer; }
-.filtros .opcao input[type="checkbox"] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-.filtros .opcao span { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 2.5rem; padding: 0.35rem 0.9rem; font-weight: 600; line-height: 1.2; color: var(--tinta); background: var(--cartao); border: 2px solid var(--borda); border-radius: 999px; transition: background-color 0.15s, color 0.15s, border-color 0.15s; }
-.filtros .opcao:hover span { border-color: var(--t-forte); background: var(--t-suave); }
-.filtros .opcao input:checked + span { background: var(--t-forte); border-color: var(--t-forte); color: #fff; }
-.filtros .opcao input:checked + span::before { content: "✓"; font-weight: 700; }
-.filtros .opcao input:focus-visible + span { outline: 3px solid var(--tinta); outline-offset: 3px; box-shadow: 0 0 0 3px var(--caju); }
-html[data-contraste="alto"] .filtros { border: 2px solid var(--tinta); box-shadow: none; }
-html[data-contraste="alto"] .filtros .opcao input:checked + span { background: var(--tinta); border-color: var(--tinta); color: var(--papel); }
 .principal .cartoes { gap: var(--e5); }
 
 /* --- Página de projeto: capa larga, depois texto + ficha --- */
@@ -940,18 +929,11 @@ html[data-contraste="alto"] .contato-form { border: 2px solid var(--tinta); box-
 .cr-corpo { padding-top: var(--e5); padding-bottom: var(--e7); }
 /* grade compacta: 1 coluna no celular, 2 no tablet, 3 no computador (4 em telas largas) */
 .cr-grade { grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr)); gap: var(--e5); }
-.cr-grade .cartao { overflow: visible; background: transparent; box-shadow: none; border-radius: 0; }
-.cr-grade .cartao::before { content: ""; position: absolute; z-index: 0; inset: 1.1rem -0.5rem -0.5rem 0.9rem; border-radius: 1.4rem; background: var(--t-forte); opacity: 0.18; transition: opacity 0.2s, transform 0.2s; }
-.cr-grade .cartao-img, .cr-grade .cartao-corpo { position: relative; z-index: 1; }
-.cr-grade .cartao-img { border-radius: 1.6rem 0.5rem 0 0; overflow: hidden; }
-.cr-grade .cartao-img { position: relative; }
-.cr-grade .cartao-corpo { background: var(--cartao); border-radius: 0 0 0.5rem 1.6rem; box-shadow: 0 1rem 2rem -1.2rem rgb(30 30 20 / 0.5); padding: var(--e4); }
-.cr-grade .cartao:hover::before { opacity: 0.32; transform: translate(0.3rem, 0.3rem); }
+.cr-grade .cartao { border-radius: 1.4rem; }
+.cr-grade .cartao-img { border-radius: 0; }
 .cr-grade .cartao:hover { transform: translateY(-4px); }
-html[data-contraste="alto"] .cr-grade .cartao::before { display: none; }
-html[data-contraste="alto"] .cr-grade .cartao-corpo { border: 2px solid var(--tinta); box-shadow: none; }
-@media (prefers-reduced-motion: reduce) { .cr-grade .cartao:hover, .cr-grade .cartao:hover::before { transform: none; } }
-html[data-movimento="reduzido"] .cr-grade .cartao:hover, html[data-movimento="reduzido"] .cr-grade .cartao:hover::before { transform: none; }
+@media (prefers-reduced-motion: reduce) { .cr-grade .cartao:hover { transform: none; } }
+html[data-movimento="reduzido"] .cr-grade .cartao:hover { transform: none; }
 
 /* Faixa "Apoio" do rodapé (só aparece se _data/apoio.yml tiver itens) */
 .rodape-apoio { max-width: var(--pagina); margin-inline: auto; padding: 0 var(--e5) var(--e6); }
