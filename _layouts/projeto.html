@@ -35,13 +35,11 @@ layout: default
       {%- if page.downloads and page.downloads.size > 0 %}
       <section class="proj-downloads" aria-labelledby="h-downloads">
         <h2 id="h-downloads">Downloads</h2>
+        <p class="down-aviso">{% for d in page.downloads %}{% if d.sigla %}<strong>{{ d.sigla }}</strong> = {{ d.rotulo }}{% else %}{{ d.rotulo }}{% endif %}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
         <ul class="downloads">
           {%- for d in page.downloads %}
-          <li>
-            <span class="down-icone">{% include icone-tipo.html tipo="Artigo" %}</span>
-            <p class="down-rotulo">{{ d.rotulo }}</p>
-            <a class="botao" href="{{ d.arquivo | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar PDF<span class="so-leitor"> — {{ d.rotulo }}</span><span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a>
-          </li>
+          {%- assign nome_curto = d.sigla | default: d.rotulo %}
+          <li><a class="botao botao-down" href="{{ d.arquivo | relative_url }}" target="_blank" rel="noopener" data-pdf>Baixar versão {{ nome_curto }}{% if d.sigla %}<span class="so-leitor"> ({{ d.rotulo }})</span>{% endif %}<span class="so-leitor" data-pdf-dica> (abre em outra guia)</span></a></li>
           {%- endfor %}
         </ul>
       </section>

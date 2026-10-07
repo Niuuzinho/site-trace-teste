@@ -106,9 +106,11 @@ No começo do arquivo do projeto, no lugar de `pdf:`, use `downloads:` com uma l
 
 ```
 downloads:
-  - rotulo: Português padrão
+  - sigla: PP
+    rotulo: Português padrão
     arquivo: /assets/docs/nome-do-arquivo.pdf
-  - rotulo: Linguagem literária acessível
+  - sigla: LLA
+    rotulo: Linguagem literária acessível
     arquivo: /assets/docs/outro-arquivo.pdf
 ```
-Cada versão vira um cartão com o botão "Baixar PDF". Projetos que não são livros continuam usando só `pdf:`.
+Cada versão vira um botão "Baixar versão PP" / "Baixar versão LLA", e um aviso em cima explica o que cada sigla quer dizer. Projetos que não são livros continuam usando só `pdf:`.

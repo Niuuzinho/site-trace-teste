@@ -28,9 +28,11 @@ galeria:
   alt: Imagem placeholder adicional para materiais do projeto.
   legenda: Legenda placeholder 2
 downloads:
-  - rotulo: Português padrão
+  - sigla: PP
+    rotulo: Português padrão
     arquivo: /assets/docs/placeholder-projeto.pdf
-  - rotulo: Linguagem literária acessível
+  - sigla: LLA
+    rotulo: Linguagem literária acessível
     arquivo: /assets/docs/placeholder-projeto.pdf
 equipe:
 - nome: Integrante placeholder 1

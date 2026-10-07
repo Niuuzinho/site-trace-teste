@@ -1521,3 +1521,12 @@ html[data-contraste="alto"] .down-icone .icone-tipo { background: var(--tinta); 
 }
 @media (min-width: 56em) and (max-width: 72em) { .proj-pagina .downloads li { flex-wrap: nowrap; } .proj-pagina .downloads .down-rotulo { flex-basis: auto; } }
 @media (min-width: 56em) { .proj-pagina .projeto-capa img { aspect-ratio: 3 / 1; object-position: center 45%; } }
+
+/* Downloads compactos: aviso com as siglas + botões menores */
+.down-aviso { width: fit-content; max-width: 100%; margin: 0 0 var(--e3); padding: var(--e2) var(--e4); border-radius: 0.4rem 1.2rem 0.4rem 1.2rem; background: color-mix(in srgb, var(--t-banda) 55%, var(--cartao)); font-size: 0.95rem; line-height: 1.5; }
+.down-aviso strong { color: var(--t-tinta); }
+html[data-contraste="alto"] .down-aviso { background: var(--papel); border: 2px solid var(--tinta); }
+.proj-pagina .downloads { display: flex; flex-wrap: wrap; gap: var(--e3); }
+.proj-pagina .downloads li { display: block; padding: 0; background: none; box-shadow: none; border: 0; border-radius: 0; text-align: left; }
+.botao-down { min-height: 2.75rem; padding: 0.5rem 1.2rem; font-size: 0.95rem; }
+html[data-contraste="alto"] .proj-pagina .downloads li { background: none; border: 0; }
