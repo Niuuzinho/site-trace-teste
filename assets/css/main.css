@@ -712,6 +712,93 @@ html[data-contraste="alto"] .novo-hero::before, html[data-contraste="alto"] .nov
 }
 html[data-contraste="alto"] .lista-prod li:hover { background: transparent; outline: 2px solid var(--tinta); outline-offset: -2px; }
 
+/* ======================================================================
+   Direção "moderno e colorido" (página de teste /inicio-moderno/). Tudo dentro de .mod.
+   Cores fixas escuras nos blocos com gradiente (texto branco ≥ 7:1, passa AA com folga).
+   ====================================================================== */
+.mod { --mod-raio: 1.75rem; }
+.mod-btn { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 3rem; padding: 0.7rem 1.6rem; font: 700 1rem/1.2 var(--fonte-corpo); text-decoration: none; border: 2px solid transparent; border-radius: 999px; transition: background-color 0.15s, color 0.15s, transform 0.15s; }
+.mod-btn:hover { transform: translateY(-2px); text-decoration: none; }
+.mod-btn-claro { background: #fff; color: #064e4c; }
+.mod-btn-claro:hover { background: #ffe08a; color: #3a2b00; }
+.mod-btn-borda { color: #fff; border-color: rgb(255 255 255 / 0.85); background: transparent; }
+.mod-btn-borda:hover { background: #fff; color: #064e4c; }
+
+/* Abertura: cartão grande com gradiente e brilhos de cor */
+.mod-topo { padding-top: var(--e5); }
+.mod-hero { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--e5); align-items: center; padding: var(--e5); color: #fff; border-radius: var(--mod-raio);
+  background-color: #064e4c;
+  background-image:
+    radial-gradient(circle at 92% 8%, rgb(255 224 138 / 0.38) 0, rgb(255 224 138 / 0) 38%),
+    radial-gradient(circle at 70% 105%, rgb(236 112 170 / 0.40) 0, rgb(236 112 170 / 0) 42%),
+    linear-gradient(135deg, #064e4c 0%, #0f5c8e 55%, #4b3380 100%); }
+.mod-hero::before, .mod-hero::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
+.mod-hero::before { width: 22rem; height: 22rem; left: -8rem; bottom: -11rem; border: 3rem solid rgb(255 255 255 / 0.07); }
+.mod-hero::after { width: 9rem; height: 9rem; right: 42%; top: -3.5rem; background: rgb(255 255 255 / 0.08); }
+.mod-hero h1 { color: #fff; font-size: clamp(2.6rem, 1.4rem + 5vw, 4.6rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; margin-bottom: var(--e2); }
+.mod-sub { margin: 0 0 var(--e4); font-size: clamp(1.15rem, 1rem + 0.8vw, 1.55rem); font-weight: 600; color: #ffe08a; line-height: 1.3; }
+.mod-lead { margin: 0; font-size: 1.1rem; line-height: 1.65; color: #fff; max-width: 34rem; }
+.mod-acoes { display: flex; flex-wrap: wrap; gap: var(--e3); margin: var(--e5) 0 0; }
+.mod-hero-card { background: var(--cartao); color: var(--tinta); border-radius: calc(var(--mod-raio) - 0.4rem); padding: var(--e4); box-shadow: 0 1.5rem 3rem -1rem rgb(0 0 0 / 0.45); }
+.mod-hero-card .secao-topo.car-titulo { margin-bottom: var(--e3); }
+.mod-hero-card .secao-topo.car-titulo h2 { font-size: 1.15rem; }
+.mod-hero-card .carrossel { max-width: none; }
+@media (min-width: 56em) {
+  .mod-hero { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr); gap: var(--e6); padding: var(--e7) var(--e6); }
+}
+
+/* Atalhos coloridos para as áreas do site */
+.mod-atalhos { padding-top: var(--e5); }
+.mod-atalhos ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e3); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mod-atalhos li:last-child { grid-column: 1 / -1; }
+@media (min-width: 40em) { .mod-atalhos ul { grid-template-columns: repeat(6, minmax(0, 1fr)); } .mod-atalhos li { grid-column: span 2; } .mod-atalhos li:nth-child(4), .mod-atalhos li:nth-child(5) { grid-column: span 3; } }
+@media (min-width: 64em) { .mod-atalhos ul { grid-template-columns: repeat(5, minmax(0, 1fr)); } .mod-atalhos li, .mod-atalhos li:nth-child(4), .mod-atalhos li:nth-child(5), .mod-atalhos li:last-child { grid-column: auto; } }
+.mod-tile { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; gap: var(--e1); height: 100%; min-height: 10.5rem; padding: var(--e4); color: #fff; text-decoration: none; border-radius: calc(var(--mod-raio) - 0.4rem); background: var(--tile, var(--f-inicio)); transition: transform 0.2s, box-shadow 0.2s; }
+.mod-tile::after { content: ""; position: absolute; z-index: -1; width: 8rem; height: 8rem; right: -2.5rem; bottom: -3rem; border-radius: 50%; background: rgb(255 255 255 / 0.14); }
+.mod-tile:hover { transform: translateY(-4px); box-shadow: 0 1rem 2rem -0.75rem rgb(0 0 0 / 0.5); color: #fff; }
+.mod-tile-icone { display: grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: auto; border-radius: 0.9rem; background: rgb(255 255 255 / 0.2); }
+.mod-tile-icone .icone { width: 1.6rem; height: 1.6rem; }
+.mod-tile-nome { font-size: 1.35rem; font-weight: 700; line-height: 1.15; margin-top: var(--e4); }
+.mod-tile-mais { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.92rem; font-weight: 600; opacity: 0.95; }
+.mod-tile-mais .icone { width: 1.1rem; height: 1.1rem; transition: transform 0.15s; }
+.mod-tile:hover .mod-tile-mais .icone { transform: translateX(4px); }
+.mod-tile-projetos { --tile: var(--f-projetos); }
+.mod-tile-producoes { --tile: var(--f-producoes); }
+.mod-tile-membros { --tile: var(--f-membros); }
+.mod-tile-sobre { --tile: var(--f-sobre); }
+.mod-tile-contato { --tile: var(--f-contato); }
+
+/* Seções: títulos grandes com marca-texto e cartões mais arredondados */
+.mod-secao { padding-top: var(--e7); }
+.mod-secao-topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--e3) var(--e5); margin-bottom: var(--e5); }
+.mod-secao-topo h2 { margin: 0; font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
+.mod-marca { background-image: linear-gradient(transparent 62%, color-mix(in srgb, var(--f-projetos) 28%, transparent) 62%); padding: 0 0.15em; margin-left: -0.15em; }
+.mod-marca-roxo { background-image: linear-gradient(transparent 62%, color-mix(in srgb, var(--f-producoes) 28%, transparent) 62%); }
+.mod .cartao { border: 0; border-radius: calc(var(--mod-raio) - 0.4rem); box-shadow: 0 0.9rem 2rem -1rem rgb(15 50 80 / 0.4); }
+.mod .cartao:hover { box-shadow: 0 1.3rem 2.4rem -1rem rgb(15 50 80 / 0.5); }
+
+/* Faixa final com as pessoas */
+.mod-fim { padding-top: var(--e7); }
+.mod-cta { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--e5); align-items: center; padding: var(--e5); color: #fff; border-radius: var(--mod-raio);
+  background-color: #0f5c8e;
+  background-image: radial-gradient(circle at 8% 110%, rgb(255 224 138 / 0.35) 0, rgb(255 224 138 / 0) 40%), linear-gradient(120deg, #4b3380 0%, #0f5c8e 55%, #064e4c 100%); }
+.mod-cta h2 { color: #fff; margin: 0 0 var(--e4); font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
+.mod-avatares { list-style: none; margin: 0; padding: 0 0 0 0.9rem; display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
+.mod-avatares li { margin: 0 0 0 -0.9rem; }
+.mod-avatares img { width: 4.25rem; height: 4.25rem; border-radius: 50%; object-fit: cover; border: 3px solid #fff; background: #fff; display: block; }
+@media (min-width: 56em) { .mod-cta { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); padding: var(--e6); } .mod-avatares { justify-content: flex-end; } }
+.mod-fim { padding-bottom: var(--e6); }
+
+/* Movimento reduzido e alto contraste */
+@media (prefers-reduced-motion: reduce) { .mod-tile:hover, .mod-btn:hover { transform: none; } }
+html[data-movimento="reduzido"] .mod-tile:hover, html[data-movimento="reduzido"] .mod-btn:hover { transform: none; }
+html[data-contraste="alto"] .mod-hero, html[data-contraste="alto"] .mod-cta { background-image: none; background-color: #000; border: 2px solid #fff; }
+html[data-contraste="alto"] .mod-hero::before, html[data-contraste="alto"] .mod-hero::after { display: none; }
+html[data-contraste="alto"] .mod-hero-card { border: 2px solid var(--tinta); }
+html[data-contraste="alto"] .mod-tile { border: 2px solid var(--tinta); }
+html[data-contraste="alto"] .mod .cartao { border: 2px solid var(--tinta); box-shadow: none; }
+html[data-contraste="alto"] .mod-marca, html[data-contraste="alto"] .mod-marca-roxo { background-image: none; text-decoration: underline; text-decoration-thickness: 4px; }
+
 /* Faixa "Apoio" do rodapé (só aparece se _data/apoio.yml tiver itens) */
 .rodape-apoio { max-width: var(--pagina); margin-inline: auto; padding: 0 var(--e5) var(--e6); }
 .rodape-apoio h2 { font: 700 1.1rem/1.3 var(--fonte-titulo); margin-bottom: var(--e3); color: var(--t-tinta); }

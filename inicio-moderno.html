@@ -1,0 +1,84 @@
+---
+layout: default
+title: Início (direção moderna e colorida, teste)
+tema: inicio
+permalink: /inicio-moderno/
+sitemap: false
+---
+{%- comment -%}
+  PÁGINA DE TESTE "moderno e colorido" (não está no menu; acesse por /inicio-moderno/). A inicial atual não foi alterada.
+{%- endcomment -%}
+{%- assign destaques = site.projetos | where: "destaque", true | sort: "ordem" %}
+{%- assign recentes = site.producoes | sort: "ano" | reverse %}
+{%- assign todos_membros = site.data.membros | where_exp: "m", "m.categoria != 'consultoria'" -%}
+{%- assign com_foto = "" | split: "" -%}
+{%- for m in todos_membros -%}{%- unless m.foto contains "placeholders" -%}{%- assign com_foto = com_foto | push: m -%}{%- endunless -%}{%- endfor -%}
+<div class="mod">
+
+<section class="container mod-topo" aria-labelledby="h-mod-titulo">
+  <div class="mod-hero">
+    <div class="mod-hero-texto">
+      <h1 id="h-mod-titulo">Portal TrAce</h1>
+      <p class="mod-sub">Tradução, acessibilidade e pesquisa</p>
+      <p class="mod-lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
+      <p class="mod-acoes">
+        <a class="mod-btn mod-btn-claro" href="{{ '/projetos/' | relative_url }}">Conhecer os projetos</a>
+        <a class="mod-btn mod-btn-borda" href="{{ '/producoes/' | relative_url }}">Ver produções</a>
+      </p>
+    </div>
+    <div class="mod-hero-card">
+      <div class="secao-topo car-titulo"><h2 id="h-novidades">Avisos e novidades</h2></div>
+      {% include carrossel.html itens=site.data.carrossel rotulo="Avisos e novidades" %}
+    </div>
+  </div>
+</section>
+
+<nav class="container mod-atalhos" aria-label="Áreas do site">
+  <ul>
+    <li><a class="mod-tile mod-tile-projetos" href="{{ '/projetos/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-projeto"></use></svg></span><span class="mod-tile-nome">Projetos</span><span class="mod-tile-mais">Explorar <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+    <li><a class="mod-tile mod-tile-producoes" href="{{ '/producoes/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-tipo-capitulo"></use></svg></span><span class="mod-tile-nome">Produções</span><span class="mod-tile-mais">Explorar <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+    <li><a class="mod-tile mod-tile-membros" href="{{ '/membros/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-pessoas"></use></svg></span><span class="mod-tile-nome">Membros</span><span class="mod-tile-mais">Conhecer <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+    <li><a class="mod-tile mod-tile-sobre" href="{{ '/quem-somos/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-sobre"></use></svg></span><span class="mod-tile-nome">Quem somos</span><span class="mod-tile-mais">Conhecer <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+    <li><a class="mod-tile mod-tile-contato" href="{{ '/contato/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg></span><span class="mod-tile-nome">Contato</span><span class="mod-tile-mais">Falar com a gente <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+  </ul>
+</nav>
+
+<section class="container mod-secao" aria-labelledby="h-destaques">
+  <div class="mod-secao-topo">
+    <h2 id="h-destaques"><span class="mod-marca">Projetos em destaque</span></h2>
+    <a class="botao-peq" href="{{ '/projetos/' | relative_url }}">Ver todos</a>
+  </div>
+  <ul class="cartoes">
+    {%- for p in destaques %}
+    {% include projeto-item.html projeto=p %}
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="container mod-secao" aria-labelledby="h-recentes">
+  <div class="mod-secao-topo">
+    <h2 id="h-recentes"><span class="mod-marca mod-marca-roxo">Produções recentes</span></h2>
+    <a class="botao-peq" href="{{ '/producoes/' | relative_url }}">Ver todas</a>
+  </div>
+  <ul class="cartoes">
+    {%- for r in recentes limit: 3 %}
+    {% include producao-item.html producao=r %}
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="container mod-fim" aria-labelledby="h-quem">
+  <div class="mod-cta">
+    <div class="mod-cta-texto">
+      <h2 id="h-quem">Quem faz o TrAce</h2>
+      <a class="mod-btn mod-btn-claro" href="{{ '/membros/' | relative_url }}">Conhecer o grupo</a>
+    </div>
+    <ul class="mod-avatares">
+      {%- for m in com_foto limit: 9 %}
+      <li>{% include img.html nome=m.foto alt="" sizes="5rem" %}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+</div>
