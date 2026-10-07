@@ -3,7 +3,7 @@ layout: producao
 title: Capítulo placeholder
 tipo: Capítulo
 ano: 2024
-projeto: O Príncipe Lindworm
+projeto: O Príncipe Lindworm (versão PP)
 autoria: Equipe TrAce
 resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 citacao: Equipe TrAce. Capítulo placeholder de livro multiformato. 2024.

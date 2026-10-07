@@ -45,7 +45,7 @@ equipe:
   foto: placeholders/c
   alt: Foto placeholder de integrante da equipe do projeto.
 ordem: 1.5
-par: O Príncipe Lindworm
+par: O Príncipe Lindworm (versão PP)
 permalink: /projetos/o-principe-lindworm/lla/
 ---
 {% comment %}VERSÃO LLA (Linguagem literária acessível): o texto abaixo é uma CÓPIA PROVISÓRIA do texto em português padrão. Troque pelo texto da versão LLA. O campo "par" liga esta página à página em português padrão (tem que ser igual ao título dela).{% endcomment %}
