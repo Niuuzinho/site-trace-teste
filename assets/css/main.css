@@ -1432,3 +1432,6 @@ html[data-contraste="alto"] .ficha-prod .citacao { background: var(--papel); bor
 .prod-pagina .resumo-texto > :last-child { margin-bottom: 0; }
 html[data-contraste="alto"] .prod-pagina .resumo-texto { background: var(--papel); border: 2px solid var(--tinta); }
 @media (max-width: 40em) { .prod-pagina .resumo-texto { padding: var(--e4) var(--e5); } }
+/* Quem somos: texto da apresentação com o mesmo fundo suave (recado) da página de produção */
+.historia-texto { background: color-mix(in srgb, var(--t-banda) 40%, var(--cartao)); border-radius: 0.5rem 2rem 0.5rem 2rem; box-shadow: none; }
+html[data-contraste="alto"] .historia-texto { background: var(--papel); }
