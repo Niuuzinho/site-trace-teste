@@ -30,6 +30,7 @@ ano: 2026
 situacao: Em andamento
 
 # Temas (cada um começa com "- "). Aparecem como etiquetas e nos filtros.
+# Se algum tema tiver a palavra "livro" (por exemplo "livro multiformato"), o cartão do projeto na página inicial de teste mostra um livrinho no lugar da lâmpada.
 temas:
 - tema um
 - tema dois

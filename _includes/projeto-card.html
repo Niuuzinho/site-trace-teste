@@ -1,10 +1,12 @@
 {%- comment -%} Projeto como cartão branco: imagem em cima (com a situação), ícone, título, frase e "Conhecer o projeto" com o ano. Parâmetro: projeto. {%- endcomment -%}
 {%- assign p = include.projeto -%}
+{%- assign eh_livro = false -%}
+{%- for t in p.temas %}{% if t contains "livro" %}{% assign eh_livro = true %}{% endif %}{% endfor -%}
 <li class="in-p3">
   <a class="in-p3-link" href="{{ p.url | relative_url }}">
     <span class="in-p3-img">{% include img.html nome=p.imagem alt="" sizes="(min-width: 64em) 22rem, (min-width: 40em) 45vw, 100vw" %}<span class="in-p3-etiqueta">{{ p.situacao }}</span></span>
     <span class="in-p3-corpo">
-      <svg class="icone in-p3-ic" aria-hidden="true" focusable="false"><use href="#i-projeto"></use></svg>
+      <svg class="icone in-p3-ic" aria-hidden="true" focusable="false"><use href="#{% if eh_livro %}i-tipo-capitulo{% else %}i-projeto{% endif %}"></use></svg>
       <span class="in-p3-titulo">{{ p.title }}</span>
       <span class="in-p3-resumo">{{ p.resumo }}</span>
       <span class="in-p3-rodape"><span class="in-p3-mais" aria-hidden="true">Conhecer o projeto <svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span><span class="in-p3-ano"><span class="so-leitor">Ano </span>{{ p.ano }}</span></span>
