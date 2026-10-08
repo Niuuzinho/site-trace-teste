@@ -328,3 +328,6 @@ Ver `DIAGNOSTICO.md` (axe-core + html-validate + medições): 0 violações axe 
 5. **Mantenha leve**: nada de dependências; confira o peso das páginas depois de grandes mudanças.
 6. **Documente**: atualize `README.md`/`TUTORIAL-GITHUB.md` se mudar o processo, e este `CLAUDE.md` se mudar decisões.
 7. **Explique para a pessoa em português simples**, e diga o que ela precisa fazer (por exemplo, "faça commit" ou "atualize a página").
+
+
+- **EXPERIMENTO 2 (08/10) — "menos cara de template" — SÓ NA BRANCH, NÃO NA `main`:** bloco no FIM do `main.css` ("TESTE menos cara de template"; para desfazer, apagar dele até o fim): fonte Atkinson Hyperlegible no site todo, sem barrinha sob a maioria dos títulos (fica só nos títulos de seção da inicial), fundo neutro `#fbfaf7`, sombras discretas, cartões escuros lisos (sem pontinhos, brilho ou círculo), atalhos da inicial sem quadradinho de ícone nem seta, cartões de projeto/produção brancos com borda fina e sem "Conhecer o projeto →". Só publicar na `main` se a pessoa aprovar.
