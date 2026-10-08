@@ -529,9 +529,22 @@
       // o aviso "Slide X de Y" só é falado depois que a pessoa troca de slide (não ao abrir a página)
       if (avisar) info.textContent = 'Slide ' + (n + 1) + ' de ' + slides.length;
     }
+    // posição de rolagem que deixa o slide n centralizado (serve para slides de largura inteira ou menores)
+    function posicao(n) {
+      var s = slides[n];
+      return Math.max(0, s.offsetLeft - (trilho.clientWidth - s.offsetWidth) / 2);
+    }
+    function maisProximo() {
+      var centro = trilho.scrollLeft + trilho.clientWidth / 2, melhor = 0, dist = Infinity;
+      slides.forEach(function (s, i) {
+        var d = Math.abs(s.offsetLeft + s.offsetWidth / 2 - centro);
+        if (d < dist) { dist = d; melhor = i; }
+      });
+      return melhor;
+    }
     function ir(n) {
       n = (n + slides.length) % slides.length;
-      trilho.scrollTo({ left: n * trilho.clientWidth, behavior: reduzido() ? 'auto' : 'smooth' });
+      trilho.scrollTo({ left: posicao(n), behavior: reduzido() ? 'auto' : 'smooth' });
       mostrar(n, true);
     }
     var agendado = false;
@@ -540,7 +553,7 @@
       agendado = true;
       window.requestAnimationFrame(function () {
         agendado = false;
-        var n = Math.round(trilho.scrollLeft / trilho.clientWidth);
+        var n = maisProximo();
         if (n !== atual && n >= 0 && n < slides.length) mostrar(n, true);
       });
     }, { passive: true });
@@ -551,7 +564,7 @@
       if (e.key === 'ArrowLeft') { e.preventDefault(); ir(atual - 1); }
       if (e.key === 'ArrowRight') { e.preventDefault(); ir(atual + 1); }
     });
-    window.addEventListener('resize', function () { trilho.scrollLeft = atual * trilho.clientWidth; });
+    window.addEventListener('resize', function () { trilho.scrollLeft = posicao(atual); });
     mostrar(0, false);
   }
 

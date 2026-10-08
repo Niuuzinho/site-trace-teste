@@ -1697,3 +1697,13 @@ html[data-contraste="alto"] .esqueleto span { background: var(--tinta); }
 .cartao-proj, .cartao-ref { border-radius: var(--r-m); overflow: hidden; }
 .cartao-proj { --t-forte: var(--pa-f); --t-banda: var(--pa-b); --t-tinta: var(--pa-i); --t-suave: var(--pa-s); background: var(--branco); border: 1px solid var(--pa-linha); }
 .cartao-proj .meta-ano { background: var(--pa-f); }
+
+/* ===== TESTE v3 (branch): carrossel com slide central e vizinhos aparecendo ===== */
+.car-trilho { position: relative; }
+.mod-hero-card .car-trilho { gap: var(--e4); padding-inline: 9%; border: 0; border-radius: 0; background: none; box-shadow: none; }
+.mod-hero-card .car-slide { flex: 0 0 82%; scroll-snap-align: center; border-radius: var(--r-g); overflow: hidden; }
+.mod-hero-card .car-slide img { aspect-ratio: 16 / 8; object-fit: cover; }
+.mod-hero-card .car-controles .botao-peq { background: var(--branco); border: 1px solid var(--pa-deep); color: var(--pa-deep); }
+.mod-hero-card .car-controles [data-car-anterior] { left: calc(9% + var(--e3)); }
+.mod-hero-card .car-controles [data-car-proximo] { right: calc(9% + var(--e3)); }
+@media (max-width: 39.99em) { .mod-hero-card .car-trilho { padding-inline: 6%; gap: var(--e3); } .mod-hero-card .car-slide { flex-basis: 88%; } .mod-hero-card .car-slide img { aspect-ratio: 5 / 3; } .mod-hero-card .car-controles [data-car-anterior] { left: calc(6% + var(--e2)); } .mod-hero-card .car-controles [data-car-proximo] { right: calc(6% + var(--e2)); } }
