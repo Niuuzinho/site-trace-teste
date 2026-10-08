@@ -1,0 +1,16 @@
+{%- comment -%} Projeto como cartão com a imagem em cima e um bloco de texto embaixo. Parâmetro: projeto. {%- endcomment -%}
+{%- assign p = include.projeto -%}
+<li class="in-p2">
+  <a class="in-p2-link" href="{{ p.url | relative_url }}">
+    <span class="in-p2-img">{% include img.html nome=p.imagem alt="" sizes="(min-width: 64em) 22rem, (min-width: 40em) 45vw, 100vw" %}</span>
+    <span class="in-p2-corpo">
+      <span class="in-p2-titulo">{{ p.title }}</span>
+      <span class="in-p2-resumo">{{ p.resumo }}</span>
+      <span class="in-p2-meta">
+        <span class="in-p2-ano"><span class="so-leitor">Ano </span>{{ p.ano }}</span>
+        <span class="in-p2-sit">{{ p.situacao }}</span>
+        {%- if p.temas and p.temas.size > 0 %}<span class="in-p2-tema">{{ p.temas.first }}</span>{% endif %}
+      </span>
+    </span>
+  </a>
+</li>
