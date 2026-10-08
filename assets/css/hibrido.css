@@ -16,7 +16,6 @@ body:has(.hib) .rodape { margin-top: 0; }
 .hib-etiqueta { display: inline-block; padding: 0.5rem 1.6rem 0.6rem; background: var(--hib-brilho); color: var(--hib-escuro); border-radius: 0.4rem 1.4rem 0.4rem 1.4rem; font-size: clamp(1.4rem, 1rem + 1.8vw, 2.4rem); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.2; box-shadow: 0.3rem 0.3rem 0 rgb(0 0 0 / 0.35); }
 .hib-nome { font-size: clamp(5.5rem, 2.5rem + 15vw, 15rem); font-weight: 700; line-height: 0.82; letter-spacing: -0.06em; color: #f4f1e6; }
 .hib-sub { margin: var(--e5) auto 0; font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: #fff; }
-.hib-sub-dest { font-style: italic; color: var(--hib-brilho); }
 .hib-lead { margin: var(--e4) auto 0; max-width: 34rem; font-size: clamp(1.125rem, 1rem + 0.5vw, 1.35rem); line-height: 1.65; color: #eef6f0; }
 html[data-contraste="alto"] .hib-hero { background-image: none; background-color: #000; border-bottom-color: #fff; }
 html[data-contraste="alto"] .hib-hero::before { display: none; }
@@ -94,28 +93,8 @@ html[data-contraste="alto"] .hib-pilula { background: #000; color: #fff; }
 .hib-hero { background-image: radial-gradient(circle at 100% 100%, rgb(59 209 169 / 0.6) 0, rgb(59 209 169 / 0) 42%), radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px); }
 @media (min-width: 48em) { .hib-hero { background-image: linear-gradient(120deg, #0a3a2c 0%, #0d4a36 52%, #1a8a6c 82%, #3bd1a9 100%), radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px); } }
 html[data-contraste="alto"] .hib-hero { background-image: none; }
-/* sessão 2: faixa branca com ícones em círculo claro e legenda embaixo */
-.hib-faixa { background: #fff; border-bottom: 1px solid #e3e6df; }
-.hib-faixa ul { list-style: none; margin: 0; padding: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem) 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--e5) var(--e3); }
-@media (min-width: 40em) { .hib-faixa ul { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
-.hib-f { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; text-align: center; text-decoration: none; color: var(--hib-escuro); }
-.hib-f-ic { display: grid; place-items: center; width: 4rem; height: 4rem; border-radius: 50%; background: color-mix(in srgb, var(--cor) 14%, #fff); color: var(--cor); transition: background 0.15s, color 0.15s, transform 0.15s; }
-.hib-f-ic .icone { width: 1.75rem; height: 1.75rem; }
-.hib-f-nome { font-size: 0.95rem; font-weight: 500; line-height: 1.2; color: var(--tx); }
-.hib-f-sobre { --cor: #b0356f; --tx: #6b1b43; }
-.hib-f-membros { --cor: #2d7d4c; --tx: #1a4b2e; }
-.hib-f-projetos { --cor: #4a56c4; --tx: #262c78; }
-.hib-f-producoes { --cor: #7f5bb6; --tx: #462f69; }
-.hib-f-contato { --cor: #b4500a; --tx: #6b2b03; }
-.hib-f:hover { text-decoration: none; }
-.hib-f:hover .hib-f-ic { background: var(--cor); color: #fff; transform: translateY(-2px); }
-.hib-f:hover .hib-f-nome { text-decoration: underline; }
+
 .hib-mural { padding-top: clamp(2.5rem, 2rem + 2.5vw, 4.5rem); }
-@media (prefers-reduced-motion: reduce) { .hib-f:hover .hib-f-ic { transform: none; } }
-html[data-movimento="reduzido"] .hib-f:hover .hib-f-ic { transform: none; }
-html[data-contraste="alto"] .hib-faixa { border-bottom: 2px solid #000; }
-html[data-contraste="alto"] .hib-f-ic { background: #fff; color: #000; border: 2px solid #000; }
-html[data-contraste="alto"] .hib-f-nome { color: #000; }
 html[data-contraste="alto"] .hib { background: #000; color: #fff; }
 html[data-contraste="alto"] .hib-sec-titulo { color: #fff; }
 html[data-contraste="alto"] .hib-divisor::before, html[data-contraste="alto"] .hib-divisor::after { background: #fff; }
