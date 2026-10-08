@@ -171,3 +171,23 @@ html[data-contraste="alto"] .in-pr-tipo { background: #000; color: #fff; }
 html[data-contraste="alto"] .in { --in-fundo: #fff; --in-escuro: #000; --in-icone: #000; }
 html[data-contraste="alto"] .in-divisor::before, html[data-contraste="alto"] .in-divisor::after { background: #000; }
 html[data-contraste="alto"] .in-pilula { background: #000; color: #fff; }
+
+/* ===== inversão: fundo da PÁGINA em verde escuro agradável; fundo da sessão 1 em verde pastel ===== */
+.in { --in-fundo: #164a3b; --in-verde: #d3e6d9; --in-hero-tx: #0a2f24; --in-hero-dest: #0f5a40; background: var(--in-fundo); }
+.in-hero { color: var(--in-hero-tx); background-image: radial-gradient(circle at 100% 0, rgb(242 193 78 / 0.40) 0, rgb(242 193 78 / 0) 45%), radial-gradient(rgb(10 47 36 / 0.10) 1.5px, transparent 1.5px); background-size: auto, 22px 22px; }
+.in-hero::before { border-color: rgb(10 47 36 / 0.07); }
+.in-hero h1 { color: var(--in-hero-tx); }
+.in-sub { color: var(--in-hero-tx); }
+.in-sub-dest { color: var(--in-hero-dest); }
+.in-lead { color: #1f4a3a; }
+.in-bloco { color: var(--in-claro); }
+.in-bloco .in-sec-titulo { color: var(--in-claro); }
+.in-divisor::before, .in-divisor::after { background: rgb(244 241 230 / 0.28); }
+.in-div-sim { color: var(--in-brilho); }
+.in-ac-card, .in-pr-link { box-shadow: 0 0.25rem 0.9rem rgb(0 0 0 / 0.25); }
+.in-ac.js .in-ac-item.is-ativo .in-ac-card { box-shadow: 0 0.35rem 0 var(--in-brilho); }
+html[data-contraste="alto"] .in { --in-fundo: #000; --in-verde: #000; --in-hero-tx: #fff; --in-hero-dest: #fff; --in-claro: #fff; --in-brilho: #fff; }
+html[data-contraste="alto"] .in-hero { background-image: none; }
+html[data-contraste="alto"] .in-lead { color: #fff; }
+html[data-contraste="alto"] .in-divisor::before, html[data-contraste="alto"] .in-divisor::after { background: #fff; }
+html[data-contraste="alto"] .in-pilula { background: #fff; color: #000; }
