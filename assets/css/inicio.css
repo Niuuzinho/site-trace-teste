@@ -160,4 +160,5 @@ html[data-contraste="alto"] .in-p2-etiqueta { border: 2px solid #000; }
 .in-conf.c7 { right: 21%; bottom: 16%; width: 1.2rem; height: 1.2rem; background: var(--f-projetos); transform: rotate(-15deg); }
 .in-conf.c8 { right: 7%; bottom: 33%; width: 1.7rem; height: 0.5rem; border-radius: 999px; background: #8fd0a8; transform: rotate(40deg); }
 @media (max-width: 55.99em) { .in-conf { opacity: 0.8; } .in-conf.c1 { left: 6%; top: 6%; } .in-conf.c5 { right: 6%; top: 5%; } .in-conf.c2, .in-conf.c6 { display: none; } .in-conf.c3 { left: 8%; bottom: 8%; } .in-conf.c7 { right: 8%; bottom: 7%; } .in-conf.c4 { left: 5%; bottom: 22%; } .in-conf.c8 { right: 5%; bottom: 24%; } }
-html[data-contraste="alto"] .in-deco { opacity: 0.5; }
+html[data-contraste="alto"] .in-pol figcaption { background: #fff; color: #000; }
+html[data-contraste="alto"] .in-conf { display: none; }
