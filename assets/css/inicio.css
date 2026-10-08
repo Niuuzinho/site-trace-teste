@@ -89,16 +89,6 @@ body:has(.in) .rodape { margin-top: 0; }
 .in-projetos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e5); grid-template-columns: 1fr; }
 @media (min-width: 40em) { .in-projetos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 64em) { .in-projetos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.in-p2-link { display: flex; flex-direction: column; gap: 0.35rem; color: var(--in-claro); text-decoration: none; }
-.in-p2-img { position: relative; display: block; line-height: 0; border-radius: 1.4rem; overflow: hidden; margin-bottom: 0.65rem; }
-.in-p2-img img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; transition: transform var(--dur-2) var(--ease); }
-.in-p2-etiqueta { position: absolute; top: 0.9rem; left: 0.9rem; padding: 0.25rem 0.8rem; background: rgb(255 255 255 / 0.92); color: var(--in-escuro); border-radius: 999px; font: 800 0.72rem/1.4 var(--in-font); letter-spacing: 0.06em; text-transform: uppercase; }
-.in-p2-ano { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--in-brilho); }
-.in-p2-titulo { font-size: 1.3rem; font-weight: 800; line-height: 1.2; }
-.in-p2-resumo { font-size: 0.95rem; line-height: 1.5; color: var(--in-claro-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.in-p2-link:hover .in-p2-titulo { text-decoration: underline; }
-.in-p2-link { color: var(--in-escuro); }
-.in-p2-link:hover .in-p2-img img { transform: scale(1.04); }
 
 /* ---------- 5. produções: lista de cartões brancos (etiqueta + ano, título, seta) ---------- */
 .in-prods { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
@@ -114,8 +104,8 @@ body:has(.in) .rodape { margin-top: 0; }
 .in-pr-link:hover .in-pr-titulo { text-decoration: underline; }
 .in-pr-link:hover .in-pr-seta { color: var(--in-escuro); transform: translateX(var(--mov)); }
 
-@media (prefers-reduced-motion: reduce) { .in-atalhos a:hover .in-at-seta, .in-p2-link:hover .in-p2-img img, .in-pr-link:hover, .in-pr-link:hover .in-pr-seta { transform: none; } }
-html[data-movimento="reduzido"] .in-atalhos a:hover .in-at-seta, html[data-movimento="reduzido"] .in-p2-link:hover .in-p2-img img, html[data-movimento="reduzido"] .in-pr-link:hover, html[data-movimento="reduzido"] .in-pr-link:hover .in-pr-seta { transform: none; }
+@media (prefers-reduced-motion: reduce) { .in-atalhos a:hover .in-at-seta, .in-p3-link:hover .in-p3-img img, .in-pr-link:hover, .in-pr-link:hover .in-pr-seta { transform: none; } }
+html[data-movimento="reduzido"] .in-atalhos a:hover .in-at-seta, html[data-movimento="reduzido"] .in-p3-link:hover .in-p3-img img, html[data-movimento="reduzido"] .in-pr-link:hover, html[data-movimento="reduzido"] .in-pr-link:hover .in-pr-seta { transform: none; }
 
 /* ---------- alto contraste ---------- */
 html[data-contraste="alto"] .in { --in-verde: #000; --in-fundo: #000; --in-claro: #fff; --in-claro-2: #fff; --in-brilho: #fff; }
@@ -124,7 +114,6 @@ html[data-contraste="alto"] .in-etiqueta { border: 2px solid #000; }
 html[data-contraste="alto"] .in-at-ic { color: #000 !important; }
 html[data-contraste="alto"] .in-ac-card, html[data-contraste="alto"] .in-atalhos ul { border: 2px solid #000; }
 html[data-contraste="alto"] .in-ac-data { color: #000; }
-html[data-contraste="alto"] .in-p2-etiqueta { border: 2px solid #000; }
 
 /* ===== título centralizado com fotos inclinadas e formas coloridas nos cantos (referência: exemplo da pessoa) ===== */
 .in-hero { padding-block: clamp(4rem, 3rem + 6vw, 8.5rem) clamp(4rem, 3rem + 5vw, 7.5rem); text-align: center; }
@@ -151,13 +140,6 @@ html[data-contraste="alto"] .in-p2-etiqueta { border: 2px solid #000; }
 html[data-contraste="alto"] .in-hero { background-image: none; }
 html[data-contraste="alto"] .in-hero::before { display: none; }
 /* sessão 4: fundo redondo no texto de cada cartão */
-.in-p2-link { gap: 0.5rem; }
-.in-p2-img { margin-bottom: 0; }
-.in-p2-texto { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; padding: var(--e4); background: #f7f6f1; color: var(--in-escuro); border-radius: 1.1rem; }
-.in-p2-texto .in-p2-ano { color: #146c4f; }
-.in-p2-texto .in-p2-titulo { color: var(--in-escuro); }
-.in-p2-texto .in-p2-resumo { color: #4a5a53; }
-html[data-contraste="alto"] .in-p2-texto { background: #fff; border: 2px solid #000; }
 html[data-contraste="alto"] .in-pr-link { border: 2px solid #000; }
 html[data-contraste="alto"] .in-pr-tipo { background: #000; color: #fff; }
 
@@ -191,3 +173,30 @@ html[data-contraste="alto"] .in-hero { background-image: none; }
 html[data-contraste="alto"] .in-lead { color: #fff; }
 html[data-contraste="alto"] .in-divisor::before, html[data-contraste="alto"] .in-divisor::after { background: #fff; }
 html[data-contraste="alto"] .in-pilula { background: #fff; color: #000; }
+
+/* ===== sessão 1: degradê de verde com verde ===== */
+.in-hero { background-image: linear-gradient(135deg, #eaf5ec 0%, #c3e2cf 50%, #8fc9a6 100%), radial-gradient(rgb(10 47 36 / 0.10) 1.5px, transparent 1.5px); background-size: auto, 22px 22px; }
+html[data-contraste="alto"] .in-hero { background-image: none; }
+
+/* ===== sessão 4: cartão branco com imagem em cima, ícone, título, frase e "Conhecer o projeto →" (referência da pessoa) ===== */
+.in-p3 { display: flex; }
+.in-p3-link { display: flex; flex-direction: column; width: 100%; background: #fff; color: var(--in-escuro); border-radius: 1rem; overflow: hidden; text-decoration: none; box-shadow: 0 0.25rem 0.9rem rgb(0 0 0 / 0.25); transition: transform var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease); }
+.in-p3-img { position: relative; display: block; line-height: 0; }
+.in-p3-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.in-p3-etiqueta { position: absolute; top: 0.8rem; left: 0.8rem; padding: 0.25rem 0.8rem; background: rgb(255 255 255 / 0.94); color: var(--in-escuro); border-radius: 999px; font: 800 0.72rem/1.4 var(--in-font); letter-spacing: 0.06em; text-transform: uppercase; }
+.in-p3-corpo { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; padding: var(--e4) var(--e4) var(--e4); }
+.in-p3-ic { width: 2.1rem; height: 2.1rem; color: var(--in-icone); margin-bottom: 0.15rem; }
+.in-p3-titulo { font-size: 1.2rem; font-weight: 800; line-height: 1.25; }
+.in-p3-resumo { font-size: 0.95rem; line-height: 1.5; color: #4a5a53; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.in-p3-rodape { display: flex; align-items: center; justify-content: space-between; gap: var(--e3); margin-top: auto; padding-top: var(--e2); font-size: 0.9rem; font-weight: 800; }
+.in-p3-mais { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--in-icone); }
+.in-p3-mais .icone { width: 1rem; height: 1rem; transition: transform var(--dur-1) var(--ease); }
+.in-p3-ano { font: 500 0.85rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: #5a6a63; }
+.in-p3-link:hover { transform: translateY(var(--lift-2)); box-shadow: 0 0.6rem 1.3rem rgb(0 0 0 / 0.32); text-decoration: none; }
+.in-p3-link:hover .in-p3-titulo { text-decoration: underline; }
+.in-p3-link:hover .in-p3-mais .icone { transform: translateX(var(--mov)); }
+@media (prefers-reduced-motion: reduce) { .in-p3-link:hover, .in-p3-link:hover .in-p3-mais .icone { transform: none; } }
+html[data-movimento="reduzido"] .in-p3-link:hover, html[data-movimento="reduzido"] .in-p3-link:hover .in-p3-mais .icone { transform: none; }
+html[data-contraste="alto"] .in-p3-link { border: 2px solid #000; }
+html[data-contraste="alto"] .in-p3-etiqueta { border: 2px solid #000; }
+html[data-contraste="alto"] .in-p3-ic, html[data-contraste="alto"] .in-p3-mais { color: #000; }
