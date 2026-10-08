@@ -6,7 +6,7 @@
 
 .in {
   --in-verde: #0e4a38;        /* faixa do título */
-  --in-fundo: #1b5e47;        /* fundo da página (verde mais claro) */
+  --in-fundo: #d3e6d9;        /* fundo da página (verde pastel suave) */
   --in-escuro: #0a2f24;       /* verde bem escuro: textos sobre claro */
   --in-icone: #146c4f;
   --in-brilho: #f2c14e;       /* amarelo: etiqueta "Portal", borda, destaques */
@@ -160,3 +160,14 @@ html[data-contraste="alto"] .in-hero::before { display: none; }
 html[data-contraste="alto"] .in-p2-texto { background: #fff; border: 2px solid #000; }
 html[data-contraste="alto"] .in-pr-link { border: 2px solid #000; }
 html[data-contraste="alto"] .in-pr-tipo { background: #000; color: #fff; }
+
+/* ===== fundo pastel: títulos, divisores e textos soltos passam para verde escuro ===== */
+.in-bloco { color: var(--in-escuro); }
+.in-bloco .in-sec-titulo { color: var(--in-escuro); }
+.in-divisor::before, .in-divisor::after { background: rgb(10 47 36 / 0.22); }
+.in-div-sim { color: var(--in-icone); }
+.in-ac-card, .in-pr-link { box-shadow: 0 0.2rem 0.7rem rgb(10 47 36 / 0.18); }
+.in-ac.js .in-ac-item.is-ativo .in-ac-card { box-shadow: 0 0.3rem 0 var(--in-brilho), 0 0.4rem 1rem rgb(10 47 36 / 0.2); }
+html[data-contraste="alto"] .in { --in-fundo: #fff; --in-escuro: #000; --in-icone: #000; }
+html[data-contraste="alto"] .in-divisor::before, html[data-contraste="alto"] .in-divisor::after { background: #000; }
+html[data-contraste="alto"] .in-pilula { background: #000; color: #fff; }
