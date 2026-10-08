@@ -6,7 +6,7 @@
 
 .in {
   --in-verde: #0e4a38;        /* faixa do título */
-  --in-fundo: #07221a;        /* fundo da página (o mesmo das produções) */
+  --in-fundo: #0f3d2f;        /* fundo da página (verde um pouco mais claro) */
   --in-escuro: #0a2f24;       /* verde bem escuro: textos sobre claro */
   --in-icone: #146c4f;
   --in-brilho: #f2c14e;       /* amarelo: etiqueta "Portal", borda, destaques */
@@ -102,26 +102,25 @@ body:has(.in) .rodape { margin-top: 0; }
 .in-p2-titulo { font-size: 1.3rem; font-weight: 800; line-height: 1.2; }
 .in-p2-resumo { font-size: 0.95rem; line-height: 1.5; color: var(--in-claro-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .in-p2-link:hover .in-p2-titulo { text-decoration: underline; }
+.in-p2-link { color: var(--in-escuro); }
 .in-p2-link:hover .in-p2-img img { transform: scale(1.04); }
 
-/* ---------- 5. produções: lista de links ---------- */
-.in-lista { list-style: none; margin: 0; padding: 0; border-bottom: 2px solid rgb(244 241 230 / 0.6); }
-.in-prod-item { margin: 0; border-top: 2px solid rgb(244 241 230 / 0.6); }
-.in-prod-link { display: grid; grid-template-columns: 1fr; gap: var(--e1) var(--e5); align-items: center; padding: var(--e4) var(--e3); color: var(--in-claro); text-decoration: none; transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease); }
-@media (min-width: 48em) { .in-prod-link { grid-template-columns: 10rem minmax(0, 1fr) auto; } }
-.in-prod-ano { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; white-space: nowrap; }
-.in-prod-texto { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
-.in-prod-titulo { font-size: 1.3rem; font-weight: 800; line-height: 1.2; }
-.in-prod-autoria { font-size: 0.95rem; color: var(--in-claro-2); }
-.in-prod-tipo { display: inline-flex; align-items: center; gap: var(--e2); justify-self: start; padding: 0.3rem 0.9rem; background: var(--in-brilho); color: var(--in-escuro); border-radius: 999px; font-size: 0.9rem; font-weight: 800; }
-.in-prod-tipo .icone-tipo { width: 1.1rem; height: 1.1rem; margin: 0; }
-@media (min-width: 48em) { .in-prod-tipo { justify-self: end; } }
-.in-prod-link:hover { background: var(--in-claro); color: var(--in-escuro); text-decoration: none; }
-.in-prod-link:hover .in-prod-autoria { color: #2a3a33; }
-.in-prod-link:hover .in-prod-tipo { background: var(--in-escuro); color: #fff; }
+/* ---------- 5. produções: lista de cartões brancos (etiqueta + ano, título, seta) ---------- */
+.in-prods { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.in-pr-link { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--e4); row-gap: 0.4rem; align-items: center; padding: var(--e4) var(--e5); background: #fff; color: var(--in-escuro); border-radius: 1rem; text-decoration: none; box-shadow: 0 0.25rem 0.9rem rgb(0 0 0 / 0.22); transition: transform var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease); }
+.in-pr-topo { grid-column: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+.in-pr-tipo { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.2rem 0.8rem; background: #d5f0e0; color: #0f5a40; border-radius: 999px; font-size: 0.85rem; font-weight: 800; }
+.in-pr-tipo .icone-tipo { width: 1rem; height: 1rem; margin: 0; }
+.in-pr-ano { font: 500 0.85rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: #5a6a63; }
+.in-pr-titulo { grid-column: 1; font-size: 1.15rem; font-weight: 800; line-height: 1.25; }
+.in-pr-autoria { grid-column: 1; font-size: 0.9rem; color: #5a6a63; }
+.in-pr-seta { grid-column: 2; grid-row: 1 / span 3; width: 1.4rem; height: 1.4rem; color: #5a6a63; transition: transform var(--dur-1) var(--ease), color var(--dur-1) var(--ease); }
+.in-pr-link:hover { transform: translateY(var(--lift-1)); box-shadow: 0 0.5rem 1.2rem rgb(0 0 0 / 0.3); text-decoration: none; }
+.in-pr-link:hover .in-pr-titulo { text-decoration: underline; }
+.in-pr-link:hover .in-pr-seta { color: var(--in-escuro); transform: translateX(var(--mov)); }
 
-@media (prefers-reduced-motion: reduce) { .in-atalhos a:hover .in-at-seta, .in-p2-link:hover .in-p2-img img, .in-ver-tudo:hover .in-ver-seta { transform: none; } }
-html[data-movimento="reduzido"] .in-atalhos a:hover .in-at-seta, html[data-movimento="reduzido"] .in-p2-link:hover .in-p2-img img, html[data-movimento="reduzido"] .in-ver-tudo:hover .in-ver-seta { transform: none; }
+@media (prefers-reduced-motion: reduce) { .in-atalhos a:hover .in-at-seta, .in-p2-link:hover .in-p2-img img, .in-ver-tudo:hover .in-ver-seta, .in-pr-link:hover, .in-pr-link:hover .in-pr-seta { transform: none; } }
+html[data-movimento="reduzido"] .in-atalhos a:hover .in-at-seta, html[data-movimento="reduzido"] .in-p2-link:hover .in-p2-img img, html[data-movimento="reduzido"] .in-ver-tudo:hover .in-ver-seta, html[data-movimento="reduzido"] .in-pr-link:hover, html[data-movimento="reduzido"] .in-pr-link:hover .in-pr-seta { transform: none; }
 
 /* ---------- alto contraste ---------- */
 html[data-contraste="alto"] .in { --in-verde: #000; --in-fundo: #000; --in-claro: #fff; --in-claro-2: #fff; --in-brilho: #fff; }
@@ -159,5 +158,10 @@ html[data-contraste="alto"] .in-hero::before { display: none; }
 /* sessão 4: fundo redondo no texto de cada cartão */
 .in-p2-link { gap: 0.5rem; }
 .in-p2-img { margin-bottom: 0; }
-.in-p2-texto { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; padding: var(--e4); background: #123d30; border-radius: 1.1rem; }
-html[data-contraste="alto"] .in-p2-texto { background: #000; border: 2px solid #fff; }
+.in-p2-texto { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; padding: var(--e4); background: #f7f6f1; color: var(--in-escuro); border-radius: 1.1rem; }
+.in-p2-texto .in-p2-ano { color: #146c4f; }
+.in-p2-texto .in-p2-titulo { color: var(--in-escuro); }
+.in-p2-texto .in-p2-resumo { color: #4a5a53; }
+html[data-contraste="alto"] .in-p2-texto { background: #fff; border: 2px solid #000; }
+html[data-contraste="alto"] .in-pr-link { border: 2px solid #000; }
+html[data-contraste="alto"] .in-pr-tipo { background: #000; color: #fff; }

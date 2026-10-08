@@ -69,7 +69,7 @@ permalink: /inicio-teste/
     <h2 class="in-sec-titulo" id="h-prod">Produções em destaque</h2>
     <a class="in-pilula" href="{{ '/producoes/' | relative_url }}">Ver todas</a>
   </div>
-  <ul class="in-lista">
+  <ul class="in-prods">
     {%- for r in recentes limit: 5 %}
     {% include producao-linha.html producao=r %}
     {%- endfor %}

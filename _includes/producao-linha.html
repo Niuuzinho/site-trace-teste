@@ -1,9 +1,10 @@
-{%- comment -%} Produção como linha de lista. Parâmetro: producao. {%- endcomment -%}
+{%- comment -%} Produção como cartão branco de lista (etiqueta do tipo, ano, título e autoria, seta à direita). Parâmetro: producao. {%- endcomment -%}
 {%- assign r = include.producao -%}
-<li class="in-prod-item">
-  <a class="in-prod-link" href="{{ r.url | relative_url }}">
-    <span class="in-prod-ano"><span class="so-leitor">Ano </span>{{ r.ano }}</span>
-    <span class="in-prod-texto"><span class="in-prod-titulo">{{ r.title }}</span><span class="in-prod-autoria">{{ r.autoria }}</span></span>
-    <span class="in-prod-tipo">{% include icone-tipo.html tipo=r.tipo %}{{ r.tipo }}</span>
+<li class="in-pr">
+  <a class="in-pr-link" href="{{ r.url | relative_url }}">
+    <span class="in-pr-topo"><span class="in-pr-tipo">{% include icone-tipo.html tipo=r.tipo %}{{ r.tipo }}</span><span class="in-pr-ano"><span class="so-leitor">Ano </span>{{ r.ano }}</span></span>
+    <span class="in-pr-titulo">{{ r.title }}</span>
+    <span class="in-pr-autoria">{{ r.autoria }}</span>
+    <svg class="icone in-pr-seta" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg>
   </a>
 </li>
