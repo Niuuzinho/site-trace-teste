@@ -212,3 +212,13 @@ html[data-contraste="alto"] .v5b .v5-projetos .meta li, html[data-contraste="alt
 body:has(.v5) .cabecalho { border-top: 10px solid #17372f; border-bottom: 4px solid #0b7b78; }
 body:has(.v5a) { --fonte-corpo: "Nunito", "Poppins", system-ui, sans-serif; --fonte-titulo: "Nunito", "Poppins", system-ui, sans-serif; }
 body:has(.v5a) :where(.cabecalho, .rodape) :where(a, button, p, li, span, h2, input, label) { font-family: var(--fonte-corpo); }
+/* A: abertura como um bloco só (título + demonstração dentro do mesmo cartão verde-escuro) */
+.v5a .v5-hero { background: var(--panel); border-radius: 2.5rem; margin-top: var(--e5); padding: var(--e6); box-shadow: none; position: relative; }
+.v5a .v5-hero h1 { color: #f9f3e3; }
+.v5a .v5-sub { color: var(--accent); }
+.v5a .v5-demo { background: #27493f; }
+.v5a .v5-demo[data-formato="contraste"] { background: #000; }
+html[data-contraste="alto"] .v5a .v5-hero { background: #000; }
+html[data-contraste="alto"] .v5a .v5-hero h1, html[data-contraste="alto"] .v5a .v5-sub { color: #fff !important; }
+.v5a { padding-top: var(--e5); }
+.v5a .v5-hero { margin-top: 0; margin-bottom: var(--e7); }
