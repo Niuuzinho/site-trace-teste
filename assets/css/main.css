@@ -1643,27 +1643,18 @@ html[data-contraste="alto"] .esqueleto span { background: var(--tinta); }
 /* Filtros: em telas baixas deixam de acompanhar a rolagem (assim nenhum controle fica cortado) */
 @media (min-width: 56em) and (max-height: 54.99rem) { .com-filtros > .filtros { position: static; max-height: none; overflow: visible; } }
 
-/* ===== TESTE "menos cara de template" (branch apenas; para desfazer, apague daqui até o fim do arquivo) =====
-   1) fonte Atkinson Hyperlegible no site todo  2) sem barrinha embaixo dos títulos (exceto títulos de seção da inicial)
-   3) fundo neutro e sombras discretas          4) cartões escuros lisos, sem pontinhos e sem brilho amarelo
-   5) menos setas e menos ícones em quadradinho  6) cartões de projeto com visual de lista, não de cartão flutuante */
+/* ===== TESTE "menos cara de template", versão 2 (branch apenas; para desfazer, apague daqui até o fim do arquivo) =====
+   Mantido do teste: sem barrinha embaixo dos títulos (exceto títulos de seção da inicial), sombras discretas,
+   atalhos da inicial sem quadradinho de ícone e sem seta, cartões de projeto sem "Conhecer o projeto →".
+   Voltou ao original (pedido da pessoa): fonte Poppins, cores de fundo e dos cartões, formas e brilhos das faixas. */
 :root {
-  --texto: "Atkinson Hyperlegible", Verdana, Tahoma, system-ui, sans-serif;
-  --fundo: #fbfaf7; --fundo-2: #fbfaf7;
   --sombra-1: 0 1px 3px rgb(0 0 0 / 0.14);
   --sombra-2: 0 2px 6px rgb(0 0 0 / 0.16);
 }
 .galeria-sec h2::after, section.bloco > h2::after, .secao-topo.car-titulo h2::after,
 .prod-pagina .resumo > h2::after, .prod-pagina .prod-outras > h2::after,
 .sec-larga > h2::after, .proj-downloads > h2::after { display: none; }
-.mod-hero, .mod-cta, .pagina-corpo > .encontre, .contato-info, .pagina-corpo > .pessoas-faixa, .faixa-card, .destaque-pessoa { background-image: none; }
 .mod-tile::after { display: none; }
 .mod-tile-icone { background: none; width: auto; height: auto; place-items: start; }
 .mod-tile-mais { display: none; }
 .cartao-mais { display: none; }
-.cartao-proj { box-shadow: none; border: 1px solid var(--t-banda); }
-.cartao-ref, .cartao-proj { background: var(--cartao); }
-.cartao-ref { border: 1px solid var(--t-banda); box-shadow: none; }
-.cartao-ref .temas li, .cartao-proj .temas li { background: var(--t-suave); }
-.cartao-ref .cartao-topo::before { display: none; }
-.mod-hero::before { display: none; }

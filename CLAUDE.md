@@ -331,3 +331,5 @@ Ver `DIAGNOSTICO.md` (axe-core + html-validate + medições): 0 violações axe 
 
 
 - **EXPERIMENTO 2 (08/10) — "menos cara de template" — SÓ NA BRANCH, NÃO NA `main`:** bloco no FIM do `main.css` ("TESTE menos cara de template"; para desfazer, apagar dele até o fim): fonte Atkinson Hyperlegible no site todo, sem barrinha sob a maioria dos títulos (fica só nos títulos de seção da inicial), fundo neutro `#fbfaf7`, sombras discretas, cartões escuros lisos (sem pontinhos, brilho ou círculo), atalhos da inicial sem quadradinho de ícone nem seta, cartões de projeto/produção brancos com borda fina e sem "Conhecer o projeto →". Só publicar na `main` se a pessoa aprovar.
+
+  - **Atualização do EXPERIMENTO 2 (08/10):** a pessoa pediu para voltar a **Poppins**, as **cores** (fundo e cartões) e as **formas/brilhos das faixas**. Ficaram só: sem barrinha sob a maioria dos títulos, sombras discretas, atalhos da inicial sem ícone em quadradinho/seta, cartão de projeto sem "Conhecer o projeto →". Continua só na branch.
