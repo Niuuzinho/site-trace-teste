@@ -10,8 +10,17 @@ permalink: /inicio-teste/
 <link rel="stylesheet" href="{{ '/assets/css/inicio.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
 <div class="in">
 
-<section class="in-hero" aria-labelledby="h-in">
-  {% include simbolo.html %}
+<section class="in-hero in-hero--logos" aria-labelledby="h-in">
+  {% include simbolos-defs.html %}
+  <div class="in-deco in-deco-logos" aria-hidden="true">
+    <svg class="in-logo l1"><use href="#i-simbolo"></use></svg>
+    <svg class="in-logo l2"><use href="#i-simbolo"></use></svg>
+    <svg class="in-logo l3"><use href="#i-simbolo"></use></svg>
+    <svg class="in-logo l4"><use href="#i-simbolo"></use></svg>
+  </div>
+  <div class="in-deco in-deco-acess" aria-hidden="true">
+    <svg class="in-padrao" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><use href="#i-sim-braille-1" x="1.0%" y="0.6%" width="5.5%" height="5.3%" transform="rotate(-12 4.0 3.6)"/><use href="#i-sim-braille-4" x="16.7%" y="0.4%" width="5.5%" height="5.3%" transform="rotate(6 19.7 3.4)"/><use href="#i-sim-cc" x="29.2%" y="0.3%" width="9%" height="8.7%" transform="rotate(-12 32.2 3.3)"/><use href="#i-sim-ad" x="43.6%" y="2.2%" width="5.5%" height="5.3%" transform="rotate(6 46.6 5.2)"/><use href="#i-sim-braille-2" x="57.5%" y="0.9%" width="5.5%" height="5.3%" transform="rotate(6 60.5 3.9)"/><use href="#i-sim-aa" x="73.2%" y="0.2%" width="6.5%" height="6.3%" transform="rotate(-12 76.2 3.2)"/><use href="#i-sim-olho" x="87.4%" y="0.5%" width="9%" height="8.7%" transform="rotate(-6 90.4 3.5)"/><use href="#i-sim-acesso" x="1.6%" y="27.3%" width="6.5%" height="6.3%" transform="rotate(-12 4.6 30.3)"/><use href="#i-sim-braille-1" x="16.0%" y="27.6%" width="7.5%" height="7.2%" transform="rotate(-12 19.0 30.6)"/><use href="#i-sim-braille-4" x="30.2%" y="25.3%" width="5.5%" height="5.3%" transform="rotate(6 33.2 28.3)"/><use href="#i-sim-cc" x="43.5%" y="27.7%" width="9%" height="8.7%" transform="rotate(0 46.5 30.7)"/><use href="#i-sim-ad" x="58.5%" y="28.7%" width="7.5%" height="7.2%" transform="rotate(0 61.5 31.7)"/><use href="#i-sim-braille-2" x="72.2%" y="25.7%" width="6.5%" height="6.3%" transform="rotate(-12 75.2 28.7)"/><use href="#i-sim-aa" x="87.4%" y="27.1%" width="7.5%" height="7.2%" transform="rotate(12 90.4 30.1)"/><use href="#i-sim-som" x="1.3%" y="52.4%" width="5.5%" height="5.3%" transform="rotate(-12 4.3 55.4)"/><use href="#i-sim-acesso" x="15.8%" y="50.7%" width="7.5%" height="7.2%" transform="rotate(-6 18.8 53.7)"/><use href="#i-sim-braille-1" x="31.4%" y="51.7%" width="5.5%" height="5.3%" transform="rotate(6 34.4 54.7)"/><use href="#i-sim-braille-4" x="44.6%" y="53.5%" width="7.5%" height="7.2%" transform="rotate(0 47.6 56.5)"/><use href="#i-sim-cc" x="59.2%" y="52.4%" width="9%" height="8.7%" transform="rotate(-12 62.2 55.4)"/><use href="#i-sim-ad" x="73.9%" y="53.8%" width="9%" height="8.7%" transform="rotate(12 76.9 56.8)"/><use href="#i-sim-braille-2" x="87.7%" y="50.2%" width="7.5%" height="7.2%" transform="rotate(12 90.7 53.2)"/><use href="#i-sim-braille-3" x="1.7%" y="77.7%" width="9%" height="8.7%" transform="rotate(0 4.7 80.7)"/><use href="#i-sim-som" x="16.4%" y="78.5%" width="7.5%" height="7.2%" transform="rotate(-12 19.4 81.5)"/><use href="#i-sim-acesso" x="31.4%" y="76.4%" width="5.5%" height="5.3%" transform="rotate(0 34.4 79.4)"/><use href="#i-sim-braille-1" x="43.0%" y="78.1%" width="6.5%" height="6.3%" transform="rotate(12 46.0 81.1)"/><use href="#i-sim-braille-4" x="57.9%" y="76.6%" width="9%" height="8.7%" transform="rotate(-12 60.9 79.6)"/><use href="#i-sim-cc" x="71.9%" y="76.6%" width="7.5%" height="7.2%" transform="rotate(-6 74.9 79.6)"/><use href="#i-sim-ad" x="88.2%" y="78.5%" width="7.5%" height="7.2%" transform="rotate(12 91.2 81.5)"/></svg>
+  </div>
   <div class="container in-hero-int">
     <div class="in-hero-titulo">
       <h1 id="h-in"><span class="in-etiqueta">Portal</span> <span class="in-nome">TrAce</span></h1>
@@ -23,16 +32,18 @@ permalink: /inicio-teste/
 
 <nav class="in-atalhos" aria-label="Áreas do site">
   <ul>
-    <li><a class="in-at-sobre" href="{{ '/quem-somos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-sobre"></use></svg><span class="in-atalho-nome">Quem somos</span></a></li>
-    <li><a class="in-at-membros" href="{{ '/membros/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-pessoas"></use></svg><span class="in-atalho-nome">Membros</span></a></li>
-    <li><a class="in-at-projetos" href="{{ '/projetos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-projeto"></use></svg><span class="in-atalho-nome">Projetos</span></a></li>
-    <li><a class="in-at-producoes" href="{{ '/producoes/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-tipo-capitulo"></use></svg><span class="in-atalho-nome">Produções</span></a></li>
-    <li><a class="in-at-contato" href="{{ '/contato/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg><span class="in-atalho-nome">Contato</span></a></li>
+    <li><a class="in-at-sobre" href="{{ '/quem-somos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-sobre"></use></svg><span class="in-at-base"><span class="in-atalho-nome">Quem somos</span><span class="in-at-seta" aria-hidden="true"><svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span></span></a></li>
+    <li><a class="in-at-membros" href="{{ '/membros/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-pessoas"></use></svg><span class="in-at-base"><span class="in-atalho-nome">Membros</span><span class="in-at-seta" aria-hidden="true"><svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span></span></a></li>
+    <li><a class="in-at-projetos" href="{{ '/projetos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-projeto"></use></svg><span class="in-at-base"><span class="in-atalho-nome">Projetos</span><span class="in-at-seta" aria-hidden="true"><svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span></span></a></li>
+    <li><a class="in-at-producoes" href="{{ '/producoes/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-tipo-capitulo"></use></svg><span class="in-at-base"><span class="in-atalho-nome">Produções</span><span class="in-at-seta" aria-hidden="true"><svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span></span></a></li>
+    <li><a class="in-at-contato" href="{{ '/contato/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg><span class="in-at-base"><span class="in-atalho-nome">Contato</span><span class="in-at-seta" aria-hidden="true"><svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span></span></a></li>
   </ul>
 </nav>
 
 <div class="in-bloco in-fundo-3">
+
 <section class="container in-sec in-mural" aria-labelledby="h-mural">
+ <div class="in-painel">
   <h2 class="in-sec-titulo" id="h-mural">Mural de avisos</h2>
   <div class="mod-hero-card in-carrossel">
     {% include carrossel.html itens=avisos rotulo="Carrossel de avisos" %}
@@ -42,9 +53,11 @@ permalink: /inicio-teste/
     {% include aviso-linha.html aviso=a %}
     {%- endfor %}
   </ul>
+ </div>
 </section>
 </div>
 
+<div class="container in-divisor" aria-hidden="true"><svg class="in-div-sim"><use href="#i-simbolo"></use></svg></div>
 <div class="in-bloco in-fundo-4">
 <section class="container in-sec in-sec-banda" aria-labelledby="h-proj">
   <div class="in-sec-topo">
@@ -59,6 +72,7 @@ permalink: /inicio-teste/
 </section>
 </div>
 
+<div class="container in-divisor" aria-hidden="true"><svg class="in-div-sim"><use href="#i-simbolo"></use></svg></div>
 <div class="in-bloco in-fundo-5">
 <section class="container in-sec in-sec-ultima" aria-labelledby="h-prod">
   <div class="in-sec-topo">
