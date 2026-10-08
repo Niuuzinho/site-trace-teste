@@ -208,3 +208,7 @@ html[data-contraste="alto"] .v5 .v5-pilula, html[data-contraste="alto"] .v5 .v5-
 html[data-contraste="alto"] .v5 .v5-demo { background: #000; color: #fff; border: 3px solid #fff; }
 html[data-contraste="alto"] .v5 .v5-formatos button[aria-pressed="true"] { background: #fff; border-color: #fff; color: #000; }
 html[data-contraste="alto"] .v5b .v5-projetos .meta li, html[data-contraste="alto"] .v5 .v5-projetos .meta li { color: #000; }
+/* cabeçalho branco com identidade: faixa escura em cima e linha verde embaixo; fonte Nunito também no menu e no rodapé */
+body:has(.v5) .cabecalho { border-top: 10px solid #17372f; border-bottom: 4px solid #0b7b78; }
+body:has(.v5a) { --fonte-corpo: "Nunito", "Poppins", system-ui, sans-serif; --fonte-titulo: "Nunito", "Poppins", system-ui, sans-serif; }
+body:has(.v5a) :where(.cabecalho, .rodape) :where(a, button, p, li, span, h2, input, label) { font-family: var(--fonte-corpo); }
