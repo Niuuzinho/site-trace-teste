@@ -3,8 +3,10 @@
 <li class="in-p2">
   <a class="in-p2-link" href="{{ p.url | relative_url }}">
     <span class="in-p2-img">{% include img.html nome=p.imagem alt="" sizes="(min-width: 64em) 22rem, (min-width: 40em) 45vw, 100vw" %}<span class="in-p2-etiqueta">{{ p.situacao }}</span></span>
+    <span class="in-p2-texto">
     <span class="in-p2-ano"><span class="so-leitor">Ano </span>{{ p.ano }}</span>
     <span class="in-p2-titulo">{{ p.title }}</span>
     <span class="in-p2-resumo">{{ p.resumo }}</span>
+    </span>
   </a>
 </li>

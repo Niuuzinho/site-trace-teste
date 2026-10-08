@@ -1,4 +1,4 @@
-{%- comment -%} Aviso como item de acordeão: botão com o título, painel com resumo e link, e a imagem (aparece à direita no computador). Parâmetros: aviso, indice. {%- endcomment -%}
+{%- comment -%} Aviso como item de acordeão: botão com o título e painel com resumo e link. Parâmetros: aviso, indice. {%- endcomment -%}
 {%- assign a = include.aviso -%}
 <li class="in-ac-item">
   <div class="in-ac-card">
@@ -9,5 +9,4 @@
       <a class="in-ac-link" href="{{ a.url | relative_url }}">Ler o aviso<span class="so-leitor">: {{ a.title }}</span></a>
     </div>
   </div>
-  <a class="in-ac-img" href="{{ a.url | relative_url }}" aria-label="Ler o aviso: {{ a.title | escape }}" tabindex="-1">{% include img.html nome=a.imagem alt="" sizes="(min-width: 56em) 40rem, 100vw" %}</a>
 </li>

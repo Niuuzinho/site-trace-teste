@@ -65,9 +65,13 @@ body:has(.in) .rodape { margin-top: 0; }
 .in-pilula:hover { background: var(--in-claro); color: var(--in-escuro); text-decoration: none; }
 
 /* ---------- 3. mural de avisos: lista à esquerda (um aviso aberto) e imagem à direita ---------- */
-.in-ac { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); align-items: start; }
-@media (min-width: 56em) { .in-ac { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); column-gap: clamp(1.5rem, 1rem + 2vw, 3rem); } }
-.in-ac-item { display: contents; }
+.in-mural-grade { display: grid; gap: var(--e5); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 56em) { .in-mural-grade { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(1.5rem, 1rem + 2vw, 3rem); align-items: stretch; } }
+.in-mural-img { display: block; overflow: hidden; border-radius: 1.25rem; line-height: 0; }
+.in-mural-img img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 9; }
+@media (min-width: 56em) { .in-mural-img img { min-height: 24rem; aspect-ratio: auto; } }
+.in-ac { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); align-content: start; }
+.in-ac-item { display: block; }
 .in-ac-card { grid-column: 1; background: #fff; color: var(--in-escuro); border-radius: 1rem; box-shadow: 0 0.2rem 0 rgb(0 0 0 / 0.25); }
 .in-ac-h { margin: 0; }
 .in-ac-btn { display: flex; align-items: center; gap: var(--e4); width: 100%; padding: var(--e4); background: none; border: 0; border-radius: 1rem; color: inherit; font: 800 1.15rem/1.2 var(--in-font); text-align: left; cursor: pointer; }
@@ -81,11 +85,6 @@ body:has(.in) .rodape { margin-top: 0; }
 .in-ac-link:hover { background: var(--in-brilho); color: var(--in-escuro); text-decoration: none; }
 .in-ac-btn:hover .in-ac-tit { text-decoration: underline; }
 .in-ac.js .in-ac-item.is-ativo .in-ac-card { box-shadow: 0 0.35rem 0 var(--in-brilho); }
-.in-ac-img { display: none; grid-column: 1; overflow: hidden; border-radius: 1.25rem; line-height: 0; }
-.in-ac-img img { display: block; width: 100%; height: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.in-ac:not(.js) .in-ac-item:first-child .in-ac-img, .in-ac .in-ac-item.is-ativo .in-ac-img { display: block; }
-@media (min-width: 56em) { .in-ac-img { grid-column: 2; grid-row: 1 / span var(--n); align-self: stretch; } .in-ac-img img { min-height: 20rem; aspect-ratio: auto; } }
-
 /* ---------- 4. projetos: imagem alta com etiqueta, ano em destaque, título e frase (sem caixa) ---------- */
 .in-ver-tudo { display: inline-flex; align-items: center; gap: var(--e3); color: var(--in-brilho); font-weight: 800; text-decoration: none; }
 .in-ver-seta { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; background: var(--in-brilho); color: var(--in-escuro); border-radius: 50%; transition: transform var(--dur-1) var(--ease); }
@@ -141,22 +140,24 @@ html[data-contraste="alto"] .in-p2-etiqueta { border: 2px solid #000; }
 .in-sub { max-width: none; margin: var(--e5) auto 0; font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; color: var(--in-claro); }
 .in-sub-dest { font-style: italic; color: var(--in-brilho); }
 .in-lead { margin-inline: auto; color: var(--in-claro-2); }
-.in-deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-
-.in-conf { position: absolute; display: block; }
-.in-conf.c1 { left: 17%; top: 14%; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--in-brilho); }
-.in-conf.c2 { left: 14%; top: 46%; width: 1.5rem; height: 1.5rem; background: #8fd0a8; clip-path: polygon(0 0, 100% 50%, 0 100%); transform: rotate(-20deg); }
-.in-conf.c3 { left: 20%; bottom: 14%; width: 1.1rem; height: 1.1rem; background: var(--f-contato); transform: rotate(20deg); }
-.in-conf.c4 { left: 6%; bottom: 30%; width: 1.6rem; height: 0.5rem; border-radius: 999px; background: var(--f-sobre); transform: rotate(-35deg); }
-.in-conf.c5 { right: 18%; top: 10%; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--f-sobre); }
-.in-conf.c6 { right: 17%; top: 45%; width: 1.5rem; height: 1.5rem; background: var(--in-brilho); clip-path: polygon(50% 0, 100% 100%, 0 100%); transform: rotate(15deg); }
-.in-conf.c7 { right: 21%; bottom: 16%; width: 1.2rem; height: 1.2rem; background: var(--f-projetos); transform: rotate(-15deg); }
-.in-conf.c8 { right: 7%; bottom: 33%; width: 1.7rem; height: 0.5rem; border-radius: 999px; background: #8fd0a8; transform: rotate(40deg); }
-@media (max-width: 55.99em) { .in-conf { opacity: 0.8; } .in-conf.c1 { left: 6%; top: 6%; } .in-conf.c5 { right: 6%; top: 5%; } .in-conf.c2, .in-conf.c6 { display: none; } .in-conf.c3 { left: 8%; bottom: 8%; } .in-conf.c7 { right: 8%; bottom: 7%; } .in-conf.c4 { left: 5%; bottom: 22%; } .in-conf.c8 { right: 5%; bottom: 24%; } }
-html[data-contraste="alto"] .in-conf { display: none; }
 
 /* título sem fotos; etiqueta alinhada à esquerda do T; botões da sessão 2 de ponta a ponta */
 .in-hero h1 { display: inline-flex; flex-direction: column; align-items: flex-start; }
 .in-atalhos { padding-block: 0; margin-bottom: 0; }
 .in-atalhos ul { border-radius: 0; background: #cfd8d2; }
 .in-atalhos li { background: #fff; }
+
+/* sessão 1: mesma textura da versão atual da main (pontinhos, brilho amarelo no canto e anel) e fonte Poppins */
+.in-hero { background-color: var(--in-verde); background-image: radial-gradient(circle at 100% 0, rgb(255 224 138 / 0.22) 0, rgb(255 224 138 / 0) 45%), radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px); background-size: auto, 22px 22px; isolation: isolate; }
+.in-hero::before { content: ""; position: absolute; z-index: -1; width: 22rem; height: 22rem; left: -8rem; bottom: -11rem; border: 3rem solid rgb(255 255 255 / 0.07); border-radius: 50%; pointer-events: none; }
+.in-hero :where(h1, p, span) { font-family: "Poppins", system-ui, sans-serif; }
+.in-nome { font-weight: 700; letter-spacing: -0.06em; }
+.in-sub { font-weight: 600; letter-spacing: -0.02em; }
+.in-etiqueta { font-weight: 700; }
+html[data-contraste="alto"] .in-hero { background-image: none; }
+html[data-contraste="alto"] .in-hero::before { display: none; }
+/* sessão 4: fundo redondo no texto de cada cartão */
+.in-p2-link { gap: 0.5rem; }
+.in-p2-img { margin-bottom: 0; }
+.in-p2-texto { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; padding: var(--e4); background: #123d30; border-radius: 1.1rem; }
+html[data-contraste="alto"] .in-p2-texto { background: #000; border: 2px solid #fff; }

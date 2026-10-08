@@ -1,4 +1,4 @@
-/* Página inicial de teste: mural de avisos em acordeão (um aviso aberto por vez; a imagem dele aparece ao lado). Sem JavaScript, todos os avisos ficam abertos. */
+/* Página inicial de teste: mural de avisos em acordeão (um aviso aberto por vez). Sem JavaScript, todos os avisos ficam abertos. */
 (function () {
   'use strict';
   var lista = document.querySelector('[data-acordeao]');

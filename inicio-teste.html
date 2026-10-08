@@ -12,10 +12,6 @@ permalink: /inicio-teste/
 
 <section class="in-hero" aria-labelledby="h-in">
   {% include simbolos-defs.html %}
-  <div class="in-deco" aria-hidden="true">
-    <span class="in-conf c1"></span><span class="in-conf c2"></span><span class="in-conf c3"></span><span class="in-conf c4"></span>
-    <span class="in-conf c5"></span><span class="in-conf c6"></span><span class="in-conf c7"></span><span class="in-conf c8"></span>
-  </div>
   <div class="container in-hero-int">
     <div class="in-hero-titulo">
       <h1 id="h-in"><span class="in-etiqueta">Portal</span> <span class="in-nome">TrAce</span></h1>
@@ -39,11 +35,15 @@ permalink: /inicio-teste/
 <section class="container in-sec in-mural" aria-labelledby="h-mural">
   <h2 class="in-sec-titulo" id="h-mural">Mural de avisos</h2>
   {%- assign avisos_lim = avisos | slice: 0, 5 %}
-  <ul class="in-ac" style="--n: {{ avisos_lim.size }}" data-acordeao>
-    {%- for a in avisos_lim %}
-    {% include aviso-acordeao.html aviso=a indice=forloop.index %}
-    {%- endfor %}
-  </ul>
+  {%- assign mais_novo = avisos_lim[0] %}
+  <div class="in-mural-grade">
+    <a class="in-mural-img" href="{{ mais_novo.url | relative_url }}" aria-label="Ler o aviso mais recente: {{ mais_novo.title | escape }}">{% include img.html nome=mais_novo.imagem alt="" sizes="(min-width: 56em) 40rem, 100vw" %}</a>
+    <ul class="in-ac" data-acordeao>
+      {%- for a in avisos_lim %}
+      {% include aviso-acordeao.html aviso=a indice=forloop.index %}
+      {%- endfor %}
+    </ul>
+  </div>
 </section>
 </div>
 
