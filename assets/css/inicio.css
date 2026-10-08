@@ -155,3 +155,30 @@ html[data-contraste="alto"] .in-hero::after { background: #fff; }
 .in-arco-papel .in-sec { padding-top: clamp(3.5rem, 3rem + 3vw, 6rem); }
 .in-mural { padding-bottom: clamp(3.5rem, 3rem + 3vw, 6rem); }
 html[data-contraste="alto"] .in-atalhos a { border: 2px solid #000; }
+
+/* ===== v4: fundos escuros (cada sessão um tom, escurecendo até o rodapé) e borda amarela entre as sessões 1 e 2 ===== */
+.in { --in-verde: #0e4a38; --in-claro: #f4f1e6; --in-claro-2: #cfe0d6; --in-f3: #0f3b2e; --in-f4: #0b2f24; --in-f5: #07221a; --in-icone: #146c4f; background: var(--in-f5); }
+.in-hero { border-bottom: 0.6rem solid var(--in-brilho); }
+.in-bloco { color: var(--in-claro); }
+.in-fundo-3 { background: var(--in-f3); }
+.in-fundo-4 { background: var(--in-f4); }
+.in-fundo-5 { background: var(--in-f5); }
+.in-bloco .in-sec-titulo { color: var(--in-claro); }
+.in-bloco .in-pilula { background: var(--in-brilho); color: var(--in-escuro); }
+.in-bloco .in-pilula:hover { background: var(--in-claro); color: var(--in-escuro); }
+.in-bloco .in-lista { border-bottom-color: rgb(244 241 230 / 0.6); }
+.in-bloco .in-prod-item { border-top-color: rgb(244 241 230 / 0.6); }
+.in-bloco .in-prod-link { color: var(--in-claro); }
+.in-bloco .in-prod-autoria { color: var(--in-claro-2); }
+.in-bloco .in-prod-tipo { background: var(--in-brilho); color: var(--in-escuro); }
+.in-bloco .in-seta { color: var(--in-brilho); }
+.in-bloco .in-prod-link:hover { background: var(--in-claro); color: var(--in-escuro); }
+.in-bloco .in-prod-link:hover .in-prod-autoria { color: #2a3a33; }
+.in-bloco .in-prod-link:hover .in-prod-tipo { background: var(--in-escuro); color: #fff; }
+.in-bloco .in-prod-link:hover .in-seta { color: var(--in-escuro); }
+.in-fundo-4 .in-projetos { border-color: rgb(244 241 230 / 0.6); }
+.in-fundo-4 .in-proj-item + .in-proj-item { border-top-color: rgb(244 241 230 / 0.6); }
+.in-carrossel .car-controles .botao-peq { border-color: var(--in-escuro); }
+html[data-contraste="alto"] .in { --in-f3: #000; --in-f4: #000; --in-f5: #000; --in-claro: #fff; --in-claro-2: #fff; --in-brilho: #fff; }
+html[data-contraste="alto"] .in-bloco .in-pilula, html[data-contraste="alto"] .in-bloco .in-prod-tipo { background: #fff; color: #000; }
+html[data-contraste="alto"] .in-hero { border-bottom-color: #fff; }
