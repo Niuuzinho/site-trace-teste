@@ -1,0 +1,10 @@
+{%- comment -%} Aviso como cartão branco de lista (embaixo do carrossel). Parâmetro: aviso. {%- endcomment -%}
+{%- assign a = include.aviso -%}
+<li class="hib-pr hib-av">
+  <a class="hib-pr-link" href="{{ a.url | relative_url }}">
+    <span class="hib-pr-topo"><span class="hib-pr-tipo hib-av-tag">Aviso</span><span class="hib-pr-ano"><span class="so-leitor">Data </span>{{ a.data | date: "%d/%m/%Y" }}</span></span>
+    <span class="hib-pr-titulo">{{ a.title }}</span>
+    {%- if a.resumo %}<span class="hib-pr-autoria">{{ a.resumo }}</span>{% endif %}
+    <svg class="icone hib-pr-seta" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg>
+  </a>
+</li>

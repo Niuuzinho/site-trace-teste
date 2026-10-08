@@ -1,0 +1,14 @@
+{%- comment -%} Projeto no estilo "cartão branco" do teste, com o ícone ao lado do nome. Parâmetro: projeto. {%- endcomment -%}
+{%- assign p = include.projeto -%}
+{%- assign eh_livro = false -%}
+{%- for t in p.temas %}{% if t contains "livro" %}{% assign eh_livro = true %}{% endif %}{% endfor -%}
+<li class="hib-p">
+  <a class="hib-p-link" href="{{ p.url | relative_url }}">
+    <span class="hib-p-img">{% include img.html nome=p.imagem alt="" sizes="(min-width: 64em) 22rem, (min-width: 40em) 45vw, 100vw" %}<span class="hib-p-etiqueta">{{ p.situacao }}</span></span>
+    <span class="hib-p-corpo">
+      <span class="hib-p-nomeico"><svg class="icone hib-p-ic" aria-hidden="true" focusable="false"><use href="#{% if eh_livro %}i-tipo-capitulo{% else %}i-projeto{% endif %}"></use></svg><span class="hib-p-titulo">{{ p.title }}</span></span>
+      <span class="hib-p-resumo">{{ p.resumo }}</span>
+      <span class="hib-p-rodape"><span class="hib-p-mais" aria-hidden="true">Conhecer o projeto <svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span><span class="hib-p-ano"><span class="so-leitor">Ano </span>{{ p.ano }}</span></span>
+    </span>
+  </a>
+</li>

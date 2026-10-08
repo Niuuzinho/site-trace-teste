@@ -1,0 +1,82 @@
+/* Página inicial de teste HÍBRIDA (/inicio-hibrido/): visual da `main` (atalhos coloridos, carrossel) + título, projetos e produções do teste. */
+.hib { --hib-escuro: #0a2f24; --hib-verde: #146c4f; --hib-brilho: #f2c14e; }
+.hib :where(h1, h2, h3, p, a, li, span) { font-family: "Poppins", system-ui, sans-serif; }
+body:has(.hib) .rodape { margin-top: 0; }
+
+/* ---------- sessão 1 ---------- */
+.hib-hero { position: relative; isolation: isolate; overflow: hidden; text-align: center; color: #fff; border-bottom: 0.6rem solid var(--hib-brilho);
+  padding-block: clamp(4rem, 3rem + 6vw, 8.5rem) clamp(4.5rem, 3.5rem + 5vw, 8rem);
+  background-color: #0a3a2c;
+  background-image: radial-gradient(circle at 100% 100%, rgb(76 209 59 / 0.6) 0, rgb(76 209 59 / 0) 42%), radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px);
+  background-size: auto, 22px 22px; }
+@media (min-width: 48em) { .hib-hero { background-image: linear-gradient(120deg, #0a3a2c 0%, #0d4a36 48%, #1b7a3a 78%, #4cd13b 100%), radial-gradient(rgb(255 255 255 / 0.10) 1.5px, transparent 1.5px); background-size: auto, 22px 22px; } }
+.hib-hero::before { content: ""; position: absolute; z-index: -1; width: 22rem; height: 22rem; left: -8rem; bottom: -11rem; border: 3rem solid rgb(255 255 255 / 0.07); border-radius: 50%; pointer-events: none; }
+.hib-hero-int { max-width: 60rem; }
+.hib-hero h1 { margin: 0; display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--e3); color: #f4f1e6; }
+.hib-etiqueta { display: inline-block; padding: 0.5rem 1.6rem 0.6rem; background: var(--hib-brilho); color: var(--hib-escuro); border-radius: 0.4rem 1.4rem 0.4rem 1.4rem; font-size: clamp(1.4rem, 1rem + 1.8vw, 2.4rem); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.2; box-shadow: 0.3rem 0.3rem 0 rgb(0 0 0 / 0.35); }
+.hib-nome { font-size: clamp(5.5rem, 2.5rem + 15vw, 15rem); font-weight: 700; line-height: 0.82; letter-spacing: -0.06em; color: #f4f1e6; }
+.hib-sub { margin: var(--e5) auto 0; font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: #fff; }
+.hib-sub-dest { font-style: italic; color: var(--hib-brilho); }
+.hib-lead { margin: var(--e4) auto 0; max-width: 34rem; font-size: clamp(1.125rem, 1rem + 0.5vw, 1.35rem); line-height: 1.65; color: #eef6f0; }
+html[data-contraste="alto"] .hib-hero { background-image: none; background-color: #000; border-bottom-color: #fff; }
+html[data-contraste="alto"] .hib-hero::before { display: none; }
+html[data-contraste="alto"] .hib-etiqueta { background: #fff; color: #000; box-shadow: none; }
+
+/* ---------- sessões 2 e 3: visual da main; avisos embaixo do carrossel ---------- */
+.hib .mod-atalhos { padding-top: clamp(2.5rem, 2rem + 2.5vw, 4rem); }
+.hib-mural { padding-bottom: 0; }
+.hib-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.hib-avisos { margin-top: var(--e5); }
+.hib-pr-link { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--e4); row-gap: 0.4rem; align-items: center; padding: var(--e4) var(--e5); background: #fff; color: var(--hib-escuro); border-radius: 1rem; text-decoration: none; box-shadow: 0 0.2rem 0.8rem rgb(40 40 30 / 0.16); transition: transform 0.15s, box-shadow 0.15s; }
+.hib-pr-topo { grid-column: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+.hib-pr-tipo { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.2rem 0.8rem; background: #d5f0e0; color: #0f5a40; border-radius: 999px; font-size: 0.85rem; font-weight: 700; }
+.hib-pr-tipo .icone-tipo { width: 1rem; height: 1rem; margin: 0; }
+.hib-av-tag { background: #fbe7b0; color: #5a3d00; }
+.hib-pr-ano { font: 500 0.85rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: #5a6a63; }
+.hib-pr-titulo { grid-column: 1; font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
+.hib-pr-autoria { grid-column: 1; font-size: 0.9rem; color: #5a6a63; }
+.hib-pr-seta { grid-column: 2; grid-row: 1 / span 3; width: 1.4rem; height: 1.4rem; color: #5a6a63; transition: transform 0.15s, color 0.15s; }
+.hib-pr-link:hover { transform: translateY(-2px); box-shadow: 0 0.5rem 1.2rem rgb(40 40 30 / 0.26); text-decoration: none; }
+.hib-pr-link:hover .hib-pr-titulo { text-decoration: underline; }
+.hib-pr-link:hover .hib-pr-seta { color: var(--hib-escuro); transform: translateX(4px); }
+
+/* ---------- divisor com o símbolo da logo, seções ---------- */
+.hib-divisor { display: flex; align-items: center; gap: var(--e4); padding-block: clamp(2.5rem, 2rem + 2.5vw, 4.5rem) 0; }
+.hib-divisor::before, .hib-divisor::after { content: ""; flex: 1; height: 2px; background: var(--linha); }
+.hib-div-sim { width: 2.6rem; height: 2.4rem; color: var(--hib-verde); flex: none; }
+.hib-sec { padding-top: clamp(2.5rem, 2rem + 2.5vw, 4.5rem); }
+.hib-sec-ultima { padding-bottom: clamp(3rem, 2.5rem + 3vw, 5rem); }
+.hib-sec-topo { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--e3) var(--e5); margin-bottom: var(--e5); }
+.hib-sec-titulo { margin: 0; font-size: clamp(2rem, 1.5rem + 2.5vw, 3.25rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--tinta); }
+.hib-pilula { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 var(--e5); background: var(--hib-brilho); color: var(--hib-escuro); border-radius: 999px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: background 0.15s; }
+.hib-pilula:hover { background: var(--hib-escuro); color: #fff; text-decoration: none; }
+
+/* ---------- sessão 4: cartão branco, ícone ao lado do nome ---------- */
+.hib-projetos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e5); grid-template-columns: 1fr; }
+@media (min-width: 40em) { .hib-projetos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64em) { .hib-projetos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.hib-p { display: flex; }
+.hib-p-link { display: flex; flex-direction: column; width: 100%; background: #fff; color: var(--hib-escuro); border-radius: 1rem; overflow: hidden; text-decoration: none; box-shadow: 0 0.25rem 0.9rem rgb(40 40 30 / 0.18); transition: transform 0.15s, box-shadow 0.15s; }
+.hib-p-img { position: relative; display: block; line-height: 0; }
+.hib-p-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.hib-p-etiqueta { position: absolute; top: 0.8rem; left: 0.8rem; padding: 0.25rem 0.8rem; background: rgb(255 255 255 / 0.94); color: var(--hib-escuro); border-radius: 999px; font-size: 0.72rem; font-weight: 700; line-height: 1.4; letter-spacing: 0.06em; text-transform: uppercase; }
+.hib-p-corpo { display: flex; flex-direction: column; gap: 0.6rem; flex: 1; padding: var(--e4); }
+.hib-p-nomeico { display: flex; align-items: flex-start; gap: 0.6rem; }
+.hib-p-ic { flex: none; width: 1.75rem; height: 1.75rem; color: var(--hib-verde); margin-top: 0.1rem; }
+.hib-p-titulo { font-size: 1.2rem; font-weight: 700; line-height: 1.25; }
+.hib-p-resumo { font-size: 0.95rem; line-height: 1.5; color: #4a5a53; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.hib-p-rodape { display: flex; align-items: center; justify-content: space-between; gap: var(--e3); margin-top: auto; padding-top: var(--e2); font-size: 0.9rem; font-weight: 700; }
+.hib-p-mais { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--hib-verde); }
+.hib-p-mais .icone { width: 1rem; height: 1rem; transition: transform 0.15s; }
+.hib-p-ano { font: 500 0.85rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: #5a6a63; }
+.hib-p-link:hover { transform: translateY(-4px); box-shadow: 0 0.6rem 1.3rem rgb(40 40 30 / 0.28); text-decoration: none; }
+.hib-p-link:hover .hib-p-titulo { text-decoration: underline; }
+.hib-p-link:hover .hib-p-mais .icone { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) { .hib-p-link:hover, .hib-pr-link:hover, .hib-p-link:hover .hib-p-mais .icone, .hib-pr-link:hover .hib-pr-seta { transform: none; } }
+html[data-movimento="reduzido"] .hib-p-link:hover, html[data-movimento="reduzido"] .hib-pr-link:hover, html[data-movimento="reduzido"] .hib-p-link:hover .hib-p-mais .icone, html[data-movimento="reduzido"] .hib-pr-link:hover .hib-pr-seta { transform: none; }
+html[data-contraste="alto"] .hib-p-link, html[data-contraste="alto"] .hib-pr-link { border: 2px solid #000; box-shadow: none; }
+html[data-contraste="alto"] .hib-pr-tipo { background: #000; color: #fff; }
+html[data-contraste="alto"] .hib-p-etiqueta { border: 2px solid #000; }
+html[data-contraste="alto"] .hib-div-sim, html[data-contraste="alto"] .hib-p-ic, html[data-contraste="alto"] .hib-p-mais { color: #000; }
+html[data-contraste="alto"] .hib-pilula { background: #000; color: #fff; }

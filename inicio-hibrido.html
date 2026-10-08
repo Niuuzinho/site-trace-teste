@@ -1,0 +1,73 @@
+---
+layout: default
+title: Início (teste híbrido)
+tema: inicio
+permalink: /inicio-hibrido/
+---
+{%- assign destaques = site.projetos | where_exp: "p", "p.par == nil" | where: "destaque", true | sort: "ordem" %}
+{%- assign recentes = site.producoes | sort: "ano" | reverse %}
+{%- assign avisos = site.avisos | sort: "data" | reverse %}
+<link rel="stylesheet" href="{{ '/assets/css/hibrido-main.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+<link rel="stylesheet" href="{{ '/assets/css/hibrido.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+{% include simbolos-defs.html %}
+<div class="mod hib">
+
+<section class="hib-hero" aria-labelledby="h-hib">
+  <div class="container hib-hero-int">
+    <h1 id="h-hib"><span class="hib-etiqueta">Portal</span> <span class="hib-nome">TrAce</span></h1>
+    <p class="hib-sub">Tradução, acessibilidade e <span class="hib-sub-dest">pesquisa</span></p>
+    <p class="hib-lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
+  </div>
+</section>
+
+<nav class="container mod-atalhos" aria-label="Áreas do site">
+  <ul>
+    <li><a class="mod-tile mod-tile-sobre" href="{{ '/quem-somos/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-sobre"></use></svg></span><span class="mod-tile-nome">Quem somos</span><span class="mod-tile-mais">Conhecer <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+    <li><a class="mod-tile mod-tile-membros" href="{{ '/membros/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-pessoas"></use></svg></span><span class="mod-tile-nome">Membros</span><span class="mod-tile-mais">Conhecer <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+    <li><a class="mod-tile mod-tile-projetos" href="{{ '/projetos/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-projeto"></use></svg></span><span class="mod-tile-nome">Projetos</span><span class="mod-tile-mais">Explorar <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+    <li><a class="mod-tile mod-tile-producoes" href="{{ '/producoes/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-tipo-capitulo"></use></svg></span><span class="mod-tile-nome">Produções</span><span class="mod-tile-mais">Explorar <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+    <li><a class="mod-tile mod-tile-contato" href="{{ '/contato/' | relative_url }}"><span class="mod-tile-icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg></span><span class="mod-tile-nome">Contato</span><span class="mod-tile-mais">Falar com a gente <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg></span></a></li>
+  </ul>
+</nav>
+
+<div class="container mod-carrossel-area hib-mural">
+  <div class="mod-hero-card">
+    <div class="secao-topo car-titulo"><h2 id="h-novidades">Avisos e novidades</h2></div>
+    {% include carrossel.html itens=avisos rotulo="Avisos e novidades" %}
+  </div>
+  <ul class="hib-lista hib-avisos">
+    {%- for a in avisos limit: 5 %}
+    {% include hib-aviso.html aviso=a %}
+    {%- endfor %}
+  </ul>
+</div>
+
+<div class="container hib-divisor" aria-hidden="true"><svg class="hib-div-sim"><use href="#i-simbolo"></use></svg></div>
+
+<section class="container hib-sec" aria-labelledby="h-proj">
+  <div class="hib-sec-topo">
+    <h2 class="hib-sec-titulo" id="h-proj">Projetos em destaque</h2>
+    <a class="hib-pilula" href="{{ '/projetos/' | relative_url }}">Ver todos</a>
+  </div>
+  <ul class="hib-projetos">
+    {%- for p in destaques %}
+    {% include hib-projeto.html projeto=p %}
+    {%- endfor %}
+  </ul>
+</section>
+
+<div class="container hib-divisor" aria-hidden="true"><svg class="hib-div-sim"><use href="#i-simbolo"></use></svg></div>
+
+<section class="container hib-sec hib-sec-ultima" aria-labelledby="h-prod">
+  <div class="hib-sec-topo">
+    <h2 class="hib-sec-titulo" id="h-prod">Produções em destaque</h2>
+    <a class="hib-pilula" href="{{ '/producoes/' | relative_url }}">Ver todas</a>
+  </div>
+  <ul class="hib-lista">
+    {%- for r in recentes limit: 5 %}
+    {% include hib-producao.html producao=r %}
+    {%- endfor %}
+  </ul>
+</section>
+
+</div>

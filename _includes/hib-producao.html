@@ -1,0 +1,10 @@
+{%- comment -%} Produção como cartão branco de lista. Parâmetro: producao. {%- endcomment -%}
+{%- assign r = include.producao -%}
+<li class="hib-pr">
+  <a class="hib-pr-link" href="{{ r.url | relative_url }}">
+    <span class="hib-pr-topo"><span class="hib-pr-tipo">{% include icone-tipo.html tipo=r.tipo %}{{ r.tipo }}</span><span class="hib-pr-ano"><span class="so-leitor">Ano </span>{{ r.ano }}</span></span>
+    <span class="hib-pr-titulo">{{ r.title }}</span>
+    <span class="hib-pr-autoria">{{ r.autoria }}</span>
+    <svg class="icone hib-pr-seta" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg>
+  </a>
+</li>
