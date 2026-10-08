@@ -1,11 +1,11 @@
 /* Demonstração "o mesmo texto, de outros jeitos" (página de teste v4). Tudo opcional: sem JavaScript, só o texto padrão aparece. */
 (function () {
   'use strict';
-  var demo = document.querySelector('[data-v4-demo]');
+  var demo = document.querySelector('[data-v5-demo]');
   if (!demo) return;
-  var texto = demo.querySelector('[data-v4-texto]');
-  var botoes = demo.querySelector('[data-v4-botoes]');
-  var aviso = demo.querySelector('[data-v4-aviso]');
+  var texto = demo.querySelector('[data-v5-texto]');
+  var botoes = demo.querySelector('[data-v5-botoes]');
+  var aviso = demo.querySelector('[data-v5-aviso]');
   var original = texto.textContent.trim();
   var formatos = Array.prototype.slice.call(demo.querySelectorAll('[data-formato]'));
   var ouvir = demo.querySelector('[data-ouvir]');

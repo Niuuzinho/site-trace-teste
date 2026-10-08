@@ -1706,4 +1706,4 @@ html[data-contraste="alto"] .esqueleto span { background: var(--tinta); }
 .mod-hero-card .car-controles .botao-peq { background: var(--branco); border: 1px solid var(--pa-deep); color: var(--pa-deep); }
 .mod-hero-card .car-controles [data-car-anterior] { left: calc(9% + var(--e3)); }
 .mod-hero-card .car-controles [data-car-proximo] { right: calc(9% + var(--e3)); }
-@media (max-width: 39.99em) { .mod-hero-card .car-trilho { padding-inline: 6%; gap: var(--e3); } .mod-hero-card .car-slide { flex-basis: 88%; } .mod-hero-card .car-slide img { aspect-ratio: 5 / 3; } .mod-hero-card .car-controles [data-car-anterior] { left: calc(6% + var(--e2)); } .mod-hero-card .car-controles [data-car-proximo] { right: calc(6% + var(--e2)); } }
+@media (max-width: 39.99em) { .mod-hero-card .car-trilho { padding-inline: 6%; gap: var(--e3); } .mod-hero-card .car-slide { flex-basis: 88%; } .mod-hero-card .car-slide img { aspect-ratio: 5 / 3; } .mod-hero-card .car-controles [data-car-anterior], .mod-hero-card .car-controles [data-car-proximo] { left: auto; right: auto; } }

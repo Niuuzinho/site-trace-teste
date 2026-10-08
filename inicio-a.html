@@ -1,0 +1,94 @@
+---
+layout: default
+title: Início (teste A)
+tema: inicio
+permalink: /inicio-a/
+---
+{%- assign destaques = site.projetos | where_exp: "p", "p.par == nil" | where: "destaque", true | sort: "ordem" %}
+{%- assign recentes = site.producoes | sort: "ano" | reverse %}
+{%- assign orient = site.data.membros | where: "categoria", "orientacao" -%}
+{%- assign equipe_p = site.data.membros | where: "categoria", "membros" -%}
+{%- assign com_foto = "" | split: "" -%}
+{%- for m in orient -%}{%- unless m.foto contains "placeholders" -%}{%- assign com_foto = com_foto | push: m -%}{%- endunless -%}{%- endfor -%}
+{%- assign n_fixos = com_foto.size -%}
+{%- for m in equipe_p -%}{%- unless m.foto contains "placeholders" -%}{%- assign com_foto = com_foto | push: m -%}{%- endunless -%}{%- endfor -%}
+<link rel="stylesheet" href="{{ '/assets/css/v5.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+<div class="v5 v5a">
+
+<section class="container v5-hero" aria-labelledby="h-v4">
+  <div class="v5-hero-texto">
+    <h1 id="h-v4">Portal TrAce</h1>
+    <p class="v5-sub">Tradução, acessibilidade e pesquisa</p>
+  </div>
+  <div class="v5-demo" data-v5-demo>
+    <p class="v5-demo-rotulo" id="v5-rotulo">O mesmo texto, de outros jeitos</p>
+    <p class="v5-demo-texto" data-v5-texto>Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
+    <div class="v5-formatos" role="group" aria-labelledby="v5-rotulo" data-v5-botoes hidden>
+      <button type="button" aria-pressed="true" data-formato="padrao">Padrão</button>
+      <button type="button" aria-pressed="false" data-formato="ampliada">Letra ampliada</button>
+      <button type="button" aria-pressed="false" data-formato="braille">Braille</button>
+      <button type="button" aria-pressed="false" data-formato="contraste">Contraste</button>
+      <button type="button" aria-pressed="false" data-ouvir>Ouvir</button>
+    </div>
+    <p class="so-leitor" role="status" data-v5-aviso></p>
+  </div>
+</section>
+
+<div class="container v5-mural">
+  <div class="mod-hero-card">
+    <div class="secao-topo car-titulo"><h2 id="h-novidades">Avisos e novidades</h2></div>
+    {% include carrossel.html itens=site.data.carrossel rotulo="Avisos e novidades" %}
+  </div>
+</div>
+
+<nav class="container v5-indice" aria-labelledby="h-indice">
+  <h2 id="h-indice">Explore o portal</h2>
+  <ul>
+    <li><a href="{{ '/quem-somos/' | relative_url }}"><span class="v5-i-nome">Quem somos</span><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-g-sobre"></use></svg></a></li>
+    <li><a href="{{ '/membros/' | relative_url }}"><span class="v5-i-nome">Membros</span><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-g-membros"></use></svg></a></li>
+    <li><a href="{{ '/projetos/' | relative_url }}"><span class="v5-i-nome">Projetos</span><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-g-projetos"></use></svg></a></li>
+    <li><a href="{{ '/producoes/' | relative_url }}"><span class="v5-i-nome">Produções</span><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-g-producoes"></use></svg></a></li>
+    <li><a href="{{ '/contato/' | relative_url }}"><span class="v5-i-nome">Contato</span><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-g-contato"></use></svg></a></li>
+  </ul>
+</nav>
+
+<section class="container v5-projetos" aria-labelledby="h-destaques">
+  <div class="v5-topo">
+    <h2 id="h-destaques">Projetos em destaque</h2>
+    <a class="v5-pilula" href="{{ '/projetos/' | relative_url }}">Ver todos</a>
+  </div>
+  <ul class="cartoes">
+    {%- for p in destaques %}
+    {% include projeto-item.html projeto=p %}
+    {%- endfor %}
+  </ul>
+</section>
+
+<div class="v5-producoes">
+  <section class="container" aria-labelledby="h-recentes">
+    <div class="v5-topo">
+      <h2 id="h-recentes">Produções recentes</h2>
+      <a class="v5-pilula" href="{{ '/producoes/' | relative_url }}">Ver todas</a>
+    </div>
+    <ul class="cartoes">
+      {%- for r in recentes limit: 3 %}
+      {% include producao-item.html producao=r %}
+      {%- endfor %}
+    </ul>
+  </section>
+</div>
+
+<section class="container v5-equipe" aria-labelledby="h-quem">
+  <div class="v5-equipe-int">
+    <h2 id="h-quem">Quem faz o TrAce</h2>
+    <ul class="mod-avatares" data-sorteio data-fixos="{{ n_fixos }}" data-mostrar="9">
+      {%- for m in com_foto %}
+      <li{% if forloop.index > 9 %} hidden{% endif %}>{% include img.html nome=m.foto alt="" sizes="5rem" %}</li>
+      {%- endfor %}
+    </ul>
+    <a class="v5-pilula v5-pilula-clara" href="{{ '/membros/' | relative_url }}">Conhecer o grupo</a>
+  </div>
+</section>
+
+</div>
+<script src="{{ '/assets/js/v5.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}" defer></script>
