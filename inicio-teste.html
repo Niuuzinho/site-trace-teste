@@ -13,11 +13,6 @@ permalink: /inicio-teste/
 <section class="in-hero" aria-labelledby="h-in">
   {% include simbolos-defs.html %}
   <div class="in-deco" aria-hidden="true">
-    {%- assign d1 = destaques[0] %}{%- assign d2 = destaques[1] %}{%- assign d3 = destaques[2] %}{%- assign av0 = avisos[0] %}
-    <figure class="in-pol in-pol-1">{% include img.html nome=d1.imagem alt="" sizes="16rem" %}<figcaption>Projeto</figcaption></figure>
-    <figure class="in-pol in-pol-2">{% include img.html nome=d3.imagem alt="" sizes="16rem" %}<figcaption>Projeto</figcaption></figure>
-    <figure class="in-pol in-pol-3">{% include img.html nome=d2.imagem alt="" sizes="16rem" %}<figcaption>Projeto</figcaption></figure>
-    <figure class="in-pol in-pol-4">{% include img.html nome=av0.imagem alt="" sizes="16rem" %}<figcaption>Aviso</figcaption></figure>
     <span class="in-conf c1"></span><span class="in-conf c2"></span><span class="in-conf c3"></span><span class="in-conf c4"></span>
     <span class="in-conf c5"></span><span class="in-conf c6"></span><span class="in-conf c7"></span><span class="in-conf c8"></span>
   </div>
@@ -30,7 +25,7 @@ permalink: /inicio-teste/
   </div>
 </section>
 
-<nav class="container in-atalhos" aria-label="Áreas do site">
+<nav class="in-atalhos" aria-label="Áreas do site">
   <ul>
     <li><a class="in-at-sobre" href="{{ '/quem-somos/' | relative_url }}"><span class="in-at-ic"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-sobre"></use></svg></span><span class="in-at-base"><span class="in-atalho-nome">Quem somos</span><span class="in-at-seta" aria-hidden="true"><svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span></span></a></li>
     <li><a class="in-at-membros" href="{{ '/membros/' | relative_url }}"><span class="in-at-ic"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-pessoas"></use></svg></span><span class="in-at-base"><span class="in-atalho-nome">Membros</span><span class="in-at-seta" aria-hidden="true"><svg class="icone" focusable="false"><use href="#i-seta-dir"></use></svg></span></span></a></li>
