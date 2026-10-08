@@ -1658,3 +1658,42 @@ html[data-contraste="alto"] .esqueleto span { background: var(--tinta); }
 .mod-tile-icone { background: none; width: auto; height: auto; place-items: start; }
 .mod-tile-mais { display: none; }
 .cartao-mais { display: none; }
+
+/* ===== TESTE v3 "com intenção" (branch apenas): paleta de 4 cores, arredondado só onde faz sentido, ritmo entre seções ===== */
+:root {
+  --pa-f: #0b6b69; --pa-i: #053a39; --pa-s: #e9f2f1; --pa-b: #bfdcd9;
+  --pa-deep: #063f3e; --pa-acc: #e0a526; --pa-acc-tx: #2b1d00; --pa-warm: #b5472b;
+  --pa-fundo: #faf7f0; --pa-linha: #cfd8d4;
+}
+/* arredondado: só em elementos "grandes de impacto" (abertura, carrossel, faixa final), botões e etiquetas; cartões e atalhos mais contidos */
+.mod-tile { border-radius: var(--r-m); }
+.mod-tile-projetos { --tile: var(--pa-f); }
+.mod-tile-producoes { --tile: var(--pa-deep); }
+.mod-tile-membros { --tile: var(--pa-acc); color: var(--pa-acc-tx); }
+.mod-tile-membros:hover { color: var(--pa-acc-tx); }
+.mod-tile-sobre { --tile: var(--pa-warm); }
+.mod-tile-contato { --tile: var(--pa-f); }
+.mod-tile-icone .icone { width: 2rem; height: 2rem; }
+.mod-tile-nome { font-size: var(--t-h4); }
+.mod-hero .mod-sub, .mod-hero .mod-lead { max-width: 38rem; }
+.mod-hero { border-radius: var(--r-g); border-bottom: 0.5rem solid var(--pa-acc); }
+.mod-secao-topo h2::after { background: var(--pa-acc); height: 5px; }
+.mod-h-roxo::after { background: var(--pa-acc) !important; }
+/* projeto principal em destaque: o 1º cartão ocupa a linha inteira, com a imagem ao lado do texto */
+@media (min-width: 48em) {
+  .mod-destaques .cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mod-destaques .cartoes > li:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr 1fr; }
+  .mod-destaques .cartoes > li:first-child .cartao-img { height: 100%; }
+  .mod-destaques .cartoes > li:first-child .cartao-img img { height: 100%; object-fit: cover; }
+  .mod-destaques .cartoes > li:first-child .cartao-corpo { padding: var(--e6) var(--e5); justify-content: center; }
+  .mod-destaques .cartoes > li:first-child h3 { font-size: var(--t-h3); }
+  .mod-destaques .cartoes > li:first-child p { font-size: var(--t-m); }
+}
+/* produções: faixa de ponta a ponta com fundo suave, para quebrar o ritmo da página */
+.mod-faixa { margin-top: var(--e7); padding-bottom: var(--e7); background: var(--pa-s); border-block: 1px solid var(--pa-b); }
+.mod-faixa .mod-secao { padding-top: var(--e6); }
+.mod-faixa .cartao-ref { background: var(--branco); }
+.mod-faixa .cartao-ref .cartao-topo { background: var(--pa-f); }
+.cartao-proj, .cartao-ref { border-radius: var(--r-m); overflow: hidden; }
+.cartao-proj { --t-forte: var(--pa-f); --t-banda: var(--pa-b); --t-tinta: var(--pa-i); --t-suave: var(--pa-s); background: var(--branco); border: 1px solid var(--pa-linha); }
+.cartao-proj .meta-ano { background: var(--pa-f); }

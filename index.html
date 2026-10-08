@@ -41,7 +41,7 @@ permalink: /
   </ul>
 </nav>
 
-<section class="container mod-secao" aria-labelledby="h-destaques">
+<section class="container mod-secao mod-destaques" aria-labelledby="h-destaques">
   <div class="mod-secao-topo">
     <h2 id="h-destaques">Projetos em destaque</h2>
     <a class="botao-peq" href="{{ '/projetos/' | relative_url }}">Ver todos</a>
@@ -53,6 +53,7 @@ permalink: /
   </ul>
 </section>
 
+<div class="mod-faixa">
 <section class="container mod-secao" aria-labelledby="h-recentes">
   <div class="mod-secao-topo">
     <h2 id="h-recentes" class="mod-h-roxo">Produções recentes</h2>
@@ -64,6 +65,7 @@ permalink: /
     {%- endfor %}
   </ul>
 </section>
+</div>
 
 <section class="container mod-fim" aria-labelledby="h-quem">
   <div class="mod-cta">
