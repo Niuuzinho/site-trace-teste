@@ -1,0 +1,13 @@
+---
+layout: default
+---
+{%- capture chips -%}<li class="chip-forte">Aviso</li><li>{{ page.data | date: "%d/%m/%Y" }}</li>{%- endcapture -%}
+{% include topo.html titulo=page.title chips=chips %}
+<div class="container pagina-corpo">
+  <article class="caixa aviso-corpo">
+    {% include img.html nome=page.imagem alt=page.alt sizes="(min-width: 64rem) 60rem, 100vw" eager=true %}
+    <div class="aviso-texto">
+    {{ content }}
+    </div>
+  </article>
+</div>

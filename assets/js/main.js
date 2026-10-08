@@ -524,7 +524,11 @@
     }
     function mostrar(n, avisar) {
       atual = n;
-      slides.forEach(function (s, i) { s.setAttribute('aria-hidden', i === n ? 'false' : 'true'); });
+      slides.forEach(function (s, i) {
+        s.setAttribute('aria-hidden', i === n ? 'false' : 'true');
+        // links dentro de slides escondidos não podem receber foco (senão o teclado "cai" num slide invisível para o leitor de tela)
+        todos('a', s).forEach(function (a) { if (i === n) a.removeAttribute('tabindex'); else a.setAttribute('tabindex', '-1'); });
+      });
       pontos.forEach(function (p, i) { if (i === n) p.setAttribute('aria-current', 'true'); else p.removeAttribute('aria-current'); });
       // o aviso "Slide X de Y" só é falado depois que a pessoa troca de slide (não ao abrir a página)
       if (avisar) info.textContent = 'Slide ' + (n + 1) + ' de ' + slides.length;

@@ -113,3 +113,9 @@ Para um projeto ter as duas versões (Português padrão e Linguagem literária 
 ### Contato: e-mail, endereço e formulário de verdade
 - **E-mail e endereço:** no `_config.yml`, preencha `contato: email:` e `endereco:` (entre aspas). Cada um só aparece na página se tiver texto.
 - **Fazer o formulário funcionar:** crie uma conta gratuita em https://formspree.io, crie um formulário e copie o endereço que ele dá (algo como `https://formspree.io/f/xxxxxxxx`). Cole em `formulario_url:` no `_config.yml`. Enquanto estiver vazio, o formulário é só demonstrativo e não envia nada.
+
+
+## Como criar um aviso (Mural de avisos da página inicial)
+1. Copie o arquivo `_modelos/aviso-modelo.md` para a pasta `_avisos/` e troque o nome (sem acentos nem espaços).
+2. Preencha `title`, `data`, `imagem`, `alt` e `resumo` (cada campo está explicado no modelo) e escreva o texto do aviso depois dos três traços.
+3. O aviso ganha a sua página (`/avisos/nome-do-arquivo/`), entra no carrossel (clicando na imagem abre o aviso) e na lista logo abaixo dele, do mais novo para o mais antigo.

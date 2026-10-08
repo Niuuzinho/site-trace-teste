@@ -1,0 +1,13 @@
+{%- comment -%} Projeto como botão horizontal (imagem à esquerda, texto à direita). Parâmetro: projeto. {%- endcomment -%}
+{%- assign p = include.projeto -%}
+<li class="in-proj-item">
+  <a class="in-proj-link" href="{{ p.url | relative_url }}">
+    <span class="in-proj-img">{% include img.html nome=p.imagem alt="" sizes="(min-width: 40em) 14rem, 7rem" %}</span>
+    <span class="in-proj-texto">
+      <span class="in-proj-meta">{{ p.ano }} · {{ p.situacao }}</span>
+      <span class="in-proj-titulo">{{ p.title }}</span>
+      <span class="in-proj-resumo">{{ p.resumo }}</span>
+    </span>
+    <svg class="icone in-seta" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg>
+  </a>
+</li>

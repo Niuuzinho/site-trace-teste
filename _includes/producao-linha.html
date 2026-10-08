@@ -1,0 +1,9 @@
+{%- comment -%} Produção como linha de lista. Parâmetro: producao. {%- endcomment -%}
+{%- assign r = include.producao -%}
+<li class="in-prod-item">
+  <a class="in-prod-link" href="{{ r.url | relative_url }}">
+    <span class="in-prod-ano"><span class="so-leitor">Ano </span>{{ r.ano }}</span>
+    <span class="in-prod-texto"><span class="in-prod-titulo">{{ r.title }}</span><span class="in-prod-autoria">{{ r.autoria }}</span></span>
+    <span class="in-prod-tipo">{% include icone-tipo.html tipo=r.tipo %}{{ r.tipo }}</span>
+  </a>
+</li>

@@ -1,0 +1,9 @@
+{%- comment -%} Aviso como linha de lista. Parâmetro: aviso. {%- endcomment -%}
+{%- assign a = include.aviso -%}
+<li class="in-prod-item in-aviso-item">
+  <a class="in-prod-link" href="{{ a.url | relative_url }}">
+    <span class="in-prod-ano in-aviso-data"><span class="so-leitor">Data </span>{{ a.data | date: "%d/%m/%Y" }}</span>
+    <span class="in-prod-texto"><span class="in-prod-titulo">{{ a.title }}</span>{% if a.resumo %}<span class="in-prod-autoria">{{ a.resumo }}</span>{% endif %}</span>
+    <svg class="icone in-seta" aria-hidden="true" focusable="false"><use href="#i-seta-dir"></use></svg>
+  </a>
+</li>

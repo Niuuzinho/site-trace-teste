@@ -10,7 +10,9 @@
   <div class="car-trilho" data-car-trilho tabindex="0" role="group" aria-label="Slides (use as setas do teclado para trocar)">
     {%- for g in include.itens %}
     <figure class="car-slide" data-car-slide role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} de {{ total }}">
+      {%- if g.url %}<a class="car-link" href="{{ g.url | relative_url }}" aria-label="Ler o aviso: {{ g.title | escape }}">{% endif -%}
       {% include img.html nome=g.imagem alt=g.alt sizes="(min-width: 70rem) 1024px, 100vw" eager=forloop.first %}
+      {%- if g.url %}</a>{% endif %}
     </figure>
     {%- endfor %}
   </div>

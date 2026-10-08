@@ -1,0 +1,70 @@
+---
+layout: default
+title: Início (teste v6)
+tema: inicio
+permalink: /inicio-teste/
+---
+{%- assign destaques = site.projetos | where_exp: "p", "p.par == nil" | where: "destaque", true | sort: "ordem" %}
+{%- assign recentes = site.producoes | sort: "ano" | reverse %}
+{%- assign avisos = site.avisos | sort: "data" | reverse %}
+<link rel="stylesheet" href="{{ '/assets/css/inicio.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+<div class="in">
+
+<section class="in-hero" aria-labelledby="h-in">
+  {% include simbolo.html %}
+  <div class="container in-hero-int">
+    <div class="in-hero-titulo">
+      <h1 id="h-in"><span class="in-etiqueta">Portal</span> <span class="in-nome">TrAce</span></h1>
+      <p class="in-sub">Tradução, acessibilidade e pesquisa</p>
+    </div>
+    <p class="in-lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
+  </div>
+</section>
+
+<nav class="container in-atalhos" aria-label="Áreas do site">
+  <ul>
+    <li><a href="{{ '/quem-somos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-sobre"></use></svg><span class="in-atalho-nome">Quem somos</span></a></li>
+    <li><a href="{{ '/membros/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-pessoas"></use></svg><span class="in-atalho-nome">Membros</span></a></li>
+    <li><a href="{{ '/projetos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-projeto"></use></svg><span class="in-atalho-nome">Projetos</span></a></li>
+    <li><a href="{{ '/producoes/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-tipo-capitulo"></use></svg><span class="in-atalho-nome">Produções</span></a></li>
+    <li><a href="{{ '/contato/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg><span class="in-atalho-nome">Contato</span></a></li>
+  </ul>
+</nav>
+
+<section class="container in-sec in-mural" aria-labelledby="h-mural">
+  <h2 class="in-sec-titulo" id="h-mural">Mural de avisos</h2>
+  <div class="mod-hero-card in-carrossel">
+    {% include carrossel.html itens=avisos rotulo="Carrossel de avisos" %}
+  </div>
+  <ul class="in-lista">
+    {%- for a in avisos limit: 5 %}
+    {% include aviso-linha.html aviso=a %}
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="container in-sec" aria-labelledby="h-proj">
+  <div class="in-sec-topo">
+    <h2 class="in-sec-titulo" id="h-proj">Projetos em destaque</h2>
+    <a class="in-pilula" href="{{ '/projetos/' | relative_url }}">Ver todos</a>
+  </div>
+  <ul class="in-projetos">
+    {%- for p in destaques %}
+    {% include projeto-linha.html projeto=p %}
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="container in-sec in-sec-ultima" aria-labelledby="h-prod">
+  <div class="in-sec-topo">
+    <h2 class="in-sec-titulo" id="h-prod">Produções em destaque</h2>
+    <a class="in-pilula" href="{{ '/producoes/' | relative_url }}">Ver todas</a>
+  </div>
+  <ul class="in-lista">
+    {%- for r in recentes limit: 5 %}
+    {% include producao-linha.html producao=r %}
+    {%- endfor %}
+  </ul>
+</section>
+
+</div>

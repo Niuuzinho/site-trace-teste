@@ -52,6 +52,9 @@ collections:
   producoes:
     output: true
     permalink: /producoes/:name/
+  avisos:
+    output: true
+    permalink: /avisos/:name/
 
 markdown: kramdown
 
