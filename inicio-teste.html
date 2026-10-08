@@ -16,18 +16,18 @@ permalink: /inicio-teste/
     <div class="in-hero-titulo">
       <h1 id="h-in"><span class="in-etiqueta">Portal</span> <span class="in-nome">TrAce</span></h1>
       <p class="in-sub">Tradução, acessibilidade e pesquisa</p>
+      <p class="in-lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
     </div>
-    <p class="in-lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
   </div>
 </section>
 
 <nav class="container in-atalhos" aria-label="Áreas do site">
   <ul>
-    <li><a href="{{ '/quem-somos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-sobre"></use></svg><span class="in-atalho-nome">Quem somos</span></a></li>
-    <li><a href="{{ '/membros/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-pessoas"></use></svg><span class="in-atalho-nome">Membros</span></a></li>
-    <li><a href="{{ '/projetos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-projeto"></use></svg><span class="in-atalho-nome">Projetos</span></a></li>
-    <li><a href="{{ '/producoes/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-tipo-capitulo"></use></svg><span class="in-atalho-nome">Produções</span></a></li>
-    <li><a href="{{ '/contato/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg><span class="in-atalho-nome">Contato</span></a></li>
+    <li><a class="in-at-sobre" href="{{ '/quem-somos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-sobre"></use></svg><span class="in-atalho-nome">Quem somos</span></a></li>
+    <li><a class="in-at-membros" href="{{ '/membros/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-pessoas"></use></svg><span class="in-atalho-nome">Membros</span></a></li>
+    <li><a class="in-at-projetos" href="{{ '/projetos/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-projeto"></use></svg><span class="in-atalho-nome">Projetos</span></a></li>
+    <li><a class="in-at-producoes" href="{{ '/producoes/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-tipo-capitulo"></use></svg><span class="in-atalho-nome">Produções</span></a></li>
+    <li><a class="in-at-contato" href="{{ '/contato/' | relative_url }}"><svg class="icone in-ic" aria-hidden="true" focusable="false"><use href="#i-email"></use></svg><span class="in-atalho-nome">Contato</span></a></li>
   </ul>
 </nav>
 
@@ -43,7 +43,8 @@ permalink: /inicio-teste/
   </ul>
 </section>
 
-<section class="container in-sec" aria-labelledby="h-proj">
+<div class="in-banda in-arco">
+<section class="container in-sec in-sec-banda" aria-labelledby="h-proj">
   <div class="in-sec-topo">
     <h2 class="in-sec-titulo" id="h-proj">Projetos em destaque</h2>
     <a class="in-pilula" href="{{ '/projetos/' | relative_url }}">Ver todos</a>
@@ -54,7 +55,9 @@ permalink: /inicio-teste/
     {%- endfor %}
   </ul>
 </section>
+</div>
 
+<div class="in-arco in-arco-papel">
 <section class="container in-sec in-sec-ultima" aria-labelledby="h-prod">
   <div class="in-sec-topo">
     <h2 class="in-sec-titulo" id="h-prod">Produções em destaque</h2>
@@ -66,5 +69,6 @@ permalink: /inicio-teste/
     {%- endfor %}
   </ul>
 </section>
+</div>
 
 </div>
