@@ -6,7 +6,7 @@
 
 .in {
   --in-verde: #0e4a38;        /* faixa do título */
-  --in-fundo: #0f3d2f;        /* fundo da página (verde um pouco mais claro) */
+  --in-fundo: #1b5e47;        /* fundo da página (verde mais claro) */
   --in-escuro: #0a2f24;       /* verde bem escuro: textos sobre claro */
   --in-icone: #146c4f;
   --in-brilho: #f2c14e;       /* amarelo: etiqueta "Portal", borda, destaques */
@@ -86,11 +86,6 @@ body:has(.in) .rodape { margin-top: 0; }
 .in-ac-btn:hover .in-ac-tit { text-decoration: underline; }
 .in-ac.js .in-ac-item.is-ativo .in-ac-card { box-shadow: 0 0.35rem 0 var(--in-brilho); }
 /* ---------- 4. projetos: imagem alta com etiqueta, ano em destaque, título e frase (sem caixa) ---------- */
-.in-ver-tudo { display: inline-flex; align-items: center; gap: var(--e3); color: var(--in-brilho); font-weight: 800; text-decoration: none; }
-.in-ver-seta { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; background: var(--in-brilho); color: var(--in-escuro); border-radius: 50%; transition: transform var(--dur-1) var(--ease); }
-.in-ver-seta .icone { width: 1.1rem; height: 1.1rem; }
-.in-ver-tudo:hover { text-decoration: underline; }
-.in-ver-tudo:hover .in-ver-seta { transform: translateX(var(--mov)); }
 .in-projetos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e5); grid-template-columns: 1fr; }
 @media (min-width: 40em) { .in-projetos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 64em) { .in-projetos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -119,8 +114,8 @@ body:has(.in) .rodape { margin-top: 0; }
 .in-pr-link:hover .in-pr-titulo { text-decoration: underline; }
 .in-pr-link:hover .in-pr-seta { color: var(--in-escuro); transform: translateX(var(--mov)); }
 
-@media (prefers-reduced-motion: reduce) { .in-atalhos a:hover .in-at-seta, .in-p2-link:hover .in-p2-img img, .in-ver-tudo:hover .in-ver-seta, .in-pr-link:hover, .in-pr-link:hover .in-pr-seta { transform: none; } }
-html[data-movimento="reduzido"] .in-atalhos a:hover .in-at-seta, html[data-movimento="reduzido"] .in-p2-link:hover .in-p2-img img, html[data-movimento="reduzido"] .in-ver-tudo:hover .in-ver-seta, html[data-movimento="reduzido"] .in-pr-link:hover, html[data-movimento="reduzido"] .in-pr-link:hover .in-pr-seta { transform: none; }
+@media (prefers-reduced-motion: reduce) { .in-atalhos a:hover .in-at-seta, .in-p2-link:hover .in-p2-img img, .in-pr-link:hover, .in-pr-link:hover .in-pr-seta { transform: none; } }
+html[data-movimento="reduzido"] .in-atalhos a:hover .in-at-seta, html[data-movimento="reduzido"] .in-p2-link:hover .in-p2-img img, html[data-movimento="reduzido"] .in-pr-link:hover, html[data-movimento="reduzido"] .in-pr-link:hover .in-pr-seta { transform: none; }
 
 /* ---------- alto contraste ---------- */
 html[data-contraste="alto"] .in { --in-verde: #000; --in-fundo: #000; --in-claro: #fff; --in-claro-2: #fff; --in-brilho: #fff; }
