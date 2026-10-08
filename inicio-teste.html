@@ -12,10 +12,19 @@ permalink: /inicio-teste/
 
 <section class="in-hero" aria-labelledby="h-in">
   {% include simbolos-defs.html %}
+  <div class="in-deco" aria-hidden="true">
+    {%- assign d1 = destaques[0] %}{%- assign d2 = destaques[1] %}{%- assign d3 = destaques[2] %}{%- assign av0 = avisos[0] %}
+    <figure class="in-pol in-pol-1">{% include img.html nome=d1.imagem alt="" sizes="16rem" %}<figcaption>Projeto</figcaption></figure>
+    <figure class="in-pol in-pol-2">{% include img.html nome=d3.imagem alt="" sizes="16rem" %}<figcaption>Projeto</figcaption></figure>
+    <figure class="in-pol in-pol-3">{% include img.html nome=d2.imagem alt="" sizes="16rem" %}<figcaption>Projeto</figcaption></figure>
+    <figure class="in-pol in-pol-4">{% include img.html nome=av0.imagem alt="" sizes="16rem" %}<figcaption>Aviso</figcaption></figure>
+    <span class="in-conf c1"></span><span class="in-conf c2"></span><span class="in-conf c3"></span><span class="in-conf c4"></span>
+    <span class="in-conf c5"></span><span class="in-conf c6"></span><span class="in-conf c7"></span><span class="in-conf c8"></span>
+  </div>
   <div class="container in-hero-int">
     <div class="in-hero-titulo">
       <h1 id="h-in"><span class="in-etiqueta">Portal</span> <span class="in-nome">TrAce</span></h1>
-      <p class="in-sub">Tradução, acessibilidade e pesquisa</p>
+      <p class="in-sub">Tradução, acessibilidade e <span class="in-sub-dest">pesquisa</span></p>
       <p class="in-lead">Reunimos projetos, pesquisas e produções voltados à ampliação do acesso à informação, à cultura e à leitura em formatos mais inclusivos.</p>
     </div>
   </div>
