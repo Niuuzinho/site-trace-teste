@@ -222,3 +222,24 @@ html[data-contraste="alto"] .v5a .v5-hero { background: #000; }
 html[data-contraste="alto"] .v5a .v5-hero h1, html[data-contraste="alto"] .v5a .v5-sub { color: #fff !important; }
 .v5a { padding-top: var(--e5); }
 .v5a .v5-hero { margin-top: 0; margin-bottom: var(--e7); }
+
+/* ===== A, ajustes: título de ponta a ponta + atalhos em cartões ===== */
+.v5a { padding-top: 0; }
+.v5a .v5-hero { background: none; border-radius: 0; padding-block: var(--e6) var(--e7); margin-block: 0; display: grid; grid-template-columns: 1fr; gap: var(--e5); align-items: start; }
+.v5a .v5-hero-texto { display: contents; }
+.v5a .v5-hero h1 { grid-column: 1 / -1; position: relative; width: 100vw; margin-inline: calc(50% - 50vw); padding-inline: 1rem; white-space: nowrap; font-size: calc((100vw - 2rem) * 0.1835); line-height: 0.95; letter-spacing: -0.045em; color: var(--ink); text-align: center; overflow: hidden; }
+.v5a .v5-sub { margin: 0; align-self: center; font-size: clamp(1.5rem, 1rem + 1.6vw, 2.25rem); max-width: 26rem; color: var(--brand); }
+.v5a .v5-demo { background: var(--panel); }
+@media (min-width: 56em) { .v5a .v5-hero { grid-template-columns: 1fr 1fr; gap: var(--e6) var(--e7); } }
+html[data-contraste="alto"] .v5a .v5-hero h1, html[data-contraste="alto"] .v5a .v5-sub { color: #000 !important; }
+html[data-contraste="alto"] .v5a .v5-hero { background: none; }
+.v5a .v5-indice ul { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--e3); border: 0; }
+@media (max-width: 63.99em) { .v5a .v5-indice ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } .v5a .v5-indice li:last-child { grid-column: 1 / -1; } }
+.v5a .v5-indice li { border: 0; flex: none; }
+.v5a .v5-indice a { flex-direction: column-reverse; align-items: flex-start; justify-content: space-between; min-height: 13rem; background: var(--surface); border-radius: 1.75rem; border-top: 8px solid var(--brand); padding: var(--e4); gap: var(--e5); }
+.v5a .v5-indice li:nth-child(2) a { border-top-color: var(--accent2); } .v5a .v5-indice li:nth-child(3) a { border-top-color: var(--accent); } .v5a .v5-indice li:nth-child(4) a { border-top-color: var(--brand); } .v5a .v5-indice li:nth-child(5) a { border-top-color: var(--accent2); }
+.v5a .v5-indice .icone { box-sizing: border-box; width: 3.5rem; height: 3.5rem; padding: 0; border-radius: 0; background: none; color: var(--brand); }
+.v5a .v5-indice li:nth-child(even) .icone { color: var(--accent2); }
+.v5a .v5-indice a:hover { background: var(--brand); color: #f9f3e3; padding: var(--e4); }
+.v5a .v5-indice a:hover .icone { background: none; color: var(--accent); }
+.v5a .v5-i-nome { font-size: var(--t-g); }
