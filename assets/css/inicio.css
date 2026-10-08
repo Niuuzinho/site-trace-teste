@@ -140,3 +140,18 @@ body:has(.in) .rodape { margin-top: 0; }
 html[data-contraste="alto"] .in { --in-tinta-verde: #fff; }
 html[data-contraste="alto"] .in-banda { border-block: 2px solid #000; }
 html[data-contraste="alto"] .in-hero::after { background: #fff; }
+
+/* ===== v3: transições simples (cor muda em linha reta) e sessão 2 com os botões colados ===== */
+.in-hero::after, .in-arco::before { display: none; }
+.in-hero { padding-bottom: clamp(3rem, 2rem + 4vw, 6rem); }
+.in-banda, .in-arco-papel { margin-top: 0; }
+.in-atalhos { margin-top: 0; }
+.in-atalhos ul { gap: 0; }
+.in-atalhos a { border-radius: 0; box-shadow: none; min-height: 9.5rem; padding: var(--e4) clamp(1rem, 0.5rem + 2vw, 2rem); }
+.in-atalhos a:hover { filter: brightness(0.88); transform: none; }
+@media (min-width: 64em) { .in-atalhos a { min-height: 11rem; } .in-atalho-nome { font-size: 1.35rem; } .in-atalhos .in-ic { width: 2.6rem; height: 2.6rem; } }
+.in-mural { padding-top: clamp(3.5rem, 3rem + 3vw, 6rem); }
+.in-sec-banda { padding-top: clamp(3.5rem, 3rem + 3vw, 6rem); }
+.in-arco-papel .in-sec { padding-top: clamp(3.5rem, 3rem + 3vw, 6rem); }
+.in-mural { padding-bottom: clamp(3.5rem, 3rem + 3vw, 6rem); }
+html[data-contraste="alto"] .in-atalhos a { border: 2px solid #000; }
